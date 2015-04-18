@@ -11,10 +11,12 @@ Currently, this module can be used to generate simple x-y plots from Fortran.  E
 The way it works is simply to generate a Python script with the plotting code, which
 is then executed from the command line using the Fortran ```execute_command_line``` function.
 
+The module requires a modern Fortran compiler (it uses various Fortran 2003/2008 features such as deferred-length strings). It should work fine with the latest gfortran and ifort compilers.
+
 Example
 ---------------
 
-The following example generates a plot of the sine function.
+The following example generates a plot of the sine function:
 
 ```Fortran
     program test
