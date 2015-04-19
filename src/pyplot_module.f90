@@ -65,6 +65,11 @@
     character(len=*),parameter :: python_exe ='python'
     !*********************************************************
 
+    character(len=*),parameter :: int_fmt      = '(I10)'      !integer format string
+    integer,parameter          :: max_int_len  = 10           !max string length for integers
+    character(len=*),parameter :: real_fmt     = '(E30.16)'   !real number format string
+    integer,parameter          :: max_real_len = 30           !max string length for reals
+
     !*********************************************************
     !****c* pyplot_module/pyplot
     !
@@ -158,7 +163,7 @@
 !
 !  SOURCE
 
-    subroutine initialize(me, grid, xlabel, ylabel, title, legend, use_numpy)
+    subroutine initialize(me,grid,xlabel,ylabel,title,legend,use_numpy,figsize)
 
     implicit none
 
@@ -169,6 +174,9 @@
     character(len=*),intent(in),optional :: title
     logical,intent(in),optional          :: legend
     logical,intent(in),optional          :: use_numpy
+    integer,dimension(2),intent(in),optional :: figsize
+
+    character(len=max_int_len) :: width_str, height_str
 
     call me%destroy()
 
@@ -181,6 +189,10 @@
         me%use_numpy = use_numpy
     else
         me%use_numpy = .true.
+    end if
+    if (present(figsize)) then
+        call integer_to_string(figsize(1), width_str)
+        call integer_to_string(figsize(2), height_str)
     end if
 
     me%str = ''
@@ -200,8 +212,12 @@
     call me%add_str('matplotlib.rcParams["ytick.labelsize"] = 10.0')
     call me%add_str('')
 
-    call me%add_str('fig, ax = plt.subplots()')
-    call me%add_str('')
+    if (present(figsize)) then  !if specifying the figure size
+        call me%add_str('fig = plt.figure(figsize=('//trim(width_str)//','//trim(height_str)//'))')
+    else
+        call me%add_str('fig = plt.figure()')
+    end if
+    call me%add_str('ax = fig.gca()')
 
     if (present(grid)) then
         if (grid) call me%add_str('ax.grid()')
@@ -210,6 +226,8 @@
     if (present(xlabel)) call me%add_str('ax.set_xlabel("'//trim(xlabel)//'")')
     if (present(ylabel)) call me%add_str('ax.set_ylabel("'//trim(ylabel)//'")')
     if (present(title))  call me%add_str('ax.set_title("' //trim(title) //'")')
+
+    call me%add_str('')
 
     end subroutine initialize
 !*****************************************************************************************
@@ -238,7 +256,7 @@
     integer,intent(in),optional      :: linewidth
     
     character(len=:),allocatable :: xstr,ystr
-    character(len=10) :: imark,iline
+    character(len=max_int_len) :: imark,iline
 
     character(len=*),parameter :: xname = 'x'    !variable names for script
     character(len=*),parameter :: yname = 'y'    !
@@ -252,9 +270,9 @@
     call optional_int_to_string(linewidth, iline,'3')
 
     !write the arrays:
-    call me%add_str('')
     call me%add_str(trim(xname)//' = '//xstr)
     call me%add_str(trim(yname)//' = '//ystr)
+    call me%add_str('')
 
     !write the plot statement:
     call me%add_str('ax.plot('//&
@@ -264,6 +282,7 @@
                     'linewidth='//trim(adjustl(iline))//','//&
                     'markersize='//trim(adjustl(imark))//','//&
                     'label="'//trim(label)//'")')
+    call me%add_str('')
 
     end subroutine add_plot
 !*****************************************************************************************
@@ -279,7 +298,7 @@
 !
 !  SOURCE
 
-    subroutine add_bar(me,left,height,label,width,bottom)
+    subroutine add_bar(me,left,height,label,width,bottom,color)
 
     implicit none
 
@@ -289,6 +308,7 @@
     character(len=*),intent(in)               :: label
     real(wp),dimension(:),intent(in),optional :: width
     real(wp),dimension(:),intent(in),optional :: bottom
+    character(len=*),intent(in),optional      :: color
 
     character(len=:),allocatable :: xstr,ystr,wstr,bstr,plt_str
 
@@ -304,11 +324,11 @@
     if (present(bottom)) call vec_to_string(bottom,bstr,me%use_numpy)
 
     !write the arrays:
-    call me%add_str('')
                          call me%add_str(trim(xname)//' = '//xstr)
                          call me%add_str(trim(yname)//' = '//ystr)
     if (present(width))  call me%add_str(trim(wname)//' = '//wstr)
     if (present(bottom)) call me%add_str(trim(bname)//' = '//bstr)
+    call me%add_str('')
 
     !create the plot string:
     plt_str = 'ax.bar('//&
@@ -316,10 +336,12 @@
               'height='//trim(yname)//','
     if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
     if (present(bottom)) plt_str=plt_str//'bottom='//trim(bstr)//','
+    if (present(color))  plt_str=plt_str//'color='//trim(color)//','
     plt_str=plt_str//'label="'//trim(label)//'")'
 
     !write the plot statement:
     call me%add_str(plt_str)
+    call me%add_str('')
 
     end subroutine add_bar
 !*****************************************************************************************
@@ -344,17 +366,44 @@
     character(len=*),intent(out) :: string_value
     character(len=*),intent(in)  :: default_value
 
-    character(len=*),parameter :: int_fmt = '(I10)'  !integer format string
-    integer :: istat
-
     if (present(int_value)) then
-        write(string_value,int_fmt,iostat=istat) int_value
-        if (istat/=0) error stop 'Error converting integer to string'
+        call integer_to_string(int_value, string_value)
     else
         string_value = default_value
     end if
 
     end subroutine optional_int_to_string
+!*****************************************************************************************
+
+!*****************************************************************************************
+!****f* pyplot_module/integer_to_string
+!
+!  NAME  
+!    integer_to_string
+!
+!  DESCRIPTION
+!    Integer to string conversion.
+!
+!  SOURCE
+
+    subroutine integer_to_string(i,s)
+
+    implicit none
+
+    integer,intent(in),optional  :: i
+    character(len=*),intent(out) :: s
+
+    integer :: istat
+
+    write(s,int_fmt,iostat=istat) i
+
+    if (istat/=0) then
+        error stop 'Error converting integer to string'
+    else
+        s = adjustl(s)
+    end if
+
+    end subroutine integer_to_string
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -377,12 +426,11 @@
     logical,intent(in)                       :: use_numpy
 
     integer :: i,istat
-    character(len=*),parameter :: fmt = '(E30.16)'  !real number format string
-    character(len=30) :: tmp
+    character(len=max_real_len) :: tmp
 
     str = '['
     do i=1,size(v)
-        write(tmp,fmt,iostat=istat) v(i)
+        write(tmp,real_fmt,iostat=istat) v(i)
         if (istat/=0) error stop 'Error in vec_to_string'
         str = str//trim(adjustl(tmp))
         if (i<size(v)) str = str // ','
@@ -463,10 +511,9 @@
 
     !finish up the string:
     if (me%show_legend) then
-        call me%add_str('')
         call me%add_str('ax.legend(loc="best")')
+        call me%add_str('')
     end if
-    call me%add_str('')
     call me%add_str('plt.savefig("'//trim(figfile)//'")')
 
     !run it:
