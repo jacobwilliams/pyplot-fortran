@@ -336,7 +336,7 @@
               'height='//trim(yname)//','
     if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
     if (present(bottom)) plt_str=plt_str//'bottom='//trim(bstr)//','
-    if (present(color))  plt_str=plt_str//'color='//trim(color)//','
+    if (present(color))  plt_str=plt_str//'color="'//trim(color)//'",'
     plt_str=plt_str//'label="'//trim(label)//'")'
 
     !write the plot statement:
