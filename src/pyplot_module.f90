@@ -244,8 +244,8 @@
     character(len=*),parameter :: yname = 'y'    !
 
     !convert the arrays to strings:
-    call vec_to_string(x,xstr)
-    call vec_to_string(y,ystr)
+    call vec_to_string(x,xstr,me%use_numpy)
+    call vec_to_string(y,ystr,me%use_numpy)
 
     !get optional inputs (if not present, set default value):
     call optional_int_to_string(markersize,imark,'3')
@@ -253,13 +253,8 @@
 
     !write the arrays:
     call me%add_str('')
-    if (me%use_numpy) then
-        call me%add_str(trim(xname)//' = np.array('//xstr//')')
-        call me%add_str(trim(yname)//' = np.array('//ystr//')')
-    else
-        call me%add_str(trim(xname)//' = '//xstr)
-        call me%add_str(trim(yname)//' = '//ystr)
-    end if
+    call me%add_str(trim(xname)//' = '//xstr)
+    call me%add_str(trim(yname)//' = '//ystr)
 
     !write the plot statement:
     call me%add_str('ax.plot('//&
@@ -303,24 +298,17 @@
     character(len=*),parameter :: bname = 'b'    !
 
     !convert the arrays to strings:
-    call vec_to_string(left,xstr)
-    call vec_to_string(height,ystr)
-    if (present(width))  call vec_to_string(width,wstr)
-    if (present(bottom)) call vec_to_string(bottom,bstr)
+                         call vec_to_string(left,xstr,  me%use_numpy)
+                         call vec_to_string(height,ystr,me%use_numpy)
+    if (present(width))  call vec_to_string(width,wstr, me%use_numpy)
+    if (present(bottom)) call vec_to_string(bottom,bstr,me%use_numpy)
 
     !write the arrays:
     call me%add_str('')
-    if (me%use_numpy) then
-        call me%add_str(trim(xname)//' = np.array('//xstr//')')
-        call me%add_str(trim(yname)//' = np.array('//ystr//')')
-        if (present(width))  call me%add_str(trim(wname)//' = np.array('//wstr//')')
-        if (present(bottom)) call me%add_str(trim(bname)//' = np.array('//bstr//')')
-    else
-        call me%add_str(trim(xname)//' = '//xstr)
-        call me%add_str(trim(yname)//' = '//ystr)
-        if (present(width))  call me%add_str(trim(wname)//' = '//wstr)
-        if (present(bottom)) call me%add_str(trim(bname)//' = '//bstr)
-    end if
+                         call me%add_str(trim(xname)//' = '//xstr)
+                         call me%add_str(trim(yname)//' = '//ystr)
+    if (present(width))  call me%add_str(trim(wname)//' = '//wstr)
+    if (present(bottom)) call me%add_str(trim(bname)//' = '//bstr)
 
     !create the plot string:
     plt_str = 'ax.bar('//&
@@ -380,12 +368,13 @@
 !
 !  SOURCE
 
-    subroutine vec_to_string(v,str)
+    subroutine vec_to_string(v,str,use_numpy)
 
     implicit none
 
     real(wp),dimension(:),intent(in)         :: v
     character(len=:),allocatable,intent(out) :: str
+    logical,intent(in)                       :: use_numpy
 
     integer :: i,istat
     character(len=*),parameter :: fmt = '(E30.16)'  !real number format string
@@ -399,6 +388,9 @@
         if (i<size(v)) str = str // ','
     end do
     str = str // ']'
+
+    !convert to numpy array if necessary:
+    if (use_numpy) str = 'np.array('//str//')'
 
     end subroutine vec_to_string
 !*****************************************************************************************
