@@ -163,20 +163,30 @@
 !
 !  SOURCE
 
-    subroutine initialize(me,grid,xlabel,ylabel,title,legend,use_numpy,figsize)
+    subroutine initialize(me,grid,xlabel,ylabel,title,legend,use_numpy,figsize,&
+                          font_size,axes_labelsize,xtick_labelsize,ytick_labelsize,legend_fontsize)
 
     implicit none
 
-    class(pyplot),intent(inout)          :: me
-    logical,intent(in),optional          :: grid
-    character(len=*),intent(in),optional :: xlabel
-    character(len=*),intent(in),optional :: ylabel
-    character(len=*),intent(in),optional :: title
-    logical,intent(in),optional          :: legend
-    logical,intent(in),optional          :: use_numpy
+    class(pyplot),intent(inout)              :: me
+    logical,intent(in),optional              :: grid
+    character(len=*),intent(in),optional     :: xlabel
+    character(len=*),intent(in),optional     :: ylabel
+    character(len=*),intent(in),optional     :: title
+    logical,intent(in),optional              :: legend
+    logical,intent(in),optional              :: use_numpy
     integer,dimension(2),intent(in),optional :: figsize
+    integer,intent(in),optional              :: font_size
+    integer,intent(in),optional              :: axes_labelsize
+    integer,intent(in),optional              :: xtick_labelsize
+    integer,intent(in),optional              :: ytick_labelsize
+    integer,intent(in),optional              :: legend_fontsize
 
-    character(len=max_int_len) :: width_str, height_str
+    character(len=max_int_len) :: width_str, height_str,font_size_str,&
+                                  axes_labelsize_str,xtick_labelsize_str,&
+                                  ytick_labelsize_str,legend_fontsize_str
+
+    character(len=*),parameter :: default_font_size_str = '10'  !the default font size for plots
 
     call me%destroy()
 
@@ -194,6 +204,11 @@
         call integer_to_string(figsize(1), width_str)
         call integer_to_string(figsize(2), height_str)
     end if
+    call optional_int_to_string(font_size,      font_size_str,      default_font_size_str)
+    call optional_int_to_string(axes_labelsize, axes_labelsize_str, default_font_size_str)
+    call optional_int_to_string(xtick_labelsize,xtick_labelsize_str,default_font_size_str)
+    call optional_int_to_string(ytick_labelsize,ytick_labelsize_str,default_font_size_str)
+    call optional_int_to_string(legend_fontsize,legend_fontsize_str,default_font_size_str)
 
     me%str = ''
 
@@ -205,14 +220,12 @@
     if (me%use_numpy) call me%add_str('import numpy as np')
     call me%add_str('')
 
-    !.... these also need to be optional user inputs ....
-
-    call me%add_str('matplotlib.rcParams["font.size"] = 10')
     call me%add_str('matplotlib.rcParams["font.family"] = "Serif"')
-    call me%add_str('matplotlib.rcParams["axes.labelsize"] = 10')
-    call me%add_str('matplotlib.rcParams["xtick.labelsize"] = 10')
-    call me%add_str('matplotlib.rcParams["ytick.labelsize"] = 10')
-    call me%add_str('matplotlib.rcParams["legend.fontsize"] = 10')
+    call me%add_str('matplotlib.rcParams["font.size"] = '//trim(font_size_str))
+    call me%add_str('matplotlib.rcParams["axes.labelsize"] = '//trim(axes_labelsize_str))
+    call me%add_str('matplotlib.rcParams["xtick.labelsize"] = '//trim(xtick_labelsize_str))
+    call me%add_str('matplotlib.rcParams["ytick.labelsize"] = '//trim(ytick_labelsize_str))
+    call me%add_str('matplotlib.rcParams["legend.fontsize"] = '//trim(legend_fontsize_str))
 
     call me%add_str('')
 

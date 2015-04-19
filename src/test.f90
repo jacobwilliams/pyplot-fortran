@@ -40,7 +40,12 @@
     !bar chart:
     tx = 0.1_wp !for bar width
     call plt%initialize(grid=.true.,xlabel='angle (rad)',&
-                        title='bar test',legend=.true.,figsize=[20,5])
+                        title='bar test',legend=.true.,figsize=[20,5],&
+                        font_size = 20,&
+                        axes_labelsize = 20,&
+                        xtick_labelsize = 20,&
+                        ytick_labelsize = 20,&
+                        legend_fontsize = 20 )
     call plt%add_bar(left=x,height=sx,width=tx,label='$\sin (x)$',color='r')
     call plt%savefig('bartest.png', pyfile='bartest.py')
 
