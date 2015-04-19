@@ -89,6 +89,7 @@
 
         procedure,public :: initialize
         procedure,public :: add_plot
+        procedure,public :: add_bar
         procedure,public :: savefig
         procedure,public :: destroy
 
@@ -220,7 +221,7 @@
 !    add_plot
 !
 !  DESCRIPTION
-!    Add data for plotting.
+!    Add an x,y plot.
 !
 !  SOURCE
 
@@ -270,6 +271,69 @@
                     'label="'//trim(label)//'")')
 
     end subroutine add_plot
+!*****************************************************************************************
+
+!*****************************************************************************************
+!****f* pyplot_module/add_bar
+!
+!  NAME  
+!    add_bar
+!
+!  DESCRIPTION
+!    Add a bar plot.
+!
+!  SOURCE
+
+    subroutine add_bar(me,left,height,label,width,bottom)
+
+    implicit none
+
+    class(pyplot),intent(inout)               :: me
+    real(wp),dimension(:),intent(in)          :: left
+    real(wp),dimension(:),intent(in)          :: height
+    character(len=*),intent(in)               :: label
+    real(wp),dimension(:),intent(in),optional :: width
+    real(wp),dimension(:),intent(in),optional :: bottom
+
+    character(len=:),allocatable :: xstr,ystr,wstr,bstr,plt_str
+
+    character(len=*),parameter :: xname = 'x'    !variable names for script
+    character(len=*),parameter :: yname = 'y'    !
+    character(len=*),parameter :: wname = 'w'    !
+    character(len=*),parameter :: bname = 'b'    !
+
+    !convert the arrays to strings:
+    call vec_to_string(left,xstr)
+    call vec_to_string(height,ystr)
+    if (present(width))  call vec_to_string(width,wstr)
+    if (present(bottom)) call vec_to_string(bottom,bstr)
+
+    !write the arrays:
+    call me%add_str('')
+    if (me%use_numpy) then
+        call me%add_str(trim(xname)//' = np.array('//xstr//')')
+        call me%add_str(trim(yname)//' = np.array('//ystr//')')
+        if (present(width))  call me%add_str(trim(wname)//' = np.array('//wstr//')')
+        if (present(bottom)) call me%add_str(trim(bname)//' = np.array('//bstr//')')
+    else
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str(trim(yname)//' = '//ystr)
+        if (present(width))  call me%add_str(trim(wname)//' = '//wstr)
+        if (present(bottom)) call me%add_str(trim(bname)//' = '//bstr)
+    end if
+
+    !create the plot string:
+    plt_str = 'ax.bar('//&
+              'left='//trim(xname)//','//&
+              'height='//trim(yname)//','
+    if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
+    if (present(bottom)) plt_str=plt_str//'bottom='//trim(bstr)//','
+    plt_str=plt_str//'label="'//trim(label)//'")'
+
+    !write the plot statement:
+    call me%add_str(plt_str)
+
+    end subroutine add_bar
 !*****************************************************************************************
 
 !*****************************************************************************************

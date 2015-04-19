@@ -29,13 +29,20 @@
     cx = cos(x)
     tx = sx * cx
 
-    !plot it:
+    !2d line plot:
     call plt%initialize(grid=.true.,xlabel='angle (rad)',&
-                        title='python_plot test',legend=.true.)
+                        title='plot test',legend=.true.)
     call plt%add_plot(x,sx,label='$\sin (x)$',linestyle='b-o',markersize=5,linewidth=2)
     call plt%add_plot(x,cx,label='$\cos (x)$',linestyle='r-o',markersize=5,linewidth=2)
     call plt%add_plot(x,tx,label='$\sin (x) \cos (x)$',linestyle='g-o',markersize=2,linewidth=1)
-    call plt%savefig('test.png', pyfile='test.py')
+    call plt%savefig('plottest.png', pyfile='plottest.py')
+
+    !bar chart:
+    tx = 0.1_wp !for bar width
+    call plt%initialize(grid=.true.,xlabel='angle (rad)',&
+                        title='bar test',legend=.true.)
+    call plt%add_bar(left=x,height=sx,width=tx,label='$\sin (x)$')
+    call plt%savefig('bartest.png', pyfile='bartest.py')
 
     end program test
 !*****************************************************************************************

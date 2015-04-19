@@ -6,12 +6,18 @@ A simple module for generating plots from Fortran using Python's matplotlib.pypl
 Overview
 ---------------
 
-Currently, this module can be used to generate simple x-y plots from Fortran.  Eventually, it may be expanded to provide additional features and other types of plots.
+Currently, this module can be used to generate simple plots from Fortran.  Eventually, it may be expanded to provide additional features and other types of plots.
 
 The way it works is simply to generate a Python script with the plotting code, which
 is then executed from the command line using the Fortran ```execute_command_line``` function.
 
 The module requires a modern Fortran compiler (it uses various Fortran 2003/2008 features such as deferred-length strings). It should work fine with the latest gfortran or ifort compilers.  A simple script ```build.sh``` is provided for building the library and test program (requires gfortran and [FoBiS](https://github.com/szaghi/FoBiS)).  It will also build the HTML documentation if [ROBODoc](https://github.com/gumpu/ROBODoc) is installed.
+
+Supported plot types
+---------------
+
+* ```matplotlib.pyplot.plot``` -- 2D plot of lines and/or markers.
+* ```matplotlib.pyplot.bar``` -- Make a bar plot.
 
 Example
 ---------------
