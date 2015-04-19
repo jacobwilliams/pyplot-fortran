@@ -205,11 +205,15 @@
     if (me%use_numpy) call me%add_str('import numpy as np')
     call me%add_str('')
 
-    call me%add_str('matplotlib.rcParams["font.size"] = 10.0')
+    !.... these also need to be optional user inputs ....
+
+    call me%add_str('matplotlib.rcParams["font.size"] = 10')
     call me%add_str('matplotlib.rcParams["font.family"] = "Serif"')
-    call me%add_str('matplotlib.rcParams["axes.labelsize"] = 10.0')
-    call me%add_str('matplotlib.rcParams["xtick.labelsize"] = 10.0')
-    call me%add_str('matplotlib.rcParams["ytick.labelsize"] = 10.0')
+    call me%add_str('matplotlib.rcParams["axes.labelsize"] = 10')
+    call me%add_str('matplotlib.rcParams["xtick.labelsize"] = 10')
+    call me%add_str('matplotlib.rcParams["ytick.labelsize"] = 10')
+    call me%add_str('matplotlib.rcParams["legend.fontsize"] = 10')
+
     call me%add_str('')
 
     if (present(figsize)) then  !if specifying the figure size
@@ -261,28 +265,34 @@
     character(len=*),parameter :: xname = 'x'    !variable names for script
     character(len=*),parameter :: yname = 'y'    !
 
-    !convert the arrays to strings:
-    call vec_to_string(x,xstr,me%use_numpy)
-    call vec_to_string(y,ystr,me%use_numpy)
+    if (allocated(me%str)) then
 
-    !get optional inputs (if not present, set default value):
-    call optional_int_to_string(markersize,imark,'3')
-    call optional_int_to_string(linewidth, iline,'3')
+        !convert the arrays to strings:
+        call vec_to_string(x,xstr,me%use_numpy)
+        call vec_to_string(y,ystr,me%use_numpy)
 
-    !write the arrays:
-    call me%add_str(trim(xname)//' = '//xstr)
-    call me%add_str(trim(yname)//' = '//ystr)
-    call me%add_str('')
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(markersize,imark,'3')
+        call optional_int_to_string(linewidth, iline,'3')
 
-    !write the plot statement:
-    call me%add_str('ax.plot('//&
-                    trim(xname)//','//&
-                    trim(yname)//','//&
-                    '"'//trim(linestyle)//'",'//&
-                    'linewidth='//trim(adjustl(iline))//','//&
-                    'markersize='//trim(adjustl(imark))//','//&
-                    'label="'//trim(label)//'")')
-    call me%add_str('')
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str(trim(yname)//' = '//ystr)
+        call me%add_str('')
+
+        !write the plot statement:
+        call me%add_str('ax.plot('//&
+                        trim(xname)//','//&
+                        trim(yname)//','//&
+                        '"'//trim(linestyle)//'",'//&
+                        'linewidth='//trim(adjustl(iline))//','//&
+                        'markersize='//trim(adjustl(imark))//','//&
+                        'label="'//trim(label)//'")')
+        call me%add_str('')
+
+    else
+        error stop 'Error in add_plot: pyplot class not properly initialized.'
+    end if
 
     end subroutine add_plot
 !*****************************************************************************************
@@ -317,31 +327,37 @@
     character(len=*),parameter :: wname = 'w'    !
     character(len=*),parameter :: bname = 'b'    !
 
-    !convert the arrays to strings:
-                         call vec_to_string(left,xstr,  me%use_numpy)
-                         call vec_to_string(height,ystr,me%use_numpy)
-    if (present(width))  call vec_to_string(width,wstr, me%use_numpy)
-    if (present(bottom)) call vec_to_string(bottom,bstr,me%use_numpy)
+    if (allocated(me%str)) then
 
-    !write the arrays:
-                         call me%add_str(trim(xname)//' = '//xstr)
-                         call me%add_str(trim(yname)//' = '//ystr)
-    if (present(width))  call me%add_str(trim(wname)//' = '//wstr)
-    if (present(bottom)) call me%add_str(trim(bname)//' = '//bstr)
-    call me%add_str('')
+        !convert the arrays to strings:
+                             call vec_to_string(left,xstr,  me%use_numpy)
+                             call vec_to_string(height,ystr,me%use_numpy)
+        if (present(width))  call vec_to_string(width,wstr, me%use_numpy)
+        if (present(bottom)) call vec_to_string(bottom,bstr,me%use_numpy)
 
-    !create the plot string:
-    plt_str = 'ax.bar('//&
-              'left='//trim(xname)//','//&
-              'height='//trim(yname)//','
-    if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
-    if (present(bottom)) plt_str=plt_str//'bottom='//trim(bstr)//','
-    if (present(color))  plt_str=plt_str//'color="'//trim(color)//'",'
-    plt_str=plt_str//'label="'//trim(label)//'")'
+        !write the arrays:
+                             call me%add_str(trim(xname)//' = '//xstr)
+                             call me%add_str(trim(yname)//' = '//ystr)
+        if (present(width))  call me%add_str(trim(wname)//' = '//wstr)
+        if (present(bottom)) call me%add_str(trim(bname)//' = '//bstr)
+        call me%add_str('')
 
-    !write the plot statement:
-    call me%add_str(plt_str)
-    call me%add_str('')
+        !create the plot string:
+        plt_str = 'ax.bar('//&
+                  'left='//trim(xname)//','//&
+                  'height='//trim(yname)//','
+        if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
+        if (present(bottom)) plt_str=plt_str//'bottom='//trim(bstr)//','
+        if (present(color))  plt_str=plt_str//'color="'//trim(color)//'",'
+        plt_str=plt_str//'label="'//trim(label)//'")'
+
+        !write the plot statement:
+        call me%add_str(plt_str)
+        call me%add_str('')
+
+    else
+        error stop 'Error in add_bar: pyplot class not properly initialized.'
+    end if
 
     end subroutine add_bar
 !*****************************************************************************************
@@ -509,15 +525,21 @@
     character(len=*),intent(in) :: figfile  !file name for the figure
     character(len=*),intent(in),optional :: pyfile  !name of the python script to generate
 
-    !finish up the string:
-    if (me%show_legend) then
-        call me%add_str('ax.legend(loc="best")')
-        call me%add_str('')
-    end if
-    call me%add_str('plt.savefig("'//trim(figfile)//'")')
+    if (allocated(me%str)) then
 
-    !run it:
-    call me%execute(pyfile)
+        !finish up the string:
+        if (me%show_legend) then
+            call me%add_str('ax.legend(loc="best")')
+            call me%add_str('')
+        end if
+        call me%add_str('plt.savefig("'//trim(figfile)//'")')
+
+        !run it:
+        call me%execute(pyfile)
+
+    else
+        error stop 'error in savefig: pyplot class not properly initialized.'
+    end if
 
     end subroutine savefig
 !*****************************************************************************************
