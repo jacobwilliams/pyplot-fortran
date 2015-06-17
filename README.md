@@ -52,4 +52,4 @@ The following example generates a plot of the sine function:
 
 See also
 ---------------
- * [Mathplotlib](http://matplotlib.org)
+ * [Matplotlib](http://matplotlib.org)
