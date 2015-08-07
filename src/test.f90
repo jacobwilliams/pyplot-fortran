@@ -1,18 +1,12 @@
 !*****************************************************************************************
+!> author: Jacob Williams
+!  date: 4/14/2015
+!  license: BSD
+!
+!# DESCRIPTION
+!  Unit test for [[pyplot_module]].
+
     program test
-!*****************************************************************************************
-!****u* pyplotfortran/test
-!
-!  NAME
-!    test
-!
-!  DESCRIPTION
-!    Unit test for pyplot_module.
-!
-!  AUTHOR
-!    Jacob Williams : 4/14/2015
-!
-!  SOURCE
 
     use,intrinsic :: iso_fortran_env, only: wp => real64
     use pyplot_module

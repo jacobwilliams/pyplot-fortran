@@ -24,9 +24,9 @@ FoBiS.py build -compiler ${FCOMPILER} -cflags "${FCOMPILERFLAGS}" -dbld ${BINDIR
 
 # build the documentation:
 
-if hash robodoc 2>/dev/null; then
+if hash ford 2>/dev/null; then
 	echo "Building documentation..."
-	robodoc --rc ./robodoc.rc --src ${SRCDIR} --doc ${DOCDIR} --documenttitle ${PROJECTNAME}
+	ford pyplot-fortran.md
 else
-	echo "ROBODoc not found! Cannot build documentation. ROBODoc can be obtained from: http://www.xs4all.nl/~rfsber/Robo/"
+	echo "FORD not found! Cannot build documentation. To install, run: sudo pip install ford"
 fi

@@ -1,91 +1,43 @@
 !*****************************************************************************************
+!> author: Jacob Williams
+!  date: 4/14/2015
+!  license: BSD
+!
+!# DESCRIPTION
+!  For making simple x-y plots from Fortran.
+!  It works by generating a Python script and executing it.
+!
+!# SEE ALSO
+!   * Inspired by: [EasyPlot](https://pypi.python.org/pypi/EasyPlot)
+!
     module pyplot_module
-!*****************************************************************************************
-!****h* pyplotfortran/pyplot_module
-!
-!  NAME
-!    pyplot_module
-!
-!  DESCRIPTION
-!    For making simple x-y plots from Fortran.
-!    It works by generating a Python script and executing it.
-!
-!  SEE ALSO
-!    Inspired by these:
-!    * http://pypi.python.org/pypi/EasyPlot/1.0.0
-!    * http://nbviewer.ipython.org/github/HamsterHuey/easyplot/blob/master/docs/easyplot_docs.ipynb
-!
-!  AUTHOR
-!    Jacob Williams
-!
-!  HISTORY
-!    * Jacob Williams : Created : 4/14/2015
-!
-!*****************************************************************************************
 
-    !*********************************************************
-    !****d* pyplot_module/wp
-    !
-    !  NAME
-    !    wp
-    !
-    !  DESCRIPTION
-    !    Default real kind [8 bytes].
-    !
-    !  SOURCE
-    use,intrinsic :: iso_fortran_env, only: wp => real64
-    !*********************************************************
+    use,intrinsic :: iso_fortran_env, only: real64
 
     implicit none
+    
+    private
+    
+    integer,parameter,private :: wp = real64  !! Default real kind [8 bytes].
+
+    character(len=*),parameter :: tmp_file = 'pyplot_module_temp_1234567890.py'  !! Default name of the temporary file 
+                                                                                 !! (this can also be user-specified).
+
+    character(len=*),parameter :: python_exe   ='python'      !! The python executable name.
+    character(len=*),parameter :: int_fmt      = '(I10)'      !! integer format string
+    integer,parameter          :: max_int_len  = 10           !! max string length for integers
+    character(len=*),parameter :: real_fmt     = '(E30.16)'   !! real number format string
+    integer,parameter          :: max_real_len = 30           !! max string length for reals
 
     !*********************************************************
-    !****d* pyplot_module/tmp_file
+    !>
+    !  The main class.
     !
-    !  NAME
-    !    tmp_file
-    !
-    !  DESCRIPTION
-    !    Default name of the temporary file 
-    !    (this can also be user-specified).
-    !
-    !  SOURCE
-    character(len=*),parameter :: tmp_file = 'pyplot_module_temp_1234567890.py'
-    !*********************************************************
-
-    !*********************************************************
-    !****d* pyplot_module/python_exe
-    !
-    !  NAME
-    !    python_exe
-    !
-    !  DESCRIPTION
-    !    The python executable name.
-    !
-    !  SOURCE
-    character(len=*),parameter :: python_exe ='python'
-    !*********************************************************
-
-    character(len=*),parameter :: int_fmt      = '(I10)'      !integer format string
-    integer,parameter          :: max_int_len  = 10           !max string length for integers
-    character(len=*),parameter :: real_fmt     = '(E30.16)'   !real number format string
-    integer,parameter          :: max_real_len = 30           !max string length for reals
-
-    !*********************************************************
-    !****c* pyplot_module/pyplot
-    !
-    !  NAME
-    !    pyplot
-    !
-    !  DESCRIPTION
-    !    The main class.
-    !
-    !  SOURCE
-
     type,public :: pyplot
 
         private
 
-        character(len=:),allocatable :: str  !string buffer
+        character(len=:),allocatable :: str  !! string buffer
 
         logical :: show_legend = .false.
         logical :: use_numpy   = .true.
@@ -108,16 +60,10 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/destroy
+!> author: Jacob Williams
 !
-!  NAME  
-!    destroy
+!  Destructor
 !
-!  DESCRIPTION
-!    Destructor
-!
-!  SOURCE
-
     subroutine destroy(me)
 
     implicit none
@@ -130,16 +76,10 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/add_str
+!> author: Jacob Williams
 !
-!  NAME  
-!    add_str
+!  Add a string to the buffer.
 !
-!  DESCRIPTION
-!    Add a string to the buffer.
-!
-!  SOURCE
-
     subroutine add_str(me,str)
 
     implicit none
@@ -153,16 +93,10 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/initialize
+!> author: Jacob Williams
 !
-!  NAME  
-!    initialize
+!  Initialize a plot
 !
-!  DESCRIPTION
-!    initialize a plot
-!
-!  SOURCE
-
     subroutine initialize(me,grid,xlabel,ylabel,title,legend,use_numpy,figsize,&
                           font_size,axes_labelsize,xtick_labelsize,ytick_labelsize,legend_fontsize)
 
@@ -250,16 +184,10 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/add_plot
+!> author: Jacob Williams
 !
-!  NAME  
-!    add_plot
+!  Add an x,y plot.
 !
-!  DESCRIPTION
-!    Add an x,y plot.
-!
-!  SOURCE
-
     subroutine add_plot(me,x,y,label,linestyle,markersize,linewidth)
 
     implicit none
@@ -275,8 +203,8 @@
     character(len=:),allocatable :: xstr,ystr
     character(len=max_int_len) :: imark,iline
 
-    character(len=*),parameter :: xname = 'x'    !variable names for script
-    character(len=*),parameter :: yname = 'y'    !
+    character(len=*),parameter :: xname = 'x'    !! x variable name for script
+    character(len=*),parameter :: yname = 'y'    !! y variable name for script
 
     if (allocated(me%str)) then
 
@@ -311,16 +239,10 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/add_bar
+!> author: Jacob Williams
 !
-!  NAME  
-!    add_bar
+!  Add a bar plot.
 !
-!  DESCRIPTION
-!    Add a bar plot.
-!
-!  SOURCE
-
     subroutine add_bar(me,left,height,label,width,bottom,color)
 
     implicit none
@@ -376,17 +298,11 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/optional_int_to_string
+!> author: Jacob Williams
 !
-!  NAME  
-!    optional_int_to_string
+!  Integer to string, specifying the default value if 
+!  the optional argument is not present.
 !
-!  DESCRIPTION
-!    Integer to string, specifying the default value if 
-!    the optional argument is not present.
-!
-!  SOURCE
-
     subroutine optional_int_to_string(int_value,string_value,default_value)
 
     implicit none
@@ -405,16 +321,10 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/integer_to_string
+!> author: Jacob Williams
 !
-!  NAME  
-!    integer_to_string
+!  Integer to string conversion.
 !
-!  DESCRIPTION
-!    Integer to string conversion.
-!
-!  SOURCE
-
     subroutine integer_to_string(i,s)
 
     implicit none
@@ -436,16 +346,10 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/vec_to_string
+!> author: Jacob Williams
 !
-!  NAME  
-!    vec_to_string
+!  Real vector to string.
 !
-!  DESCRIPTION
-!    Real vector to string.
-!
-!  SOURCE
-
     subroutine vec_to_string(v,str,use_numpy)
 
     implicit none
@@ -473,16 +377,10 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/execute
+!> author: Jacob Williams
 !
-!  NAME  
-!    execute
+!  Write the buffer to a file, and then execute it with Python.
 !
-!  DESCRIPTION
-!    Write the buffer to a file, and then execute it with Python.
-!
-!  SOURCE
-
     subroutine execute(me,pyfile)
 
     implicit none
@@ -520,23 +418,17 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!****f* pyplot_module/savefig
+!> author: Jacob Williams
 !
-!  NAME  
-!    savefig
+!  Save the figure.
 !
-!  DESCRIPTION
-!    Save the figure.
-!
-!  SOURCE
-
     subroutine savefig(me,figfile,pyfile)
 
     implicit none
 
     class(pyplot),intent(inout) :: me
-    character(len=*),intent(in) :: figfile  !file name for the figure
-    character(len=*),intent(in),optional :: pyfile  !name of the python script to generate
+    character(len=*),intent(in) :: figfile  !! file name for the figure
+    character(len=*),intent(in),optional :: pyfile  !! name of the Python script to generate
 
     if (allocated(me%str)) then
 
