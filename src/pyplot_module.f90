@@ -1,4 +1,3 @@
-!*****************************************************************************************
 !> author: Jacob Williams
 !  date: 4/14/2015
 !  license: BSD
@@ -9,118 +8,93 @@
 !
 !# SEE ALSO
 !   * Inspired by: [EasyPlot](https://pypi.python.org/pypi/EasyPlot)
-!
-    module pyplot_module
+module pyplot_module
 
-    use,intrinsic :: iso_fortran_env, only: real64
+use, intrinsic :: iso_fortran_env, only : real64
 
-    implicit none
-    
-    private
-    
-    integer,parameter,private :: wp = real64  !! Default real kind [8 bytes].
+implicit none
 
-    character(len=*),parameter :: tmp_file = 'pyplot_module_temp_1234567890.py'  !! Default name of the temporary file 
-                                                                                 !! (this can also be user-specified).
+private
 
-    character(len=*),parameter :: python_exe   ='python'      !! The python executable name.
-    character(len=*),parameter :: int_fmt      = '(I10)'      !! integer format string
-    integer,parameter          :: max_int_len  = 10           !! max string length for integers
-    character(len=*),parameter :: real_fmt     = '(E30.16)'   !! real number format string
-    integer,parameter          :: max_real_len = 30           !! max string length for reals
+integer, parameter, private :: wp = real64 !! Default real kind [8 bytes].
 
-    !*********************************************************
-    !>
-    !  The main class.
-    !
-    type,public :: pyplot
+character(len=*), parameter :: tmp_file = 'pyplot_module_temp_1234567890.py' !! Default name of the temporary file
+                                                                             !! (this can also be user-specified).
 
-        private
+character(len=*), parameter :: python_exe   ='python'    !! The python executable name.
+character(len=*), parameter :: int_fmt      = '(I10)'    !! integer format string
+integer, parameter          :: max_int_len  = 10         !! max string length for integers
+character(len=*), parameter :: real_fmt     = '(E30.16)' !! real number format string
+integer, parameter          :: max_real_len = 30         !! max string length for reals
 
-        character(len=:),allocatable :: str  !! string buffer
-
-        logical :: show_legend = .false.
-        logical :: use_numpy   = .true.
-
-    contains
-
-        procedure,public :: initialize
-        procedure,public :: add_plot
-        procedure,public :: add_bar
-        procedure,public :: savefig
-        procedure,public :: destroy
-
-        procedure :: execute
-        procedure :: add_str
-
-    end type pyplot
-    !*********************************************************
-
-    contains
-!*****************************************************************************************
-
-!*****************************************************************************************
 !> author: Jacob Williams
 !
-!  Destructor
-!
+! The main pyplot class.
+type, public :: pyplot
+    private
+
+    character(len=:), allocatable :: str !! string buffer
+
+    logical :: show_legend = .false.     !! show legend into plot
+    logical :: use_numpy   = .true.      !! use numpy python module
+contains
+    ! public methods
+    procedure, public :: initialize !! initialize pyplot instance
+    procedure, public :: add_plot   !! add a plot to pyplot instance
+    procedure, public :: add_bar    !! add a barplot to pyplot instance
+    procedure, public :: savefig    !! save plots of pyplot instance
+    procedure, public :: destroy    !! destroy pyplot instance
+    ! private methods
+    procedure :: execute !! execute pyplot commands
+    procedure :: add_str !! add string to pytplot instance buffer
+end type pyplot
+contains
+
+    !> author: Jacob Williams
+    !
+    ! Destructor
     subroutine destroy(me)
-
-    implicit none
-
-    class(pyplot),intent(inout) :: me
+    class(pyplot),intent(inout) :: me !! pyplot handler
 
     if (allocated(me%str)) deallocate(me%str)
-
     end subroutine destroy
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Add a string to the buffer.
-!
+    !> author: Jacob Williams
+    !
+    ! Add a string to the buffer.
     subroutine add_str(me,str)
+    class(pyplot),    intent(inout) :: me  !! pyplot handler
+    character(len=*), intent(in)    :: str !! str to be added to pyplot handler buffer
 
-    implicit none
-
-    class(pyplot),intent(inout) :: me
-    character(len=*),intent(in) :: str
-    
     me%str = me%str//str//new_line(' ')
-
     end subroutine add_str
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Initialize a plot
-!
-    subroutine initialize(me,grid,xlabel,ylabel,title,legend,use_numpy,figsize,&
-                          font_size,axes_labelsize,xtick_labelsize,ytick_labelsize,legend_fontsize)
-
-    implicit none
-
-    class(pyplot),intent(inout)              :: me
-    logical,intent(in),optional              :: grid
-    character(len=*),intent(in),optional     :: xlabel
-    character(len=*),intent(in),optional     :: ylabel
-    character(len=*),intent(in),optional     :: title
-    logical,intent(in),optional              :: legend
-    logical,intent(in),optional              :: use_numpy
-    integer,dimension(2),intent(in),optional :: figsize
-    integer,intent(in),optional              :: font_size
-    integer,intent(in),optional              :: axes_labelsize
-    integer,intent(in),optional              :: xtick_labelsize
-    integer,intent(in),optional              :: ytick_labelsize
-    integer,intent(in),optional              :: legend_fontsize
-
-    character(len=max_int_len) :: width_str, height_str,font_size_str,&
-                                  axes_labelsize_str,xtick_labelsize_str,&
-                                  ytick_labelsize_str,legend_fontsize_str
-
-    character(len=*),parameter :: default_font_size_str = '10'  !the default font size for plots
+    !> author: Jacob Williams
+    !
+    ! Initialize a plot
+    subroutine initialize(me, grid, xlabel, ylabel, title, legend, use_numpy, figsize, &
+                          font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, legend_fontsize)
+    class(pyplot),         intent(inout)        :: me                           !! pyplot handler
+    logical,               intent(in), optional :: grid                         !! activate grid drawing
+    character(len=*),      intent(in), optional :: xlabel                       !! label of x axis
+    character(len=*),      intent(in), optional :: ylabel                       !! label of y axis
+    character(len=*),      intent(in), optional :: title                        !! plot title
+    logical,               intent(in), optional :: legend                       !! plot legend
+    logical,               intent(in), optional :: use_numpy                    !! activate usage of numpy python module
+    integer, dimension(2), intent(in), optional :: figsize                      !! dimension of the figure
+    integer,               intent(in), optional :: font_size                    !! font size
+    integer,               intent(in), optional :: axes_labelsize               !! size of axis labels
+    integer,               intent(in), optional :: xtick_labelsize              !! size of x axis tick lables
+    integer,               intent(in), optional :: ytick_labelsize              !! size of y axis tick lables
+    integer,               intent(in), optional :: legend_fontsize              !! size of legend font
+    character(len=max_int_len)                  :: width_str                    !! figure width dummy string
+    character(len=max_int_len)                  :: height_str                   !! figure height dummy string
+    character(len=max_int_len)                  :: font_size_str                !! font size dummy string
+    character(len=max_int_len)                  :: axes_labelsize_str           !! size of axis labels dummy string
+    character(len=max_int_len)                  :: xtick_labelsize_str          !! sise of x axis tick labels dummy string
+    character(len=max_int_len)                  :: ytick_labelsize_str          !! sise of x axis tick labels dummy string
+    character(len=max_int_len)                  :: legend_fontsize_str          !! sise of legend font dummy string
+    character(len=*), parameter                 :: default_font_size_str = '10' !! the default font size for plots
 
     call me%destroy()
 
@@ -138,11 +112,11 @@
         call integer_to_string(figsize(1), width_str)
         call integer_to_string(figsize(2), height_str)
     end if
-    call optional_int_to_string(font_size,      font_size_str,      default_font_size_str)
+    call optional_int_to_string(font_size, font_size_str, default_font_size_str)
     call optional_int_to_string(axes_labelsize, axes_labelsize_str, default_font_size_str)
-    call optional_int_to_string(xtick_labelsize,xtick_labelsize_str,default_font_size_str)
-    call optional_int_to_string(ytick_labelsize,ytick_labelsize_str,default_font_size_str)
-    call optional_int_to_string(legend_fontsize,legend_fontsize_str,default_font_size_str)
+    call optional_int_to_string(xtick_labelsize, xtick_labelsize_str, default_font_size_str)
+    call optional_int_to_string(ytick_labelsize, ytick_labelsize_str, default_font_size_str)
+    call optional_int_to_string(legend_fontsize, legend_fontsize_str, default_font_size_str)
 
     me%str = ''
 
@@ -179,42 +153,35 @@
     if (present(title))  call me%add_str('ax.set_title("' //trim(title) //'")')
 
     call me%add_str('')
-
     end subroutine initialize
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Add an x,y plot.
-!
-    subroutine add_plot(me,x,y,label,linestyle,markersize,linewidth)
-
-    implicit none
-
-    class(pyplot),intent(inout)      :: me
-    real(wp),dimension(:),intent(in) :: x
-    real(wp),dimension(:),intent(in) :: y
-    character(len=*),intent(in)      :: label
-    character(len=*),intent(in)      :: linestyle
-    integer,intent(in),optional      :: markersize
-    integer,intent(in),optional      :: linewidth
-    
-    character(len=:),allocatable :: xstr,ystr
-    character(len=max_int_len) :: imark,iline
-
-    character(len=*),parameter :: xname = 'x'    !! x variable name for script
-    character(len=*),parameter :: yname = 'y'    !! y variable name for script
+    !> author: Jacob Williams
+    !
+    ! Add an x,y plot.
+    subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth)
+    class(pyplot),          intent (inout)        :: me           !! pyplot handler
+    real(wp), dimension(:), intent (in)           :: x            !! x values
+    real(wp), dimension(:), intent (in)           :: y            !! y values
+    character(len=*),       intent (in)           :: label        !! plot label
+    character(len=*),       intent (in)           :: linestyle    !! style of the plot line
+    integer,                intent (in), optional :: markersize   !! size of the plot markers
+    integer,                intent (in), optional :: linewidth    !! width of the plot line
+    character(len=:), allocatable                 :: xstr         !! x values strinfied
+    character(len=:), allocatable                 :: ystr         !! y values strinfied
+    character(len=max_int_len)                    :: imark        !! actual markers size
+    character(len=max_int_len)                    :: iline        !! actual line width
+    character(len=*), parameter                   :: xname = 'x'  !! x variable name for script
+    character(len=*), parameter                   :: yname = 'y'  !! y variable name for script
 
     if (allocated(me%str)) then
 
         !convert the arrays to strings:
-        call vec_to_string(x,xstr,me%use_numpy)
-        call vec_to_string(y,ystr,me%use_numpy)
+        call vec_to_string(x, xstr, me%use_numpy)
+        call vec_to_string(y, ystr, me%use_numpy)
 
         !get optional inputs (if not present, set default value):
-        call optional_int_to_string(markersize,imark,'3')
-        call optional_int_to_string(linewidth, iline,'3')
+        call optional_int_to_string(markersize, imark, '3')
+        call optional_int_to_string(linewidth, iline, '3')
 
         !write the arrays:
         call me%add_str(trim(xname)//' = '//xstr)
@@ -234,41 +201,36 @@
     else
         error stop 'Error in add_plot: pyplot class not properly initialized.'
     end if
-
     end subroutine add_plot
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Add a bar plot.
-!
-    subroutine add_bar(me,left,height,label,width,bottom,color)
-
-    implicit none
-
-    class(pyplot),intent(inout)               :: me
-    real(wp),dimension(:),intent(in)          :: left
-    real(wp),dimension(:),intent(in)          :: height
-    character(len=*),intent(in)               :: label
-    real(wp),dimension(:),intent(in),optional :: width
-    real(wp),dimension(:),intent(in),optional :: bottom
-    character(len=*),intent(in),optional      :: color
-
-    character(len=:),allocatable :: xstr,ystr,wstr,bstr,plt_str
-
-    character(len=*),parameter :: xname = 'x'    !variable names for script
-    character(len=*),parameter :: yname = 'y'    !
-    character(len=*),parameter :: wname = 'w'    !
-    character(len=*),parameter :: bname = 'b'    !
+    !> author: Jacob Williams
+    !
+    ! Add a bar plot.
+    subroutine add_bar(me, left, height, label, width, bottom, color)
+    class(pyplot),          intent(inout)        :: me            !! pyplot handler
+    real(wp), dimension(:), intent(in)           :: left          !! left bar values
+    real(wp), dimension(:), intent(in)           :: height        !! height bar values
+    character(len=*),       intent(in)           :: label         !! plot label
+    real(wp), dimension(:), intent(in), optional :: width         !! width values
+    real(wp), dimension(:), intent(in), optional :: bottom        !! bottom values
+    character(len=*),       intent(in), optional :: color         !! plot color
+    character(len=:), allocatable                :: xstr          !! x axis values stringified
+    character(len=:), allocatable                :: ystr          !! y axis values stringified
+    character(len=:), allocatable                :: wstr          !! width values stringified
+    character(len=:), allocatable                :: bstr          !! bottom values stringified
+    character(len=:), allocatable                :: plt_str       !! plot string
+    character(len=*), parameter                  :: xname = 'x'   !! x axis name
+    character(len=*), parameter                  :: yname = 'y'   !! y axis name
+    character(len=*), parameter                  :: wname = 'w'   !! width name
+    character(len=*), parameter                  :: bname = 'b'   !! bottom name
 
     if (allocated(me%str)) then
 
         !convert the arrays to strings:
-                             call vec_to_string(left,xstr,  me%use_numpy)
-                             call vec_to_string(height,ystr,me%use_numpy)
-        if (present(width))  call vec_to_string(width,wstr, me%use_numpy)
-        if (present(bottom)) call vec_to_string(bottom,bstr,me%use_numpy)
+                             call vec_to_string(left, xstr, me%use_numpy)
+                             call vec_to_string(height, ystr, me%use_numpy)
+        if (present(width))  call vec_to_string(width, wstr, me%use_numpy)
+        if (present(bottom)) call vec_to_string(bottom, bstr, me%use_numpy)
 
         !write the arrays:
                              call me%add_str(trim(xname)//' = '//xstr)
@@ -295,21 +257,15 @@
     end if
 
     end subroutine add_bar
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Integer to string, specifying the default value if 
-!  the optional argument is not present.
-!
-    subroutine optional_int_to_string(int_value,string_value,default_value)
-
-    implicit none
-
-    integer,intent(in),optional  :: int_value
-    character(len=*),intent(out) :: string_value
-    character(len=*),intent(in)  :: default_value
+    !> author: Jacob Williams
+    !
+    ! Integer to string, specifying the default value if
+    ! the optional argument is not present.
+    subroutine optional_int_to_string(int_value, string_value, default_value)
+    integer,          intent(in), optional :: int_value      !! integer value
+    character(len=*), intent(out)          :: string_value   !! integer value stringified
+    character(len=*), intent(in)           :: default_value  !! default integer value
 
     if (present(int_value)) then
         call integer_to_string(int_value, string_value)
@@ -318,23 +274,16 @@
     end if
 
     end subroutine optional_int_to_string
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Integer to string conversion.
-!
-    subroutine integer_to_string(i,s)
+    !> author: Jacob Williams
+    !
+    ! Integer to string conversion.
+    subroutine integer_to_string(i, s)
+    integer,          intent(in), optional  :: i     !! integer value
+    character(len=*), intent(out)           :: s     !! integer value stringified
+    integer                                 :: istat !! IO status
 
-    implicit none
-
-    integer,intent(in),optional  :: i
-    character(len=*),intent(out) :: s
-
-    integer :: istat
-
-    write(s,int_fmt,iostat=istat) i
+    write(s, int_fmt, iostat=istat) i
 
     if (istat/=0) then
         error stop 'Error converting integer to string'
@@ -343,27 +292,21 @@
     end if
 
     end subroutine integer_to_string
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Real vector to string.
-!
-    subroutine vec_to_string(v,str,use_numpy)
-
-    implicit none
-
-    real(wp),dimension(:),intent(in)         :: v
-    character(len=:),allocatable,intent(out) :: str
-    logical,intent(in)                       :: use_numpy
-
-    integer :: i,istat
-    character(len=max_real_len) :: tmp
+    !> author: Jacob Williams
+    !
+    ! Real vector to string.
+    subroutine vec_to_string(v, str, use_numpy)
+    real(wp), dimension(:),        intent(in)  :: v         !! real values
+    character(len=:), allocatable, intent(out) :: str       !! real values stringified
+    logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
+    integer                                    :: i         !! counter
+    integer                                    :: istat     !! IO status
+    character(len=max_real_len)                :: tmp       !! dummy string
 
     str = '['
-    do i=1,size(v)
-        write(tmp,real_fmt,iostat=istat) v(i)
+    do i=1, size(v)
+        write(tmp, real_fmt, iostat=istat) v(i)
         if (istat/=0) error stop 'Error in vec_to_string'
         str = str//trim(adjustl(tmp))
         if (i<size(v)) str = str // ','
@@ -374,22 +317,16 @@
     if (use_numpy) str = 'np.array('//str//')'
 
     end subroutine vec_to_string
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Write the buffer to a file, and then execute it with Python.
-!
-    subroutine execute(me,pyfile)
-
-    implicit none
-
-    class(pyplot),intent(inout) :: me
-    character(len=*),intent(in),optional :: pyfile  !name of the python script to generate
-
-    integer :: istat,iunit
-    character(len=:),allocatable :: file
+    !> author: Jacob Williams
+    !
+    !  Write the buffer to a file, and then execute it with Python.
+    subroutine execute(me, pyfile)
+    class(pyplot),    intent(inout)        :: me     !! pytplot handler
+    character(len=*), intent(in), optional :: pyfile !! name of the python script to generate
+    integer                                :: istat  !! IO status
+    integer                                :: iunit  !! IO unit
+    character(len=:), allocatable          :: file   !! file name
 
     if (allocated(me%str)) then
 
@@ -401,10 +338,10 @@
         end if
 
         !generate the file:
-        open(newunit=iunit,file=file,status='REPLACE',iostat=istat)
+        open(newunit=iunit, file=file, status='REPLACE', iostat=istat)
         if (istat/=0) error stop 'Error creating python script.'
-        write(iunit,'(A)') me%str
-        close(iunit,iostat=istat)
+        write(iunit, '(A)') me%str
+        close(iunit, iostat=istat)
 
         !run the file using python:
         call execute_command_line(python_exe//' '//file)
@@ -413,22 +350,15 @@
         deallocate(file)
 
     end if
-
     end subroutine execute
-!*****************************************************************************************
 
-!*****************************************************************************************
-!> author: Jacob Williams
-!
-!  Save the figure.
-!
-    subroutine savefig(me,figfile,pyfile)
-
-    implicit none
-
-    class(pyplot),intent(inout) :: me
-    character(len=*),intent(in) :: figfile  !! file name for the figure
-    character(len=*),intent(in),optional :: pyfile  !! name of the Python script to generate
+    !> author: Jacob Williams
+    !
+    ! Save the figure.
+    subroutine savefig(me, figfile, pyfile)
+    class(pyplot),    intent(inout)        :: me      !! pyplot handler
+    character(len=*), intent(in)           :: figfile !! file name for the figure
+    character(len=*), intent(in), optional :: pyfile  !! name of the Python script to generate
 
     if (allocated(me%str)) then
 
@@ -447,8 +377,4 @@
     end if
 
     end subroutine savefig
-!*****************************************************************************************
-
-!*****************************************************************************************
-    end module pyplot_module
-!*****************************************************************************************
+end module pyplot_module
