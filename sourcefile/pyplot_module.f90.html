@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>pyplot_module.f90 &ndash; pyplot-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">pyplot-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/test.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>pyplot_module.f90
+    <small>Source File</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li class="active">pyplot_module.f90</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+    
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Modules</h3></div>
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/pyplot_module.html">pyplot_module</a>
+      
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../sourcefile/pyplot_module.f90.html#src">pyplot_module.f90</a>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title">All Source Files</h3></div>
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../sourcefile/pyplot_module.f90.html">pyplot_module.f90</a>
+      
+      <a class="list-group-item" href="../sourcefile/test.f90.html">test.f90</a>
+      
+    </div>
+  </div>
+  
+  
+    </div>
+    <div class="col-lg-9" id='text'>
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!  date: 4/14/2015</span>
+<span class="c">!  license: BSD</span>
+<span class="c">!</span>
+<span class="c">!  For making simple x-y plots from Fortran.</span>
+<span class="c">!  It works by generating a Python script and executing it.</span>
+<span class="c">!</span>
+<span class="c">!# See also</span>
+<span class="c">!   * Inspired by: [EasyPlot](https://pypi.python.org/pypi/EasyPlot)</span>
+
+    <span class="k">module </span><span class="n">pyplot_module</span>
+
+    <span class="k">use</span><span class="p">,</span> <span class="k">intrinsic</span> <span class="kd">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">real64</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    private</span>
+
+<span class="k">    </span><span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span><span class="p">,</span> <span class="k">private</span> <span class="kd">::</span> <span class="n">wp</span> <span class="o">=</span> <span class="n">real64</span> <span class="c">!! Default real kind [8 bytes].</span>
+
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">tmp_file</span> <span class="o">=</span> <span class="s1">&#39;pyplot_module_temp_1234567890.py&#39;</span> <span class="c">!! Default name of the temporary file</span>
+                                                                                 <span class="c">!! (this can also be user-specified).</span>
+
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">python_exe</span>   <span class="o">=</span><span class="s1">&#39;python&#39;</span>    <span class="c">!! The python executable name.</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">int_fmt</span>      <span class="o">=</span> <span class="s1">&#39;(I10)&#39;</span>    <span class="c">!! integer format string</span>
+    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span>          <span class="kd">::</span> <span class="n">max_int_len</span>  <span class="o">=</span> <span class="mi">10</span>         <span class="c">!! max string length for integers</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">real_fmt</span>     <span class="o">=</span> <span class="s1">&#39;(E30.16)&#39;</span> <span class="c">!! real number format string</span>
+    <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span>          <span class="kd">::</span> <span class="n">max_real_len</span> <span class="o">=</span> <span class="mi">30</span>         <span class="c">!! max string length for reals</span>
+
+    <span class="k">type</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">pyplot</span>
+    
+        <span class="c">!!  The main pyplot class.</span>
+        
+        <span class="k">private</span>
+
+<span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">str</span> <span class="c">!! string buffer</span>
+
+        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">show_legend</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! show legend into plot</span>
+        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">use_numpy</span>   <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>      <span class="c">!! use numpy python module</span>
+        
+    <span class="k">contains</span>
+    
+        <span class="c">! public methods</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">initialize</span> <span class="c">!! initialize pyplot instance</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_plot</span>   <span class="c">!! add a plot to pyplot instance</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_bar</span>    <span class="c">!! add a barplot to pyplot instance</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">savefig</span>    <span class="c">!! save plots of pyplot instance</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">destroy</span>    <span class="c">!! destroy pyplot instance</span>
+        
+        <span class="c">! private methods</span>
+        <span class="k">procedure</span> <span class="kd">::</span> <span class="n">execute</span> <span class="c">!! execute pyplot commands</span>
+        <span class="k">procedure</span> <span class="kd">::</span> <span class="n">add_str</span> <span class="c">!! add string to pytplot instance buffer</span>
+        
+    <span class="k">end type </span><span class="n">pyplot</span>
+
+    <span class="k">contains</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Destructor.</span>
+
+    <span class="k">subroutine </span><span class="n">destroy</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+    
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span> <span class="c">!! pyplot handler</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">)</span>
+    
+    <span class="k">end subroutine </span><span class="n">destroy</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Add a string to the buffer.</span>
+
+    <span class="k">subroutine </span><span class="n">add_str</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">str</span><span class="p">)</span>
+    
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>  <span class="c">!! pyplot handler</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">str</span> <span class="c">!! str to be added to pyplot handler buffer</span>
+
+    <span class="n">me</span><span class="p">%</span><span class="n">str</span> <span class="o">=</span> <span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="o">//</span><span class="n">str</span><span class="o">//</span><span class="nb">new_line</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    
+    <span class="k">end subroutine </span><span class="n">add_str</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Initialize a plot</span>
+
+    <span class="k">subroutine </span><span class="n">initialize</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">legend</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">,</span> <span class="n">figsize</span><span class="p">,</span> <span class="p">&amp;</span>
+                          <span class="n">font_size</span><span class="p">,</span> <span class="n">axes_labelsize</span><span class="p">,</span> <span class="n">xtick_labelsize</span><span class="p">,</span> <span class="n">ytick_labelsize</span><span class="p">,</span> <span class="n">legend_fontsize</span><span class="p">)</span>
+                          
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>         <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>                           <span class="c">!! pyplot handler</span>
+    <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">grid</span>                         <span class="c">!! activate grid drawing</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xlabel</span>                       <span class="c">!! label of x axis</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">ylabel</span>                       <span class="c">!! label of y axis</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">title</span>                        <span class="c">!! plot title</span>
+    <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">legend</span>                       <span class="c">!! plot legend</span>
+    <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">use_numpy</span>                    <span class="c">!! activate usage of numpy python module</span>
+    <span class="kt">integer</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">figsize</span>                      <span class="c">!! dimension of the figure</span>
+    <span class="kt">integer</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">font_size</span>                    <span class="c">!! font size</span>
+    <span class="kt">integer</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">axes_labelsize</span>               <span class="c">!! size of axis labels</span>
+    <span class="kt">integer</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xtick_labelsize</span>              <span class="c">!! size of x axis tick lables</span>
+    <span class="kt">integer</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">ytick_labelsize</span>              <span class="c">!! size of y axis tick lables</span>
+    <span class="kt">integer</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">legend_fontsize</span>              <span class="c">!! size of legend font</span>
+    
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">width_str</span>                    <span class="c">!! figure width dummy string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">height_str</span>                   <span class="c">!! figure height dummy string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">font_size_str</span>                <span class="c">!! font size dummy string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">axes_labelsize_str</span>           <span class="c">!! size of axis labels dummy string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">xtick_labelsize_str</span>          <span class="c">!! sise of x axis tick labels dummy string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">ytick_labelsize_str</span>          <span class="c">!! sise of x axis tick labels dummy string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">legend_fontsize_str</span>          <span class="c">!! sise of legend font dummy string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">default_font_size_str</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span> <span class="c">!! the default font size for plots</span>
+
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">legend</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">show_legend</span> <span class="o">=</span> <span class="n">legend</span>
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">show_legend</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
+    <span class="k">end if</span>
+<span class="k">    if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">use_numpy</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span> <span class="o">=</span> <span class="n">use_numpy</span>
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+    <span class="k">end if</span>
+<span class="k">    if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">figsize</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">        call </span><span class="n">integer_to_string</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">width_str</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">integer_to_string</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">height_str</span><span class="p">)</span>
+    <span class="k">end if</span>
+<span class="k">    call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">font_size</span><span class="p">,</span> <span class="n">font_size_str</span><span class="p">,</span> <span class="n">default_font_size_str</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">axes_labelsize</span><span class="p">,</span> <span class="n">axes_labelsize_str</span><span class="p">,</span> <span class="n">default_font_size_str</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">xtick_labelsize</span><span class="p">,</span> <span class="n">xtick_labelsize_str</span><span class="p">,</span> <span class="n">default_font_size_str</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">ytick_labelsize</span><span class="p">,</span> <span class="n">ytick_labelsize_str</span><span class="p">,</span> <span class="n">default_font_size_str</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">legend_fontsize</span><span class="p">,</span> <span class="n">legend_fontsize_str</span><span class="p">,</span> <span class="n">default_font_size_str</span><span class="p">)</span>
+
+    <span class="n">me</span><span class="p">%</span><span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;#!/usr/bin/python&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;import matplotlib&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;import matplotlib.pyplot as plt&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;import numpy as np&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;font.family&quot;] = &quot;Serif&quot;&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;font.size&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">font_size_str</span><span class="p">))</span>
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;axes.labelsize&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">axes_labelsize_str</span><span class="p">))</span>
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;xtick.labelsize&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xtick_labelsize_str</span><span class="p">))</span>
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;ytick.labelsize&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">ytick_labelsize_str</span><span class="p">))</span>
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;legend.fontsize&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">legend_fontsize_str</span><span class="p">))</span>
+
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">figsize</span><span class="p">))</span> <span class="k">then</span>  <span class="c">!if specifying the figure size</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = plt.figure(figsize=(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">width_str</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">height_str</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;))&#39;</span><span class="p">)</span>
+    <span class="k">else</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = plt.figure()&#39;</span><span class="p">)</span>
+    <span class="k">end if</span>
+<span class="k">    call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.gca()&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">        if</span> <span class="p">(</span><span class="n">grid</span><span class="p">)</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.grid()&#39;</span><span class="p">)</span>
+    <span class="k">end if</span>
+
+<span class="k">    if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xlabel</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_xlabel(&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">ylabel</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_ylabel(&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>  <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_title(&quot;&#39;</span> <span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+
+    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    
+    <span class="k">end subroutine </span><span class="n">initialize</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Add an x,y plot.</span>
+
+    <span class="k">subroutine </span><span class="n">add_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">markersize</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">)</span>
+    
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">y</span>            <span class="c">!! y values</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">label</span>        <span class="c">!! plot label</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">linestyle</span>    <span class="c">!! style of the plot line</span>
+    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">markersize</span>   <span class="c">!! size of the plot markers</span>
+    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line</span>
+    
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>         <span class="c">!! x values strinfied</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>         <span class="c">!! y values strinfied</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">imark</span>        <span class="c">!! actual markers size</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">iline</span>        <span class="c">!! actual line width</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>  <span class="c">!! x variable name for script</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>  <span class="c">!! y variable name for script</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
+
+        <span class="c">!convert the arrays to strings:</span>
+        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">ystr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+
+        <span class="c">!get optional inputs (if not present, set default value):</span>
+        <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">markersize</span><span class="p">,</span> <span class="n">imark</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">iline</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
+
+        <span class="c">!write the arrays:</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">xstr</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">ystr</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+        <span class="c">!write the plot statement:</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.plot(&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                        <span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                        <span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                        <span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">linestyle</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                        <span class="s1">&#39;linewidth=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">iline</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                        <span class="s1">&#39;markersize=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">imark</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                        <span class="s1">&#39;label=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
+    <span class="k">end if</span>
+<span class="k">    </span>
+<span class="k">    end subroutine </span><span class="n">add_plot</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Add a bar plot.</span>
+    
+    <span class="k">subroutine </span><span class="n">add_bar</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>            <span class="c">!! pyplot handler</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">left</span>          <span class="c">!! left bar values</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">height</span>        <span class="c">!! height bar values</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">label</span>         <span class="c">!! plot label</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">width</span>         <span class="c">!! width values</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">bottom</span>        <span class="c">!! bottom values</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>         <span class="c">!! plot color</span>
+     
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>          <span class="c">!! x axis values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>          <span class="c">!! y axis values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">wstr</span>          <span class="c">!! width values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">bstr</span>          <span class="c">!! bottom values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">plt_str</span>       <span class="c">!! plot string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>   <span class="c">!! x axis name</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>   <span class="c">!! y axis name</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">wname</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>   <span class="c">!! width name</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">bname</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>   <span class="c">!! bottom name</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
+
+        <span class="c">!convert the arrays to strings:</span>
+                             <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+                             <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">ystr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>  <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">wstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bottom</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="n">bstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+
+        <span class="c">!write the arrays:</span>
+                             <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">xstr</span><span class="p">)</span>
+                             <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">ystr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>  <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">wname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">wstr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bottom</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">bname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">bstr</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+        <span class="c">!create the plot string:</span>
+        <span class="n">plt_str</span> <span class="o">=</span> <span class="s1">&#39;ax.bar(&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                  <span class="s1">&#39;left=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                  <span class="s1">&#39;height=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>  <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;width=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">wname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bottom</span><span class="p">))</span> <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;bottom=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">bstr</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">color</span><span class="p">))</span>  <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;color=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span>
+        <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;label=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span>
+
+        <span class="c">!write the plot statement:</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">plt_str</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error in add_bar: pyplot class not properly initialized.&#39;</span>
+    <span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">add_bar</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Integer to string, specifying the default value if</span>
+<span class="c">! the optional argument is not present.</span>
+
+    <span class="k">subroutine </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">int_value</span><span class="p">,</span> <span class="n">string_value</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
+    
+    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">int_value</span>      <span class="c">!! integer value</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">string_value</span>   <span class="c">!! integer value stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">default_value</span>  <span class="c">!! default integer value</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">int_value</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">        call </span><span class="n">integer_to_string</span><span class="p">(</span><span class="n">int_value</span><span class="p">,</span> <span class="n">string_value</span><span class="p">)</span>
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">string_value</span> <span class="o">=</span> <span class="n">default_value</span>
+    <span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">optional_int_to_string</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Integer to string conversion.</span>
+
+    <span class="k">subroutine </span><span class="n">integer_to_string</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span>  <span class="kd">::</span> <span class="n">i</span>     <span class="c">!! integer value</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">s</span>     <span class="c">!! integer value stringified</span>
+    <span class="kt">integer</span>                                 <span class="kd">::</span> <span class="n">istat</span> <span class="c">!! IO status</span>
+
+    <span class="k">write</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">int_fmt</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span> <span class="n">i</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error converting integer to string&#39;</span>
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">s</span> <span class="o">=</span> <span class="nb">adjustl</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">integer_to_string</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Real vector to string.</span>
+
+    <span class="k">subroutine </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">)</span>
+    
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span>        <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">v</span>         <span class="c">!! real values</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">str</span>       <span class="c">!! real values stringified</span>
+    <span class="kt">logical</span><span class="p">,</span>                       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">use_numpy</span> <span class="c">!! activate numpy python module usage</span>
+     
+    <span class="kt">integer</span>                     <span class="kd">::</span> <span class="n">i</span>         <span class="c">!! counter</span>
+    <span class="kt">integer</span>                     <span class="kd">::</span> <span class="n">istat</span>     <span class="c">!! IO status</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_real_len</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tmp</span>       <span class="c">!! dummy string</span>
+
+    <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>
+    <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">write</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">real_fmt</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span> <span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error in vec_to_string&#39;</span>
+        <span class="n">str</span> <span class="o">=</span> <span class="n">str</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">tmp</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;,&#39;</span>
+    <span class="k">end do</span>
+<span class="k">    </span><span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;]&#39;</span>
+
+    <span class="c">!convert to numpy array if necessary:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">use_numpy</span><span class="p">)</span> <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;np.array(&#39;</span><span class="o">//</span><span class="n">str</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
+
+    <span class="k">end subroutine </span><span class="n">vec_to_string</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!  date: 8/16/2015</span>
+<span class="c">!</span>
+<span class="c">!  Write the buffer to a file, and then execute it with Python.</span>
+<span class="c">!</span>
+<span class="c">!  If user specifies a Python file name, then the file is kept, otherwise</span>
+<span class="c">!  a temporary filename is used, and the file is deleted after it is used.</span>
+
+    <span class="k">subroutine </span><span class="n">execute</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">pyfile</span><span class="p">)</span>
+    
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>     <span class="c">!! pytplot handler</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">pyfile</span> <span class="c">!! name of the python script to generate</span>
+    
+    <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">istat</span>   <span class="c">!! IO status</span>
+    <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">iunit</span>   <span class="c">!! IO unit</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="k">file</span>    <span class="c">!! file name        </span>
+    <span class="kt">logical</span>                       <span class="kd">::</span> <span class="n">scratch</span> <span class="c">!! if a scratch file is to be used</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">    </span>
+<span class="k">        </span><span class="n">scratch</span> <span class="o">=</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="nb">present</span><span class="p">(</span><span class="n">pyfile</span><span class="p">))</span>
+        
+        <span class="c">!file name to use:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">scratch</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">            file</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">tmp_file</span><span class="p">)</span>  <span class="c">!use the default</span>
+        <span class="k">else</span>
+<span class="k">            file</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">pyfile</span><span class="p">)</span>    <span class="c">!use the user-specified name</span>
+        <span class="k">end if</span>
+        
+        <span class="c">!open the file:</span>
+        <span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span> <span class="k">file</span><span class="o">=</span><span class="k">file</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;REPLACE&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error opening file.&#39;</span>
+       
+        <span class="c">!write to the file:</span>
+        <span class="k">write</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="n">me</span><span class="p">%</span><span class="n">str</span>
+
+        <span class="c">!run the file using python:</span>
+        <span class="k">call </span><span class="nb">execute_command_line</span><span class="p">(</span><span class="n">python_exe</span><span class="o">//</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="k">file</span><span class="p">)</span>
+        
+        <span class="c">!close the file:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">scratch</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">            close</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;DELETE&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+        <span class="k">else</span>
+<span class="k">            close</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+        <span class="k">end if</span>
+<span class="k">        if</span> <span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error closing file.&#39;</span>
+        
+        <span class="c">!cleanup:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="k">file</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="k">file</span><span class="p">)</span>
+
+    <span class="k">end if</span>
+<span class="k">    </span>
+<span class="k">    end subroutine </span><span class="n">execute</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+<span class="c">!&gt; author: Jacob Williams</span>
+<span class="c">!</span>
+<span class="c">! Save the figure.</span>
+
+    <span class="k">subroutine </span><span class="n">savefig</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">figfile</span><span class="p">,</span> <span class="n">pyfile</span><span class="p">)</span>
+    
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>      <span class="c">!! pyplot handler</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">figfile</span> <span class="c">!! file name for the figure</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">pyfile</span>  <span class="c">!! name of the Python script to generate</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
+
+        <span class="c">!finish up the string:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">show_legend</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.legend(loc=&quot;best&quot;)&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">end if</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;plt.savefig(&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">figfile</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+
+        <span class="c">!run it:</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">execute</span><span class="p">(</span><span class="n">pyfile</span><span class="p">)</span>
+
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;error in savefig: pyplot class not properly initialized.&#39;</span>
+    <span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">savefig</span>
+<span class="c">!*****************************************************************************************</span>
+
+<span class="c">!*****************************************************************************************</span>
+    <span class="k">end module </span><span class="n">pyplot_module</span>
+<span class="c">!*****************************************************************************************</span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-6">&copy; 2015 pyplot-fortran was written by Jacob Williams. </div>
+        <div class="col-md-6"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a>.</span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
