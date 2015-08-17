@@ -107,14 +107,15 @@
     integer,               intent(in), optional :: xtick_labelsize              !! size of x axis tick lables
     integer,               intent(in), optional :: ytick_labelsize              !! size of y axis tick lables
     integer,               intent(in), optional :: legend_fontsize              !! size of legend font
-    character(len=max_int_len)                  :: width_str                    !! figure width dummy string
-    character(len=max_int_len)                  :: height_str                   !! figure height dummy string
-    character(len=max_int_len)                  :: font_size_str                !! font size dummy string
-    character(len=max_int_len)                  :: axes_labelsize_str           !! size of axis labels dummy string
-    character(len=max_int_len)                  :: xtick_labelsize_str          !! sise of x axis tick labels dummy string
-    character(len=max_int_len)                  :: ytick_labelsize_str          !! sise of x axis tick labels dummy string
-    character(len=max_int_len)                  :: legend_fontsize_str          !! sise of legend font dummy string
-    character(len=*), parameter                 :: default_font_size_str = '10' !! the default font size for plots
+    
+    character(len=max_int_len)  :: width_str                    !! figure width dummy string
+    character(len=max_int_len)  :: height_str                   !! figure height dummy string
+    character(len=max_int_len)  :: font_size_str                !! font size dummy string
+    character(len=max_int_len)  :: axes_labelsize_str           !! size of axis labels dummy string
+    character(len=max_int_len)  :: xtick_labelsize_str          !! sise of x axis tick labels dummy string
+    character(len=max_int_len)  :: ytick_labelsize_str          !! sise of x axis tick labels dummy string
+    character(len=max_int_len)  :: legend_fontsize_str          !! sise of legend font dummy string
+    character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
 
     call me%destroy()
 
@@ -191,12 +192,13 @@
     character(len=*),       intent (in)           :: linestyle    !! style of the plot line
     integer,                intent (in), optional :: markersize   !! size of the plot markers
     integer,                intent (in), optional :: linewidth    !! width of the plot line
-    character(len=:), allocatable                 :: xstr         !! x values strinfied
-    character(len=:), allocatable                 :: ystr         !! y values strinfied
-    character(len=max_int_len)                    :: imark        !! actual markers size
-    character(len=max_int_len)                    :: iline        !! actual line width
-    character(len=*), parameter                   :: xname = 'x'  !! x variable name for script
-    character(len=*), parameter                   :: yname = 'y'  !! y variable name for script
+    
+    character(len=:), allocatable :: xstr         !! x values strinfied
+    character(len=:), allocatable :: ystr         !! y values strinfied
+    character(len=max_int_len)    :: imark        !! actual markers size
+    character(len=max_int_len)    :: iline        !! actual line width
+    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
+    character(len=*), parameter   :: yname = 'y'  !! y variable name for script
 
     if (allocated(me%str)) then
 
@@ -244,15 +246,16 @@
     real(wp), dimension(:), intent(in), optional :: width         !! width values
     real(wp), dimension(:), intent(in), optional :: bottom        !! bottom values
     character(len=*),       intent(in), optional :: color         !! plot color
-    character(len=:), allocatable                :: xstr          !! x axis values stringified
-    character(len=:), allocatable                :: ystr          !! y axis values stringified
-    character(len=:), allocatable                :: wstr          !! width values stringified
-    character(len=:), allocatable                :: bstr          !! bottom values stringified
-    character(len=:), allocatable                :: plt_str       !! plot string
-    character(len=*), parameter                  :: xname = 'x'   !! x axis name
-    character(len=*), parameter                  :: yname = 'y'   !! y axis name
-    character(len=*), parameter                  :: wname = 'w'   !! width name
-    character(len=*), parameter                  :: bname = 'b'   !! bottom name
+     
+    character(len=:), allocatable :: xstr          !! x axis values stringified
+    character(len=:), allocatable :: ystr          !! y axis values stringified
+    character(len=:), allocatable :: wstr          !! width values stringified
+    character(len=:), allocatable :: bstr          !! bottom values stringified
+    character(len=:), allocatable :: plt_str       !! plot string
+    character(len=*), parameter   :: xname = 'x'   !! x axis name
+    character(len=*), parameter   :: yname = 'y'   !! y axis name
+    character(len=*), parameter   :: wname = 'w'   !! width name
+    character(len=*), parameter   :: bname = 'b'   !! bottom name
 
     if (allocated(me%str)) then
 
@@ -341,9 +344,10 @@
     real(wp), dimension(:),        intent(in)  :: v         !! real values
     character(len=:), allocatable, intent(out) :: str       !! real values stringified
     logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
-    integer                                    :: i         !! counter
-    integer                                    :: istat     !! IO status
-    character(len=max_real_len)                :: tmp       !! dummy string
+     
+    integer                     :: i         !! counter
+    integer                     :: istat     !! IO status
+    character(len=max_real_len) :: tmp       !! dummy string
 
     str = '['
     do i=1, size(v)
@@ -362,37 +366,54 @@
 
 !*****************************************************************************************
 !> author: Jacob Williams
+!  date: 8/16/2015
 !
 !  Write the buffer to a file, and then execute it with Python.
+!
+!  If user specifies a Python file name, then the file is kept, otherwise
+!  a temporary filename is used, and the file is deleted after it is used.
 
     subroutine execute(me, pyfile)
     
     class(pyplot),    intent(inout)        :: me     !! pytplot handler
     character(len=*), intent(in), optional :: pyfile !! name of the python script to generate
-    integer                                :: istat  !! IO status
-    integer                                :: iunit  !! IO unit
-    character(len=:), allocatable          :: file   !! file name
+    
+    integer                       :: istat   !! IO status
+    integer                       :: iunit   !! IO unit
+    character(len=:), allocatable :: file    !! file name        
+    logical                       :: scratch !! if a scratch file is to be used
 
     if (allocated(me%str)) then
-
-        !file name for python script:
-        if (present(pyfile)) then
-            file = trim(pyfile)    !use the user-specified name
-        else
+    
+        scratch = (.not. present(pyfile))
+        
+        !file name to use:
+        if (scratch) then
             file = trim(tmp_file)  !use the default
+        else
+            file = trim(pyfile)    !use the user-specified name
         end if
-
-        !generate the file:
+        
+        !open the file:
         open(newunit=iunit, file=file, status='REPLACE', iostat=istat)
-        if (istat/=0) error stop 'Error creating python script.'
+        if (istat/=0) error stop 'Error opening file.'
+       
+        !write to the file:
         write(iunit, '(A)') me%str
-        close(iunit, iostat=istat)
 
         !run the file using python:
         call execute_command_line(python_exe//' '//file)
-
+        
+        !close the file:
+        if (scratch) then
+            close(iunit, status='DELETE', iostat=istat)
+        else
+            close(iunit, iostat=istat)
+        end if
+        if (istat/=0) error stop 'Error closing file.'
+        
         !cleanup:
-        deallocate(file)
+        if (allocated(file)) deallocate(file)
 
     end if
     
