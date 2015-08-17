@@ -1,79 +1,99 @@
+!*****************************************************************************************
 !> author: Jacob Williams
 !  date: 4/14/2015
 !  license: BSD
 !
-!# DESCRIPTION
 !  For making simple x-y plots from Fortran.
 !  It works by generating a Python script and executing it.
 !
-!# SEE ALSO
+!# See also
 !   * Inspired by: [EasyPlot](https://pypi.python.org/pypi/EasyPlot)
-module pyplot_module
 
-use, intrinsic :: iso_fortran_env, only : real64
+    module pyplot_module
 
-implicit none
+    use, intrinsic :: iso_fortran_env, only : real64
 
-private
+    implicit none
 
-integer, parameter, private :: wp = real64 !! Default real kind [8 bytes].
-
-character(len=*), parameter :: tmp_file = 'pyplot_module_temp_1234567890.py' !! Default name of the temporary file
-                                                                             !! (this can also be user-specified).
-
-character(len=*), parameter :: python_exe   ='python'    !! The python executable name.
-character(len=*), parameter :: int_fmt      = '(I10)'    !! integer format string
-integer, parameter          :: max_int_len  = 10         !! max string length for integers
-character(len=*), parameter :: real_fmt     = '(E30.16)' !! real number format string
-integer, parameter          :: max_real_len = 30         !! max string length for reals
-
-!> author: Jacob Williams
-!
-! The main pyplot class.
-type, public :: pyplot
     private
 
-    character(len=:), allocatable :: str !! string buffer
+    integer, parameter, private :: wp = real64 !! Default real kind [8 bytes].
 
-    logical :: show_legend = .false.     !! show legend into plot
-    logical :: use_numpy   = .true.      !! use numpy python module
-contains
-    ! public methods
-    procedure, public :: initialize !! initialize pyplot instance
-    procedure, public :: add_plot   !! add a plot to pyplot instance
-    procedure, public :: add_bar    !! add a barplot to pyplot instance
-    procedure, public :: savefig    !! save plots of pyplot instance
-    procedure, public :: destroy    !! destroy pyplot instance
-    ! private methods
-    procedure :: execute !! execute pyplot commands
-    procedure :: add_str !! add string to pytplot instance buffer
-end type pyplot
-contains
+    character(len=*), parameter :: tmp_file = 'pyplot_module_temp_1234567890.py' !! Default name of the temporary file
+                                                                                 !! (this can also be user-specified).
 
-    !> author: Jacob Williams
-    !
-    ! Destructor
+    character(len=*), parameter :: python_exe   ='python'    !! The python executable name.
+    character(len=*), parameter :: int_fmt      = '(I10)'    !! integer format string
+    integer, parameter          :: max_int_len  = 10         !! max string length for integers
+    character(len=*), parameter :: real_fmt     = '(E30.16)' !! real number format string
+    integer, parameter          :: max_real_len = 30         !! max string length for reals
+
+    type, public :: pyplot
+    
+        !!  The main pyplot class.
+        
+        private
+
+        character(len=:), allocatable :: str !! string buffer
+
+        logical :: show_legend = .false.     !! show legend into plot
+        logical :: use_numpy   = .true.      !! use numpy python module
+        
+    contains
+    
+        ! public methods
+        procedure, public :: initialize !! initialize pyplot instance
+        procedure, public :: add_plot   !! add a plot to pyplot instance
+        procedure, public :: add_bar    !! add a barplot to pyplot instance
+        procedure, public :: savefig    !! save plots of pyplot instance
+        procedure, public :: destroy    !! destroy pyplot instance
+        
+        ! private methods
+        procedure :: execute !! execute pyplot commands
+        procedure :: add_str !! add string to pytplot instance buffer
+        
+    end type pyplot
+
+    contains
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Destructor.
+
     subroutine destroy(me)
+    
     class(pyplot),intent(inout) :: me !! pyplot handler
 
     if (allocated(me%str)) deallocate(me%str)
+    
     end subroutine destroy
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    ! Add a string to the buffer.
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Add a string to the buffer.
+
     subroutine add_str(me,str)
+    
     class(pyplot),    intent(inout) :: me  !! pyplot handler
     character(len=*), intent(in)    :: str !! str to be added to pyplot handler buffer
 
     me%str = me%str//str//new_line(' ')
+    
     end subroutine add_str
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    ! Initialize a plot
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Initialize a plot
+
     subroutine initialize(me, grid, xlabel, ylabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, legend_fontsize)
+                          
     class(pyplot),         intent(inout)        :: me                           !! pyplot handler
     logical,               intent(in), optional :: grid                         !! activate grid drawing
     character(len=*),      intent(in), optional :: xlabel                       !! label of x axis
@@ -153,12 +173,17 @@ contains
     if (present(title))  call me%add_str('ax.set_title("' //trim(title) //'")')
 
     call me%add_str('')
+    
     end subroutine initialize
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    ! Add an x,y plot.
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Add an x,y plot.
+
     subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth)
+    
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! x values
     real(wp), dimension(:), intent (in)           :: y            !! y values
@@ -201,12 +226,17 @@ contains
     else
         error stop 'Error in add_plot: pyplot class not properly initialized.'
     end if
+    
     end subroutine add_plot
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    ! Add a bar plot.
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Add a bar plot.
+    
     subroutine add_bar(me, left, height, label, width, bottom, color)
+
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
     real(wp), dimension(:), intent(in)           :: left          !! left bar values
     real(wp), dimension(:), intent(in)           :: height        !! height bar values
@@ -257,12 +287,16 @@ contains
     end if
 
     end subroutine add_bar
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    ! Integer to string, specifying the default value if
-    ! the optional argument is not present.
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Integer to string, specifying the default value if
+! the optional argument is not present.
+
     subroutine optional_int_to_string(int_value, string_value, default_value)
+    
     integer,          intent(in), optional :: int_value      !! integer value
     character(len=*), intent(out)          :: string_value   !! integer value stringified
     character(len=*), intent(in)           :: default_value  !! default integer value
@@ -274,10 +308,13 @@ contains
     end if
 
     end subroutine optional_int_to_string
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    ! Integer to string conversion.
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Integer to string conversion.
+
     subroutine integer_to_string(i, s)
     integer,          intent(in), optional  :: i     !! integer value
     character(len=*), intent(out)           :: s     !! integer value stringified
@@ -292,11 +329,15 @@ contains
     end if
 
     end subroutine integer_to_string
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    ! Real vector to string.
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Real vector to string.
+
     subroutine vec_to_string(v, str, use_numpy)
+    
     real(wp), dimension(:),        intent(in)  :: v         !! real values
     character(len=:), allocatable, intent(out) :: str       !! real values stringified
     logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
@@ -317,11 +358,15 @@ contains
     if (use_numpy) str = 'np.array('//str//')'
 
     end subroutine vec_to_string
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    !  Write the buffer to a file, and then execute it with Python.
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+!  Write the buffer to a file, and then execute it with Python.
+
     subroutine execute(me, pyfile)
+    
     class(pyplot),    intent(inout)        :: me     !! pytplot handler
     character(len=*), intent(in), optional :: pyfile !! name of the python script to generate
     integer                                :: istat  !! IO status
@@ -350,12 +395,17 @@ contains
         deallocate(file)
 
     end if
+    
     end subroutine execute
+!*****************************************************************************************
 
-    !> author: Jacob Williams
-    !
-    ! Save the figure.
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Save the figure.
+
     subroutine savefig(me, figfile, pyfile)
+    
     class(pyplot),    intent(inout)        :: me      !! pyplot handler
     character(len=*), intent(in)           :: figfile !! file name for the figure
     character(len=*), intent(in), optional :: pyfile  !! name of the Python script to generate
@@ -377,4 +427,8 @@ contains
     end if
 
     end subroutine savefig
-end module pyplot_module
+!*****************************************************************************************
+
+!*****************************************************************************************
+    end module pyplot_module
+!*****************************************************************************************
