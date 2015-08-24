@@ -38,15 +38,17 @@
 
         logical :: show_legend = .false.     !! show legend into plot
         logical :: use_numpy   = .true.      !! use numpy python module
+        logical :: mplot3d     = .false.     !! it is a 3d plot
         
     contains
     
         ! public methods
-        procedure, public :: initialize !! initialize pyplot instance
-        procedure, public :: add_plot   !! add a plot to pyplot instance
-        procedure, public :: add_bar    !! add a barplot to pyplot instance
-        procedure, public :: savefig    !! save plots of pyplot instance
-        procedure, public :: destroy    !! destroy pyplot instance
+        procedure, public :: initialize    !! initialize pyplot instance
+        procedure, public :: add_plot      !! add a 2d plot to pyplot instance
+        procedure, public :: add_3d_plot   !! add a 3d plot to pyplot instance
+        procedure, public :: add_bar       !! add a barplot to pyplot instance
+        procedure, public :: savefig       !! save plots of pyplot instance
+        procedure, public :: destroy       !! destroy pyplot instance
         
         ! private methods
         procedure :: execute !! execute pyplot commands
@@ -91,30 +93,35 @@
 !
 ! Initialize a plot
 
-    subroutine initialize(me, grid, xlabel, ylabel, title, legend, use_numpy, figsize, &
-                          font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, legend_fontsize)
+    subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
+                          font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
+                          legend_fontsize, mplot3d)
                           
-    class(pyplot),         intent(inout)        :: me                           !! pyplot handler
-    logical,               intent(in), optional :: grid                         !! activate grid drawing
-    character(len=*),      intent(in), optional :: xlabel                       !! label of x axis
-    character(len=*),      intent(in), optional :: ylabel                       !! label of y axis
-    character(len=*),      intent(in), optional :: title                        !! plot title
-    logical,               intent(in), optional :: legend                       !! plot legend
-    logical,               intent(in), optional :: use_numpy                    !! activate usage of numpy python module
-    integer, dimension(2), intent(in), optional :: figsize                      !! dimension of the figure
-    integer,               intent(in), optional :: font_size                    !! font size
-    integer,               intent(in), optional :: axes_labelsize               !! size of axis labels
-    integer,               intent(in), optional :: xtick_labelsize              !! size of x axis tick lables
-    integer,               intent(in), optional :: ytick_labelsize              !! size of y axis tick lables
-    integer,               intent(in), optional :: legend_fontsize              !! size of legend font
+    class(pyplot),         intent(inout)        :: me              !! pyplot handler
+    logical,               intent(in), optional :: grid            !! activate grid drawing
+    character(len=*),      intent(in), optional :: xlabel          !! label of x axis
+    character(len=*),      intent(in), optional :: ylabel          !! label of y axis
+    character(len=*),      intent(in), optional :: zlabel          !! label of z axis
+    character(len=*),      intent(in), optional :: title           !! plot title
+    logical,               intent(in), optional :: legend          !! plot legend
+    logical,               intent(in), optional :: use_numpy       !! activate usage of numpy python module
+    integer, dimension(2), intent(in), optional :: figsize         !! dimension of the figure
+    integer,               intent(in), optional :: font_size       !! font size
+    integer,               intent(in), optional :: axes_labelsize  !! size of axis labels
+    integer,               intent(in), optional :: xtick_labelsize !! size of x axis tick lables
+    integer,               intent(in), optional :: ytick_labelsize !! size of y axis tick lables
+    integer,               intent(in), optional :: ztick_labelsize !! size of z axis tick lables
+    integer,               intent(in), optional :: legend_fontsize !! size of legend font
+    logical,               intent(in), optional :: mplot3d         !! set true for 3d plots
     
     character(len=max_int_len)  :: width_str                    !! figure width dummy string
     character(len=max_int_len)  :: height_str                   !! figure height dummy string
     character(len=max_int_len)  :: font_size_str                !! font size dummy string
     character(len=max_int_len)  :: axes_labelsize_str           !! size of axis labels dummy string
-    character(len=max_int_len)  :: xtick_labelsize_str          !! sise of x axis tick labels dummy string
-    character(len=max_int_len)  :: ytick_labelsize_str          !! sise of x axis tick labels dummy string
-    character(len=max_int_len)  :: legend_fontsize_str          !! sise of legend font dummy string
+    character(len=max_int_len)  :: xtick_labelsize_str          !! size of x axis tick labels dummy string
+    character(len=max_int_len)  :: ytick_labelsize_str          !! size of x axis tick labels dummy string
+    character(len=max_int_len)  :: ztick_labelsize_str          !! size of z axis tick labels dummy string
+    character(len=max_int_len)  :: legend_fontsize_str          !! size of legend font dummy string
     character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
 
     call me%destroy()
@@ -133,10 +140,17 @@
         call integer_to_string(figsize(1), width_str)
         call integer_to_string(figsize(2), height_str)
     end if
+    if (present(mplot3d)) then
+        me%mplot3d = mplot3d
+    else
+        me%mplot3d = .false.
+    end if
+
     call optional_int_to_string(font_size, font_size_str, default_font_size_str)
     call optional_int_to_string(axes_labelsize, axes_labelsize_str, default_font_size_str)
     call optional_int_to_string(xtick_labelsize, xtick_labelsize_str, default_font_size_str)
     call optional_int_to_string(ytick_labelsize, ytick_labelsize_str, default_font_size_str)
+    call optional_int_to_string(ztick_labelsize, ztick_labelsize_str, default_font_size_str)
     call optional_int_to_string(legend_fontsize, legend_fontsize_str, default_font_size_str)
 
     me%str = ''
@@ -146,6 +160,7 @@
 
     call me%add_str('import matplotlib')
     call me%add_str('import matplotlib.pyplot as plt')
+    if (me%mplot3d) call me%add_str('from mpl_toolkits.mplot3d import Axes3D')
     if (me%use_numpy) call me%add_str('import numpy as np')
     call me%add_str('')
 
@@ -163,16 +178,22 @@
     else
         call me%add_str('fig = plt.figure()')
     end if
-    call me%add_str('ax = fig.gca()')
-
+    
+    if (me%mplot3d) then
+        call me%add_str('ax = fig.gca(projection=''3d'')')
+    else
+        call me%add_str('ax = fig.gca()')
+    end if
+    
     if (present(grid)) then
         if (grid) call me%add_str('ax.grid()')
     end if
 
     if (present(xlabel)) call me%add_str('ax.set_xlabel("'//trim(xlabel)//'")')
     if (present(ylabel)) call me%add_str('ax.set_ylabel("'//trim(ylabel)//'")')
+    if (present(zlabel)) call me%add_str('ax.set_zlabel("'//trim(zlabel)//'")')
     if (present(title))  call me%add_str('ax.set_title("' //trim(title) //'")')
-
+    
     call me%add_str('')
     
     end subroutine initialize
@@ -230,6 +251,68 @@
     end if
     
     end subroutine add_plot
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Add a 3D x,y,z plot.
+!
+!@note Must initialize the class with ```mplot3d=.true.```
+
+    subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewidth)
+    
+    class(pyplot),          intent (inout)        :: me           !! pyplot handler
+    real(wp), dimension(:), intent (in)           :: x            !! x values
+    real(wp), dimension(:), intent (in)           :: y            !! y values
+    real(wp), dimension(:), intent (in)           :: z            !! z values
+    character(len=*),       intent (in)           :: label        !! plot label
+    character(len=*),       intent (in)           :: linestyle    !! style of the plot line
+    integer,                intent (in), optional :: markersize   !! size of the plot markers
+    integer,                intent (in), optional :: linewidth    !! width of the plot line
+    
+    character(len=:), allocatable :: xstr         !! x values strinfied
+    character(len=:), allocatable :: ystr         !! y values strinfied
+    character(len=:), allocatable :: zstr         !! z values strinfied
+    character(len=max_int_len)    :: imark        !! actual markers size
+    character(len=max_int_len)    :: iline        !! actual line width
+    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
+    character(len=*), parameter   :: yname = 'y'  !! y variable name for script
+    character(len=*), parameter   :: zname = 'z'  !! z variable name for script
+
+    if (allocated(me%str)) then
+
+        !convert the arrays to strings:
+        call vec_to_string(x, xstr, me%use_numpy)
+        call vec_to_string(y, ystr, me%use_numpy)
+        call vec_to_string(z, zstr, me%use_numpy)
+
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(markersize, imark, '3')
+        call optional_int_to_string(linewidth, iline, '3')
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str(trim(yname)//' = '//ystr)
+        call me%add_str(trim(zname)//' = '//zstr)
+        call me%add_str('')
+
+        !write the plot statement:
+        call me%add_str('ax.plot('//&
+                        trim(xname)//','//&
+                        trim(yname)//','//&
+                        trim(zname)//','//&
+                        '"'//trim(linestyle)//'",'//&
+                        'linewidth='//trim(adjustl(iline))//','//&
+                        'markersize='//trim(adjustl(imark))//','//&
+                        'label="'//trim(label)//'")')
+        call me%add_str('')
+
+    else
+        error stop 'Error in add_3d_plot: pyplot class not properly initialized.'
+    end if
+    
+    end subroutine add_3d_plot
 !*****************************************************************************************
 
 !*****************************************************************************************
