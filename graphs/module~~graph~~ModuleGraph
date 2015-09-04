@@ -1,0 +1,12 @@
+digraph "module~~graph~~ModuleGraph" {
+	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
+	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
+	edge [fontname=Helvetica fontsize=9.5]
+		"module~pyplot_module" [label=pyplot_module URL="../module/pyplot_module.html" color="#337AB7" fontcolor=white style=filled]
+		"program~test" [label=test URL="../program/test.html" color="#f0ad4e" fontcolor=white style=filled]
+		graph [size="11.875,1000.0"]
+		iso_fortran_env [label=iso_fortran_env URL="https://software.intel.com/en-us/node/511041" color="#337AB7" fontcolor=white style=filled]
+			iso_fortran_env -> "module~pyplot_module" [style=dashed]
+			iso_fortran_env -> "program~test" [style=dashed]
+			"module~pyplot_module" -> "program~test" [style=dashed]
+}
