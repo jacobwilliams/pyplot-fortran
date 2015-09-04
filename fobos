@@ -1,0 +1,144 @@
+[modes]
+modes = static-gnu static-gnu-debug
+        static-intel static-intel-debug
+        tests-gnu tests-gnu-debug
+        tests-intel tests-intel-debug
+
+[common-variables]
+$CSTATIC_GNU = -c -fbacktrace -Wall -Wextra -Wno-maybe-uninitialized -Wno-unused-function -pedantic -std=f2008
+$CSTATIC_INT = -c -std08
+$DEBUG_GNU   = -O0 -g3 -Warray-bounds -Wcharacter-truncation -Wline-truncation -Wimplicit-interface -Wimplicit-procedure -Wunderflow -fcheck=all -fmodule-private -ffree-line-length-132 -fimplicit-none -fbacktrace -fdump-core -finit-real=nan -std=f2008 -fall-intrinsics
+$DEBUG_INT   = -O0 -debug all -check all -warn all -extend-source 132 -traceback -gen-interfaces#-fpe-all=0 -fp-stack-check -fstack-protector-all -ftrapuv -no-ftz -std08
+$OPTIMIZE    = -O2
+
+# main modes
+# library
+[static-gnu]
+description     = Build library with GNU gfortran by optmized-static flags
+compiler        = gnu
+cflags          = $CSTATIC_GNU $OPTIMIZE
+cflags_heritage = True
+build_dir       = ./lib/
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = False
+jobs            = 2
+mklib           = static
+target          = pyplot_module.f90
+output          = libpyplot.a
+
+[static-gnu-debug]
+description     = Build library with GNU gfortran by debug-static flags
+compiler        = gnu
+cflags          = $CSTATIC_GNU $DEBUG_GNU
+cflags_heritage = True
+build_dir       = ./lib/
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = False
+jobs            = 2
+mklib           = static
+target          = pyplot_module.f90
+output          = libpyplot.a
+
+[static-intel]
+description     = Build library with Intel Fortran by optmized-static flags
+compiler        = intel
+cflags          = $CSTATIC_INT $OPTIMIZE
+cflags_heritage = True
+build_dir       = ./lib/
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = False
+jobs            = 2
+mklib           = static
+target          = pyplot_module.f90
+output          = libpyplot.a
+
+[static-intel-debug]
+description     = Build library with Intel Fortran by debug-static flags
+compiler        = gnu
+cflags          = $CSTATIC_INT $DEBUG_INT
+cflags_heritage = True
+build_dir       = ./lib/
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = False
+jobs            = 2
+mklib           = static
+target          = pyplot_module.f90
+output          = libpyplot.a
+
+# test programs
+[tests-gnu]
+description     = Build all tests with GNU gfortran by optmized-static flags
+compiler        = gnu
+cflags          = $CSTATIC_GNU $OPTIMIZE
+cflags_heritage = True
+build_dir       = ./bin/
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = False
+jobs            = 2
+
+[tests-gnu-debug]
+description     = Build all tests with GNU gfortran by debug-static flags
+compiler        = gnu
+cflags          = $CSTATIC_GNU $DEBUG_GNU
+cflags_heritage = True
+build_dir       = ./bin/
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = False
+jobs            = 2
+
+[tests-intel]
+description     = Build all tests with Intel Fortran by optmized-static flags
+compiler        = intel
+cflags          = $CSTATIC_INT $OPTIMIZE
+cflags_heritage = True
+build_dir       = ./bin/
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = False
+jobs            = 2
+
+[tests-intel-debug]
+description     = Build all tests with Intel Fortran by debug-static flags
+compiler        = gnu
+cflags          = $CSTATIC_INT $DEBUG_INT
+cflags_heritage = True
+build_dir       = ./bin/
+mod_dir         = ./mod/
+obj_dir         = ./obj/
+src             = ./src/
+colors          = True
+quiet           = False
+log             = False
+jobs            = 2
+
+# auxiliary rules
+[rule-makedoc]
+help   = Rule for building documentation from source files
+rule_1 = ford pyplot-fortran.md
