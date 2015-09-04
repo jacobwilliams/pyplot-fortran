@@ -4,8 +4,10 @@ digraph "proc~~integer_to_string~~CalledByGraph" {
 	edge [fontname=Helvetica fontsize=9.5]
 		"proc~integer_to_string" [label=integer_to_string]
 		graph [concentrate=false]
-		"proc~optional_int_to_string" [label=optional_int_to_string URL="../proc/optional_int_to_string.html" color="#d9534f" fontcolor=white style=filled]
 		"proc~initialize" [label=initialize URL="../proc/initialize.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~optional_int_to_string" [label=optional_int_to_string URL="../proc/optional_int_to_string.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
 		graph [concentrate=false]
 		"proc~add_3d_plot" [label=add_3d_plot URL="../proc/add_3d_plot.html" color="#d9534f" fontcolor=white style=filled]
 		"proc~add_plot" [label=add_plot URL="../proc/add_plot.html" color="#d9534f" fontcolor=white style=filled]
@@ -14,13 +16,11 @@ digraph "proc~~integer_to_string~~CalledByGraph" {
 		graph [concentrate=false]
 		graph [concentrate=false]
 		graph [concentrate=false]
-			"proc~add_3d_plot" -> "proc~optional_int_to_string"
 			"proc~initialize" -> "proc~optional_int_to_string"
+			"proc~add_3d_plot" -> "proc~optional_int_to_string"
 			"proc~add_plot" -> "proc~optional_int_to_string"
 		graph [concentrate=false]
-		graph [concentrate=false]
-		graph [concentrate=false]
-			"proc~optional_int_to_string" -> "proc~integer_to_string"
 			"proc~initialize" -> "proc~integer_to_string"
+			"proc~optional_int_to_string" -> "proc~integer_to_string"
 		graph [concentrate=false]
 }

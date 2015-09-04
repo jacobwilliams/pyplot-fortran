@@ -4,8 +4,8 @@ digraph "proc~~vec_to_string~~CalledByGraph" {
 	edge [fontname=Helvetica fontsize=9.5]
 		"proc~vec_to_string" [label=vec_to_string]
 		graph [concentrate=false]
-		"proc~add_3d_plot" [label=add_3d_plot URL="../proc/add_3d_plot.html" color="#d9534f" fontcolor=white style=filled]
 		"proc~add_plot" [label=add_plot URL="../proc/add_plot.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~add_3d_plot" [label=add_3d_plot URL="../proc/add_3d_plot.html" color="#d9534f" fontcolor=white style=filled]
 		"proc~add_bar" [label=add_bar URL="../proc/add_bar.html" color="#d9534f" fontcolor=white style=filled]
 		graph [concentrate=false]
 		graph [concentrate=false]
@@ -14,8 +14,8 @@ digraph "proc~~vec_to_string~~CalledByGraph" {
 		graph [concentrate=false]
 		graph [concentrate=false]
 		graph [concentrate=false]
-			"proc~add_3d_plot" -> "proc~vec_to_string"
 			"proc~add_plot" -> "proc~vec_to_string"
+			"proc~add_3d_plot" -> "proc~vec_to_string"
 			"proc~add_bar" -> "proc~vec_to_string"
 		graph [concentrate=false]
 }

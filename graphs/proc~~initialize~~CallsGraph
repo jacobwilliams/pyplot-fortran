@@ -4,15 +4,15 @@ digraph "proc~~initialize~~CallsGraph" {
 	edge [fontname=Helvetica fontsize=9.5]
 		"proc~initialize" [label=initialize]
 		graph [concentrate=false]
-		"proc~optional_int_to_string" [label=optional_int_to_string URL="../proc/optional_int_to_string.html" color="#d9534f" fontcolor=white style=filled]
 		"proc~integer_to_string" [label=integer_to_string URL="../proc/integer_to_string.html" color="#d9534f" fontcolor=white style=filled]
+		"proc~optional_int_to_string" [label=optional_int_to_string URL="../proc/optional_int_to_string.html" color="#d9534f" fontcolor=white style=filled]
+		graph [concentrate=false]
+		graph [concentrate=false]
 		graph [concentrate=false]
 		graph [concentrate=false]
 			"proc~optional_int_to_string" -> "proc~integer_to_string"
 		graph [concentrate=false]
-		graph [concentrate=false]
-		graph [concentrate=false]
-			"proc~initialize" -> "proc~optional_int_to_string"
 			"proc~initialize" -> "proc~integer_to_string"
+			"proc~initialize" -> "proc~optional_int_to_string"
 		graph [concentrate=false]
 }

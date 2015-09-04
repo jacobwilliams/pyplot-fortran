@@ -14,29 +14,29 @@
 <polygon fill="none" stroke="black" points="223,-70 109,-70 109,-44 223,-44 223,-70"/>
 <text text-anchor="middle" x="166" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50">optional_int_to_string</text>
 </g>
-<!-- proc~add_3d_plot -->
-<g id="node2" class="node"><title>proc~add_3d_plot</title>
-<a xlink:href="../proc/add_3d_plot.html" xlink:title="add_3d_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="72,-114 2.84217e-14,-114 0,-88 72,-88 72,-114"/>
-<text text-anchor="middle" x="36" y="-98.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
-</a>
-</g>
-<!-- proc~add_3d_plot&#45;&gt;proc~optional_int_to_string -->
-<g id="edge2" class="edge"><title>proc~add_3d_plot&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="black" d="M72.2122,-88.7435C86.2637,-83.9877 102.564,-78.4705 117.596,-73.3829"/>
-<polygon fill="black" stroke="black" points="118.904,-76.6352 127.254,-70.1139 116.66,-70.0047 118.904,-76.6352"/>
-</g>
 <!-- proc~initialize -->
-<g id="node3" class="node"><title>proc~initialize</title>
+<g id="node2" class="node"><title>proc~initialize</title>
 <a xlink:href="../proc/initialize.html" xlink:title="initialize">
-<polygon fill="#d9534f" stroke="#d9534f" points="63,-70 9,-70 9,-44 63,-44 63,-70"/>
-<text text-anchor="middle" x="36" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">initialize</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="63,-114 9,-114 9,-88 63,-88 63,-114"/>
+<text text-anchor="middle" x="36" y="-98.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">initialize</text>
 </a>
 </g>
 <!-- proc~initialize&#45;&gt;proc~optional_int_to_string -->
-<g id="edge4" class="edge"><title>proc~initialize&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="black" d="M63.2523,-57C73.4896,-57 85.6387,-57 97.9344,-57"/>
-<polygon fill="black" stroke="black" points="98.2586,-60.5001 108.259,-57 98.2585,-53.5001 98.2586,-60.5001"/>
+<g id="edge2" class="edge"><title>proc~initialize&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="black" d="M63.2523,-91.7762C79.03,-86.436 99.3487,-79.5589 117.746,-73.332"/>
+<polygon fill="black" stroke="black" points="119.092,-76.5715 127.442,-70.0503 116.848,-69.941 119.092,-76.5715"/>
+</g>
+<!-- proc~add_3d_plot -->
+<g id="node3" class="node"><title>proc~add_3d_plot</title>
+<a xlink:href="../proc/add_3d_plot.html" xlink:title="add_3d_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="72,-70 2.84217e-14,-70 0,-44 72,-44 72,-70"/>
+<text text-anchor="middle" x="36" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
+</a>
+</g>
+<!-- proc~add_3d_plot&#45;&gt;proc~optional_int_to_string -->
+<g id="edge4" class="edge"><title>proc~add_3d_plot&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="black" d="M72.2122,-57C80.2909,-57 89.1131,-57 98.0102,-57"/>
+<polygon fill="black" stroke="black" points="98.0514,-60.5001 108.051,-57 98.0514,-53.5001 98.0514,-60.5001"/>
 </g>
 <!-- proc~add_plot -->
 <g id="node4" class="node"><title>proc~add_plot</title>
