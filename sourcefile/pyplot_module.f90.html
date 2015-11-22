@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -122,6 +123,7 @@
   
   
   
+  
   <div class="panel panel-primary">
     <div class="panel-heading text-left"><h3 class="panel-title">Modules</h3></div>
     <div class="list-group">
@@ -203,9 +205,9 @@
     <span class="kt">integer</span><span class="p">,</span> <span class="k">parameter</span>          <span class="kd">::</span> <span class="n">max_real_len</span> <span class="o">=</span> <span class="mi">30</span>         <span class="c">!! max string length for reals</span>
 
     <span class="k">type</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">pyplot</span>
-    
+
         <span class="c">!!  The main pyplot class.</span>
-        
+
         <span class="k">private</span>
 
 <span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">str</span> <span class="c">!! string buffer</span>
@@ -213,9 +215,10 @@
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">show_legend</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! show legend into plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">use_numpy</span>   <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>      <span class="c">!! use numpy python module</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">mplot3d</span>     <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a 3d plot</span>
-        
+        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axis_equal</span>  <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! equal scale on each axis</span>
+
     <span class="k">contains</span>
-    
+
         <span class="c">! public methods</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">initialize</span>    <span class="c">!! initialize pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_plot</span>      <span class="c">!! add a 2d plot to pyplot instance</span>
@@ -223,11 +226,11 @@
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_bar</span>       <span class="c">!! add a barplot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">savefig</span>       <span class="c">!! save plots of pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">destroy</span>       <span class="c">!! destroy pyplot instance</span>
-        
+
         <span class="c">! private methods</span>
         <span class="k">procedure</span> <span class="kd">::</span> <span class="n">execute</span> <span class="c">!! execute pyplot commands</span>
         <span class="k">procedure</span> <span class="kd">::</span> <span class="n">add_str</span> <span class="c">!! add string to pytplot instance buffer</span>
-        
+
     <span class="k">end type </span><span class="n">pyplot</span>
 
     <span class="k">contains</span>
@@ -239,11 +242,11 @@
 <span class="c">! Destructor.</span>
 
     <span class="k">subroutine </span><span class="n">destroy</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
-    
+
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span> <span class="c">!! pyplot handler</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">)</span>
-    
+
     <span class="k">end subroutine </span><span class="n">destroy</span>
 <span class="c">!*****************************************************************************************</span>
 
@@ -253,12 +256,12 @@
 <span class="c">! Add a string to the buffer.</span>
 
     <span class="k">subroutine </span><span class="n">add_str</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">str</span><span class="p">)</span>
-    
+
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>  <span class="c">!! pyplot handler</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">str</span> <span class="c">!! str to be added to pyplot handler buffer</span>
 
     <span class="n">me</span><span class="p">%</span><span class="n">str</span> <span class="o">=</span> <span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="o">//</span><span class="n">str</span><span class="o">//</span><span class="nb">new_line</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    
+
     <span class="k">end subroutine </span><span class="n">add_str</span>
 <span class="c">!*****************************************************************************************</span>
 
@@ -269,8 +272,8 @@
 
     <span class="k">subroutine </span><span class="n">initialize</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">zlabel</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">legend</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">,</span> <span class="n">figsize</span><span class="p">,</span> <span class="p">&amp;</span>
                           <span class="n">font_size</span><span class="p">,</span> <span class="n">axes_labelsize</span><span class="p">,</span> <span class="n">xtick_labelsize</span><span class="p">,</span> <span class="n">ytick_labelsize</span><span class="p">,</span> <span class="n">ztick_labelsize</span><span class="p">,</span> <span class="p">&amp;</span>
-                          <span class="n">legend_fontsize</span><span class="p">,</span> <span class="n">mplot3d</span><span class="p">)</span>
-                          
+                          <span class="n">legend_fontsize</span><span class="p">,</span> <span class="n">mplot3d</span><span class="p">,</span> <span class="n">axis_equal</span><span class="p">)</span>
+
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>         <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>              <span class="c">!! pyplot handler</span>
     <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">grid</span>            <span class="c">!! activate grid drawing</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xlabel</span>          <span class="c">!! label of x axis</span>
@@ -287,7 +290,8 @@
     <span class="kt">integer</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">ztick_labelsize</span> <span class="c">!! size of z axis tick lables</span>
     <span class="kt">integer</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">legend_fontsize</span> <span class="c">!! size of legend font</span>
     <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">mplot3d</span>         <span class="c">!! set true for 3d plots</span>
-    
+    <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">axis_equal</span>      <span class="c">!! set true for axis = &#39;equal&#39;</span>
+
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">width_str</span>                    <span class="c">!! figure width dummy string</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">height_str</span>                   <span class="c">!! figure height dummy string</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">font_size_str</span>                <span class="c">!! font size dummy string</span>
@@ -318,6 +322,11 @@
 <span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span> <span class="o">=</span> <span class="n">mplot3d</span>
     <span class="k">else</span>
 <span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
+    <span class="k">end if</span>
+<span class="k">    if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">axis_equal</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">axis_equal</span> <span class="o">=</span> <span class="n">axis_equal</span>
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">axis_equal</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
     <span class="k">end if</span>
 
 <span class="k">    call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">font_size</span><span class="p">,</span> <span class="n">font_size_str</span><span class="p">,</span> <span class="n">default_font_size_str</span><span class="p">)</span>
@@ -352,13 +361,13 @@
     <span class="k">else</span>
 <span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = plt.figure()&#39;</span><span class="p">)</span>
     <span class="k">end if</span>
-<span class="k">    </span>
+
 <span class="k">    if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.gca(projection=&#39;&#39;3d&#39;&#39;)&#39;</span><span class="p">)</span>
     <span class="k">else</span>
 <span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.gca()&#39;</span><span class="p">)</span>
     <span class="k">end if</span>
-<span class="k">    </span>
+
 <span class="k">    if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span> <span class="k">then</span>
 <span class="k">        if</span> <span class="p">(</span><span class="n">grid</span><span class="p">)</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.grid()&#39;</span><span class="p">)</span>
     <span class="k">end if</span>
@@ -367,9 +376,9 @@
     <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">ylabel</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_ylabel(&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">zlabel</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_zlabel(&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">zlabel</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>  <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_title(&quot;&#39;</span> <span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
-    
+
     <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-    
+
     <span class="k">end subroutine </span><span class="n">initialize</span>
 <span class="c">!*****************************************************************************************</span>
 
@@ -379,7 +388,7 @@
 <span class="c">! Add an x,y plot.</span>
 
     <span class="k">subroutine </span><span class="n">add_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">markersize</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">)</span>
-    
+
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">y</span>            <span class="c">!! y values</span>
@@ -387,7 +396,7 @@
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">linestyle</span>    <span class="c">!! style of the plot line</span>
     <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">markersize</span>   <span class="c">!! size of the plot markers</span>
     <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line</span>
-    
+
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>         <span class="c">!! x values strinfied</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>         <span class="c">!! y values strinfied</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">imark</span>        <span class="c">!! actual markers size</span>
@@ -423,7 +432,7 @@
     <span class="k">else</span>
 <span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
-<span class="k">    </span>
+
 <span class="k">    end subroutine </span><span class="n">add_plot</span>
 <span class="c">!*****************************************************************************************</span>
 
@@ -435,7 +444,7 @@
 <span class="c">!@note Must initialize the class with ```mplot3d=.true.```</span>
 
     <span class="k">subroutine </span><span class="n">add_3d_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">markersize</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">)</span>
-    
+
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">y</span>            <span class="c">!! y values</span>
@@ -444,7 +453,7 @@
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">linestyle</span>    <span class="c">!! style of the plot line</span>
     <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">markersize</span>   <span class="c">!! size of the plot markers</span>
     <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line</span>
-    
+
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>         <span class="c">!! x values strinfied</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>         <span class="c">!! y values strinfied</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">zstr</span>         <span class="c">!! z values strinfied</span>
@@ -485,7 +494,7 @@
     <span class="k">else</span>
 <span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error in add_3d_plot: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
-<span class="k">    </span>
+
 <span class="k">    end subroutine </span><span class="n">add_3d_plot</span>
 <span class="c">!*****************************************************************************************</span>
 
@@ -493,7 +502,7 @@
 <span class="c">!&gt; author: Jacob Williams</span>
 <span class="c">!</span>
 <span class="c">! Add a bar plot.</span>
-    
+
     <span class="k">subroutine </span><span class="n">add_bar</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>            <span class="c">!! pyplot handler</span>
@@ -503,7 +512,7 @@
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">width</span>         <span class="c">!! width values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">bottom</span>        <span class="c">!! bottom values</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>         <span class="c">!! plot color</span>
-     
+
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>          <span class="c">!! x axis values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>          <span class="c">!! y axis values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">wstr</span>          <span class="c">!! width values stringified</span>
@@ -556,7 +565,7 @@
 <span class="c">! the optional argument is not present.</span>
 
     <span class="k">subroutine </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">int_value</span><span class="p">,</span> <span class="n">string_value</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
-    
+
     <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">int_value</span>      <span class="c">!! integer value</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">string_value</span>   <span class="c">!! integer value stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">default_value</span>  <span class="c">!! default integer value</span>
@@ -597,11 +606,11 @@
 <span class="c">! Real vector to string.</span>
 
     <span class="k">subroutine </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">)</span>
-    
+
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span>        <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">v</span>         <span class="c">!! real values</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">str</span>       <span class="c">!! real values stringified</span>
     <span class="kt">logical</span><span class="p">,</span>                       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">use_numpy</span> <span class="c">!! activate numpy python module usage</span>
-     
+
     <span class="kt">integer</span>                     <span class="kd">::</span> <span class="n">i</span>         <span class="c">!! counter</span>
     <span class="kt">integer</span>                     <span class="kd">::</span> <span class="n">istat</span>     <span class="c">!! IO status</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_real_len</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tmp</span>       <span class="c">!! dummy string</span>
@@ -631,36 +640,36 @@
 <span class="c">!  a temporary filename is used, and the file is deleted after it is used.</span>
 
     <span class="k">subroutine </span><span class="n">execute</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">pyfile</span><span class="p">)</span>
-    
+
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>     <span class="c">!! pytplot handler</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">pyfile</span> <span class="c">!! name of the python script to generate</span>
-    
+
     <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">istat</span>   <span class="c">!! IO status</span>
     <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">iunit</span>   <span class="c">!! IO unit</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="k">file</span>    <span class="c">!! file name        </span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="k">file</span>    <span class="c">!! file name</span>
     <span class="kt">logical</span>                       <span class="kd">::</span> <span class="n">scratch</span> <span class="c">!! if a scratch file is to be used</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">    </span>
+
 <span class="k">        </span><span class="n">scratch</span> <span class="o">=</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="nb">present</span><span class="p">(</span><span class="n">pyfile</span><span class="p">))</span>
-        
+
         <span class="c">!file name to use:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">scratch</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">            file</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">tmp_file</span><span class="p">)</span>  <span class="c">!use the default</span>
         <span class="k">else</span>
 <span class="k">            file</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">pyfile</span><span class="p">)</span>    <span class="c">!use the user-specified name</span>
         <span class="k">end if</span>
-        
+
         <span class="c">!open the file:</span>
         <span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span> <span class="k">file</span><span class="o">=</span><span class="k">file</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;REPLACE&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error opening file.&#39;</span>
-       
+
         <span class="c">!write to the file:</span>
         <span class="k">write</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="n">me</span><span class="p">%</span><span class="n">str</span>
 
         <span class="c">!run the file using python:</span>
         <span class="k">call </span><span class="nb">execute_command_line</span><span class="p">(</span><span class="n">python_exe</span><span class="o">//</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="k">file</span><span class="p">)</span>
-        
+
         <span class="c">!close the file:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">scratch</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">            close</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;DELETE&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
@@ -668,12 +677,12 @@
 <span class="k">            close</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
         <span class="k">end if</span>
 <span class="k">        if</span> <span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error closing file.&#39;</span>
-        
+
         <span class="c">!cleanup:</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="k">file</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="k">file</span><span class="p">)</span>
 
     <span class="k">end if</span>
-<span class="k">    </span>
+
 <span class="k">    end subroutine </span><span class="n">execute</span>
 <span class="c">!*****************************************************************************************</span>
 
@@ -683,7 +692,7 @@
 <span class="c">! Save the figure.</span>
 
     <span class="k">subroutine </span><span class="n">savefig</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">figfile</span><span class="p">,</span> <span class="n">pyfile</span><span class="p">)</span>
-    
+
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>      <span class="c">!! pyplot handler</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">figfile</span> <span class="c">!! file name for the figure</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">pyfile</span>  <span class="c">!! name of the Python script to generate</span>
@@ -693,6 +702,10 @@
         <span class="c">!finish up the string:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">show_legend</span><span class="p">)</span> <span class="k">then</span>
 <span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.legend(loc=&quot;best&quot;)&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">end if</span>
+<span class="k">        if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">axis_equal</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.axis(&quot;equal&quot;)&#39;</span><span class="p">)</span>
             <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="k">end if</span>
 <span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;plt.savefig(&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">figfile</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>

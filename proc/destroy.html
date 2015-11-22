@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -142,6 +143,7 @@
   
   
   
+  
   <div class="panel panel-primary">
     <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
     <div class="list-group">
@@ -237,6 +239,8 @@ private subroutine destroy(me)
     
     
     
+    
+    
 
     
     
@@ -251,11 +255,11 @@ private subroutine destroy(me)
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">destroy</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
-    
+
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span> <span class="c">!! pyplot handler</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">)</span>
-    
+
     <span class="k">end subroutine </span><span class="n">destroy</span>
 </pre></div>
 

@@ -25,6 +25,7 @@
     <![endif]-->
     
     <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
 
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
@@ -136,8 +137,11 @@
       
       <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
       
+      <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
+      
     </div>
   </div>
+  
   
   
   
@@ -276,6 +280,20 @@
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-axis_equal"></span>logical,</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>axis_equal</strong></td><td> =</td><td>.false.</td><td><p>equal scale on each axis</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -311,7 +329,7 @@
          
     
     <h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal)
     
     
     
@@ -567,6 +585,21 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
   <td></td><td>::</td>
   <td><strong>mplot3d</strong></td><td><p>set true for 3d plots</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>axis_equal</strong></td><td><p>set true for axis = 'equal'</p></td>
   
 </tr>
 
@@ -1566,9 +1599,9 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre>    <span class="k">type</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">pyplot</span>
-    
+
         <span class="c">!!  The main pyplot class.</span>
-        
+
         <span class="k">private</span>
 
 <span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">str</span> <span class="c">!! string buffer</span>
@@ -1576,9 +1609,10 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">show_legend</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! show legend into plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">use_numpy</span>   <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>      <span class="c">!! use numpy python module</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">mplot3d</span>     <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a 3d plot</span>
-        
+        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axis_equal</span>  <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! equal scale on each axis</span>
+
     <span class="k">contains</span>
-    
+
         <span class="c">! public methods</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">initialize</span>    <span class="c">!! initialize pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_plot</span>      <span class="c">!! add a 2d plot to pyplot instance</span>
@@ -1586,11 +1620,11 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_bar</span>       <span class="c">!! add a barplot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">savefig</span>       <span class="c">!! save plots of pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">destroy</span>       <span class="c">!! destroy pyplot instance</span>
-        
+
         <span class="c">! private methods</span>
         <span class="k">procedure</span> <span class="kd">::</span> <span class="n">execute</span> <span class="c">!! execute pyplot commands</span>
         <span class="k">procedure</span> <span class="kd">::</span> <span class="n">add_str</span> <span class="c">!! add string to pytplot instance buffer</span>
-        
+
     <span class="k">end type </span><span class="n">pyplot</span>
 </pre></div>
 
