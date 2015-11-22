@@ -29,9 +29,9 @@
     integer, parameter          :: max_real_len = 30         !! max string length for reals
 
     type, public :: pyplot
-    
+
         !!  The main pyplot class.
-        
+
         private
 
         character(len=:), allocatable :: str !! string buffer
@@ -39,9 +39,10 @@
         logical :: show_legend = .false.     !! show legend into plot
         logical :: use_numpy   = .true.      !! use numpy python module
         logical :: mplot3d     = .false.     !! it is a 3d plot
-        
+        logical :: axis_equal  = .false.     !! equal scale on each axis
+
     contains
-    
+
         ! public methods
         procedure, public :: initialize    !! initialize pyplot instance
         procedure, public :: add_plot      !! add a 2d plot to pyplot instance
@@ -49,11 +50,11 @@
         procedure, public :: add_bar       !! add a barplot to pyplot instance
         procedure, public :: savefig       !! save plots of pyplot instance
         procedure, public :: destroy       !! destroy pyplot instance
-        
+
         ! private methods
         procedure :: execute !! execute pyplot commands
         procedure :: add_str !! add string to pytplot instance buffer
-        
+
     end type pyplot
 
     contains
@@ -65,11 +66,11 @@
 ! Destructor.
 
     subroutine destroy(me)
-    
+
     class(pyplot),intent(inout) :: me !! pyplot handler
 
     if (allocated(me%str)) deallocate(me%str)
-    
+
     end subroutine destroy
 !*****************************************************************************************
 
@@ -79,12 +80,12 @@
 ! Add a string to the buffer.
 
     subroutine add_str(me,str)
-    
+
     class(pyplot),    intent(inout) :: me  !! pyplot handler
     character(len=*), intent(in)    :: str !! str to be added to pyplot handler buffer
 
     me%str = me%str//str//new_line(' ')
-    
+
     end subroutine add_str
 !*****************************************************************************************
 
@@ -95,8 +96,8 @@
 
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
-                          legend_fontsize, mplot3d)
-                          
+                          legend_fontsize, mplot3d, axis_equal)
+
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
     character(len=*),      intent(in), optional :: xlabel          !! label of x axis
@@ -113,7 +114,8 @@
     integer,               intent(in), optional :: ztick_labelsize !! size of z axis tick lables
     integer,               intent(in), optional :: legend_fontsize !! size of legend font
     logical,               intent(in), optional :: mplot3d         !! set true for 3d plots
-    
+    logical,               intent(in), optional :: axis_equal      !! set true for axis = 'equal'
+
     character(len=max_int_len)  :: width_str                    !! figure width dummy string
     character(len=max_int_len)  :: height_str                   !! figure height dummy string
     character(len=max_int_len)  :: font_size_str                !! font size dummy string
@@ -144,6 +146,11 @@
         me%mplot3d = mplot3d
     else
         me%mplot3d = .false.
+    end if
+    if (present(axis_equal)) then
+        me%axis_equal = axis_equal
+    else
+        me%axis_equal = .false.
     end if
 
     call optional_int_to_string(font_size, font_size_str, default_font_size_str)
@@ -178,13 +185,13 @@
     else
         call me%add_str('fig = plt.figure()')
     end if
-    
+
     if (me%mplot3d) then
         call me%add_str('ax = fig.gca(projection=''3d'')')
     else
         call me%add_str('ax = fig.gca()')
     end if
-    
+
     if (present(grid)) then
         if (grid) call me%add_str('ax.grid()')
     end if
@@ -193,9 +200,9 @@
     if (present(ylabel)) call me%add_str('ax.set_ylabel("'//trim(ylabel)//'")')
     if (present(zlabel)) call me%add_str('ax.set_zlabel("'//trim(zlabel)//'")')
     if (present(title))  call me%add_str('ax.set_title("' //trim(title) //'")')
-    
+
     call me%add_str('')
-    
+
     end subroutine initialize
 !*****************************************************************************************
 
@@ -205,7 +212,7 @@
 ! Add an x,y plot.
 
     subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth)
-    
+
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! x values
     real(wp), dimension(:), intent (in)           :: y            !! y values
@@ -213,7 +220,7 @@
     character(len=*),       intent (in)           :: linestyle    !! style of the plot line
     integer,                intent (in), optional :: markersize   !! size of the plot markers
     integer,                intent (in), optional :: linewidth    !! width of the plot line
-    
+
     character(len=:), allocatable :: xstr         !! x values strinfied
     character(len=:), allocatable :: ystr         !! y values strinfied
     character(len=max_int_len)    :: imark        !! actual markers size
@@ -249,7 +256,7 @@
     else
         error stop 'Error in add_plot: pyplot class not properly initialized.'
     end if
-    
+
     end subroutine add_plot
 !*****************************************************************************************
 
@@ -261,7 +268,7 @@
 !@note Must initialize the class with ```mplot3d=.true.```
 
     subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewidth)
-    
+
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! x values
     real(wp), dimension(:), intent (in)           :: y            !! y values
@@ -270,7 +277,7 @@
     character(len=*),       intent (in)           :: linestyle    !! style of the plot line
     integer,                intent (in), optional :: markersize   !! size of the plot markers
     integer,                intent (in), optional :: linewidth    !! width of the plot line
-    
+
     character(len=:), allocatable :: xstr         !! x values strinfied
     character(len=:), allocatable :: ystr         !! y values strinfied
     character(len=:), allocatable :: zstr         !! z values strinfied
@@ -311,7 +318,7 @@
     else
         error stop 'Error in add_3d_plot: pyplot class not properly initialized.'
     end if
-    
+
     end subroutine add_3d_plot
 !*****************************************************************************************
 
@@ -319,7 +326,7 @@
 !> author: Jacob Williams
 !
 ! Add a bar plot.
-    
+
     subroutine add_bar(me, left, height, label, width, bottom, color)
 
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
@@ -329,7 +336,7 @@
     real(wp), dimension(:), intent(in), optional :: width         !! width values
     real(wp), dimension(:), intent(in), optional :: bottom        !! bottom values
     character(len=*),       intent(in), optional :: color         !! plot color
-     
+
     character(len=:), allocatable :: xstr          !! x axis values stringified
     character(len=:), allocatable :: ystr          !! y axis values stringified
     character(len=:), allocatable :: wstr          !! width values stringified
@@ -382,7 +389,7 @@
 ! the optional argument is not present.
 
     subroutine optional_int_to_string(int_value, string_value, default_value)
-    
+
     integer,          intent(in), optional :: int_value      !! integer value
     character(len=*), intent(out)          :: string_value   !! integer value stringified
     character(len=*), intent(in)           :: default_value  !! default integer value
@@ -423,11 +430,11 @@
 ! Real vector to string.
 
     subroutine vec_to_string(v, str, use_numpy)
-    
+
     real(wp), dimension(:),        intent(in)  :: v         !! real values
     character(len=:), allocatable, intent(out) :: str       !! real values stringified
     logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
-     
+
     integer                     :: i         !! counter
     integer                     :: istat     !! IO status
     character(len=max_real_len) :: tmp       !! dummy string
@@ -457,36 +464,36 @@
 !  a temporary filename is used, and the file is deleted after it is used.
 
     subroutine execute(me, pyfile)
-    
+
     class(pyplot),    intent(inout)        :: me     !! pytplot handler
     character(len=*), intent(in), optional :: pyfile !! name of the python script to generate
-    
+
     integer                       :: istat   !! IO status
     integer                       :: iunit   !! IO unit
-    character(len=:), allocatable :: file    !! file name        
+    character(len=:), allocatable :: file    !! file name
     logical                       :: scratch !! if a scratch file is to be used
 
     if (allocated(me%str)) then
-    
+
         scratch = (.not. present(pyfile))
-        
+
         !file name to use:
         if (scratch) then
             file = trim(tmp_file)  !use the default
         else
             file = trim(pyfile)    !use the user-specified name
         end if
-        
+
         !open the file:
         open(newunit=iunit, file=file, status='REPLACE', iostat=istat)
         if (istat/=0) error stop 'Error opening file.'
-       
+
         !write to the file:
         write(iunit, '(A)') me%str
 
         !run the file using python:
         call execute_command_line(python_exe//' '//file)
-        
+
         !close the file:
         if (scratch) then
             close(iunit, status='DELETE', iostat=istat)
@@ -494,12 +501,12 @@
             close(iunit, iostat=istat)
         end if
         if (istat/=0) error stop 'Error closing file.'
-        
+
         !cleanup:
         if (allocated(file)) deallocate(file)
 
     end if
-    
+
     end subroutine execute
 !*****************************************************************************************
 
@@ -509,7 +516,7 @@
 ! Save the figure.
 
     subroutine savefig(me, figfile, pyfile)
-    
+
     class(pyplot),    intent(inout)        :: me      !! pyplot handler
     character(len=*), intent(in)           :: figfile !! file name for the figure
     character(len=*), intent(in), optional :: pyfile  !! name of the Python script to generate
@@ -519,6 +526,10 @@
         !finish up the string:
         if (me%show_legend) then
             call me%add_str('ax.legend(loc="best")')
+            call me%add_str('')
+        end if
+        if (me%axis_equal) then
+            call me%add_str('ax.axis("equal")')
             call me%add_str('')
         end if
         call me%add_str('plt.savefig("'//trim(figfile)//'")')
