@@ -45,9 +45,12 @@
 
         ! public methods
         procedure, public :: initialize    !! initialize pyplot instance
+
         procedure, public :: add_plot      !! add a 2d plot to pyplot instance
         procedure, public :: add_3d_plot   !! add a 3d plot to pyplot instance
+        procedure, public :: add_contour   !! add a contour plot to pyplot instance
         procedure, public :: add_bar       !! add a barplot to pyplot instance
+
         procedure, public :: savefig       !! save plots of pyplot instance
         procedure, public :: destroy       !! destroy pyplot instance
 
@@ -263,6 +266,81 @@
 !*****************************************************************************************
 !> author: Jacob Williams
 !
+! Add a contour plot.
+!
+!@note This requires `use_numpy` to be True.
+
+    subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color)
+
+    class(pyplot),           intent (inout)        :: me           !! pyplot handler
+    real(wp),dimension(:),   intent (in)           :: x            !! x values
+    real(wp),dimension(:),   intent (in)           :: y            !! y values
+    real(wp),dimension(:,:), intent (in)           :: z            !! z values (a matrix)
+    character(len=*),        intent (in)           :: label        !! plot label
+    character(len=*),        intent (in)           :: linestyle    !! style of the plot line
+    integer,                 intent (in), optional :: linewidth    !! width of the plot line
+    real(wp),dimension(:),   intent (in), optional :: levels       !! contour levels to plot
+    character(len=*),        intent (in), optional :: color        !! color of the contour line
+
+    character(len=:), allocatable :: xstr          !! x values strinfied
+    character(len=:), allocatable :: ystr          !! y values strinfied
+    character(len=:), allocatable :: zstr          !! z values strinfied
+    character(len=:), allocatable :: levelstr      !! levels vector strinfied
+    character(len=max_int_len)    :: iline         !! actual line width
+    character(len=*), parameter   :: xname = 'x'   !! x variable name for script
+    character(len=*), parameter   :: yname = 'y'   !! y variable name for script
+    character(len=*), parameter   :: zname = 'z'   !! z variable name for script
+    character(len=*), parameter   :: xname_ = 'X'  !! X variable name for contour
+    character(len=*), parameter   :: yname_ = 'Y'  !! Y variable name for contour
+    character(len=*), parameter   :: zname_ = 'Z'  !! Z variable name for contour
+    character(len=:), allocatable :: extras        !! optional stuff
+
+    if (allocated(me%str)) then
+
+        !convert the arrays to strings:
+        call vec_to_string(x, xstr, me%use_numpy)
+        call vec_to_string(y, ystr, me%use_numpy)
+        call matrix_to_string(z, zstr, me%use_numpy)
+        if (present(levels)) call vec_to_string(levels, levelstr, me%use_numpy)
+
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(linewidth, iline, '3')
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str(trim(yname)//' = '//ystr)
+        call me%add_str(trim(zname)//' = '//zstr)
+        call me%add_str('')
+
+        !convert inputs for contour plotting:
+        call me%add_str(yname_//', '//xname_//' = np.meshgrid('//trim(xname)//', '//trim(yname)//')')
+        call me%add_str(zname_//' = '//zname)
+
+        !optional arguments:
+        extras = ''
+        if (present(levels))     extras = extras//','//'levels='//levelstr
+        if (present(color))      extras = extras//','//'colors="'//color//'"'
+        if (present(linewidth))  extras = extras//','//'linewidths='//trim(adjustl(iline))
+
+        !write the plot statement:
+        call me%add_str('CS = ax.contour('//xname_//','//yname_//','//zname_//','//&
+                                        'label="'//trim(label)//'",'//&
+                                        'linestyles="'//trim(adjustl(linestyle))//'"'//&
+                                        extras//')')
+
+        call me%add_str('ax.clabel(CS, fontsize=9, inline=1)')
+        call me%add_str('')
+
+    else
+        error stop 'Error in add_plot: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_contour
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
 ! Add a 3D x,y,z plot.
 !
 !@note Must initialize the class with ```mplot3d=.true.```
@@ -452,6 +530,35 @@
     if (use_numpy) str = 'np.array('//str//')'
 
     end subroutine vec_to_string
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Real matrix (rank 2) to string.
+
+    subroutine matrix_to_string(v, str, use_numpy)
+
+    real(wp), dimension(:,:),      intent(in)  :: v         !! real values
+    character(len=:), allocatable, intent(out) :: str       !! real values stringified
+    logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
+
+    integer                      :: i         !! counter
+    integer                      :: j         !! counter
+    character(len=:),allocatable :: tmp       !! dummy string
+
+    str = '['
+    do i=1, size(v,1)  !rows
+        call vec_to_string(v(i,:), tmp, use_numpy)  !one row at a time
+        str = str//trim(adjustl(tmp))
+        if (i<size(v)) str = str // ','
+    end do
+    str = str // ']'
+
+    !convert to numpy array if necessary:
+    if (use_numpy) str = 'np.array('//str//')'
+
+    end subroutine matrix_to_string
 !*****************************************************************************************
 
 !*****************************************************************************************

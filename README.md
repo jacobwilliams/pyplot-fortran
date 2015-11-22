@@ -16,8 +16,9 @@ The module requires a modern Fortran compiler (it uses various Fortran 2003/2008
 Supported plot types
 ---------------
 
-* ```matplotlib.pyplot.plot``` -- 2D plot of lines and/or markers.
+* ```matplotlib.pyplot.plot``` -- 2D/3D plot of lines and/or markers.
 * ```matplotlib.pyplot.bar``` -- Make a bar plot.
+* ```matplotlib.pyplot.contour``` -- Contour plot
 
 Example
 ---------------
