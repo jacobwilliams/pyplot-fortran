@@ -131,9 +131,9 @@
     <div class="panel-heading text-left"><h3 class="panel-title">Variables</h3></div>
     <div class="list-group">
       
-      <a class="list-group-item" href="../proc/add_bar.html#variable-xstr%7E3">xstr</a>
+      <a class="list-group-item" href="../proc/add_bar.html#variable-xstr%7E4">xstr</a>
       
-      <a class="list-group-item" href="../proc/add_bar.html#variable-ystr%7E3">ystr</a>
+      <a class="list-group-item" href="../proc/add_bar.html#variable-ystr%7E4">ystr</a>
       
       <a class="list-group-item" href="../proc/add_bar.html#variable-wstr">wstr</a>
       
@@ -141,9 +141,9 @@
       
       <a class="list-group-item" href="../proc/add_bar.html#variable-plt_str">plt_str</a>
       
-      <a class="list-group-item" href="../proc/add_bar.html#variable-xname%7E3">xname</a>
+      <a class="list-group-item" href="../proc/add_bar.html#variable-xname%7E4">xname</a>
       
-      <a class="list-group-item" href="../proc/add_bar.html#variable-yname%7E3">yname</a>
+      <a class="list-group-item" href="../proc/add_bar.html#variable-yname%7E4">yname</a>
       
       <a class="list-group-item" href="../proc/add_bar.html#variable-wname">wname</a>
       
@@ -187,6 +187,8 @@
       
       <a class="list-group-item" href="../proc/add_bar.html">add_bar</a>
       
+      <a class="list-group-item" href="../proc/add_contour.html">add_contour</a>
+      
       <a class="list-group-item" href="../proc/add_plot.html">add_plot</a>
       
       <a class="list-group-item" href="../proc/add_str.html">add_str</a>
@@ -198,6 +200,8 @@
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
+      
+      <a class="list-group-item" href="../proc/matrix_to_string.html">matrix_to_string</a>
       
       <a class="list-group-item" href="../proc/optional_int_to_string.html">optional_int_to_string</a>
       
@@ -241,7 +245,7 @@ private subroutine add_bar(me, left, height, label, width, bottom, color)
   
 <tr>
   
-  <td><span class="anchor" id="variable-me%7E6"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td><span class="anchor" id="variable-me%7E7"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
   <td>intent(inout)</td>
   <td></td>
   
@@ -286,7 +290,7 @@ private subroutine add_bar(me, left, height, label, width, bottom, color)
   
 <tr>
   
-  <td><span class="anchor" id="variable-label%7E3"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-label%7E4"></span>character(len=*),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -331,7 +335,7 @@ private subroutine add_bar(me, left, height, label, width, bottom, color)
   
 <tr>
   
-  <td><span class="anchor" id="variable-color"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-color%7E2"></span>character(len=*),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -495,7 +499,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-xstr%7E3"></span>character(len=:),</td>
+  <td><span class="anchor" id="variable-xstr%7E4"></span>character(len=:),</td>
   
   <td>public,</td>
   <td>allocatable</td><td>::</td>
@@ -509,7 +513,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-ystr%7E3"></span>character(len=:),</td>
+  <td><span class="anchor" id="variable-ystr%7E4"></span>character(len=:),</td>
   
   <td>public,</td>
   <td>allocatable</td><td>::</td>
@@ -565,7 +569,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-xname%7E3"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-xname%7E4"></span>character(len=*),</td>
   
   <td>public,</td>
   <td>parameter</td><td>::</td>
@@ -579,7 +583,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-yname%7E3"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-yname%7E4"></span>character(len=*),</td>
   
   <td>public,</td>
   <td>parameter</td><td>::</td>
