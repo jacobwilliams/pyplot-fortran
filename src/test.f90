@@ -12,7 +12,8 @@
 
     implicit none
 
-    real(wp), dimension(100) :: x   !! x values
+    real(wp), dimension(100) :: x     !! x values
+    real(wp), dimension(100) :: yerr  !! error values for bar chart
     real(wp), dimension(100) :: sx  !! sin(x) values
     real(wp), dimension(100) :: cx  !! cos(x) values
     real(wp), dimension(100) :: tx  !! sin(x)*cos(x) values
@@ -20,10 +21,11 @@
     integer                  :: i   !! counter
 
     !generate some data:
-    x = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
-    sx = sin(x)
-    cx = cos(x)
-    tx = sx * cx
+    x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
+    sx   = sin(x)
+    cx   = cos(x)
+    tx   = sx * cx
+    yerr = abs(sx*.25_wp)
 
     !2d line plot:
     call plt%initialize(grid=.true.,xlabel='angle (rad)',&
@@ -42,7 +44,7 @@
                         xtick_labelsize = 20,&
                         ytick_labelsize = 20,&
                         legend_fontsize = 20 )
-    call plt%add_bar(left=x,height=sx,width=tx,label='$\sin (x)$',color='r')
+    call plt%add_bar(left=x,height=sx,width=tx,label='$\sin (x)$',color='r',yerr=yerr)
     call plt%savefig('bartest.png', pyfile='bartest.py')
 
     end program test

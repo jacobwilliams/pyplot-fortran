@@ -124,19 +124,20 @@
   <div class="row">
     <div class="col-lg-3">
     
+<div id="sidebar">
   
   
   
   <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Variables</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/matrix_to_string.html#variable-i%7E3">i</a>
-      
-      <a class="list-group-item" href="../proc/matrix_to_string.html#variable-j">j</a>
-      
-      <a class="list-group-item" href="../proc/matrix_to_string.html#variable-tmp%7E2">tmp</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
+    <div id="vars" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../proc/matrix_to_string.html#variable-i%7E3">i</a>
+        
+        <a class="list-group-item" href="../proc/matrix_to_string.html#variable-tmp%7E2">tmp</a>
+        
+      </div>
     </div>
   </div>
   
@@ -168,39 +169,42 @@
   <hr>
   
   <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title">All Procedures</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../proc/add_3d_plot.html">add_3d_plot</a>
-      
-      <a class="list-group-item" href="../proc/add_bar.html">add_bar</a>
-      
-      <a class="list-group-item" href="../proc/add_contour.html">add_contour</a>
-      
-      <a class="list-group-item" href="../proc/add_plot.html">add_plot</a>
-      
-      <a class="list-group-item" href="../proc/add_str.html">add_str</a>
-      
-      <a class="list-group-item" href="../proc/destroy.html">destroy</a>
-      
-      <a class="list-group-item" href="../proc/execute.html">execute</a>
-      
-      <a class="list-group-item" href="../proc/initialize.html">initialize</a>
-      
-      <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
-      
-      <a class="list-group-item" href="../proc/matrix_to_string.html">matrix_to_string</a>
-      
-      <a class="list-group-item" href="../proc/optional_int_to_string.html">optional_int_to_string</a>
-      
-      <a class="list-group-item" href="../proc/savefig.html">savefig</a>
-      
-      <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs">All Procedures</a></h3></div>
+    <div id="allprocs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../proc/add_3d_plot.html">add_3d_plot</a>
+          
+          <a class="list-group-item" href="../proc/add_bar.html">add_bar</a>
+          
+          <a class="list-group-item" href="../proc/add_contour.html">add_contour</a>
+          
+          <a class="list-group-item" href="../proc/add_plot.html">add_plot</a>
+          
+          <a class="list-group-item" href="../proc/add_str.html">add_str</a>
+          
+          <a class="list-group-item" href="../proc/destroy.html">destroy</a>
+          
+          <a class="list-group-item" href="../proc/execute.html">execute</a>
+          
+          <a class="list-group-item" href="../proc/initialize.html">initialize</a>
+          
+          <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
+          
+          <a class="list-group-item" href="../proc/matrix_to_string.html">matrix_to_string</a>
+          
+          <a class="list-group-item" href="../proc/optional_int_to_string.html">optional_int_to_string</a>
+          
+          <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+          
+          <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
+          
+        </div>
     </div>
   </div>
   
-  
+</div>
+
     </div>
     
     <div class="col-lg-9" id='text'>
@@ -565,20 +569,6 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-j"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>j</strong></td><td></td><td></td><td><p>counter</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
   <td><span class="anchor" id="variable-tmp%7E2"></span>character(len=:),</td>
   
   <td>public,</td>
@@ -617,7 +607,6 @@ implementation in a submodule of an interface in a parent module.</p>
     <span class="kt">logical</span><span class="p">,</span>                       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">use_numpy</span> <span class="c">!! activate numpy python module usage</span>
 
     <span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">i</span>         <span class="c">!! counter</span>
-    <span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">j</span>         <span class="c">!! counter</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">tmp</span>       <span class="c">!! dummy string</span>
 
     <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>

@@ -405,7 +405,7 @@
 !
 ! Add a bar plot.
 
-    subroutine add_bar(me, left, height, label, width, bottom, color)
+    subroutine add_bar(me, left, height, label, width, bottom, color, yerr)
 
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
     real(wp), dimension(:), intent(in)           :: left          !! left bar values
@@ -414,36 +414,42 @@
     real(wp), dimension(:), intent(in), optional :: width         !! width values
     real(wp), dimension(:), intent(in), optional :: bottom        !! bottom values
     character(len=*),       intent(in), optional :: color         !! plot color
+    real(wp), dimension(:), intent(in), optional :: yerr          !! yerr values
 
-    character(len=:), allocatable :: xstr          !! x axis values stringified
-    character(len=:), allocatable :: ystr          !! y axis values stringified
-    character(len=:), allocatable :: wstr          !! width values stringified
-    character(len=:), allocatable :: bstr          !! bottom values stringified
-    character(len=:), allocatable :: plt_str       !! plot string
-    character(len=*), parameter   :: xname = 'x'   !! x axis name
-    character(len=*), parameter   :: yname = 'y'   !! y axis name
-    character(len=*), parameter   :: wname = 'w'   !! width name
-    character(len=*), parameter   :: bname = 'b'   !! bottom name
+    character(len=:), allocatable :: xstr               !! x axis values stringified
+    character(len=:), allocatable :: ystr               !! y axis values stringified
+    character(len=:), allocatable :: wstr               !! width values stringified
+    character(len=:), allocatable :: bstr               !! bottom values stringified
+    character(len=:), allocatable :: plt_str            !! plot string
+    character(len=:), allocatable :: yerr_str           !!  yerr values stringified
+    character(len=*), parameter   :: xname = 'x'        !! x axis name
+    character(len=*), parameter   :: yname = 'y'        !! y axis name
+    character(len=*), parameter   :: wname = 'w'        !! width name
+    character(len=*), parameter   :: bname = 'b'        !! bottom name
+    character(len=*), parameter   :: yerrname = 'yerr'  !! yerr name
 
     if (allocated(me%str)) then
 
         !convert the arrays to strings:
-                             call vec_to_string(left, xstr, me%use_numpy)
-                             call vec_to_string(height, ystr, me%use_numpy)
-        if (present(width))  call vec_to_string(width, wstr, me%use_numpy)
-        if (present(bottom)) call vec_to_string(bottom, bstr, me%use_numpy)
+                             call vec_to_string(left,   xstr,     me%use_numpy)
+                             call vec_to_string(height, ystr,     me%use_numpy)
+        if (present(width))  call vec_to_string(width,  wstr,     me%use_numpy)
+        if (present(bottom)) call vec_to_string(bottom, bstr,     me%use_numpy)
+        if (present(yerr))   call vec_to_string(yerr,   yerr_str, me%use_numpy)
 
         !write the arrays:
                              call me%add_str(trim(xname)//' = '//xstr)
                              call me%add_str(trim(yname)//' = '//ystr)
         if (present(width))  call me%add_str(trim(wname)//' = '//wstr)
         if (present(bottom)) call me%add_str(trim(bname)//' = '//bstr)
+        if (present(yerr))   call me%add_str(trim(yerrname)//' = '//yerr_str)
         call me%add_str('')
 
         !create the plot string:
         plt_str = 'ax.bar('//&
                   'left='//trim(xname)//','//&
                   'height='//trim(yname)//','
+        if (present(yerr))   plt_str=plt_str//'yerr='//trim(yerrname)//','
         if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
         if (present(bottom)) plt_str=plt_str//'bottom='//trim(bstr)//','
         if (present(color))  plt_str=plt_str//'color="'//trim(color)//'",'
@@ -544,7 +550,6 @@
     logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
 
     integer                      :: i         !! counter
-    integer                      :: j         !! counter
     character(len=:),allocatable :: tmp       !! dummy string
 
     str = '['

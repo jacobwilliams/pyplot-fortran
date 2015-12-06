@@ -126,25 +126,30 @@
   <div class="row">
     <div class="col-lg-3">
     
+<div id="sidebar">
   
   
   
   <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Variables</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../program/test.html#variable-x%7E4">x</a>
-      
-      <a class="list-group-item" href="../program/test.html#variable-sx">sx</a>
-      
-      <a class="list-group-item" href="../program/test.html#variable-cx">cx</a>
-      
-      <a class="list-group-item" href="../program/test.html#variable-tx">tx</a>
-      
-      <a class="list-group-item" href="../program/test.html#variable-plt">plt</a>
-      
-      <a class="list-group-item" href="../program/test.html#variable-i%7E4">i</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
+    <div id="vars" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../program/test.html#variable-x%7E4">x</a>
+        
+        <a class="list-group-item" href="../program/test.html#variable-yerr%7E2">yerr</a>
+        
+        <a class="list-group-item" href="../program/test.html#variable-sx">sx</a>
+        
+        <a class="list-group-item" href="../program/test.html#variable-cx">cx</a>
+        
+        <a class="list-group-item" href="../program/test.html#variable-tx">tx</a>
+        
+        <a class="list-group-item" href="../program/test.html#variable-plt">plt</a>
+        
+        <a class="list-group-item" href="../program/test.html#variable-i%7E4">i</a>
+        
+      </div>
     </div>
   </div>
   
@@ -176,15 +181,18 @@
   <hr>
   
   <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title">All Programs</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../program/test.html">test</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprogs">All Programs</a></h3></div>
+    <div id="allprogs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../program/test.html">test</a>
+          
+        </div>
     </div>
   </div>
   
-  
+</div>
+
     </div>
     
     <div class="col-lg-9" id='text'>
@@ -377,6 +385,20 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
+  <td><span class="anchor" id="variable-yerr%7E2"></span>real(kind=wp),</td>
+  
+  
+  <td>dimension(100)</td><td>::</td>
+  <td><strong>yerr</strong></td><td></td><td></td><td><p>error values for bar chart</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-sx"></span>real(kind=wp),</td>
   
   
@@ -471,7 +493,8 @@ implementation in a submodule of an interface in a parent module.</p>
 
     <span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="kd">::</span> <span class="n">x</span>   <span class="c">!! x values</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="kd">::</span> <span class="n">x</span>     <span class="c">!! x values</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="kd">::</span> <span class="n">yerr</span>  <span class="c">!! error values for bar chart</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="kd">::</span> <span class="n">sx</span>  <span class="c">!! sin(x) values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="kd">::</span> <span class="n">cx</span>  <span class="c">!! cos(x) values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tx</span>  <span class="c">!! sin(x)*cos(x) values</span>
@@ -479,10 +502,11 @@ implementation in a submodule of an interface in a parent module.</p>
     <span class="kt">integer</span>                  <span class="kd">::</span> <span class="n">i</span>   <span class="c">!! counter</span>
 
     <span class="c">!generate some data:</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="p">[(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">wp</span><span class="p">),</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">/</span><span class="mf">5.0_wp</span>
-    <span class="n">sx</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">cx</span> <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">tx</span> <span class="o">=</span> <span class="n">sx</span> <span class="o">*</span> <span class="n">cx</span>
+    <span class="n">x</span>    <span class="o">=</span> <span class="p">[(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">wp</span><span class="p">),</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">/</span><span class="mf">5.0_wp</span>
+    <span class="n">sx</span>   <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">cx</span>   <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">tx</span>   <span class="o">=</span> <span class="n">sx</span> <span class="o">*</span> <span class="n">cx</span>
+    <span class="n">yerr</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sx</span><span class="o">*</span><span class="p">.</span><span class="mi">25_wp</span><span class="p">)</span>
 
     <span class="c">!2d line plot:</span>
     <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;angle (rad)&#39;</span><span class="p">,&amp;</span>
@@ -501,7 +525,7 @@ implementation in a submodule of an interface in a parent module.</p>
                         <span class="n">xtick_labelsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,&amp;</span>
                         <span class="n">ytick_labelsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,&amp;</span>
                         <span class="n">legend_fontsize</span> <span class="o">=</span> <span class="mi">20</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_bar</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="n">sx</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="n">tx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sin (x)$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_bar</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="n">sx</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="n">tx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sin (x)$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">)</span>
     <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;bartest.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;bartest.py&#39;</span><span class="p">)</span>
 
     <span class="k">end program </span><span class="n">test</span>

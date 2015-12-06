@@ -117,6 +117,7 @@
   <div class="row">
     <div class="col-lg-3">
     
+<div id="sidebar">
   
   
   
@@ -125,11 +126,13 @@
   
   
   <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Modules</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../module/pyplot_module.html">pyplot_module</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods">Modules</a></h3></div>
+    <div id="mods" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/pyplot_module.html">pyplot_module</a>
+          
+        </div>
     </div>
   </div>
   
@@ -157,17 +160,20 @@
   <hr>
   
   <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title">All Source Files</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../sourcefile/pyplot_module.f90.html">pyplot_module.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test.f90.html">test.f90</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles">All Source Files</a></h3></div>
+    <div id="allfiles" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../sourcefile/pyplot_module.f90.html">pyplot_module.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/test.f90.html">test.f90</a>
+          
+        </div>
     </div>
   </div>
   
-  
+</div>
+
     </div>
     <div class="col-lg-9" id='text'>
     
@@ -581,7 +587,7 @@
 <span class="c">!</span>
 <span class="c">! Add a bar plot.</span>
 
-    <span class="k">subroutine </span><span class="n">add_bar</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+    <span class="k">subroutine </span><span class="n">add_bar</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">yerr</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>            <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">left</span>          <span class="c">!! left bar values</span>
@@ -590,36 +596,42 @@
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">width</span>         <span class="c">!! width values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">bottom</span>        <span class="c">!! bottom values</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>         <span class="c">!! plot color</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">yerr</span>          <span class="c">!! yerr values</span>
 
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>          <span class="c">!! x axis values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>          <span class="c">!! y axis values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">wstr</span>          <span class="c">!! width values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">bstr</span>          <span class="c">!! bottom values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">plt_str</span>       <span class="c">!! plot string</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>   <span class="c">!! x axis name</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>   <span class="c">!! y axis name</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">wname</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>   <span class="c">!! width name</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">bname</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>   <span class="c">!! bottom name</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>               <span class="c">!! x axis values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>               <span class="c">!! y axis values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">wstr</span>               <span class="c">!! width values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">bstr</span>               <span class="c">!! bottom values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">plt_str</span>            <span class="c">!! plot string</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">yerr_str</span>           <span class="c">!!  yerr values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>        <span class="c">!! x axis name</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>        <span class="c">!! y axis name</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">wname</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>        <span class="c">!! width name</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">bname</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>        <span class="c">!! bottom name</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yerrname</span> <span class="o">=</span> <span class="s1">&#39;yerr&#39;</span>  <span class="c">!! yerr name</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
 
         <span class="c">!convert the arrays to strings:</span>
-                             <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-                             <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">ystr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>  <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">wstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bottom</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="n">bstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+                             <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">left</span><span class="p">,</span>   <span class="n">xstr</span><span class="p">,</span>     <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+                             <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">ystr</span><span class="p">,</span>     <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>  <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">width</span><span class="p">,</span>  <span class="n">wstr</span><span class="p">,</span>     <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bottom</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="n">bstr</span><span class="p">,</span>     <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yerr</span><span class="p">))</span>   <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">yerr</span><span class="p">,</span>   <span class="n">yerr_str</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
 
         <span class="c">!write the arrays:</span>
                              <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">xstr</span><span class="p">)</span>
                              <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">ystr</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>  <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">wname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">wstr</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bottom</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">bname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">bstr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yerr</span><span class="p">))</span>   <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">yerrname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">yerr_str</span><span class="p">)</span>
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
         <span class="c">!create the plot string:</span>
         <span class="n">plt_str</span> <span class="o">=</span> <span class="s1">&#39;ax.bar(&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                   <span class="s1">&#39;left=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                   <span class="s1">&#39;height=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yerr</span><span class="p">))</span>   <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;yerr=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">yerrname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>  <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;width=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">wname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bottom</span><span class="p">))</span> <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;bottom=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">bstr</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">color</span><span class="p">))</span>  <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;color=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span>
@@ -720,7 +732,6 @@
     <span class="kt">logical</span><span class="p">,</span>                       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">use_numpy</span> <span class="c">!! activate numpy python module usage</span>
 
     <span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">i</span>         <span class="c">!! counter</span>
-    <span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">j</span>         <span class="c">!! counter</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">tmp</span>       <span class="c">!! dummy string</span>
 
     <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>

@@ -122,23 +122,26 @@
   <div class="row">
     <div class="col-lg-3">
     
+<div id="sidebar">
   
   
   
   <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Variables</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/pyplot.html#variable-str">str</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy">use_numpy</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
+    <div id="vars" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../type/pyplot.html#variable-str">str</a>
+        
+        <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
+        
+        <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy">use_numpy</a>
+        
+        <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
+        
+        <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
+        
+      </div>
     </div>
   </div>
   
@@ -159,27 +162,29 @@
   
   
   <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Type-Bound Procedures</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-initialize">initialize</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-savefig">savefig</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-destroy">destroy</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-execute">execute</a>
-      
-      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_str">add_str</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs">Type-Bound Procedures</a></h3></div>
+    <div id="boundprocs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-initialize">initialize</a>
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-savefig">savefig</a>
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-destroy">destroy</a>
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-execute">execute</a>
+          
+          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_str">add_str</a>
+          
+        </div>
     </div>
   </div>
   
@@ -196,15 +201,18 @@
   <hr>
   
   <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title">All Derived Types</h3></div>
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/pyplot.html">pyplot</a>
-      
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes">All Derived Types</a></h3></div>
+    <div id="alltypes" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../type/pyplot.html">pyplot</a>
+          
+        </div>
     </div>
   </div>
   
-  
+</div>
+
     </div>
     
     <div class="col-lg-9" id='text'>
@@ -1234,7 +1242,7 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
          
     
     <h3>
-private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color)
+private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr)
     
     
     
@@ -1355,6 +1363,21 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
   
   <td></td><td>::</td>
   <td><strong>color</strong></td><td><p>plot color</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>yerr</strong></td><td><p>yerr values</p></td>
   
 </tr>
 
