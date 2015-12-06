@@ -39,6 +39,7 @@
         logical :: show_legend = .false.     !! show legend into plot
         logical :: use_numpy   = .true.      !! use numpy python module
         logical :: mplot3d     = .false.     !! it is a 3d plot
+        logical :: polar       = .false.     !! it is a polar plot
         logical :: axis_equal  = .false.     !! equal scale on each axis
 
     contains
@@ -99,7 +100,7 @@
 
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
-                          legend_fontsize, mplot3d, axis_equal)
+                          legend_fontsize, mplot3d, axis_equal, polar)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -116,8 +117,9 @@
     integer,               intent(in), optional :: ytick_labelsize !! size of y axis tick lables
     integer,               intent(in), optional :: ztick_labelsize !! size of z axis tick lables
     integer,               intent(in), optional :: legend_fontsize !! size of legend font
-    logical,               intent(in), optional :: mplot3d         !! set true for 3d plots
+    logical,               intent(in), optional :: mplot3d         !! set true for 3d plots (cannot use with polar)
     logical,               intent(in), optional :: axis_equal      !! set true for axis = 'equal'
+    logical,               intent(in), optional :: polar           !! set true for polar plots (cannot use with mplot3d)
 
     character(len=max_int_len)  :: width_str                    !! figure width dummy string
     character(len=max_int_len)  :: height_str                   !! figure height dummy string
@@ -149,6 +151,11 @@
         me%mplot3d = mplot3d
     else
         me%mplot3d = .false.
+    end if
+    if (present(polar)) then
+        me%polar = polar
+    else
+        me%polar = .false.
     end if
     if (present(axis_equal)) then
         me%axis_equal = axis_equal
@@ -191,6 +198,8 @@
 
     if (me%mplot3d) then
         call me%add_str('ax = fig.gca(projection=''3d'')')
+    elseif (me%polar) then
+        call me%add_str('ax = fig.gca(projection=''polar'')')
     else
         call me%add_str('ax = fig.gca()')
     end if

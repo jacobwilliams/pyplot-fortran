@@ -139,6 +139,8 @@
         
         <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
         
+        <a class="list-group-item" href="../type/pyplot.html#variable-polar">polar</a>
+        
         <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
         
       </div>
@@ -296,6 +298,20 @@
   
 <tr>
   
+  <td><span class="anchor" id="variable-polar"></span>logical,</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>polar</strong></td><td> =</td><td>.false.</td><td><p>it is a polar plot</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-axis_equal"></span>logical,</td>
   
   <td>private</td>
@@ -339,7 +355,7 @@
          
     
     <h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar)
     
     
     
@@ -594,7 +610,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>mplot3d</strong></td><td><p>set true for 3d plots</p></td>
+  <td><strong>mplot3d</strong></td><td><p>set true for 3d plots (cannot use with polar)</p></td>
   
 </tr>
 
@@ -610,6 +626,21 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
   <td></td><td>::</td>
   <td><strong>axis_equal</strong></td><td><p>set true for axis = 'equal'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>polar</strong></td><td><p>set true for polar plots (cannot use with mplot3d)</p></td>
   
 </tr>
 
@@ -1841,6 +1872,7 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">show_legend</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! show legend into plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">use_numpy</span>   <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>      <span class="c">!! use numpy python module</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">mplot3d</span>     <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a 3d plot</span>
+        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">polar</span>       <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a polar plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axis_equal</span>  <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! equal scale on each axis</span>
 
     <span class="k">contains</span>

@@ -14,11 +14,11 @@
 
     real(wp), dimension(100) :: x     !! x values
     real(wp), dimension(100) :: yerr  !! error values for bar chart
-    real(wp), dimension(100) :: sx  !! sin(x) values
-    real(wp), dimension(100) :: cx  !! cos(x) values
-    real(wp), dimension(100) :: tx  !! sin(x)*cos(x) values
-    type(pyplot)             :: plt !! pytplot handler
-    integer                  :: i   !! counter
+    real(wp), dimension(100) :: sx    !! sin(x) values
+    real(wp), dimension(100) :: cx    !! cos(x) values
+    real(wp), dimension(100) :: tx    !! sin(x)*cos(x) values
+    type(pyplot)             :: plt   !! pytplot handler
+    integer                  :: i     !! counter
 
     !generate some data:
     x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
