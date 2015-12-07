@@ -28,7 +28,7 @@
     yerr = abs(sx*.25_wp)
 
     !2d line plot:
-    call plt%initialize(grid=.true.,xlabel='angle (rad)',&
+    call plt%initialize(grid=.true.,xlabel='angle (rad)',figsize=[20,10],&
                         title='plot test',legend=.true.,axis_equal=.true.)
     call plt%add_plot(x,sx,label='$\sin (x)$',linestyle='b-o',markersize=5,linewidth=2)
     call plt%add_plot(x,cx,label='$\cos (x)$',linestyle='r-o',markersize=5,linewidth=2)
@@ -38,7 +38,7 @@
     !bar chart:
     tx = 0.1_wp !for bar width
     call plt%initialize(grid=.true.,xlabel='angle (rad)',&
-                        title='bar test',legend=.true.,figsize=[20,5],&
+                        title='bar test',legend=.true.,figsize=[20,10],&
                         font_size = 20,&
                         axes_labelsize = 20,&
                         xtick_labelsize = 20,&
