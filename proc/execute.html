@@ -401,6 +401,9 @@ private subroutine execute(me, pyfile)
         <span class="c">!write to the file:</span>
         <span class="k">write</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="n">me</span><span class="p">%</span><span class="n">str</span>
 
+        <span class="c">!to ensure that the file is there for the next command line call:</span>
+        <span class="nb">flush</span><span class="p">(</span><span class="n">iunit</span><span class="p">)</span>
+
         <span class="c">!run the file using python:</span>
         <span class="k">call </span><span class="nb">execute_command_line</span><span class="p">(</span><span class="n">python_exe</span><span class="o">//</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="k">file</span><span class="p">)</span>
 
