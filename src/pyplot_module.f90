@@ -652,6 +652,9 @@
         !write to the file:
         write(iunit, '(A)') me%str
 
+        !to ensure that the file is there for the next command line call:
+        flush(iunit)
+
         !run the file using python:
         call execute_command_line(python_exe//' '//file)
 
