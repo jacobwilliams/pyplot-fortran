@@ -223,7 +223,7 @@
 !
 ! Add an x,y plot.
 
-    subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth)
+    subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim)
 
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! x values
@@ -232,15 +232,23 @@
     character(len=*),       intent (in)           :: linestyle    !! style of the plot line
     integer,                intent (in), optional :: markersize   !! size of the plot markers
     integer,                intent (in), optional :: linewidth    !! width of the plot line
+    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
 
-    character(len=:), allocatable :: xstr         !! x values strinfied
-    character(len=:), allocatable :: ystr         !! y values strinfied
+    character(len=:), allocatable :: xstr         !! x values stringified
+    character(len=:), allocatable :: ystr         !! y values stringified
+    character(len=:), allocatable :: xlimstr      !! xlim values stringified
+    character(len=:), allocatable :: ylimstr      !! ylim values stringified
     character(len=max_int_len)    :: imark        !! actual markers size
     character(len=max_int_len)    :: iline        !! actual line width
     character(len=*), parameter   :: xname = 'x'  !! x variable name for script
     character(len=*), parameter   :: yname = 'y'  !! y variable name for script
 
     if (allocated(me%str)) then
+
+        !axis limits (optional):
+        if (present(xlim)) call vec_to_string(xlim, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, ylimstr, me%use_numpy)
 
         !convert the arrays to strings:
         call vec_to_string(x, xstr, me%use_numpy)
@@ -263,6 +271,11 @@
                         'linewidth='//trim(adjustl(iline))//','//&
                         'markersize='//trim(adjustl(imark))//','//&
                         'label="'//trim(label)//'")')
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
         call me%add_str('')
 
     else
@@ -414,7 +427,7 @@
 !
 ! Add a bar plot.
 
-    subroutine add_bar(me, left, height, label, width, bottom, color, yerr)
+    subroutine add_bar(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim)
 
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
     real(wp), dimension(:), intent(in)           :: left          !! left bar values
@@ -424,9 +437,14 @@
     real(wp), dimension(:), intent(in), optional :: bottom        !! bottom values
     character(len=*),       intent(in), optional :: color         !! plot color
     real(wp), dimension(:), intent(in), optional :: yerr          !! yerr values
+    character(len=*),       intent(in), optional :: align         !! default: 'center'
+    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
 
     character(len=:), allocatable :: xstr               !! x axis values stringified
     character(len=:), allocatable :: ystr               !! y axis values stringified
+    character(len=:), allocatable :: xlimstr            !! xlim values stringified
+    character(len=:), allocatable :: ylimstr            !! ylim values stringified
     character(len=:), allocatable :: wstr               !! width values stringified
     character(len=:), allocatable :: bstr               !! bottom values stringified
     character(len=:), allocatable :: plt_str            !! plot string
@@ -438,6 +456,10 @@
     character(len=*), parameter   :: yerrname = 'yerr'  !! yerr name
 
     if (allocated(me%str)) then
+
+        !axis limits (optional):
+        if (present(xlim)) call vec_to_string(xlim, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, ylimstr, me%use_numpy)
 
         !convert the arrays to strings:
                              call vec_to_string(left,   xstr,     me%use_numpy)
@@ -462,10 +484,16 @@
         if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
         if (present(bottom)) plt_str=plt_str//'bottom='//trim(bstr)//','
         if (present(color))  plt_str=plt_str//'color="'//trim(color)//'",'
+        if (present(align))  plt_str=plt_str//'align="'//trim(align)//'",'
         plt_str=plt_str//'label="'//trim(label)//'")'
 
         !write the plot statement:
         call me%add_str(plt_str)
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
         call me%add_str('')
 
     else
