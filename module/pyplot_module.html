@@ -1275,7 +1275,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_plot"></span><h3>
-private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth)
+private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim)
     
     
     
@@ -1398,6 +1398,36 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
   
   <td></td><td>::</td>
   <td><strong>linewidth</strong></td><td><p>width of the plot line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
   
 </tr>
 
@@ -1797,7 +1827,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_bar"></span><h3>
-private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr)
+private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim)
     
     
     
@@ -1935,6 +1965,51 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
   
   <td>dimension(:)</td><td>::</td>
   <td><strong>yerr</strong></td><td><p>yerr values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>align</strong></td><td><p>default: 'center'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
   
 </tr>
 

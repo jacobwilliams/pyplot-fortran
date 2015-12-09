@@ -137,6 +137,10 @@
         
         <a class="list-group-item" href="../proc/add_bar.html#variable-ystr%7E4">ystr</a>
         
+        <a class="list-group-item" href="../proc/add_bar.html#variable-xlimstr%7E2">xlimstr</a>
+        
+        <a class="list-group-item" href="../proc/add_bar.html#variable-ylimstr%7E2">ylimstr</a>
+        
         <a class="list-group-item" href="../proc/add_bar.html#variable-wstr">wstr</a>
         
         <a class="list-group-item" href="../proc/add_bar.html#variable-bstr">bstr</a>
@@ -227,7 +231,7 @@
     
     <div class="col-lg-9" id='text'>
     <h2>
-private subroutine add_bar(me, left, height, label, width, bottom, color, yerr)
+private subroutine add_bar(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim)
     
     
     
@@ -366,6 +370,51 @@ private subroutine add_bar(me, left, height, label, width, bottom, color, yerr)
   
   <td>dimension(:)</td><td>::</td>
   <td><strong>yerr</strong></td><td><p>yerr values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-align"></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>align</strong></td><td><p>default: 'center'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xlim%7E2"></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ylim%7E2"></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
   
 </tr>
 
@@ -552,6 +601,34 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
+  <td><span class="anchor" id="variable-xlimstr%7E2"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>xlimstr</strong></td><td></td><td></td><td><p>xlim values stringified</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ylimstr%7E2"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>ylimstr</strong></td><td></td><td></td><td><p>ylim values stringified</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-wstr"></span>character(len=:),</td>
   
   <td>public,</td>
@@ -695,7 +772,7 @@ implementation in a submodule of an interface in a parent module.</p>
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">add_bar</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">yerr</span><span class="p">)</span>
+    <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">add_bar</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">yerr</span><span class="p">,</span> <span class="n">align</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>            <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">left</span>          <span class="c">!! left bar values</span>
@@ -705,9 +782,14 @@ implementation in a submodule of an interface in a parent module.</p>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">bottom</span>        <span class="c">!! bottom values</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>         <span class="c">!! plot color</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">yerr</span>          <span class="c">!! yerr values</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">align</span>         <span class="c">!! default: &#39;center&#39;</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xlim</span>         <span class="c">!! x-axis range</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">ylim</span>         <span class="c">!! y-axis range</span>
 
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>               <span class="c">!! x axis values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>               <span class="c">!! y axis values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xlimstr</span>            <span class="c">!! xlim values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ylimstr</span>            <span class="c">!! ylim values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">wstr</span>               <span class="c">!! width values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">bstr</span>               <span class="c">!! bottom values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">plt_str</span>            <span class="c">!! plot string</span>
@@ -719,6 +801,10 @@ implementation in a submodule of an interface in a parent module.</p>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yerrname</span> <span class="o">=</span> <span class="s1">&#39;yerr&#39;</span>  <span class="c">!! yerr name</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
+
+        <span class="c">!axis limits (optional):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xlim</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">xlim</span><span class="p">,</span> <span class="n">xlimstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">ylim</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">ylim</span><span class="p">,</span> <span class="n">ylimstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
 
         <span class="c">!convert the arrays to strings:</span>
                              <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">left</span><span class="p">,</span>   <span class="n">xstr</span><span class="p">,</span>     <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
@@ -743,10 +829,16 @@ implementation in a submodule of an interface in a parent module.</p>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>  <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;width=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">wname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bottom</span><span class="p">))</span> <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;bottom=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">bstr</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">color</span><span class="p">))</span>  <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;color=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">align</span><span class="p">))</span>  <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;align=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">align</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span>
         <span class="n">plt_str</span><span class="o">=</span><span class="n">plt_str</span><span class="o">//</span><span class="s1">&#39;label=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span>
 
         <span class="c">!write the plot statement:</span>
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">plt_str</span><span class="p">)</span>
+
+        <span class="c">!axis limits:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">xlimstr</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_xlim(&#39;</span><span class="o">//</span><span class="n">xlimstr</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">ylimstr</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_ylim(&#39;</span><span class="o">//</span><span class="n">ylimstr</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>

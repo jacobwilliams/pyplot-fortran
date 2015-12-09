@@ -137,6 +137,10 @@
         
         <a class="list-group-item" href="../proc/add_plot.html#variable-ystr">ystr</a>
         
+        <a class="list-group-item" href="../proc/add_plot.html#variable-xlimstr">xlimstr</a>
+        
+        <a class="list-group-item" href="../proc/add_plot.html#variable-ylimstr">ylimstr</a>
+        
         <a class="list-group-item" href="../proc/add_plot.html#variable-imark">imark</a>
         
         <a class="list-group-item" href="../proc/add_plot.html#variable-iline">iline</a>
@@ -217,7 +221,7 @@
     
     <div class="col-lg-9" id='text'>
     <h2>
-private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth)
+private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim)
     
     
     
@@ -344,6 +348,36 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth)
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xlim"></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ylim"></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -372,41 +406,41 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth)
 <polygon fill="none" stroke="black" points="54,-48 2.13163e-14,-48 0,-22 54,-22 54,-48"/>
 <text text-anchor="middle" x="27" y="-32.55" font-family="Helvetica,sans-Serif" font-size="10.50">add_plot</text>
 </g>
-<!-- proc~optional_int_to_string -->
-<g id="node2" class="node"><title>proc~optional_int_to_string</title>
-<a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="205,-70 91,-70 91,-44 205,-44 205,-70"/>
-<text text-anchor="middle" x="148" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
-</a>
-</g>
-<!-- proc~add_plot&#45;&gt;proc~optional_int_to_string -->
-<g id="edge4" class="edge"><title>proc~add_plot&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="black" d="M54.1548,-39.9372C62.0348,-41.37 71.0125,-43.0023 80.2184,-44.6761"/>
-<polygon fill="black" stroke="black" points="79.7913,-48.1557 90.2562,-46.5011 81.0436,-41.2686 79.7913,-48.1557"/>
-</g>
 <!-- proc~vec_to_string -->
-<g id="node3" class="node"><title>proc~vec_to_string</title>
+<g id="node2" class="node"><title>proc~vec_to_string</title>
 <a xlink:href="../proc/vec_to_string.html" xlink:title="vec_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="186,-26 110,-26 110,-1.24345e-14 186,-3.55271e-15 186,-26"/>
-<text text-anchor="middle" x="148" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="186,-70 110,-70 110,-44 186,-44 186,-70"/>
+<text text-anchor="middle" x="148" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
 </a>
 </g>
 <!-- proc~add_plot&#45;&gt;proc~vec_to_string -->
-<g id="edge6" class="edge"><title>proc~add_plot&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="black" d="M54.1548,-30.0628C67.6439,-27.6102 84.3492,-24.5729 99.9099,-21.7436"/>
-<polygon fill="black" stroke="black" points="100.712,-25.1552 109.925,-19.9227 99.4602,-18.2681 100.712,-25.1552"/>
+<g id="edge4" class="edge"><title>proc~add_plot&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="black" d="M54.1548,-39.9372C67.6439,-42.3898 84.3492,-45.4271 99.9099,-48.2564"/>
+<polygon fill="black" stroke="black" points="99.4602,-51.7319 109.925,-50.0773 100.712,-44.8448 99.4602,-51.7319"/>
+</g>
+<!-- proc~optional_int_to_string -->
+<g id="node3" class="node"><title>proc~optional_int_to_string</title>
+<a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="205,-26 91,-26 91,-1.24345e-14 205,-3.55271e-15 205,-26"/>
+<text text-anchor="middle" x="148" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
+</a>
+</g>
+<!-- proc~add_plot&#45;&gt;proc~optional_int_to_string -->
+<g id="edge6" class="edge"><title>proc~add_plot&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="black" d="M54.1548,-30.0628C62.0348,-28.63 71.0125,-26.9977 80.2184,-25.3239"/>
+<polygon fill="black" stroke="black" points="81.0436,-28.7314 90.2562,-23.4989 79.7913,-21.8443 81.0436,-28.7314"/>
 </g>
 <!-- proc~integer_to_string -->
 <g id="node4" class="node"><title>proc~integer_to_string</title>
 <a xlink:href="../proc/integer_to_string.html" xlink:title="integer_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="335,-70 243,-70 243,-44 335,-44 335,-70"/>
-<text text-anchor="middle" x="289" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="335,-26 243,-26 243,-1.24345e-14 335,-3.55271e-15 335,-26"/>
+<text text-anchor="middle" x="289" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
 </a>
 </g>
 <!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
 <g id="edge2" class="edge"><title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
-<path fill="none" stroke="black" d="M205.757,-57C214.503,-57 223.52,-57 232.244,-57"/>
-<polygon fill="black" stroke="black" points="232.318,-60.5001 242.318,-57 232.318,-53.5001 232.318,-60.5001"/>
+<path fill="none" stroke="black" d="M205.757,-13C214.503,-13 223.52,-13 232.244,-13"/>
+<polygon fill="black" stroke="black" points="232.318,-16.5001 242.318,-13 232.318,-9.5001 232.318,-16.5001"/>
 </g>
 </g>
 </svg>
@@ -527,7 +561,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
   <td>public,</td>
   <td>allocatable</td><td>::</td>
-  <td><strong>xstr</strong></td><td></td><td></td><td><p>x values strinfied</p></td>
+  <td><strong>xstr</strong></td><td></td><td></td><td><p>x values stringified</p></td>
   
 </tr>
 
@@ -541,7 +575,35 @@ implementation in a submodule of an interface in a parent module.</p>
   
   <td>public,</td>
   <td>allocatable</td><td>::</td>
-  <td><strong>ystr</strong></td><td></td><td></td><td><p>y values strinfied</p></td>
+  <td><strong>ystr</strong></td><td></td><td></td><td><p>y values stringified</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xlimstr"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>xlimstr</strong></td><td></td><td></td><td><p>xlim values stringified</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ylimstr"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>ylimstr</strong></td><td></td><td></td><td><p>ylim values stringified</p></td>
   
 </tr>
 
@@ -624,7 +686,7 @@ implementation in a submodule of an interface in a parent module.</p>
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">add_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">markersize</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">)</span>
+    <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">add_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">markersize</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
@@ -633,15 +695,23 @@ implementation in a submodule of an interface in a parent module.</p>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">linestyle</span>    <span class="c">!! style of the plot line</span>
     <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">markersize</span>   <span class="c">!! size of the plot markers</span>
     <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xlim</span>         <span class="c">!! x-axis range</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">ylim</span>         <span class="c">!! y-axis range</span>
 
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>         <span class="c">!! x values strinfied</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>         <span class="c">!! y values strinfied</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>         <span class="c">!! x values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>         <span class="c">!! y values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xlimstr</span>      <span class="c">!! xlim values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ylimstr</span>      <span class="c">!! ylim values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">imark</span>        <span class="c">!! actual markers size</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">iline</span>        <span class="c">!! actual line width</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>  <span class="c">!! x variable name for script</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>  <span class="c">!! y variable name for script</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
+
+        <span class="c">!axis limits (optional):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xlim</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">xlim</span><span class="p">,</span> <span class="n">xlimstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">ylim</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">ylim</span><span class="p">,</span> <span class="n">ylimstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
 
         <span class="c">!convert the arrays to strings:</span>
         <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
@@ -664,6 +734,11 @@ implementation in a submodule of an interface in a parent module.</p>
                         <span class="s1">&#39;linewidth=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">iline</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                         <span class="s1">&#39;markersize=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">imark</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                         <span class="s1">&#39;label=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+
+        <span class="c">!axis limits:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">xlimstr</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_xlim(&#39;</span><span class="o">//</span><span class="n">xlimstr</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">ylimstr</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_ylim(&#39;</span><span class="o">//</span><span class="n">ylimstr</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>
