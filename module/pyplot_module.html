@@ -1275,7 +1275,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_plot"></span><h3>
-private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim)
+private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale)
     
     
     
@@ -1428,6 +1428,36 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
   
   <td>dimension(2)</td><td>::</td>
   <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>xscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>yscale</strong></td><td></td>
   
 </tr>
 
@@ -1827,7 +1857,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_bar"></span><h3>
-private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim)
+private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale)
     
     
     
@@ -2010,6 +2040,36 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
   
   <td>dimension(2)</td><td>::</td>
   <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>xscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>yscale</strong></td><td></td>
   
 </tr>
 
