@@ -223,7 +223,7 @@
 !
 ! Add an x,y plot.
 
-    subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim)
+    subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale)
 
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! x values
@@ -234,6 +234,8 @@
     integer,                intent (in), optional :: linewidth    !! width of the plot line
     real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
     real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
+    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
 
     character(len=:), allocatable :: xstr         !! x values stringified
     character(len=:), allocatable :: ystr         !! y values stringified
@@ -275,6 +277,10 @@
         !axis limits:
         if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
         if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+        !axis scales:
+        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
 
         call me%add_str('')
 
@@ -427,7 +433,7 @@
 !
 ! Add a bar plot.
 
-    subroutine add_bar(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim)
+    subroutine add_bar(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale)
 
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
     real(wp), dimension(:), intent(in)           :: left          !! left bar values
@@ -440,6 +446,8 @@
     character(len=*),       intent(in), optional :: align         !! default: 'center'
     real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
     real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
+    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
 
     character(len=:), allocatable :: xstr               !! x axis values stringified
     character(len=:), allocatable :: ystr               !! y axis values stringified
@@ -493,6 +501,10 @@
         !axis limits:
         if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
         if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+        !axis scales:
+        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
 
         call me%add_str('')
 
