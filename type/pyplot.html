@@ -143,6 +143,8 @@
         
         <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
         
+        <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
+        
       </div>
     </div>
   </div>
@@ -320,6 +322,20 @@
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-real_fmt"></span>character(len=:),</td>
+  
+  <td>private,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>real_fmt</strong></td><td></td><td></td><td><p>real number formatting</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -355,7 +371,7 @@
          
     
     <h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt)
     
     
     
@@ -641,6 +657,21 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
   <td></td><td>::</td>
   <td><strong>polar</strong></td><td><p>set true for polar plots (cannot use with mplot3d)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>real_fmt</strong></td><td><p>format string for real numbers (examples: '(E30.16)' [default], '*')</p></td>
   
 </tr>
 
@@ -1126,7 +1157,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
          
     
     <h3>
-private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color)
+private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
     
     
     
@@ -1277,6 +1308,36 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   
   <td></td><td>::</td>
   <td><strong>color</strong></td><td><p>color of the contour line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>cmap</strong></td><td><p>colormap if filled=True (examples: 'jet', 'bone')</p></td>
   
 </tr>
 
@@ -2009,6 +2070,8 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">mplot3d</span>     <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a 3d plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">polar</span>       <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a polar plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axis_equal</span>  <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! equal scale on each axis</span>
+
+        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">real_fmt</span>  <span class="c">!! real number formatting</span>
 
     <span class="k">contains</span>
 

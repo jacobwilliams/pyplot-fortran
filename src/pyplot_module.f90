@@ -22,11 +22,11 @@
     character(len=*), parameter :: tmp_file = 'pyplot_module_temp_1234567890.py' !! Default name of the temporary file
                                                                                  !! (this can also be user-specified).
 
-    character(len=*), parameter :: python_exe   ='python'    !! The python executable name.
-    character(len=*), parameter :: int_fmt      = '(I10)'    !! integer format string
-    integer, parameter          :: max_int_len  = 10         !! max string length for integers
-    character(len=*), parameter :: real_fmt     = '(E30.16)' !! real number format string
-    integer, parameter          :: max_real_len = 30         !! max string length for reals
+    character(len=*), parameter :: python_exe       ='python'    !! The python executable name.
+    character(len=*), parameter :: int_fmt          = '(I10)'    !! integer format string
+    integer, parameter          :: max_int_len      = 10         !! max string length for integers
+    character(len=*), parameter :: real_fmt_default = '(E30.16)' !! default real number format string
+    integer, parameter          :: max_real_len     = 30         !! max string length for reals
 
     type, public :: pyplot
 
@@ -41,6 +41,8 @@
         logical :: mplot3d     = .false.     !! it is a 3d plot
         logical :: polar       = .false.     !! it is a polar plot
         logical :: axis_equal  = .false.     !! equal scale on each axis
+
+        character(len=:),allocatable :: real_fmt  !! real number formatting
 
     contains
 
@@ -73,7 +75,8 @@
 
     class(pyplot),intent(inout) :: me !! pyplot handler
 
-    if (allocated(me%str)) deallocate(me%str)
+    if (allocated(me%str))      deallocate(me%str)
+    if (allocated(me%real_fmt)) deallocate(me%real_fmt)
 
     end subroutine destroy
 !*****************************************************************************************
@@ -100,7 +103,7 @@
 
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
-                          legend_fontsize, mplot3d, axis_equal, polar)
+                          legend_fontsize, mplot3d, axis_equal, polar, real_fmt)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -120,6 +123,7 @@
     logical,               intent(in), optional :: mplot3d         !! set true for 3d plots (cannot use with polar)
     logical,               intent(in), optional :: axis_equal      !! set true for axis = 'equal'
     logical,               intent(in), optional :: polar           !! set true for polar plots (cannot use with mplot3d)
+    character(len=*),      intent(in), optional :: real_fmt        !! format string for real numbers (examples: '(E30.16)' [default], '*')
 
     character(len=max_int_len)  :: width_str                    !! figure width dummy string
     character(len=max_int_len)  :: height_str                   !! figure height dummy string
@@ -129,6 +133,7 @@
     character(len=max_int_len)  :: ytick_labelsize_str          !! size of x axis tick labels dummy string
     character(len=max_int_len)  :: ztick_labelsize_str          !! size of z axis tick labels dummy string
     character(len=max_int_len)  :: legend_fontsize_str          !! size of legend font dummy string
+    
     character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
 
     call me%destroy()
@@ -161,6 +166,11 @@
         me%axis_equal = axis_equal
     else
         me%axis_equal = .false.
+    end if
+    if (present(real_fmt)) then
+        me%real_fmt = trim(adjustl(real_fmt))
+    else
+        me%real_fmt = real_fmt_default
     end if
 
     call optional_int_to_string(font_size, font_size_str, default_font_size_str)
@@ -249,12 +259,12 @@
     if (allocated(me%str)) then
 
         !axis limits (optional):
-        if (present(xlim)) call vec_to_string(xlim, xlimstr, me%use_numpy)
-        if (present(ylim)) call vec_to_string(ylim, ylimstr, me%use_numpy)
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
 
         !convert the arrays to strings:
-        call vec_to_string(x, xstr, me%use_numpy)
-        call vec_to_string(y, ystr, me%use_numpy)
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+        call vec_to_string(y, me%real_fmt, ystr, me%use_numpy)
 
         !get optional inputs (if not present, set default value):
         call optional_int_to_string(markersize, imark, '3')
@@ -298,7 +308,7 @@
 !
 !@note This requires `use_numpy` to be True.
 
-    subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color)
+    subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
 
     class(pyplot),           intent (inout)        :: me           !! pyplot handler
     real(wp),dimension(:),   intent (in)           :: x            !! x values
@@ -309,6 +319,8 @@
     integer,                 intent (in), optional :: linewidth    !! width of the plot line
     real(wp),dimension(:),   intent (in), optional :: levels       !! contour levels to plot
     character(len=*),        intent (in), optional :: color        !! color of the contour line
+    logical,                 intent (in), optional :: filled       !! use filled control (default=False)
+    character(len=*),        intent (in), optional :: cmap         !! colormap if filled=True (examples: 'jet', 'bone')
 
     character(len=:), allocatable :: xstr          !! x values strinfied
     character(len=:), allocatable :: ystr          !! y values strinfied
@@ -322,14 +334,15 @@
     character(len=*), parameter   :: yname_ = 'Y'  !! Y variable name for contour
     character(len=*), parameter   :: zname_ = 'Z'  !! Z variable name for contour
     character(len=:), allocatable :: extras        !! optional stuff
+    character(len=:), allocatable :: contourfunc   !! 'contour' or 'contourf'
 
     if (allocated(me%str)) then
 
         !convert the arrays to strings:
-        call vec_to_string(x, xstr, me%use_numpy)
-        call vec_to_string(y, ystr, me%use_numpy)
-        call matrix_to_string(z, zstr, me%use_numpy)
-        if (present(levels)) call vec_to_string(levels, levelstr, me%use_numpy)
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+        call vec_to_string(y, me%real_fmt, ystr, me%use_numpy)
+        call matrix_to_string(z, me%real_fmt, zstr, me%use_numpy)
+        if (present(levels)) call vec_to_string(levels, me%real_fmt, levelstr, me%use_numpy)
 
         !get optional inputs (if not present, set default value):
         call optional_int_to_string(linewidth, iline, '3')
@@ -349,9 +362,16 @@
         if (present(levels))     extras = extras//','//'levels='//levelstr
         if (present(color))      extras = extras//','//'colors="'//color//'"'
         if (present(linewidth))  extras = extras//','//'linewidths='//trim(adjustl(iline))
+        if (present(cmap))       extras = extras//','//'cmap="'//cmap//'"'
+
+        !filled or regular:
+        contourfunc = 'contour'  !default
+        if (present(filled)) then
+            if (filled) contourfunc = 'contourf'  !filled contour
+        end if
 
         !write the plot statement:
-        call me%add_str('CS = ax.contour('//xname_//','//yname_//','//zname_//','//&
+        call me%add_str('CS = ax.'//contourfunc//'('//xname_//','//yname_//','//zname_//','//&
                                         'label="'//trim(label)//'",'//&
                                         'linestyles="'//trim(adjustl(linestyle))//'"'//&
                                         extras//')')
@@ -396,9 +416,9 @@
     if (allocated(me%str)) then
 
         !convert the arrays to strings:
-        call vec_to_string(x, xstr, me%use_numpy)
-        call vec_to_string(y, ystr, me%use_numpy)
-        call vec_to_string(z, zstr, me%use_numpy)
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+        call vec_to_string(y, me%real_fmt, ystr, me%use_numpy)
+        call vec_to_string(z, me%real_fmt, zstr, me%use_numpy)
 
         !get optional inputs (if not present, set default value):
         call optional_int_to_string(markersize, imark, '3')
@@ -466,15 +486,15 @@
     if (allocated(me%str)) then
 
         !axis limits (optional):
-        if (present(xlim)) call vec_to_string(xlim, xlimstr, me%use_numpy)
-        if (present(ylim)) call vec_to_string(ylim, ylimstr, me%use_numpy)
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
 
         !convert the arrays to strings:
-                             call vec_to_string(left,   xstr,     me%use_numpy)
-                             call vec_to_string(height, ystr,     me%use_numpy)
-        if (present(width))  call vec_to_string(width,  wstr,     me%use_numpy)
-        if (present(bottom)) call vec_to_string(bottom, bstr,     me%use_numpy)
-        if (present(yerr))   call vec_to_string(yerr,   yerr_str, me%use_numpy)
+                             call vec_to_string(left,   me%real_fmt, xstr,     me%use_numpy)
+                             call vec_to_string(height, me%real_fmt, ystr,     me%use_numpy)
+        if (present(width))  call vec_to_string(width,  me%real_fmt, wstr,     me%use_numpy)
+        if (present(bottom)) call vec_to_string(bottom, me%real_fmt, bstr,     me%use_numpy)
+        if (present(yerr))   call vec_to_string(yerr,   me%real_fmt, yerr_str, me%use_numpy)
 
         !write the arrays:
                              call me%add_str(trim(xname)//' = '//xstr)
@@ -562,9 +582,10 @@
 !
 ! Real vector to string.
 
-    subroutine vec_to_string(v, str, use_numpy)
+    subroutine vec_to_string(v, fmt, str, use_numpy)
 
     real(wp), dimension(:),        intent(in)  :: v         !! real values
+    character(len=*),              intent(in)  :: fmt       !! real format string
     character(len=:), allocatable, intent(out) :: str       !! real values stringified
     logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
 
@@ -574,7 +595,11 @@
 
     str = '['
     do i=1, size(v)
-        write(tmp, real_fmt, iostat=istat) v(i)
+        if (fmt=='*') then
+            write(tmp, *, iostat=istat) v(i)
+        else
+            write(tmp, fmt, iostat=istat) v(i)
+        end if
         if (istat/=0) error stop 'Error in vec_to_string'
         str = str//trim(adjustl(tmp))
         if (i<size(v)) str = str // ','
@@ -592,9 +617,10 @@
 !
 ! Real matrix (rank 2) to string.
 
-    subroutine matrix_to_string(v, str, use_numpy)
+    subroutine matrix_to_string(v, fmt, str, use_numpy)
 
     real(wp), dimension(:,:),      intent(in)  :: v         !! real values
+    character(len=*),              intent(in)  :: fmt       !! real format string
     character(len=:), allocatable, intent(out) :: str       !! real values stringified
     logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
 
@@ -603,9 +629,9 @@
 
     str = '['
     do i=1, size(v,1)  !rows
-        call vec_to_string(v(i,:), tmp, use_numpy)  !one row at a time
+        call vec_to_string(v(i,:), fmt, tmp, use_numpy)  !one row at a time
         str = str//trim(adjustl(tmp))
-        if (i<size(v)) str = str // ','
+        if (i<size(v,1)) str = str // ','
     end do
     str = str // ']'
 

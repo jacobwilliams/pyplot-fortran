@@ -209,7 +209,7 @@
     
     <div class="col-lg-9" id='text'>
     <h2>
-private subroutine matrix_to_string(v, str, use_numpy)
+private subroutine matrix_to_string(v, fmt, str, use_numpy)
     
     
     
@@ -243,6 +243,21 @@ private subroutine matrix_to_string(v, str, use_numpy)
   
   <td>dimension(:,:)</td><td>::</td>
   <td><strong>v</strong></td><td><p>real values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fmt%7E2"></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fmt</strong></td><td><p>real format string</p></td>
   
 </tr>
 
@@ -600,9 +615,10 @@ implementation in a submodule of an interface in a parent module.</p>
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">matrix_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">)</span>
+    <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">matrix_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">)</span>
 
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:,:),</span>      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">v</span>         <span class="c">!! real values</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>              <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">fmt</span>       <span class="c">!! real format string</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">str</span>       <span class="c">!! real values stringified</span>
     <span class="kt">logical</span><span class="p">,</span>                       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">use_numpy</span> <span class="c">!! activate numpy python module usage</span>
 
@@ -611,9 +627,9 @@ implementation in a submodule of an interface in a parent module.</p>
 
     <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>
     <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c">!rows</span>
-        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">)</span>  <span class="c">!one row at a time</span>
+        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">)</span>  <span class="c">!one row at a time</span>
         <span class="n">str</span> <span class="o">=</span> <span class="n">str</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">tmp</span><span class="p">))</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;,&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;,&#39;</span>
     <span class="k">end do</span>
 <span class="k">    </span><span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;]&#39;</span>
 

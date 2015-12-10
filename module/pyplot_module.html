@@ -145,7 +145,7 @@
         
         <a class="list-group-item" href="../module/pyplot_module.html#variable-max_int_len">max_int_len</a>
         
-        <a class="list-group-item" href="../module/pyplot_module.html#variable-real_fmt">real_fmt</a>
+        <a class="list-group-item" href="../module/pyplot_module.html#variable-real_fmt_default">real_fmt_default</a>
         
         <a class="list-group-item" href="../module/pyplot_module.html#variable-max_real_len">max_real_len</a>
         
@@ -594,11 +594,11 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-real_fmt"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-real_fmt_default"></span>character(len=*),</td>
   
   <td>private,</td>
   <td>parameter</td><td>::</td>
-  <td><strong>real_fmt</strong></td><td> =</td><td>'(E30.16)'</td><td><p>real number format string</p></td>
+  <td><strong>real_fmt_default</strong></td><td> =</td><td>'(E30.16)'</td><td><p>default real number format string</p></td>
   
 </tr>
 
@@ -732,6 +732,20 @@ implementation in a submodule of an interface in a parent module.</p>
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>axis_equal</strong></td><td> =</td><td>.false.</td><td><p>equal scale on each axis</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-real_fmt"></span>character(len=:),</td>
+  
+  <td>private,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>real_fmt</strong></td><td></td><td></td><td><p>real number formatting</p></td>
   
 </tr>
 
@@ -951,7 +965,7 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-initialize"></span><h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt)
     
     
     
@@ -1242,6 +1256,21 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>real_fmt</strong></td><td><p>format string for real numbers (examples: '(E30.16)' [default], '*')</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -1494,7 +1523,7 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_contour"></span><h3>
-private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color)
+private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
     
     
     
@@ -1647,6 +1676,36 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   
   <td></td><td>::</td>
   <td><strong>color</strong></td><td><p>color of the contour line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>cmap</strong></td><td><p>colormap if filled=True (examples: 'jet', 'bone')</p></td>
   
 </tr>
 
@@ -2290,7 +2349,7 @@ private subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-vec_to_string"></span><h3>
-private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, str, use_numpy)
+private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy)
     
     
     
@@ -2323,6 +2382,21 @@ private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, str
   
   <td>dimension(:)</td><td>::</td>
   <td><strong>v</strong></td><td><p>real values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fmt</strong></td><td><p>real format string</p></td>
   
 </tr>
 
@@ -2389,7 +2463,7 @@ private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, str
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-matrix_to_string"></span><h3>
-private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(v, str, use_numpy)
+private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(v, fmt, str, use_numpy)
     
     
     
@@ -2422,6 +2496,21 @@ private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(
   
   <td>dimension(:,:)</td><td>::</td>
   <td><strong>v</strong></td><td><p>real values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fmt</strong></td><td><p>real format string</p></td>
   
 </tr>
 

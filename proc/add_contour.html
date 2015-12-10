@@ -157,6 +157,8 @@
         
         <a class="list-group-item" href="../proc/add_contour.html#variable-extras">extras</a>
         
+        <a class="list-group-item" href="../proc/add_contour.html#variable-contourfunc">contourfunc</a>
+        
       </div>
     </div>
   </div>
@@ -229,7 +231,7 @@
     
     <div class="col-lg-9" id='text'>
     <h2>
-private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color)
+private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
     
     
     
@@ -383,6 +385,36 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
   
   <td></td><td>::</td>
   <td><strong>color</strong></td><td><p>color of the contour line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-filled"></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-cmap"></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>cmap</strong></td><td><p>colormap if filled=True (examples: 'jet', 'bone')</p></td>
   
 </tr>
 
@@ -745,6 +777,20 @@ implementation in a submodule of an interface in a parent module.</p>
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-contourfunc"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>contourfunc</strong></td><td></td><td></td><td><p>'contour' or 'contourf'</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -768,7 +814,7 @@ implementation in a submodule of an interface in a parent module.</p>
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">add_contour</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+    <div class="highlight"><pre>    <span class="k">subroutine </span><span class="n">add_contour</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filled</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>           <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>   <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
@@ -779,6 +825,8 @@ implementation in a submodule of an interface in a parent module.</p>
     <span class="kt">integer</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>   <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">levels</span>       <span class="c">!! contour levels to plot</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>        <span class="c">!! color of the contour line</span>
+    <span class="kt">logical</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">filled</span>       <span class="c">!! use filled control (default=False)</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">cmap</span>         <span class="c">!! colormap if filled=True (examples: &#39;jet&#39;, &#39;bone&#39;)</span>
 
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>          <span class="c">!! x values strinfied</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>          <span class="c">!! y values strinfied</span>
@@ -792,14 +840,15 @@ implementation in a submodule of an interface in a parent module.</p>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname_</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>  <span class="c">!! Y variable name for contour</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">zname_</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>  <span class="c">!! Z variable name for contour</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">extras</span>        <span class="c">!! optional stuff</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">contourfunc</span>   <span class="c">!! &#39;contour&#39; or &#39;contourf&#39;</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
 
         <span class="c">!convert the arrays to strings:</span>
-        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">ystr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-        <span class="k">call </span><span class="n">matrix_to_string</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">zstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">levels</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">levelstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">ystr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">matrix_to_string</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">zstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">levels</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">levelstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
 
         <span class="c">!get optional inputs (if not present, set default value):</span>
         <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">iline</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
@@ -819,9 +868,16 @@ implementation in a submodule of an interface in a parent module.</p>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">levels</span><span class="p">))</span>     <span class="n">extras</span> <span class="o">=</span> <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;levels=&#39;</span><span class="o">//</span><span class="n">levelstr</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">color</span><span class="p">))</span>      <span class="n">extras</span> <span class="o">=</span> <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;colors=&quot;&#39;</span><span class="o">//</span><span class="n">color</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">linewidth</span><span class="p">))</span>  <span class="n">extras</span> <span class="o">=</span> <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;linewidths=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">iline</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">cmap</span><span class="p">))</span>       <span class="n">extras</span> <span class="o">=</span> <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;cmap=&quot;&#39;</span><span class="o">//</span><span class="n">cmap</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+
+        <span class="c">!filled or regular:</span>
+        <span class="n">contourfunc</span> <span class="o">=</span> <span class="s1">&#39;contour&#39;</span>  <span class="c">!default</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">filled</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">            if</span> <span class="p">(</span><span class="n">filled</span><span class="p">)</span> <span class="n">contourfunc</span> <span class="o">=</span> <span class="s1">&#39;contourf&#39;</span>  <span class="c">!filled contour</span>
+        <span class="k">end if</span>
 
         <span class="c">!write the plot statement:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;CS = ax.contour(&#39;</span><span class="o">//</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;CS = ax.&#39;</span><span class="o">//</span><span class="n">contourfunc</span><span class="o">//</span><span class="s1">&#39;(&#39;</span><span class="o">//</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                                         <span class="s1">&#39;label=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                                         <span class="s1">&#39;linestyles=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">linestyle</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                                         <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
