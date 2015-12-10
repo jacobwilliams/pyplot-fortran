@@ -27,6 +27,7 @@
     real(wp)                 :: r2    !! temp variable
 
     !generate some data:
+    x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
     sx   = sin(x)
     cx   = cos(x)
     tx   = sx * cx
