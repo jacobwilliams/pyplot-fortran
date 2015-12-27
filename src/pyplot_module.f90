@@ -133,7 +133,7 @@
     character(len=max_int_len)  :: ytick_labelsize_str          !! size of x axis tick labels dummy string
     character(len=max_int_len)  :: ztick_labelsize_str          !! size of z axis tick labels dummy string
     character(len=max_int_len)  :: legend_fontsize_str          !! size of legend font dummy string
-    
+
     character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
 
     call me%destroy()
@@ -182,7 +182,7 @@
 
     me%str = ''
 
-    call me%add_str('#!/usr/bin/python')
+    call me%add_str('#!/usr/bin/env python')
     call me%add_str('')
 
     call me%add_str('import matplotlib')
