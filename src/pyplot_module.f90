@@ -53,7 +53,7 @@
         procedure, public :: add_3d_plot   !! add a 3d plot to pyplot instance
         procedure, public :: add_contour   !! add a contour plot to pyplot instance
         procedure, public :: add_bar       !! add a barplot to pyplot instance
-
+        procedure, public :: add_hist      !! add a histogram plot to pyplot instance
         procedure, public :: savefig       !! save plots of pyplot instance
         procedure, public :: destroy       !! destroy pyplot instance
 
@@ -299,6 +299,61 @@
     end if
 
     end subroutine add_plot
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Add a histogram plot.
+
+    subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale)
+
+    class(pyplot),          intent (inout)        :: me           !! pyplot handler
+    real(wp), dimension(:), intent (in)           :: x            !! x values
+    character(len=*),       intent (in)           :: label        !! plot label
+    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
+    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
+
+    character(len=:), allocatable :: xstr         !! x values stringified
+    character(len=:), allocatable :: xlimstr      !! xlim values stringified
+    character(len=:), allocatable :: ylimstr      !! ylim values stringified
+    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
+
+    if (allocated(me%str)) then
+
+        !axis limits (optional):
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
+
+        !convert the arrays to strings:
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str('')
+
+        !write the plot statement:
+        call me%add_str('ax.hist('//&
+                        trim(xname)//','//&
+                        'label="'//trim(label)//'")')
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+        !axis scales:
+        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
+
+        call me%add_str('')
+
+    else
+        error stop 'Error in add_plot: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_hist
 !*****************************************************************************************
 
 !*****************************************************************************************

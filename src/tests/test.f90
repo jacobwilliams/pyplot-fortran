@@ -68,5 +68,21 @@
     call plt%add_contour(x, y, z, label='contour', linestyle='-', linewidth=2, filled=.true., cmap='bone')
     call plt%savefig('contour.png',pyfile='contour.py')
 
+    !histogram chart:
+    do i=1,n 
+      x(i) = 1.0
+    end do
+    
+    write(*,*) x
+    call plt%initialize(grid=.true.,xlabel='x',&
+                        title='hist test',legend=.true.,figsize=[20,10],&
+                        font_size = 20,&
+                        axes_labelsize = 20,&
+                       xtick_labelsize = 20,&
+                        ytick_labelsize = 20,&
+                        legend_fontsize = 20 )
+    call plt%add_hist(x=x, label="x")
+    call plt%savefig('histtest.png', pyfile='histtest.py')
+
     end program test
 !*****************************************************************************************
