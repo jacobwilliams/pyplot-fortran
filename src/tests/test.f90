@@ -87,7 +87,8 @@
                        xtick_labelsize = 20,&
                         ytick_labelsize = 20,&
                         legend_fontsize = 20 )
-    call plt%add_hist(x=x, label="x")
+
+    call plt%add_hist(x=x, label="x", bins=8, cumulative=.true., normed=.true.)
     call plt%savefig('histtest.png', pyfile='histtest.py')
 
     end program test

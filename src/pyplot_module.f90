@@ -302,11 +302,11 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
-!> author: Jacob Williams
+!> author: Jimmy Leta
 !
 ! Add a histogram plot.
 
-    subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale)
+    subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative)
 
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! x values
@@ -315,11 +315,18 @@
     real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
     character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
     character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
+    integer,                intent (in), optional :: bins         !! 
+    logical,                intent (in), optional :: normed
+    logical,                intent (in), optional :: cumulative
 
     character(len=:), allocatable :: xstr         !! x values stringified
     character(len=:), allocatable :: xlimstr      !! xlim values stringified
     character(len=:), allocatable :: ylimstr      !! ylim values stringified
+    character(len=max_int_len)    :: binsstr       !! 
     character(len=*), parameter   :: xname = 'x'  !! x variable name for script
+    character(len=:), allocatable :: extras        !! optional stuff
+    character(len=5)              :: normedstr=''
+    character(len=5)              :: cumulativestr=''
 
     if (allocated(me%str)) then
 
@@ -334,10 +341,38 @@
         call me%add_str(trim(xname)//' = '//xstr)
         call me%add_str('')
 
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(bins, binsstr, '10')
+        
+        !optional arguments:
+        if (present(bins))       extras = extras//','//'bins="'//binsstr//'"'
+
+        if (present(normed) .and. normed) then 
+          normedstr = 'True'
+        else 
+          normedstr = 'False'
+        end if
+
+        if (present(cumulative) .and. cumulative) then 
+          cumulativestr = 'True'
+        else 
+          cumulativestr = 'False'
+        end if 
+
         !write the plot statement:
         call me%add_str('ax.hist('//&
                         trim(xname)//','//&
-                        'label="'//trim(label)//'")')
+                        'label="'//trim(label)//'",'//&
+                        'bins='//trim(binsstr)//','//&
+                        'cumulative='//trim(cumulativestr)//','//&
+                        'normed='//trim(normedstr)//')')
+
+        !write the plot statement:
+        !call me%add_str('CS = ax.'//contourfunc//'('//xname_//','//yname_//','//zname_//','//&
+        !                                'label="'//trim(label)//'",'//&
+        !                                'linestyles="'//trim(adjustl(linestyle))//'"'//&
+        !                                extras//')')
+
 
         !axis limits:
         if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
