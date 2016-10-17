@@ -29,9 +29,9 @@ fi
 
 # build the documentation using FORD:
 
-if hash ford 2>/dev/null; then
-    echo "Building documentation..."
-    ford ${FORDMD}
-else
-    echo "FORD not found! Cannot build documentation. To install, run: sudo pip install ford"
-fi
+#if hash ford 2>/dev/null; then
+#    echo "Building documentation..."
+#    ford ${FORDMD}
+#else
+#    echo "FORD not found! Cannot build documentation. To install, run: sudo pip install ford"
+#fi
