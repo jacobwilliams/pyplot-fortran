@@ -309,24 +309,25 @@
     subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative)
 
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
-    real(wp), dimension(:), intent (in)           :: x            !! x values
+    real(wp), dimension(:), intent (in)           :: x            !! array of data
     character(len=*),       intent (in)           :: label        !! plot label
     real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
     real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
     character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
     character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
-    integer,                intent (in), optional :: bins         !! 
-    logical,                intent (in), optional :: normed
-    logical,                intent (in), optional :: cumulative
+    integer,                intent (in), optional :: bins         !! number of bins  
+    logical,                intent (in), optional :: normed       !! boolean flag that determines whether bin counts are normalized
+    logical,                intent (in), optional :: cumulative   !! boolean flag that determines whether histogram represents the cumulative density of dataset
 
-    character(len=:), allocatable :: xstr         !! x values stringified
-    character(len=:), allocatable :: xlimstr      !! xlim values stringified
-    character(len=:), allocatable :: ylimstr      !! ylim values stringified
-    character(len=max_int_len)    :: binsstr       !! 
-    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
-    character(len=:), allocatable :: extras        !! optional stuff
-    character(len=5)              :: normedstr=''
-    character(len=5)              :: cumulativestr=''
+    character(len=:), allocatable :: xstr             !! x values stringified
+    character(len=:), allocatable :: xlimstr          !! xlim values stringified
+    character(len=:), allocatable :: ylimstr          !! ylim values stringified
+    character(len=*), parameter   :: xname = 'x'      !! x variable name for script
+    character(len=:), allocatable :: extras           !! optional stuff
+    character(len=5)              :: normedstr=''     !! 
+    character(len=5)              :: cumulativestr='' !! 
+    character(len=max_int_len)    :: binsstr          !! 
+
 
     if (allocated(me%str)) then
 
@@ -366,13 +367,6 @@
                         'bins='//trim(binsstr)//','//&
                         'cumulative='//trim(cumulativestr)//','//&
                         'normed='//trim(normedstr)//')')
-
-        !write the plot statement:
-        !call me%add_str('CS = ax.'//contourfunc//'('//xname_//','//yname_//','//zname_//','//&
-        !                                'label="'//trim(label)//'",'//&
-        !                                'linestyles="'//trim(adjustl(linestyle))//'"'//&
-        !                                extras//')')
-
 
         !axis limits:
         if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
