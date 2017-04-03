@@ -84,12 +84,23 @@
                         title='hist test',legend=.true.,figsize=[20,10],&
                         font_size = 20,&
                         axes_labelsize = 20,&
-                       xtick_labelsize = 20,&
+                        xtick_labelsize = 20,&
                         ytick_labelsize = 20,&
                         legend_fontsize = 20 )
 
-    call plt%add_hist(x=x, label="x", bins=8, cumulative=.true., normed=.true.)
-    call plt%savefig('histtest.png', pyfile='histtest.py')
+    call plt%add_hist(x=x, label="x", normed=.true.)
+    call plt%savefig('histtest1.png', pyfile='histtest1.py')
+
+    call plt%initialize(grid=.true.,xlabel='x',&
+                        title='cumulative hist test',legend=.true.,figsize=[20,10],&
+                        font_size = 20,&
+                        axes_labelsize = 20,&
+                        xtick_labelsize = 20,&
+                        ytick_labelsize = 20,&
+                        legend_fontsize = 20 )
+
+    call plt%add_hist(x=x, label="x", bins=8, cumulative=.true.)
+    call plt%savefig('histtest2.png', pyfile='histtest2.py')
 
     end program test
 !*****************************************************************************************
