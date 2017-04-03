@@ -53,6 +53,7 @@
         procedure, public :: add_3d_plot   !! add a 3d plot to pyplot instance
         procedure, public :: add_contour   !! add a contour plot to pyplot instance
         procedure, public :: add_bar       !! add a barplot to pyplot instance
+        procedure, public :: add_imshow    !! add an image plot (using `imshow`)
 
         procedure, public :: savefig       !! save plots of pyplot instance
         procedure, public :: destroy       !! destroy pyplot instance
@@ -453,7 +454,8 @@
 !
 ! Add a bar plot.
 
-    subroutine add_bar(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale)
+    subroutine add_bar(me, left, height, label, width, bottom, color, &
+                        yerr, align, xlim, ylim, xscale, yscale)
 
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
     real(wp), dimension(:), intent(in)           :: left          !! left bar values
@@ -533,6 +535,54 @@
     end if
 
     end subroutine add_bar
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+! Add an image plot using `imshow`.
+!
+!### Note
+!  * Based on code by Ricardo Torres, 4/2/2017.
+
+    subroutine add_imshow(me, x, xlim, ylim)
+
+    class(pyplot),          intent (inout) :: me          !! pyplot handler
+    real(wp),dimension(:,:),intent (in)    :: x           !! x values
+    real(wp),dimension(2),  intent (in), optional :: xlim !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim !! y-axis range
+
+    character(len=:), allocatable :: xstr         !! x values stringified
+    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
+
+    !axis limits (optional):
+    character(len=:), allocatable :: xlimstr      !! xlim values stringified
+    character(len=:), allocatable :: ylimstr      !! ylim values stringified
+
+    if (allocated(me%str)) then
+
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
+
+        !convert the arrays to strings:
+        call matrix_to_string(x, me%real_fmt, xstr, me%use_numpy)
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str('')
+
+        !write the plot statement:
+        call me%add_str('ax.imshow('//trim(xname)//')')
+        call me%add_str('')
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+    else
+        error stop 'Error in add_imshow: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_imshow
 !*****************************************************************************************
 
 !*****************************************************************************************

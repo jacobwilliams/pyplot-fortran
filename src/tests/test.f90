@@ -26,12 +26,20 @@
     integer                  :: j     !! counter
     real(wp)                 :: r2    !! temp variable
 
+    real(wp), dimension(n,n) :: mat     !! image values
+
     !generate some data:
     x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
     sx   = sin(x)
     cx   = cos(x)
     tx   = sx * cx
     yerr = abs(sx*.25_wp)
+
+    do i=1,n
+        do j=1,n
+            mat(i,j) = sin(real(i,wp)*real(j,wp))
+        end do
+    end do
 
     !2d line plot:
     call plt%initialize(grid=.true.,xlabel='angle (rad)',figsize=[20,10],&
@@ -63,10 +71,19 @@
             z(i,j) = sin(x(i))*cos(y(j))*sin(r2)/(1.0_wp+log(r2+1.0_wp))
         end do
     end do
-    call plt%initialize(grid=.true.,xlabel='x angle (rad)',ylabel='y angle (rad)',figsize=[10,10],&
+    call plt%initialize(grid=.true.,xlabel='x angle (rad)',&
+                        ylabel='y angle (rad)',figsize=[10,10],&
                         title='Contour plot test', real_fmt='*')
-    call plt%add_contour(x, y, z, label='contour', linestyle='-', linewidth=2, filled=.true., cmap='bone')
+    call plt%add_contour(x, y, z, label='contour', linestyle='-', &
+                         linewidth=2, filled=.true., cmap='bone')
     call plt%savefig('contour.png',pyfile='contour.py')
+
+    !image plot:
+    call plt%initialize(grid=.true.,xlabel='x',ylabel='y',figsize=[20,20],&
+                        title='imshow test',&
+                        real_fmt='(F9.3)')
+    call plt%add_imshow(mat,xlim=[0.0_wp, 100.0_wp],ylim=[0.0_wp, 100.0_wp])
+    call plt%savefig('imshow.png', pyfile='imshow.py')
 
     end program test
 !*****************************************************************************************

@@ -20,6 +20,7 @@ Supported plot types
 * ```matplotlib.pyplot.bar``` -- bar plot
 * ```matplotlib.pyplot.contour``` -- contour plot
 * ```matplotlib.pyplot.contourf``` -- filled contour plot
+* ```matplotlib.pyplot.imshow``` -- image plot
 
 Example
 ---------------
