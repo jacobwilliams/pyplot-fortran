@@ -320,15 +320,13 @@
     logical,                intent (in), optional :: normed       !! boolean flag that determines whether bin counts are normalized
     logical,                intent (in), optional :: cumulative   !! boolean flag that determines whether histogram represents the cumulative density of dataset
 
+    character(len=*), parameter   :: xname = 'x'      !! x variable name for script
     character(len=:), allocatable :: xstr             !! x values stringified
     character(len=:), allocatable :: xlimstr          !! xlim values stringified
     character(len=:), allocatable :: ylimstr          !! ylim values stringified
-    character(len=*), parameter   :: xname = 'x'      !! x variable name for script
-    character(len=:), allocatable :: extras           !! optional stuff
-    character(len=5)              :: normedstr=''     !!
-    character(len=5)              :: cumulativestr='' !!
+    character(len=:), allocatable :: normedstr        !! optional stuff
+    character(len=:), allocatable :: cumulativestr    !!
     character(len=max_int_len)    :: binsstr          !!
-
 
     if (allocated(me%str)) then
 
@@ -345,21 +343,8 @@
 
         !get optional inputs (if not present, set default value):
         call optional_int_to_string(bins, binsstr, '10')
-
-        !optional arguments:
-        if (present(bins))       extras = extras//','//'bins="'//binsstr//'"'
-
-        if (present(normed) .and. normed) then
-          normedstr = 'True'
-        else
-          normedstr = 'False'
-        end if
-
-        if (present(cumulative) .and. cumulative) then
-          cumulativestr = 'True'
-        else
-          cumulativestr = 'False'
-        end if
+        call optional_logical_to_string(normed, normedstr, 'False')
+        call optional_logical_to_string(cumulative, cumulativestr, 'False')
 
         !write the plot statement:
         call me%add_str('ax.hist('//&
@@ -688,6 +673,31 @@
     end if
 
     end subroutine optional_int_to_string
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Logical to string, specifying the default value if
+! the optional argument is not present.
+
+    subroutine optional_logical_to_string(logical_value, string_value, default_value)
+
+    logical,intent(in),optional              :: logical_value
+    character(len=:),allocatable,intent(out) :: string_value   !! integer value stringified
+    character(len=*),intent(in)              :: default_value  !! default integer value
+
+    if (present(logical_value)) then
+        if (logical_value) then
+            string_value = 'True'
+        else
+            string_value = 'False'
+        end if
+    else
+        string_value = default_value
+    end if
+
+    end subroutine optional_logical_to_string
 !*****************************************************************************************
 
 !*****************************************************************************************

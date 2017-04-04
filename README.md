@@ -21,6 +21,7 @@ Supported plot types
 * ```matplotlib.pyplot.contour``` -- contour plot
 * ```matplotlib.pyplot.contourf``` -- filled contour plot
 * ```matplotlib.pyplot.imshow``` -- image plot
+* ```matplotlib.pyplot.hist``` -- histogram plot
 
 Example
 ---------------
