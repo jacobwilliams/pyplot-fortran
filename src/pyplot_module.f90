@@ -53,7 +53,8 @@
         procedure, public :: add_3d_plot   !! add a 3d plot to pyplot instance
         procedure, public :: add_contour   !! add a contour plot to pyplot instance
         procedure, public :: add_bar       !! add a barplot to pyplot instance
-
+        procedure, public :: add_imshow    !! add an image plot (using `imshow`)
+        procedure, public :: add_hist      !! add a histogram plot to pyplot instance
         procedure, public :: savefig       !! save plots of pyplot instance
         procedure, public :: destroy       !! destroy pyplot instance
 
@@ -302,6 +303,75 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
+!> author: Jimmy Leta
+!
+! Add a histogram plot.
+
+    subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative)
+
+    class(pyplot),          intent (inout)        :: me           !! pyplot handler
+    real(wp), dimension(:), intent (in)           :: x            !! array of data
+    character(len=*),       intent (in)           :: label        !! plot label
+    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
+    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
+    integer,                intent (in), optional :: bins         !! number of bins
+    logical,                intent (in), optional :: normed       !! boolean flag that determines whether bin counts are normalized
+    logical,                intent (in), optional :: cumulative   !! boolean flag that determines whether histogram represents the cumulative density of dataset
+
+    character(len=*), parameter   :: xname = 'x'      !! x variable name for script
+    character(len=:), allocatable :: xstr             !! x values stringified
+    character(len=:), allocatable :: xlimstr          !! xlim values stringified
+    character(len=:), allocatable :: ylimstr          !! ylim values stringified
+    character(len=:), allocatable :: normedstr        !! optional stuff
+    character(len=:), allocatable :: cumulativestr    !!
+    character(len=max_int_len)    :: binsstr          !!
+
+    if (allocated(me%str)) then
+
+        !axis limits (optional):
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
+
+        !convert the arrays to strings:
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str('')
+
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(bins, binsstr, '10')
+        call optional_logical_to_string(normed, normedstr, 'False')
+        call optional_logical_to_string(cumulative, cumulativestr, 'False')
+
+        !write the plot statement:
+        call me%add_str('ax.hist('//&
+                        trim(xname)//','//&
+                        'label="'//trim(label)//'",'//&
+                        'bins='//trim(binsstr)//','//&
+                        'cumulative='//trim(cumulativestr)//','//&
+                        'normed='//trim(normedstr)//')')
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+        !axis scales:
+        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
+
+        call me%add_str('')
+
+    else
+        error stop 'Error in add_plot: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_hist
+!*****************************************************************************************
+
+!*****************************************************************************************
 !> author: Jacob Williams
 !
 ! Add a contour plot.
@@ -453,7 +523,8 @@
 !
 ! Add a bar plot.
 
-    subroutine add_bar(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale)
+    subroutine add_bar(me, left, height, label, width, bottom, color, &
+                        yerr, align, xlim, ylim, xscale, yscale)
 
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
     real(wp), dimension(:), intent(in)           :: left          !! left bar values
@@ -536,6 +607,54 @@
 !*****************************************************************************************
 
 !*****************************************************************************************
+!>
+! Add an image plot using `imshow`.
+!
+!### Note
+!  * Based on code by Ricardo Torres, 4/2/2017.
+
+    subroutine add_imshow(me, x, xlim, ylim)
+
+    class(pyplot),          intent (inout) :: me          !! pyplot handler
+    real(wp),dimension(:,:),intent (in)    :: x           !! x values
+    real(wp),dimension(2),  intent (in), optional :: xlim !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim !! y-axis range
+
+    character(len=:), allocatable :: xstr         !! x values stringified
+    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
+
+    !axis limits (optional):
+    character(len=:), allocatable :: xlimstr      !! xlim values stringified
+    character(len=:), allocatable :: ylimstr      !! ylim values stringified
+
+    if (allocated(me%str)) then
+
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
+
+        !convert the arrays to strings:
+        call matrix_to_string(x, me%real_fmt, xstr, me%use_numpy)
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str('')
+
+        !write the plot statement:
+        call me%add_str('ax.imshow('//trim(xname)//')')
+        call me%add_str('')
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+    else
+        error stop 'Error in add_imshow: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_imshow
+!*****************************************************************************************
+
+!*****************************************************************************************
 !> author: Jacob Williams
 !
 ! Integer to string, specifying the default value if
@@ -554,6 +673,31 @@
     end if
 
     end subroutine optional_int_to_string
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Logical to string, specifying the default value if
+! the optional argument is not present.
+
+    subroutine optional_logical_to_string(logical_value, string_value, default_value)
+
+    logical,intent(in),optional              :: logical_value
+    character(len=:),allocatable,intent(out) :: string_value   !! integer value stringified
+    character(len=*),intent(in)              :: default_value  !! default integer value
+
+    if (present(logical_value)) then
+        if (logical_value) then
+            string_value = 'True'
+        else
+            string_value = 'False'
+        end if
+    else
+        string_value = default_value
+    end if
+
+    end subroutine optional_logical_to_string
 !*****************************************************************************************
 
 !*****************************************************************************************

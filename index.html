@@ -7,7 +7,7 @@
 	 
 	 <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
     
-    <meta name="author" content="Chris MacMackin" >
+    <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="./favicon.png">
 
     <title> pyplot-fortran </title>
@@ -53,13 +53,20 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 				
-                
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
             <li><a href="./lists/files.html">Source Files</a></li>
 				
 				
             <li><a href="./lists/modules.html">Modules</a></li>
 				
-				
+            
+                                
             <li><a href="./lists/procedures.html">Procedures</a></li>
 				
 								
@@ -67,7 +74,25 @@
 				
 				
             <li><a href="./program/test.html">Program</a></li>
-				
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./program/test.html">Program</a></li>
+
           </ul>
         
         <form action="./search.html" class="navbar-form navbar-right" role="search">
@@ -104,7 +129,7 @@
 
       <div class="row" id='text'>
 		  
-        <div class="col-lg-8">
+        <div class="col-md-8">
 		  
           <h1>pyplot-fortran</h1>
           <h1>Brief description</h1>
@@ -113,7 +138,7 @@
 is then executed from the command line using the Fortran <code>execute_command_line</code> function.</p>
         </div>
 		  
-        <div class="col-lg-4">
+        <div class="col-md-4">
 	  <div class="well">
           <h2>Developer Info</h2>
           <h4>Jacob Williams</h4>
@@ -143,7 +168,7 @@ is then executed from the command line using the Fortran <code>execute_command_l
       
 		
       <div class="row">
-          <div class="col-lg-3">
+        <div class="col-xs-6 col-sm-3">
               <h3>Source Files</h3>
               <ul>
                 
@@ -158,7 +183,7 @@ is then executed from the command line using the Fortran <code>execute_command_l
               </ul>
           </div>
           
-          <div class="col-lg-3">
+		  <div class="col-xs-6 col-sm-3">
               <h3>Modules</h3>
               <ul>
                 
@@ -170,7 +195,7 @@ is then executed from the command line using the Fortran <code>execute_command_l
           </div>
           
           
-          <div class="col-lg-3">
+		  <div class="col-xs-6 col-sm-3">
               <h3>Procedures</h3>
               <ul>
                 
@@ -184,6 +209,14 @@ is then executed from the command line using the Fortran <code>execute_command_l
                 
                   
                     <li><a href='./proc/add_contour.html'>add_contour</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/add_hist.html'>add_hist</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/add_imshow.html'>add_imshow</a></li>
                   
                 
                   
@@ -207,15 +240,13 @@ is then executed from the command line using the Fortran <code>execute_command_l
                   
                 
                   
-                    <li><a href='./proc/integer_to_string.html'>integer_to_string</a></li>
-                  
-                
-                  
-                    <li><a href='./proc/matrix_to_string.html'>matrix_to_string</a></li>
-                  
-                
-                  
                     <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
+                  
+                
+                  
+                
+                  
+                
                   
                 
                   
@@ -226,7 +257,7 @@ is then executed from the command line using the Fortran <code>execute_command_l
           </div>
           
           
-          <div class="col-lg-3">
+		  <div class="col-xs-6 col-sm-3">
               <h3>Derived Types</h3>
               <ul>
                 
@@ -239,17 +270,24 @@ is then executed from the command line using the Fortran <code>execute_command_l
           
       </div>
 
-    <hr>
-    <footer>
-        <div class="row">
-        <div class="col-md-4">&copy; 2016 </div>
-	<div class="col-md-4"><span class="text-center"> pyplot-fortran was developed by Jacob Williams</span></div>
-        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
-        </div>
-        <br>
-    </footer>
+    <hr>    
     </div> <!-- /container -->
-
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> pyplot-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -274,6 +312,6 @@ is then executed from the command line using the Fortran <code>execute_command_l
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </body>
 </html>

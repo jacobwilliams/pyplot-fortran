@@ -7,7 +7,7 @@
 	 
 	 <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
     
-    <meta name="author" content="Chris MacMackin" >
+    <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>pyplot &ndash; pyplot-fortran </title>
@@ -53,13 +53,20 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 				
-                
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
             <li><a href="../lists/modules.html">Modules</a></li>
 				
-				
+            
+                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
 								
@@ -67,7 +74,25 @@
 				
 				
             <li><a href="../program/test.html">Program</a></li>
-				
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/test.html">Program</a></li>
+
           </ul>
         
         <form action="../search.html" class="navbar-form navbar-right" role="search">
@@ -91,9 +116,9 @@
     <small>Derived Type</small>
     
     </h1>
-	 
+    
 <div class="row">
-<div class="col-lg-12">
+  <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
@@ -102,6 +127,13 @@
      
     
     
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title="<p>100.0% of total for derived types.</p>Including implementation: 429 statements, 100.0% of total for derived types.">22 statements</a>
+     </li> 
+     
+     
     <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
      
   </ul>
@@ -116,115 +148,214 @@
 </div>
 </div>
 </div>
-    
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
   </div>
   
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
     
 <div id="sidebar">
   
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
-    <div id="vars" class="panel-collapse collapse">
-      <div class="list-group">
-        
-        <a class="list-group-item" href="../type/pyplot.html#variable-str">str</a>
-        
-        <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
-        
-        <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy">use_numpy</a>
-        
-        <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
-        
-        <a class="list-group-item" href="../type/pyplot.html#variable-polar">polar</a>
-        
-        <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
-        
-        <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
-        
-      </div>
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs">Type-Bound Procedures</a></h3></div>
-    <div id="boundprocs" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-initialize">initialize</a>
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-savefig">savefig</a>
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-destroy">destroy</a>
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-execute">execute</a>
-          
-          <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_str">add_str</a>
-          
-        </div>
-    </div>
-  </div>
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
-      <a class="list-group-item" href="../type/pyplot.html#src">pyplot</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-str">str</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy">use_numpy</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-polar">polar</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
+      
     </div>
   </div>
-  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-initialize">initialize</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_imshow">add_imshow</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_hist">add_hist</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-savefig">savefig</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-destroy">destroy</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-execute">execute</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_str">add_str</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/pyplot.html#src">pyplot</a>
+  </div>
+</div>
+
+
   <hr>
   
-  <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes">All Derived Types</a></h3></div>
-    <div id="alltypes" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../type/pyplot.html">pyplot</a>
-          
-        </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-0">All Derived Types</a></h3></div>
+  <div id="alltypes-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/pyplot.html">pyplot</a>
+      
     </div>
   </div>
-  
 </div>
+
+
+</div>  
 
     </div>
     
-    <div class="col-lg-9" id='text'>
-    <h2>type, public :: pyplot</h2>
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: pyplot</h2>
     
     <p>The main pyplot class.</p>
     <br>
     
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-str">str</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy">use_numpy</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-polar">polar</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-initialize">initialize</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_imshow">add_imshow</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_hist">add_hist</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-savefig">savefig</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-destroy">destroy</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-execute">execute</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_str">add_str</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/pyplot.html#src">pyplot</a>
+  </div>
+</div>
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
     
     <section>
     <h2>Components</h2>
@@ -374,8 +505,27 @@
 private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Initialize a plot</p>
     
     <h4>Arguments</h4>
     
@@ -681,25 +831,6 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Initialize a plot</p>
-        
 
       
       </li>
@@ -731,8 +862,27 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
 private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add an x,y plot.</p>
     
     <h4>Arguments</h4>
     
@@ -918,25 +1068,6 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Add an x,y plot.</p>
-        
 
       
       </li>
@@ -968,8 +1099,27 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
 private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a 3D x,y,z plot.</p>
     
     <h4>Arguments</h4>
     
@@ -1110,25 +1260,6 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Add a 3D x,y,z plot.</p>
-        
 
       
       </li>
@@ -1160,8 +1291,27 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
 private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a contour plot.</p>
     
     <h4>Arguments</h4>
     
@@ -1347,25 +1497,6 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Add a contour plot.</p>
-        
 
       
       </li>
@@ -1397,8 +1528,27 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
 private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a bar plot.</p>
     
     <h4>Arguments</h4>
     
@@ -1614,14 +1764,170 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
       
     
     
-    
-    <h4>Description</h4>
-       
-       
 
-<dl class="dl-horizontal">
+      
+      </li>
     
-    <dt>Author</dt><dd>Jacob Williams</dd>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_imshow"></span><h3>procedure, public :: <strong>add_imshow</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>add an image plot (using <code>imshow</code>)</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim)
+    
+    
+	 
+</h3>
+    
+
+
+
+
+
+
+
+<p>Add an image plot using <code>imshow</code>.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:,:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>x values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_hist"></span><h3>procedure, public :: <strong>add_hist</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>add a histogram plot to pyplot instance</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative)
+    
+    
+	 
+</h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jimmy Leta</dd>
     
     
     
@@ -1630,9 +1936,178 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
   </dl>
 
 
-       
-       <p>Add a bar plot.</p>
-        
+
+<p>Add a histogram plot.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>array of data</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>label</strong></td><td><p>plot label</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>xscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>yscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>bins</strong></td><td><p>number of bins</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>normed</strong></td><td><p>boolean flag that determines whether bin counts are normalized</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>cumulative</strong></td><td><p>boolean flag that determines whether histogram represents the cumulative density of dataset</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
 
       
       </li>
@@ -1664,8 +2139,27 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
 private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Save the figure.</p>
     
     <h4>Arguments</h4>
     
@@ -1731,25 +2225,6 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Save the figure.</p>
-        
 
       
       </li>
@@ -1781,8 +2256,27 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
 private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Destructor.</p>
     
     <h4>Arguments</h4>
     
@@ -1818,25 +2312,6 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Destructor.</p>
-        
 
       
       </li>
@@ -1868,8 +2343,29 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
 private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    <dt>Date</dt><dd>8/16/2015</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Write the buffer to a file, and then execute it with Python.</p>
     
     <h4>Arguments</h4>
     
@@ -1920,27 +2416,6 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    <dt>Date</dt><dd>8/16/2015</dd>
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Write the buffer to a file, and then execute it with Python.</p>
-        
 
       
       </li>
@@ -1972,8 +2447,27 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
 private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a string to the buffer.</p>
     
     <h4>Arguments</h4>
     
@@ -2024,25 +2518,6 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Add a string to the buffer.</p>
-        
 
       
       </li>
@@ -2057,7 +2532,7 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre>    <span class="k">type</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">pyplot</span>
+    <div class="highlight"><pre><span></span>    <span class="k">type</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">pyplot</span>
 
         <span class="c">!!  The main pyplot class.</span>
 
@@ -2082,7 +2557,8 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_3d_plot</span>   <span class="c">!! add a 3d plot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_contour</span>   <span class="c">!! add a contour plot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_bar</span>       <span class="c">!! add a barplot to pyplot instance</span>
-
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_imshow</span>    <span class="c">!! add an image plot (using `imshow`)</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_hist</span>      <span class="c">!! add a histogram plot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">savefig</span>       <span class="c">!! save plots of pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">destroy</span>       <span class="c">!! destroy pyplot instance</span>
 
@@ -2099,17 +2575,42 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     </div>
   </div>
 
+  <section class="visible-xs visible-sm hidden-md">
     <hr>
-    <footer>
-        <div class="row">
-        <div class="col-md-4">&copy; 2016 </div>
-	<div class="col-md-4"><span class="text-center"> pyplot-fortran was developed by Jacob Williams</span></div>
-        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
-        </div>
-        <br>
-    </footer>
-    </div> <!-- /container -->
+    
 
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-1">All Derived Types</a></h3></div>
+  <div id="alltypes-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/pyplot.html">pyplot</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> pyplot-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -2134,6 +2635,6 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </body>
 </html>

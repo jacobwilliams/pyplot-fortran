@@ -7,7 +7,7 @@
 	 
 	 <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
     
-    <meta name="author" content="Chris MacMackin" >
+    <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>pyplot_module &ndash; pyplot-fortran</title>
@@ -53,13 +53,20 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 				
-                
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
             <li><a href="../lists/modules.html">Modules</a></li>
 				
-				
+            
+                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
 								
@@ -67,7 +74,25 @@
 				
 				
             <li><a href="../program/test.html">Program</a></li>
-				
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/test.html">Program</a></li>
+
           </ul>
         
         <form action="../search.html" class="navbar-form navbar-right" role="search">
@@ -91,13 +116,13 @@
     <small>Module</small>
     
     </h1>
-	 
+    
 <div class="row">
-<div class="col-lg-12">
+  <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
-    <li><i class="fa fa-pencil"></i> Jacob Williams</li>
+     <li><i class="fa fa-pencil"></i> Jacob Williams</li>
      
      
     <li><i class="fa fa-calendar-o"></i> 4/14/2015</li>
@@ -108,6 +133,13 @@
      
     
     
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title="100.0% of total for modules and submodules.">515 statements</a>
+     </li> 
+     
+     
     <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
      
   </ul>
@@ -120,123 +152,136 @@
 </div>
 </div>
 </div>
-    
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
   </div>
   
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
     
 <div id="sidebar">
   
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
-    <div id="vars" class="panel-collapse collapse">
-      <div class="list-group">
-        
-        <a class="list-group-item" href="../module/pyplot_module.html#variable-wp">wp</a>
-        
-        <a class="list-group-item" href="../module/pyplot_module.html#variable-tmp_file">tmp_file</a>
-        
-        <a class="list-group-item" href="../module/pyplot_module.html#variable-python_exe">python_exe</a>
-        
-        <a class="list-group-item" href="../module/pyplot_module.html#variable-int_fmt">int_fmt</a>
-        
-        <a class="list-group-item" href="../module/pyplot_module.html#variable-max_int_len">max_int_len</a>
-        
-        <a class="list-group-item" href="../module/pyplot_module.html#variable-real_fmt_default">real_fmt_default</a>
-        
-        <a class="list-group-item" href="../module/pyplot_module.html#variable-max_real_len">max_real_len</a>
-        
-      </div>
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types">Derived Types</a></h3></div>
-    <div id="types" class="panel-collapse collapse">
-      <div class="list-group">
-        
-        <a class="list-group-item" href="../module/pyplot_module.html#type-pyplot">pyplot</a>
-        
-      </div>
-    </div>
-  </div>
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs">Subroutines</a></h3></div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
-        <div id="subs" class="panel-collapse collapse">
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-destroy">destroy</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-add_str">add_str</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-initialize">initialize</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-add_plot">add_plot</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-add_contour">add_contour</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-add_3d_plot">add_3d_plot</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-add_bar">add_bar</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_int_to_string">optional_int_to_string</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-integer_to_string">integer_to_string</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-vec_to_string">vec_to_string</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-matrix_to_string">matrix_to_string</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-execute">execute</a>
-          
-          <a class="list-group-item" href="../module/pyplot_module.html#proc-savefig">savefig</a>
-          
-        </div>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-wp">wp</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-tmp_file">tmp_file</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-python_exe">python_exe</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-int_fmt">int_fmt</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-max_int_len">max_int_len</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-real_fmt_default">real_fmt_default</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-max_real_len">max_real_len</a>
+      
     </div>
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
+  <div id="types-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#type-pyplot">pyplot</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-destroy">destroy</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_str">add_str</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-initialize">initialize</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_plot">add_plot</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_hist">add_hist</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_contour">add_contour</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_3d_plot">add_3d_plot</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_bar">add_bar</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_imshow">add_imshow</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_int_to_string">optional_int_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_logical_to_string">optional_logical_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-integer_to_string">integer_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-vec_to_string">vec_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-matrix_to_string">matrix_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-execute">execute</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-savefig">savefig</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
   <hr>
   
-  <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods">All Modules</a></h3></div>
-    <div id="allmods" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../module/pyplot_module.html">pyplot_module</a>
-          
-        </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-0">All Modules</a></h3></div>
+  <div id="allmods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/pyplot_module.html">pyplot_module</a>
+      
     </div>
   </div>
-  
 </div>
+
+
+</div>  
 
     </div>
     
-    <div class="col-lg-9" id='text'>
-    
+    <div class="col-md-9" id='text'>
+      
     
   
     <ul class="list-inline">
@@ -245,8 +290,6 @@
       <li><a href="https://software.intel.com/en-us/node/511041">iso_fortran_env</a></li>
       
     </ul>
-  
-
     
                 <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -273,8 +316,8 @@
 </g>
 <!-- iso_fortran_env&#45;&gt;module~pyplot_module -->
 <g id="edge2" class="edge"><title>iso_fortran_env&#45;&gt;module~pyplot_module</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M87.6838,-13C96.1497,-13 105.093,-13 113.775,-13"/>
-<polygon fill="black" stroke="black" points="113.803,-16.5001 123.803,-13 113.803,-9.5001 113.803,-16.5001"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.6838,-13C96.1497,-13 105.093,-13 113.775,-13"/>
+<polygon fill="#000000" stroke="#000000" points="113.803,-16.5001 123.803,-13 113.803,-9.5001 113.803,-16.5001"/>
 </g>
 </g>
 </svg>
@@ -289,18 +332,18 @@
                       </div>
                       <div class="modal-body">
                         
-Nodes of different colours represent the following:
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.26.3 (20100126.1600)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="641pt" height="28pt"
- viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<svg width="486pt" height="34pt"
+ viewBox="0.00 0.00 486.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 483,-30 483,5 -4,5"/>
 <!-- Module -->
 <g id="node1" class="node"><title>Module</title>
 <polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
@@ -311,64 +354,42 @@ Nodes of different colours represent the following:
 <polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
 <text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
 </g>
-<!-- Type -->
-<g id="node3" class="node"><title>Type</title>
-<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
-<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
-</g>
 <!-- Subroutine -->
-<g id="node4" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
-<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+<g id="node3" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="220,-26 156,-26 156,-1.24345e-14 220,-3.55271e-15 220,-26"/>
+<text text-anchor="middle" x="188" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
 </g>
 <!-- Function -->
-<g id="node5" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
-<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Interface -->
-<g id="node6" class="node"><title>Interface</title>
-<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
-<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
-</g>
-<!-- Unknown Procedure Type -->
-<g id="node7" class="node"><title>Unknown Procedure Type</title>
-<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
-<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+<g id="node4" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-26 238,-26 238,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="265" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
 </g>
 <!-- Program -->
-<g id="node8" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
-<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node9" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
-<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="478,-26 382,-26 382,-1.24345e-14 478,-3.55271e-15 478,-26"/>
+<text text-anchor="middle" x="430" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
 
-<h5>Module Graph</h5>
-<p>Solid arrows point from a parent (sub)module to the submodule which is
-descended from it. Dashed arrows point from a module being used to the
-module using it.</p>
-<h5>Type Graph</h5>
-<p>Solid arrows point from one derived type to another which extends
-(inherits from) it. Dashed arrows point from a derived type to another
-type containing it as a components, with a label listing the name(s) of
-said component(s).</p>
-<h5>Call Graph</h5>
-<p>Solid arrows point from a procedure to one which it calls. Dashed 
-arrows point from an interface to procedures which implement that interface.
-This could include the module procedures in a generic interface or the
-implementation in a submodule of an interface in a parent module.</p>
-
+    
+    <p>Solid arrows point from a parent (sub)module to the submodule which is
+    descended from it. Dashed arrows point from a module being used to the
+    module or program unit using it.
+    </p>
+    
                       </div>
                     </div>
                   </div>
                 </div>
                 
+    
+
     
     <p>For making simple x-y plots from Fortran.
   It works by generating a Python script and executing it.</p>
@@ -405,8 +426,8 @@ implementation in a submodule of an interface in a parent module.</p>
 </g>
 <!-- module~pyplot_module&#45;&gt;program~test -->
 <g id="edge2" class="edge"><title>module~pyplot_module&#45;&gt;program~test</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M82.1036,-13C90.5669,-13 99.4334,-13 107.751,-13"/>
-<polygon fill="black" stroke="black" points="107.921,-16.5001 117.921,-13 107.921,-9.5001 107.921,-16.5001"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M82.1036,-13C90.5669,-13 99.4334,-13 107.751,-13"/>
+<polygon fill="#000000" stroke="#000000" points="107.921,-16.5001 117.921,-13 107.921,-9.5001 107.921,-16.5001"/>
 </g>
 </g>
 </svg>
@@ -421,18 +442,18 @@ implementation in a submodule of an interface in a parent module.</p>
                       </div>
                       <div class="modal-body">
                         
-Nodes of different colours represent the following:
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.26.3 (20100126.1600)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="641pt" height="28pt"
- viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<svg width="486pt" height="34pt"
+ viewBox="0.00 0.00 486.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 483,-30 483,5 -4,5"/>
 <!-- Module -->
 <g id="node1" class="node"><title>Module</title>
 <polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
@@ -443,65 +464,144 @@ Nodes of different colours represent the following:
 <polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
 <text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
 </g>
-<!-- Type -->
-<g id="node3" class="node"><title>Type</title>
-<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
-<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
-</g>
 <!-- Subroutine -->
-<g id="node4" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
-<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+<g id="node3" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="220,-26 156,-26 156,-1.24345e-14 220,-3.55271e-15 220,-26"/>
+<text text-anchor="middle" x="188" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
 </g>
 <!-- Function -->
-<g id="node5" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
-<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Interface -->
-<g id="node6" class="node"><title>Interface</title>
-<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
-<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
-</g>
-<!-- Unknown Procedure Type -->
-<g id="node7" class="node"><title>Unknown Procedure Type</title>
-<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
-<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+<g id="node4" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-26 238,-26 238,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="265" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
 </g>
 <!-- Program -->
-<g id="node8" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
-<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node9" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
-<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="478,-26 382,-26 382,-1.24345e-14 478,-3.55271e-15 478,-26"/>
+<text text-anchor="middle" x="430" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
 
-<h5>Module Graph</h5>
-<p>Solid arrows point from a parent (sub)module to the submodule which is
-descended from it. Dashed arrows point from a module being used to the
-module using it.</p>
-<h5>Type Graph</h5>
-<p>Solid arrows point from one derived type to another which extends
-(inherits from) it. Dashed arrows point from a derived type to another
-type containing it as a components, with a label listing the name(s) of
-said component(s).</p>
-<h5>Call Graph</h5>
-<p>Solid arrows point from a procedure to one which it calls. Dashed 
-arrows point from an interface to procedures which implement that interface.
-This could include the module procedures in a generic interface or the
-implementation in a submodule of an interface in a parent module.</p>
-
+    
+    <p>Solid arrows point from a parent (sub)module to the submodule which is
+    descended from it. Dashed arrows point from a module being used to the
+    module or program unit using it.
+    </p>
+    
                       </div>
                     </div>
                   </div>
                 </div>
                 
     <br>
+    
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-wp">wp</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-tmp_file">tmp_file</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-python_exe">python_exe</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-int_fmt">int_fmt</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-max_int_len">max_int_len</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-real_fmt_default">real_fmt_default</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#variable-max_real_len">max_real_len</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
+  <div id="types-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#type-pyplot">pyplot</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-destroy">destroy</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_str">add_str</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-initialize">initialize</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_plot">add_plot</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_hist">add_hist</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_contour">add_contour</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_3d_plot">add_3d_plot</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_bar">add_bar</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_imshow">add_imshow</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_int_to_string">optional_int_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_logical_to_string">optional_logical_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-integer_to_string">integer_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-vec_to_string">vec_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-matrix_to_string">matrix_to_string</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-execute">execute</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-savefig">savefig</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
     
 
     
@@ -639,6 +739,10 @@ implementation in a submodule of an interface in a parent module.</p>
     
   </h3></div>
   <div class="panel-body">
+    
+    
+    <p>The main pyplot class.</p>
+    
      
      <h4>Components</h4>
     
@@ -760,40 +864,41 @@ implementation in a submodule of an interface in a parent module.</p>
       <table class="table table-striped varlist">
       <tbody>
       
-       <tr><td>procedure, public :: <strong>initialize</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-initialize'>initialize</a></strong>  </td>
        <td><p>initialize pyplot instance</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>add_plot</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_plot'>add_plot</a></strong>  </td>
        <td><p>add a 2d plot to pyplot instance</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>add_3d_plot</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_3d_plot'>add_3d_plot</a></strong>  </td>
        <td><p>add a 3d plot to pyplot instance</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>add_contour</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_contour'>add_contour</a></strong>  </td>
        <td><p>add a contour plot to pyplot instance</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>add_bar</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_bar'>add_bar</a></strong>  </td>
        <td><p>add a barplot to pyplot instance</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>savefig</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_imshow'>add_imshow</a></strong>  </td>
+       <td><p>add an image plot (using <code>imshow</code>)</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_hist'>add_hist</a></strong>  </td>
+       <td><p>add a histogram plot to pyplot instance</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-savefig'>savefig</a></strong>  </td>
        <td><p>save plots of pyplot instance</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>destroy</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-destroy'>destroy</a></strong>  </td>
        <td><p>destroy pyplot instance</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>execute</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-execute'>execute</a></strong>  </td>
        <td><p>execute pyplot commands</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>add_str</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_str'>add_str</a></strong>  </td>
        <td><p>add string to pytplot instance buffer</p></td></tr>
       
        </tbody>
        </table>
-     
-     
-     <h4>Description</h4>
-       
-       <p>The main pyplot class.</p>
      
   </div>
 </div>
@@ -815,10 +920,29 @@ implementation in a submodule of an interface in a parent module.</p>
 private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Destructor.</p>
     
     <h4>Arguments</h4>
     
@@ -854,25 +978,6 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Destructor.</p>
-        
 
   </div>
   </div>
@@ -884,10 +989,29 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
 private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a string to the buffer.</p>
     
     <h4>Arguments</h4>
     
@@ -938,25 +1062,6 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Add a string to the buffer.</p>
-        
 
   </div>
   </div>
@@ -968,10 +1073,29 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
 private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Initialize a plot</p>
     
     <h4>Arguments</h4>
     
@@ -1277,25 +1401,6 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Initialize a plot</p>
-        
 
   </div>
   </div>
@@ -1307,10 +1412,29 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
 private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add an x,y plot.</p>
     
     <h4>Arguments</h4>
     
@@ -1496,14 +1620,30 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
       
     
     
-    
-    <h4>Description</h4>
-       
-       
 
-<dl class="dl-horizontal">
+  </div>
+  </div>
+
     
-    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-add_hist"></span><h3>
+private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative)
+    
+    
+	 
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jimmy Leta</dd>
     
     
     
@@ -1512,9 +1652,178 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
   </dl>
 
 
-       
-       <p>Add an x,y plot.</p>
-        
+
+<p>Add a histogram plot.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>array of data</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>label</strong></td><td><p>plot label</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>xscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>yscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>bins</strong></td><td><p>number of bins</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>normed</strong></td><td><p>boolean flag that determines whether bin counts are normalized</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>cumulative</strong></td><td><p>boolean flag that determines whether histogram represents the cumulative density of dataset</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
 
   </div>
   </div>
@@ -1526,10 +1835,29 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
 private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a contour plot.</p>
     
     <h4>Arguments</h4>
     
@@ -1715,25 +2043,6 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Add a contour plot.</p>
-        
 
   </div>
   </div>
@@ -1745,10 +2054,29 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
 private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a 3D x,y,z plot.</p>
     
     <h4>Arguments</h4>
     
@@ -1889,25 +2217,6 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Add a 3D x,y,z plot.</p>
-        
 
   </div>
   </div>
@@ -1919,10 +2228,29 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
 private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a bar plot.</p>
     
     <h4>Arguments</h4>
     
@@ -2138,25 +2466,110 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
       
     
     
-    
-    <h4>Description</h4>
-       
-       
 
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
+  </div>
+  </div>
 
-
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-add_imshow"></span><h3>
+private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim)
+    
+    
+	 
+</h3></div>
+  <div class="panel-body">
        
-       <p>Add a bar plot.</p>
-        
+    
+
+
+
+
+
+
+
+<p>Add an image plot using <code>imshow</code>.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:,:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>x values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
 
   </div>
   </div>
@@ -2168,10 +2581,30 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
 private subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to_string</a>(int_value, string_value, default_value)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Integer to string, specifying the default value if
+ the optional argument is not present.</p>
     
     <h4>Arguments</h4>
     
@@ -2237,12 +2670,28 @@ private subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to
       
     
     
-    
-    <h4>Description</h4>
-       
-       
 
-<dl class="dl-horizontal">
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-optional_logical_to_string"></span><h3>
+private subroutine <a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a>(logical_value, string_value, default_value)
+    
+    
+	 
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
     
     <dt>Author</dt><dd>Jacob Williams</dd>
     
@@ -2253,10 +2702,74 @@ private subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to
   </dl>
 
 
-       
-       <p>Integer to string, specifying the default value if
+
+<p>Logical to string, specifying the default value if
  the optional argument is not present.</p>
-        
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>logical_value</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=:),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>string_value</strong></td><td><p>integer value stringified</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>default_value</strong></td><td><p>default integer value</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
 
   </div>
   </div>
@@ -2268,10 +2781,29 @@ private subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to
 private subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a>(i, s)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Integer to string conversion.</p>
     
     <h4>Arguments</h4>
     
@@ -2322,25 +2854,6 @@ private subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Integer to string conversion.</p>
-        
 
   </div>
   </div>
@@ -2352,10 +2865,29 @@ private subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a
 private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Real vector to string.</p>
     
     <h4>Arguments</h4>
     
@@ -2436,25 +2968,6 @@ private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Real vector to string.</p>
-        
 
   </div>
   </div>
@@ -2466,10 +2979,29 @@ private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt
 private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(v, fmt, str, use_numpy)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Real matrix (rank 2) to string.</p>
     
     <h4>Arguments</h4>
     
@@ -2550,25 +3082,6 @@ private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Real matrix (rank 2) to string.</p>
-        
 
   </div>
   </div>
@@ -2580,10 +3093,31 @@ private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(
 private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    <dt>Date</dt><dd>8/16/2015</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Write the buffer to a file, and then execute it with Python.</p>
     
     <h4>Arguments</h4>
     
@@ -2634,27 +3168,6 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    <dt>Date</dt><dd>8/16/2015</dd>
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Write the buffer to a file, and then execute it with Python.</p>
-        
 
   </div>
   </div>
@@ -2666,10 +3179,29 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
 private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Save the figure.</p>
     
     <h4>Arguments</h4>
     
@@ -2735,25 +3267,6 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-<dl class="dl-horizontal">
-    
-    <dt>Author</dt><dd>Jacob Williams</dd>
-    
-    
-    
-    
-    
-  </dl>
-
-
-       
-       <p>Save the figure.</p>
-        
 
   </div>
   </div>
@@ -2767,17 +3280,42 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
     </div>
   </div>
 
+  <section class="visible-xs visible-sm hidden-md">
     <hr>
-    <footer>
-        <div class="row">
-        <div class="col-md-4">&copy; 2016 </div>
-	<div class="col-md-4"><span class="text-center"> pyplot-fortran was developed by Jacob Williams</span></div>
-        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
-        </div>
-        <br>
-    </footer>
-    </div> <!-- /container -->
+    
 
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-1">All Modules</a></h3></div>
+  <div id="allmods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/pyplot_module.html">pyplot_module</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> pyplot-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -2802,6 +3340,6 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </body>
 </html>
