@@ -28,7 +28,7 @@ script:
 after_success:
   - git config --global user.name "TRAVIS-CI-for-$(git --no-pager show -s --format='%cn' $TRAVIS_COMMIT)"
   - git config --global user.email "$(git --no-pager show -s --format='%ce' $TRAVIS_COMMIT)"
-  - git clone --branch=gh-pages https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG gh-pages
+  - git clone -q --branch=gh-pages "https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG" gh-pages >/dev/null 2>&1
   - rm -rf gh-pages/*
   - ford ./pyplot-fortran.md
   - cp -rf ./doc/* gh-pages/
