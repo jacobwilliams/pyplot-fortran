@@ -19,7 +19,7 @@ before_install:
   - export PATH=".:$PATH"
 
 before_script:
-  - FoBiS.py build -compiler gnu -cflags "-c -O2 -std=f2008" -dbld ./lib/ -s ./src/ -dmod ./ -dobj ./ -t pyplot_module.f90 -o libpyplot.a -mklib static -colors	
+  - FoBiS.py build -compiler gnu -cflags "-c -O2 -std=f2008" -dbld ./lib/ -s ./src/ -dmod ./ -dobj ./ -t pyplot_module.f90 -o libpyplot.a -mklib static -colors
   - FoBiS.py build -compiler gnu -cflags "-c -O2 -std=f2008" -dbld ./bin/ -s ./src/tests/ -dmod ./ -dobj ./ -colors -libs ./lib/libpyplot.a --include ./lib/
 
 script:
@@ -33,6 +33,6 @@ after_success:
   - ford ./pyplot-fortran.md
   - cp -rf ./doc/* gh-pages/
   - cd gh-pages/
-  - git add -f --all *
-  - git commit -m "Travis CI autocommit from Travis job $TRAVIS_JOB_NUMBER for tag $TRAVIS_TAG $TRAVIS_COMMIT"
-  - git push -fq origin gh-pages
+  - git add -f --all * || true
+  - git commit -m "Travis CI autocommit from Travis job $TRAVIS_JOB_NUMBER for tag $TRAVIS_TAG $TRAVIS_COMMIT" || true
+  - git push -fq origin gh-pages > /dev/null 2>&1 || true
