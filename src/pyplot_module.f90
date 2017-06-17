@@ -1,6 +1,6 @@
 !*****************************************************************************************
 !> author: Jacob Williams
-!  date: 4/14/2015
+!  date: 6/16/2017
 !  license: BSD
 !
 !  For making simple x-y plots from Fortran.
@@ -56,11 +56,13 @@
         procedure, public :: add_imshow    !! add an image plot (using `imshow`)
         procedure, public :: add_hist      !! add a histogram plot to pyplot instance
         procedure, public :: savefig       !! save plots of pyplot instance
+        procedure, public :: showfig       !! show plots of pyplot instance
         procedure, public :: destroy       !! destroy pyplot instance
 
         ! private methods
-        procedure :: execute !! execute pyplot commands
-        procedure :: add_str !! add string to pytplot instance buffer
+        procedure :: execute    !! execute pyplot commands
+        procedure :: add_str    !! add string to pytplot instance buffer
+        procedure :: finish_ops !! some final ops before saving
 
     end type pyplot
 
@@ -847,26 +849,67 @@
 !*****************************************************************************************
 !> author: Jacob Williams
 !
+! Some final things to add before saving or showing the figure.
+
+    subroutine finish_ops(me)
+
+    class(pyplot),intent(inout) :: me  !! pyplot handler
+
+    if (me%show_legend) then
+        call me%add_str('ax.legend(loc="best")')
+        call me%add_str('')
+    end if
+    if (me%axis_equal) then
+        call me%add_str('ax.axis("equal")')
+        call me%add_str('')
+    end if
+
+    end subroutine finish_ops
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
 ! Save the figure.
+!
+!### History
+!  * modified: Johannes Rieke 6/16/2017
+!  * modified: Jacob Williams 6/16/2017
 
-    subroutine savefig(me, figfile, pyfile)
+    subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation)
 
-    class(pyplot),    intent(inout)        :: me      !! pyplot handler
-    character(len=*), intent(in)           :: figfile !! file name for the figure
-    character(len=*), intent(in), optional :: pyfile  !! name of the Python script to generate
+    class(pyplot),    intent(inout)        :: me          !! pyplot handler
+    character(len=*), intent(in)           :: figfile     !! file name for the figure
+    character(len=*), intent(in), optional :: pyfile      !! name of the Python script to generate
+    character(len=*), intent(in), optional :: dpi         !! resolution of the figure for png
+                                                          !! [note this is a string]
+    logical, intent(in), optional          :: transparent !! transparent background (T/F)
+    character(len=*), intent(in), optional :: facecolor   !! the colors of the figure rectangle
+    character(len=*), intent(in), optional :: edgecolor   !! the colors of the figure rectangle
+    character(len=*), intent(in), optional :: orientation !! 'landscape' or 'portrait'
+
+    character(len=:),allocatable :: tmp  !! for building the `savefig` arguments.
 
     if (allocated(me%str)) then
 
         !finish up the string:
-        if (me%show_legend) then
-            call me%add_str('ax.legend(loc="best")')
-            call me%add_str('')
+        call me%finish_ops()
+
+        !build the savefig arguments:
+        tmp = '"'//trim(figfile)//'"'
+        if (present(dpi)) tmp = tmp//', dpi='//trim(dpi)
+        if (present(transparent)) then
+            if (transparent) then
+                tmp = tmp//', transparent=True'
+            else
+                tmp = tmp//', transparent=False'
+            end if
         end if
-        if (me%axis_equal) then
-            call me%add_str('ax.axis("equal")')
-            call me%add_str('')
-        end if
-        call me%add_str('plt.savefig("'//trim(figfile)//'")')
+        if (present(facecolor)) tmp = tmp//', facecolor="'//trim(facecolor)//'"'
+        if (present(edgecolor)) tmp = tmp//', edgecolor="'//trim(edgecolor)//'"'
+        if (present(orientation)) tmp = tmp//', orientation="'//trim(orientation)//'"'
+        call me%add_str('plt.savefig('//tmp//')')
+        deallocate(tmp)
 
         !run it:
         call me%execute(pyfile)
@@ -876,6 +919,35 @@
     end if
 
     end subroutine savefig
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Johannes Rieke
+!  date: 6/16/2017
+!
+! Shows the figure.
+
+    subroutine showfig(me, pyfile)
+
+    class(pyplot),    intent(inout)        :: me      !! pyplot handler
+    character(len=*), intent(in), optional :: pyfile  !! name of the Python script to generate
+
+    if (allocated(me%str)) then
+
+        !finish up the string:
+        call me%finish_ops()
+
+        !show figure:
+        call me%add_str('plt.show()')
+
+        !run it:
+        call me%execute(pyfile)
+
+    else
+        error stop 'error in showfig: pyplot class not properly initialized.'
+    end if
+
+    end subroutine showfig
 !*****************************************************************************************
 
 !*****************************************************************************************

@@ -119,7 +119,10 @@
                         legend_fontsize = 20 )
 
     call plt%add_hist(x=x, label='x', bins=8, cumulative=.true.)
-    call plt%savefig('histtest2.png', pyfile='histtest2.py')
+    call plt%savefig('histtest2.png', &
+                        pyfile='histtest2.py', &
+                        dpi='200', &
+                        transparent=.true.)
 
     end program test
 !*****************************************************************************************
