@@ -11,7 +11,7 @@
 
     module pyplot_module
 
-    use, intrinsic :: iso_fortran_env, only : real64
+    use, intrinsic :: iso_fortran_env, only : real64, error_unit
 
     implicit none
 
@@ -204,9 +204,9 @@
     call me%add_str('')
 
     if (present(figsize)) then  !if specifying the figure size
-        call me%add_str('fig = plt.figure(figsize=('//trim(width_str)//','//trim(height_str)//'))')
+        call me%add_str('fig = plt.figure(figsize=('//trim(width_str)//','//trim(height_str)//'),facecolor="white")')
     else
-        call me%add_str('fig = plt.figure()')
+        call me%add_str('fig = plt.figure(facecolor="white")')
     end if
 
     if (me%mplot3d) then
@@ -236,7 +236,7 @@
 !
 ! Add an x,y plot.
 
-    subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale)
+    subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
 
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! x values
@@ -249,17 +249,23 @@
     real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
     character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
     character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
+    real(wp),dimension(:),  intent (in), optional :: color        !! RGB color tuple [0-1,0-1,0-1]
+    integer,                intent (out)          :: istat        !! status output (0 means no problems)
 
+    character(len=:), allocatable :: arg_str      !! the arguments to pass to `plot`
     character(len=:), allocatable :: xstr         !! x values stringified
     character(len=:), allocatable :: ystr         !! y values stringified
     character(len=:), allocatable :: xlimstr      !! xlim values stringified
     character(len=:), allocatable :: ylimstr      !! ylim values stringified
+    character(len=:), allocatable :: color_str    !! color values stringified
     character(len=max_int_len)    :: imark        !! actual markers size
     character(len=max_int_len)    :: iline        !! actual line width
     character(len=*), parameter   :: xname = 'x'  !! x variable name for script
     character(len=*), parameter   :: yname = 'y'  !! y variable name for script
 
     if (allocated(me%str)) then
+
+        istat = 0
 
         !axis limits (optional):
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
@@ -278,14 +284,24 @@
         call me%add_str(trim(yname)//' = '//ystr)
         call me%add_str('')
 
+        !main arguments for plot:
+        arg_str = trim(xname)//','//&
+                  trim(yname)//','//&
+                  '"'//trim(linestyle)//'",'//&
+                  'linewidth='//trim(adjustl(iline))//','//&
+                  'markersize='//trim(adjustl(imark))//','//&
+                  'label="'//trim(label)//'"'
+
+        ! optional arguments:
+        if (present(color)) then
+            if (size(color)<=3) then
+                call vec_to_string(color(1:3), '*', color_str, use_numpy=.false., is_tuple=.true.)
+                arg_str = arg_str//',color='//trim(color_str)
+            end if
+        end if
+
         !write the plot statement:
-        call me%add_str('ax.plot('//&
-                        trim(xname)//','//&
-                        trim(yname)//','//&
-                        '"'//trim(linestyle)//'",'//&
-                        'linewidth='//trim(adjustl(iline))//','//&
-                        'markersize='//trim(adjustl(imark))//','//&
-                        'label="'//trim(label)//'")')
+        call me%add_str('ax.plot('//arg_str//')')
 
         !axis limits:
         if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
@@ -298,7 +314,8 @@
         call me%add_str('')
 
     else
-        error stop 'Error in add_plot: pyplot class not properly initialized.'
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_plot: pyplot class not properly initialized.'
     end if
 
     end subroutine add_plot
@@ -309,7 +326,7 @@
 !
 ! Add a histogram plot.
 
-    subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative)
+    subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)
 
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! array of data
@@ -321,6 +338,7 @@
     integer,                intent (in), optional :: bins         !! number of bins
     logical,                intent (in), optional :: normed       !! boolean flag that determines whether bin counts are normalized
     logical,                intent (in), optional :: cumulative   !! boolean flag that determines whether histogram represents the cumulative density of dataset
+    integer,                intent (out)          :: istat        !! status output (0 means no problems)
 
     character(len=*), parameter   :: xname = 'x'      !! x variable name for script
     character(len=:), allocatable :: xstr             !! x values stringified
@@ -331,6 +349,8 @@
     character(len=max_int_len)    :: binsstr          !!
 
     if (allocated(me%str)) then
+
+        istat = 0
 
         !axis limits (optional):
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
@@ -367,7 +387,8 @@
         call me%add_str('')
 
     else
-        error stop 'Error in add_plot: pyplot class not properly initialized.'
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_plot: pyplot class not properly initialized.'
     end if
 
     end subroutine add_hist
@@ -380,7 +401,7 @@
 !
 !@note This requires `use_numpy` to be True.
 
-    subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
+    subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, istat)
 
     class(pyplot),           intent (inout)        :: me           !! pyplot handler
     real(wp),dimension(:),   intent (in)           :: x            !! x values
@@ -393,11 +414,12 @@
     character(len=*),        intent (in), optional :: color        !! color of the contour line
     logical,                 intent (in), optional :: filled       !! use filled control (default=False)
     character(len=*),        intent (in), optional :: cmap         !! colormap if filled=True (examples: 'jet', 'bone')
+    integer,                 intent (out)          :: istat        !! status output (0 means no problems)
 
-    character(len=:), allocatable :: xstr          !! x values strinfied
-    character(len=:), allocatable :: ystr          !! y values strinfied
-    character(len=:), allocatable :: zstr          !! z values strinfied
-    character(len=:), allocatable :: levelstr      !! levels vector strinfied
+    character(len=:), allocatable :: xstr          !! x values stringified
+    character(len=:), allocatable :: ystr          !! y values stringified
+    character(len=:), allocatable :: zstr          !! z values stringified
+    character(len=:), allocatable :: levelstr      !! levels vector stringified
     character(len=max_int_len)    :: iline         !! actual line width
     character(len=*), parameter   :: xname = 'x'   !! x variable name for script
     character(len=*), parameter   :: yname = 'y'   !! y variable name for script
@@ -409,6 +431,8 @@
     character(len=:), allocatable :: contourfunc   !! 'contour' or 'contourf'
 
     if (allocated(me%str)) then
+
+        istat = 0
 
         !convert the arrays to strings:
         call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
@@ -452,7 +476,8 @@
         call me%add_str('')
 
     else
-        error stop 'Error in add_plot: pyplot class not properly initialized.'
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_plot: pyplot class not properly initialized.'
     end if
 
     end subroutine add_contour
@@ -465,7 +490,7 @@
 !
 !@note Must initialize the class with ```mplot3d=.true.```
 
-    subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewidth)
+    subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewidth, istat)
 
     class(pyplot),          intent (inout)        :: me           !! pyplot handler
     real(wp), dimension(:), intent (in)           :: x            !! x values
@@ -475,10 +500,11 @@
     character(len=*),       intent (in)           :: linestyle    !! style of the plot line
     integer,                intent (in), optional :: markersize   !! size of the plot markers
     integer,                intent (in), optional :: linewidth    !! width of the plot line
+    integer,                intent (out)          :: istat        !! status output (0 means no problems)
 
-    character(len=:), allocatable :: xstr         !! x values strinfied
-    character(len=:), allocatable :: ystr         !! y values strinfied
-    character(len=:), allocatable :: zstr         !! z values strinfied
+    character(len=:), allocatable :: xstr         !! x values stringified
+    character(len=:), allocatable :: ystr         !! y values stringified
+    character(len=:), allocatable :: zstr         !! z values stringified
     character(len=max_int_len)    :: imark        !! actual markers size
     character(len=max_int_len)    :: iline        !! actual line width
     character(len=*), parameter   :: xname = 'x'  !! x variable name for script
@@ -486,6 +512,8 @@
     character(len=*), parameter   :: zname = 'z'  !! z variable name for script
 
     if (allocated(me%str)) then
+
+        istat = 0
 
         !convert the arrays to strings:
         call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
@@ -514,7 +542,8 @@
         call me%add_str('')
 
     else
-        error stop 'Error in add_3d_plot: pyplot class not properly initialized.'
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_3d_plot: pyplot class not properly initialized.'
     end if
 
     end subroutine add_3d_plot
@@ -526,7 +555,7 @@
 ! Add a bar plot.
 
     subroutine add_bar(me, left, height, label, width, bottom, color, &
-                        yerr, align, xlim, ylim, xscale, yscale)
+                        yerr, align, xlim, ylim, xscale, yscale, istat)
 
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
     real(wp), dimension(:), intent(in)           :: left          !! left bar values
@@ -541,6 +570,7 @@
     real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
     character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
     character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
+    integer,                intent (out)          :: istat        !! status output (0 means no problems)
 
     character(len=:), allocatable :: xstr               !! x axis values stringified
     character(len=:), allocatable :: ystr               !! y axis values stringified
@@ -557,6 +587,8 @@
     character(len=*), parameter   :: yerrname = 'yerr'  !! yerr name
 
     if (allocated(me%str)) then
+
+        istat = 0
 
         !axis limits (optional):
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
@@ -602,7 +634,8 @@
         call me%add_str('')
 
     else
-        error stop 'Error in add_bar: pyplot class not properly initialized.'
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_bar: pyplot class not properly initialized.'
     end if
 
     end subroutine add_bar
@@ -615,12 +648,13 @@
 !### Note
 !  * Based on code by Ricardo Torres, 4/2/2017.
 
-    subroutine add_imshow(me, x, xlim, ylim)
+    subroutine add_imshow(me, x, xlim, ylim, istat)
 
-    class(pyplot),          intent (inout) :: me          !! pyplot handler
-    real(wp),dimension(:,:),intent (in)    :: x           !! x values
-    real(wp),dimension(2),  intent (in), optional :: xlim !! x-axis range
-    real(wp),dimension(2),  intent (in), optional :: ylim !! y-axis range
+    class(pyplot),          intent (inout) :: me            !! pyplot handler
+    real(wp),dimension(:,:),intent (in)    :: x             !! x values
+    real(wp),dimension(2),  intent (in), optional :: xlim   !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim   !! y-axis range
+    integer,                intent (out)          :: istat  !! status output (0 means no problems)
 
     character(len=:), allocatable :: xstr         !! x values stringified
     character(len=*), parameter   :: xname = 'x'  !! x variable name for script
@@ -630,6 +664,8 @@
     character(len=:), allocatable :: ylimstr      !! ylim values stringified
 
     if (allocated(me%str)) then
+
+        istat = 0
 
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
         if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
@@ -650,7 +686,8 @@
         if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
 
     else
-        error stop 'Error in add_imshow: pyplot class not properly initialized.'
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_imshow: pyplot class not properly initialized.'
     end if
 
     end subroutine add_imshow
@@ -708,6 +745,7 @@
 ! Integer to string conversion.
 
     subroutine integer_to_string(i, s)
+
     integer,          intent(in), optional  :: i     !! integer value
     character(len=*), intent(out)           :: s     !! integer value stringified
     integer                                 :: istat !! IO status
@@ -715,7 +753,8 @@
     write(s, int_fmt, iostat=istat) i
 
     if (istat/=0) then
-        error stop 'Error converting integer to string'
+        write(error_unit,'(A)') 'Error converting integer to string'
+        s = '****'
     else
         s = adjustl(s)
     end if
@@ -728,29 +767,51 @@
 !
 ! Real vector to string.
 
-    subroutine vec_to_string(v, fmt, str, use_numpy)
+    subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)
 
     real(wp), dimension(:),        intent(in)  :: v         !! real values
     character(len=*),              intent(in)  :: fmt       !! real format string
     character(len=:), allocatable, intent(out) :: str       !! real values stringified
     logical,                       intent(in)  :: use_numpy !! activate numpy python module usage
+    logical,intent(in),optional                :: is_tuple  !! if true [default], use '()', if false use '[]'
 
     integer                     :: i         !! counter
     integer                     :: istat     !! IO status
     character(len=max_real_len) :: tmp       !! dummy string
+    logical :: tuple
 
-    str = '['
+    if (present(is_tuple)) then
+        tuple = is_tuple
+    else
+        tuple = .false.
+    end if
+
+    if (tuple) then
+        str = '('
+    else
+        str = '['
+    end if
+
     do i=1, size(v)
         if (fmt=='*') then
             write(tmp, *, iostat=istat) v(i)
         else
             write(tmp, fmt, iostat=istat) v(i)
         end if
-        if (istat/=0) error stop 'Error in vec_to_string'
+        if (istat/=0) then
+            write(error_unit,'(A)') 'Error in vec_to_string'
+            str = '****'
+            return
+        end if
         str = str//trim(adjustl(tmp))
         if (i<size(v)) str = str // ','
     end do
-    str = str // ']'
+
+    if (tuple) then
+        str = str // ')'
+    else
+        str = str // ']'
+    end if
 
     !convert to numpy array if necessary:
     if (use_numpy) str = 'np.array('//str//')'
@@ -796,12 +857,12 @@
 !  If user specifies a Python file name, then the file is kept, otherwise
 !  a temporary filename is used, and the file is deleted after it is used.
 
-    subroutine execute(me, pyfile)
+    subroutine execute(me, pyfile, istat)
 
     class(pyplot),    intent(inout)        :: me     !! pytplot handler
     character(len=*), intent(in), optional :: pyfile !! name of the python script to generate
+    integer,          intent (out)         :: istat  !! status output (0 means no problems)
 
-    integer                       :: istat   !! IO status
     integer                       :: iunit   !! IO unit
     character(len=:), allocatable :: file    !! file name
     logical                       :: scratch !! if a scratch file is to be used
@@ -819,24 +880,40 @@
 
         !open the file:
         open(newunit=iunit, file=file, status='REPLACE', iostat=istat)
-        if (istat/=0) error stop 'Error opening file.'
+        if (istat/=0) then
+            write(error_unit,'(A)') 'Error opening file: '//trim(file)
+            return
+        end if
 
         !write to the file:
         write(iunit, '(A)') me%str
 
-        !to ensure that the file is there for the next command line call:
-        flush(iunit)
-
-        !run the file using python:
-        call execute_command_line(python_exe//' '//file)
-
-        !close the file:
-        if (scratch) then
-            close(iunit, status='DELETE', iostat=istat)
+        !to ensure that the file is there for the next
+        !command line call, we have to close it here.
+        close(iunit, iostat=istat)
+        if (istat/=0) then
+            write(error_unit,'(A)') 'Error closing file: '//trim(file)
         else
-            close(iunit, iostat=istat)
+
+            !run the file using python:
+            if (index(file,' ')>0) then
+                ! space in path, probably should enclose in quotes
+                call execute_command_line(python_exe//' "'//file//'"')
+            else
+                call execute_command_line(python_exe//' '//file)
+            end if
+
+            if (scratch) then
+                !delete the file (have to reopen it because
+                !Fortran has no file delete function)
+                open(newunit=iunit, file=file, status='OLD', iostat=istat)
+                if (istat/=0) close(iunit, status='DELETE', iostat=istat)
+            end if
+            if (istat/=0) then
+                write(error_unit,'(A)') 'Error closing file.'
+            end if
+
         end if
-        if (istat/=0) error stop 'Error closing file.'
 
         !cleanup:
         if (allocated(file)) deallocate(file)
@@ -876,7 +953,7 @@
 !  * modified: Johannes Rieke 6/16/2017
 !  * modified: Jacob Williams 6/16/2017
 
-    subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation)
+    subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)
 
     class(pyplot),    intent(inout)        :: me          !! pyplot handler
     character(len=*), intent(in)           :: figfile     !! file name for the figure
@@ -887,10 +964,13 @@
     character(len=*), intent(in), optional :: facecolor   !! the colors of the figure rectangle
     character(len=*), intent(in), optional :: edgecolor   !! the colors of the figure rectangle
     character(len=*), intent(in), optional :: orientation !! 'landscape' or 'portrait'
+    integer,          intent (out)         :: istat       !! status output (0 means no problems)
 
     character(len=:),allocatable :: tmp  !! for building the `savefig` arguments.
 
     if (allocated(me%str)) then
+
+        istat = 0
 
         !finish up the string:
         call me%finish_ops()
@@ -912,10 +992,11 @@
         deallocate(tmp)
 
         !run it:
-        call me%execute(pyfile)
+        call me%execute(pyfile, istat=istat)
 
     else
-        error stop 'error in savefig: pyplot class not properly initialized.'
+        istat = -1
+        write(error_unit,'(A)') 'error in savefig: pyplot class not properly initialized.'
     end if
 
     end subroutine savefig
@@ -927,12 +1008,15 @@
 !
 ! Shows the figure.
 
-    subroutine showfig(me, pyfile)
+    subroutine showfig(me, pyfile, istat)
 
     class(pyplot),    intent(inout)        :: me      !! pyplot handler
     character(len=*), intent(in), optional :: pyfile  !! name of the Python script to generate
+    integer,          intent (out)         :: istat   !! status output (0 means no problems)
 
     if (allocated(me%str)) then
+
+        istat = 0
 
         !finish up the string:
         call me%finish_ops()
@@ -941,10 +1025,11 @@
         call me%add_str('plt.show()')
 
         !run it:
-        call me%execute(pyfile)
+        call me%execute(pyfile, istat=istat)
 
     else
-        error stop 'error in showfig: pyplot class not properly initialized.'
+        istat = -1
+        write(error_unit,'(A)') 'error in showfig: pyplot class not properly initialized.'
     end if
 
     end subroutine showfig
