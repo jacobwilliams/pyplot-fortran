@@ -907,7 +907,7 @@
                 !delete the file (have to reopen it because
                 !Fortran has no file delete function)
                 open(newunit=iunit, file=file, status='OLD', iostat=istat)
-                if (istat/=0) close(iunit, status='DELETE', iostat=istat)
+                if (istat==0) close(iunit, status='DELETE', iostat=istat)
             end if
             if (istat/=0) then
                 write(error_unit,'(A)') 'Error closing file.'
