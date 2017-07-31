@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title=" 8.3% of total for procedures.">40 statements</a>
+	  title=" 9.1% of total for procedures.">53 statements</a>
      </li> 
      
      
@@ -217,6 +217,8 @@
       
       <a class="list-group-item" href="../proc/execute.html">execute</a>
       
+      <a class="list-group-item" href="../proc/finish_ops.html">finish_ops</a>
+      
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
@@ -228,6 +230,8 @@
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+      
+      <a class="list-group-item" href="../proc/showfig.html">showfig</a>
       
       <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
       
@@ -242,7 +246,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale)
+private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
     
     
 	 
@@ -428,7 +432,37 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, x
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>yscale</strong></td><td></td>
+  <td><strong>yscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-color"></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>color</strong></td><td><p>RGB color tuple [0-1,0-1,0-1]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-istat"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
   
 </tr>
 
@@ -619,7 +653,7 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, x
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">markersize</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">xscale</span><span class="p">,</span> <span class="n">yscale</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">markersize</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">xscale</span><span class="p">,</span> <span class="n">yscale</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
@@ -632,17 +666,23 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, x
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">ylim</span>         <span class="c">!! y-axis range</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xscale</span>       <span class="c">!! example: &#39;linear&#39; (default), &#39;log&#39;</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">yscale</span>       <span class="c">!! example: &#39;linear&#39; (default), &#39;log&#39;</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>        <span class="c">!! RGB color tuple [0-1,0-1,0-1]</span>
+    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
 
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">arg_str</span>      <span class="c">!! the arguments to pass to `plot`</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>         <span class="c">!! x values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>         <span class="c">!! y values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xlimstr</span>      <span class="c">!! xlim values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ylimstr</span>      <span class="c">!! ylim values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">color_str</span>    <span class="c">!! color values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">imark</span>        <span class="c">!! actual markers size</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">iline</span>        <span class="c">!! actual line width</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>  <span class="c">!! x variable name for script</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>  <span class="c">!! y variable name for script</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
+
+<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="c">!axis limits (optional):</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xlim</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">xlim</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">xlimstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
@@ -661,14 +701,24 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, x
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">ystr</span><span class="p">)</span>
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
+        <span class="c">!main arguments for plot:</span>
+        <span class="n">arg_str</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                  <span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                  <span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">linestyle</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                  <span class="s1">&#39;linewidth=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">iline</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                  <span class="s1">&#39;markersize=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">imark</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                  <span class="s1">&#39;label=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+
+        <span class="c">! optional arguments:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">color</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">            if</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">                call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">color_str</span><span class="p">,</span> <span class="n">use_numpy</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.,</span> <span class="n">is_tuple</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
+                <span class="n">arg_str</span> <span class="o">=</span> <span class="n">arg_str</span><span class="o">//</span><span class="s1">&#39;,color=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">color_str</span><span class="p">)</span>
+            <span class="k">end if</span>
+<span class="k">        end if</span>
+
         <span class="c">!write the plot statement:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.plot(&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">linestyle</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="s1">&#39;linewidth=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">iline</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="s1">&#39;markersize=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">imark</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="s1">&#39;label=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.plot(&#39;</span><span class="o">//</span><span class="n">arg_str</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 
         <span class="c">!axis limits:</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">xlimstr</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_xlim(&#39;</span><span class="o">//</span><span class="n">xlimstr</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
@@ -681,7 +731,8 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, x
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>
-<span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
+<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
 
 <span class="k">    end subroutine </span><span class="n">add_plot</span>
@@ -721,6 +772,8 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, x
       
       <a class="list-group-item" href="../proc/execute.html">execute</a>
       
+      <a class="list-group-item" href="../proc/finish_ops.html">finish_ops</a>
+      
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
@@ -732,6 +785,8 @@ private subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, x
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+      
+      <a class="list-group-item" href="../proc/showfig.html">showfig</a>
       
       <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
       

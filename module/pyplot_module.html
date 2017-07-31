@@ -125,7 +125,7 @@
      <li><i class="fa fa-pencil"></i> Jacob Williams</li>
      
      
-    <li><i class="fa fa-calendar-o"></i> 4/14/2015</li>
+    <li><i class="fa fa-calendar-o"></i> 6/16/2017</li>
      
      
     <li><i class="fa fa-legal"></i> BSD</li>
@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="100.0% of total for modules and submodules.">515 statements</a>
+	  title="100.0% of total for modules and submodules.">617 statements</a>
      </li> 
      
      
@@ -247,7 +247,11 @@
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-execute">execute</a>
       
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-finish_ops">finish_ops</a>
+      
       <a class="list-group-item" href="../module/pyplot_module.html#proc-savefig">savefig</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-showfig">showfig</a>
       
     </div>
   </div>
@@ -585,7 +589,11 @@
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-execute">execute</a>
       
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-finish_ops">finish_ops</a>
+      
       <a class="list-group-item" href="../module/pyplot_module.html#proc-savefig">savefig</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-showfig">showfig</a>
       
     </div>
   </div>
@@ -888,6 +896,9 @@
        <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-savefig'>savefig</a></strong>  </td>
        <td><p>save plots of pyplot instance</p></td></tr>
       
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-showfig'>showfig</a></strong>  </td>
+       <td><p>show plots of pyplot instance</p></td></tr>
+      
        <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-destroy'>destroy</a></strong>  </td>
        <td><p>destroy pyplot instance</p></td></tr>
       
@@ -896,6 +907,9 @@
       
        <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_str'>add_str</a></strong>  </td>
        <td><p>add string to pytplot instance buffer</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-finish_ops'>finish_ops</a></strong>  </td>
+       <td><p>some final ops before saving</p></td></tr>
       
        </tbody>
        </table>
@@ -1409,7 +1423,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_plot"></span><h3>
-private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale)
+private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
     
     
 	 
@@ -1610,7 +1624,37 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>yscale</strong></td><td></td>
+  <td><strong>yscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>color</strong></td><td><p>RGB color tuple [0-1,0-1,0-1]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
   
 </tr>
 
@@ -1628,7 +1672,7 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_hist"></span><h3>
-private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative)
+private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)
     
     
 	 
@@ -1818,6 +1862,21 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -1832,7 +1891,7 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_contour"></span><h3>
-private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
+private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, istat)
     
     
 	 
@@ -2037,6 +2096,21 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -2051,7 +2125,7 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_3d_plot"></span><h3>
-private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth)
+private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth, istat)
     
     
 	 
@@ -2211,6 +2285,21 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -2225,7 +2314,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_bar"></span><h3>
-private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale)
+private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale, istat)
     
     
 	 
@@ -2456,7 +2545,22 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>yscale</strong></td><td></td>
+  <td><strong>yscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
   
 </tr>
 
@@ -2474,7 +2578,7 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, left, height, 
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_imshow"></span><h3>
-private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim)
+private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim, istat)
     
     
 	 
@@ -2561,6 +2665,21 @@ private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim,
   
   <td>dimension(2)</td><td>::</td>
   <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
   
 </tr>
 
@@ -2862,7 +2981,7 @@ private subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-vec_to_string"></span><h3>
-private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy)
+private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy, is_tuple)
     
     
 	 
@@ -2959,6 +3078,21 @@ private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt
   
   <td></td><td>::</td>
   <td><strong>use_numpy</strong></td><td><p>activate numpy python module usage</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>is_tuple</strong></td><td><p>if true [default], use '()', if false use '[]'</p></td>
   
 </tr>
 
@@ -3090,7 +3224,7 @@ private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-execute"></span><h3>
-private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
+private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
     
     
 	 
@@ -3162,6 +3296,90 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-finish_ops"></span><h3>
+private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
+    
+    
+	 
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Some final things to add before saving or showing the figure.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -3176,7 +3394,7 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-savefig"></span><h3>
-private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile)
+private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)
     
     
 	 
@@ -3258,6 +3476,198 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
   
   <td></td><td>::</td>
   <td><strong>pyfile</strong></td><td><p>name of the Python script to generate</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>dpi</strong></td><td><p>resolution of the figure for png
+ [note this is a string]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>transparent</strong></td><td><p>transparent background (T/F)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>facecolor</strong></td><td><p>the colors of the figure rectangle</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>edgecolor</strong></td><td><p>the colors of the figure rectangle</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>orientation</strong></td><td><p>'landscape' or 'portrait'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-showfig"></span><h3>
+private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
+    
+    
+	 
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Johannes Rieke</dd>
+    
+    
+    <dt>Date</dt><dd>6/16/2017</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Shows the figure.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>pyfile</strong></td><td><p>name of the Python script to generate</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
   
 </tr>
 

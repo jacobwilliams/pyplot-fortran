@@ -25,8 +25,8 @@
     integer                  :: i     !! counter
     integer                  :: j     !! counter
     real(wp)                 :: r2    !! temp variable
-
-    real(wp), dimension(n,n) :: mat     !! image values
+    real(wp), dimension(n,n) :: mat   !! image values
+    integer                  :: istat !! status code
 
     !generate some data:
     x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
@@ -44,10 +44,10 @@
     !2d line plot:
     call plt%initialize(grid=.true.,xlabel='angle (rad)',figsize=[20,10],&
                         title='plot test',legend=.true.,axis_equal=.true.)
-    call plt%add_plot(x,sx,label='$\sin (x)$',linestyle='b-o',markersize=5,linewidth=2)
-    call plt%add_plot(x,cx,label='$\cos (x)$',linestyle='r-o',markersize=5,linewidth=2)
-    call plt%add_plot(x,tx,label='$\sin (x) \cos (x)$',linestyle='g-o',markersize=2,linewidth=1)
-    call plt%savefig('plottest.png', pyfile='plottest.py')
+    call plt%add_plot(x,sx,label='$\sin (x)$',linestyle='b-o',markersize=5,linewidth=2,istat=istat)
+    call plt%add_plot(x,cx,label='$\cos (x)$',linestyle='r-o',markersize=5,linewidth=2,istat=istat)
+    call plt%add_plot(x,tx,label='$\sin (x) \cos (x)$',linestyle='g-o',markersize=2,linewidth=1,istat=istat)
+    call plt%savefig('plottest.png', pyfile='plottest.py',istat=istat)
 
     !bar chart:
     tx = 0.1_wp !for bar width
@@ -59,8 +59,8 @@
                         ytick_labelsize = 20,&
                         legend_fontsize = 20 )
     call plt%add_bar(left=x,height=sx,width=tx,label='$\sin (x)$',&
-                        color='r',yerr=yerr,xlim=[0.0_wp, 20.0_wp],align='center')
-    call plt%savefig('bartest.png', pyfile='bartest.py')
+                        color='r',yerr=yerr,xlim=[0.0_wp, 20.0_wp],align='center',istat=istat)
+    call plt%savefig('bartest.png', pyfile='bartest.py',istat=istat)
 
     !contour plot:
     x = [(real(i,wp), i=0,n-1)]/100.0_wp
@@ -75,15 +75,15 @@
                         ylabel='y angle (rad)',figsize=[10,10],&
                         title='Contour plot test', real_fmt='*')
     call plt%add_contour(x, y, z, label='contour', linestyle='-', &
-                         linewidth=2, filled=.true., cmap='bone')
-    call plt%savefig('contour.png',pyfile='contour.py')
+                         linewidth=2, filled=.true., cmap='bone',istat=istat)
+    call plt%savefig('contour.png',pyfile='contour.py',istat=istat)
 
     !image plot:
     call plt%initialize(grid=.true.,xlabel='x',ylabel='y',figsize=[20,20],&
                         title='imshow test',&
                         real_fmt='(F9.3)')
-    call plt%add_imshow(mat,xlim=[0.0_wp, 100.0_wp],ylim=[0.0_wp, 100.0_wp])
-    call plt%savefig('imshow.png', pyfile='imshow.py')
+    call plt%add_imshow(mat,xlim=[0.0_wp, 100.0_wp],ylim=[0.0_wp, 100.0_wp],istat=istat)
+    call plt%savefig('imshow.png', pyfile='imshow.py',istat=istat)
 
     !histogram chart:
     x = [0.194,0.501,-1.241,1.425,-2.217,-0.342,-0.979,0.909,0.994,0.101,       &
@@ -106,8 +106,8 @@
                         ytick_labelsize = 20,&
                         legend_fontsize = 20 )
 
-    call plt%add_hist(x=x, label='x', normed=.true.)
-    call plt%savefig('histtest1.png', pyfile='histtest1.py')
+    call plt%add_hist(x=x, label='x', normed=.true.,istat=istat)
+    call plt%savefig('histtest1.png', pyfile='histtest1.py',istat=istat)
 
     call plt%initialize(grid=.true.,xlabel='x',&
                         title='cumulative hist test',&
@@ -118,8 +118,11 @@
                         ytick_labelsize = 20,&
                         legend_fontsize = 20 )
 
-    call plt%add_hist(x=x, label='x', bins=8, cumulative=.true.)
-    call plt%savefig('histtest2.png', pyfile='histtest2.py')
+    call plt%add_hist(x=x, label='x', bins=8, cumulative=.true.,istat=istat)
+    call plt%savefig('histtest2.png', &
+                        pyfile='histtest2.py', &
+                        dpi='200', &
+                        transparent=.true.,istat=istat)
 
     end program test
 !*****************************************************************************************

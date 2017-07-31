@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="100.0% of total for programs.">58 statements</a>
+	  title="100.0% of total for programs.">59 statements</a>
      </li> 
      
      
@@ -197,6 +197,8 @@
       <a class="list-group-item" href="../program/test.html#variable-r2">r2</a>
       
       <a class="list-group-item" href="../program/test.html#variable-mat">mat</a>
+      
+      <a class="list-group-item" href="../program/test.html#variable-istat%7E10">istat</a>
       
     </div>
   </div>
@@ -414,6 +416,8 @@
       <a class="list-group-item" href="../program/test.html#variable-r2">r2</a>
       
       <a class="list-group-item" href="../program/test.html#variable-mat">mat</a>
+      
+      <a class="list-group-item" href="../program/test.html#variable-istat%7E10">istat</a>
       
     </div>
   </div>
@@ -645,6 +649,20 @@
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-istat%7E10"></span>integer</td>
+  
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td></td><td></td><td><p>status code</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -688,8 +706,8 @@
     <span class="kt">integer</span>                  <span class="kd">::</span> <span class="n">i</span>     <span class="c">!! counter</span>
     <span class="kt">integer</span>                  <span class="kd">::</span> <span class="n">j</span>     <span class="c">!! counter</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span>                 <span class="kd">::</span> <span class="n">r2</span>    <span class="c">!! temp variable</span>
-
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="kd">::</span> <span class="n">mat</span>     <span class="c">!! image values</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="kd">::</span> <span class="n">mat</span>   <span class="c">!! image values</span>
+    <span class="kt">integer</span>                  <span class="kd">::</span> <span class="n">istat</span> <span class="c">!! status code</span>
 
     <span class="c">!generate some data:</span>
     <span class="n">x</span>    <span class="o">=</span> <span class="p">[(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">wp</span><span class="p">),</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">/</span><span class="mf">5.0_wp</span>
@@ -707,10 +725,10 @@
     <span class="c">!2d line plot:</span>
     <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;angle (rad)&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">],&amp;</span>
                         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;plot test&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">axis_equal</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">sx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sin (x)$&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;b-o&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">cx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\cos (x)$&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;r-o&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">tx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sin (x) \cos (x)$&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;g-o&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;plottest.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;plottest.py&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">sx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sin (x)$&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;b-o&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">cx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\cos (x)$&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;r-o&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">tx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sin (x) \cos (x)$&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;g-o&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;plottest.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;plottest.py&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="c">!bar chart:</span>
     <span class="n">tx</span> <span class="o">=</span> <span class="mf">0.1_wp</span> <span class="c">!for bar width</span>
@@ -722,8 +740,8 @@
                         <span class="n">ytick_labelsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,&amp;</span>
                         <span class="n">legend_fontsize</span> <span class="o">=</span> <span class="mi">20</span> <span class="p">)</span>
     <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_bar</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="n">sx</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="n">tx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sin (x)$&#39;</span><span class="p">,&amp;</span>
-                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">2</span><span class="mf">0.0_wp</span><span class="p">],</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;bartest.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;bartest.py&#39;</span><span class="p">)</span>
+                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">2</span><span class="mf">0.0_wp</span><span class="p">],</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;bartest.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;bartest.py&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="c">!contour plot:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">[(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">wp</span><span class="p">),</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">/</span><span class="mi">10</span><span class="mf">0.0_wp</span>
@@ -738,15 +756,15 @@
                         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y angle (rad)&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],&amp;</span>
                         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Contour plot test&#39;</span><span class="p">,</span> <span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
     <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;contour&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
-                         <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bone&#39;</span><span class="p">)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;contour.png&#39;</span><span class="p">,</span><span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;contour.py&#39;</span><span class="p">)</span>
+                         <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bone&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;contour.png&#39;</span><span class="p">,</span><span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;contour.py&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="c">!image plot:</span>
     <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">],&amp;</span>
                         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;imshow test&#39;</span><span class="p">,&amp;</span>
                         <span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F9.3)&#39;</span><span class="p">)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_imshow</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">10</span><span class="mf">0.0_wp</span><span class="p">],</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">10</span><span class="mf">0.0_wp</span><span class="p">])</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;imshow.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;imshow.py&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_imshow</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">10</span><span class="mf">0.0_wp</span><span class="p">],</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mi">10</span><span class="mf">0.0_wp</span><span class="p">],</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;imshow.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;imshow.py&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="c">!histogram chart:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.194</span><span class="p">,</span><span class="mf">0.501</span><span class="p">,</span><span class="o">-</span><span class="mf">1.241</span><span class="p">,</span><span class="mf">1.425</span><span class="p">,</span><span class="o">-</span><span class="mf">2.217</span><span class="p">,</span><span class="o">-</span><span class="mf">0.342</span><span class="p">,</span><span class="o">-</span><span class="mf">0.979</span><span class="p">,</span><span class="mf">0.909</span><span class="p">,</span><span class="mf">0.994</span><span class="p">,</span><span class="mf">0.101</span><span class="p">,</span>       <span class="p">&amp;</span>
@@ -769,8 +787,8 @@
                         <span class="n">ytick_labelsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,&amp;</span>
                         <span class="n">legend_fontsize</span> <span class="o">=</span> <span class="mi">20</span> <span class="p">)</span>
 
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;histtest1.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;histtest1.py&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;histtest1.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;histtest1.py&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,&amp;</span>
                         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;cumulative hist test&#39;</span><span class="p">,&amp;</span>
@@ -781,8 +799,11 @@
                         <span class="n">ytick_labelsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,&amp;</span>
                         <span class="n">legend_fontsize</span> <span class="o">=</span> <span class="mi">20</span> <span class="p">)</span>
 
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
-    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;histtest2.png&#39;</span><span class="p">,</span> <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;histtest2.py&#39;</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;histtest2.png&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+                        <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;histtest2.py&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+                        <span class="n">dpi</span><span class="o">=</span><span class="s1">&#39;200&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+                        <span class="n">transparent</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="k">end program </span><span class="n">test</span>
 </pre></div>

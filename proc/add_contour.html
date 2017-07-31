@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="11.0% of total for procedures.">53 statements</a>
+	  title=" 9.7% of total for procedures.">56 statements</a>
      </li> 
      
      
@@ -217,6 +217,8 @@
       
       <a class="list-group-item" href="../proc/execute.html">execute</a>
       
+      <a class="list-group-item" href="../proc/finish_ops.html">finish_ops</a>
+      
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
@@ -228,6 +230,8 @@
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+      
+      <a class="list-group-item" href="../proc/showfig.html">showfig</a>
       
       <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
       
@@ -242,7 +246,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap)
+private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, istat)
     
     
 	 
@@ -394,7 +398,7 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
   
 <tr>
   
-  <td><span class="anchor" id="variable-color"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-color%7E2"></span>character(len=*),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -433,6 +437,21 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-istat%7E3"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -457,58 +476,58 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
 <polygon fill="none" stroke="black" points="73,-67 1,-67 1,-41 73,-41 73,-67"/>
 <text text-anchor="middle" x="37" y="-51.55" font-family="Helvetica,sans-Serif" font-size="10.50">add_contour</text>
 </g>
-<!-- proc~optional_int_to_string -->
-<g id="node2" class="node"><title>proc~optional_int_to_string</title>
-<a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="225,-108 111,-108 111,-82 225,-82 225,-108"/>
-<text text-anchor="middle" x="168" y="-92.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
+<!-- proc~matrix_to_string -->
+<g id="node2" class="node"><title>proc~matrix_to_string</title>
+<a xlink:href="../proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="212,-108 124,-108 124,-82 212,-82 212,-108"/>
+<text text-anchor="middle" x="168" y="-92.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
 </a>
 </g>
-<!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
-<g id="edge6" class="edge"><title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
+<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
+<g id="edge6" class="edge"><title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
 <path fill="none" stroke="#000000" d="M73.8394,-65.5299C87.1207,-69.6866 102.36,-74.4563 116.655,-78.9303"/>
 <polygon fill="#000000" stroke="#000000" points="115.776,-82.3225 126.365,-81.9692 117.867,-75.6421 115.776,-82.3225"/>
 </g>
 <!-- proc~vec_to_string -->
 <g id="node3" class="node"><title>proc~vec_to_string</title>
 <a xlink:href="../proc/vec_to_string.html" xlink:title="vec_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="347,-45 271,-45 271,-19 347,-19 347,-45"/>
-<text text-anchor="middle" x="309" y="-29.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="347,-89 271,-89 271,-63 347,-63 347,-89"/>
+<text text-anchor="middle" x="309" y="-73.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
 </a>
 </g>
 <!-- proc~add_contour&#45;&gt;proc~vec_to_string -->
 <g id="edge8" class="edge"><title>proc~add_contour&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M73.6831,-51.033C121.944,-47.1295 206.892,-40.2587 260.441,-35.9276"/>
-<polygon fill="#000000" stroke="#000000" points="261.026,-39.3918 270.712,-35.0969 260.462,-32.4145 261.026,-39.3918"/>
+<path fill="none" stroke="#000000" d="M73.6831,-56.967C121.944,-60.8705 206.892,-67.7413 260.441,-72.0724"/>
+<polygon fill="#000000" stroke="#000000" points="260.462,-75.5855 270.712,-72.9031 261.026,-68.6082 260.462,-75.5855"/>
 </g>
-<!-- proc~matrix_to_string -->
-<g id="node4" class="node"><title>proc~matrix_to_string</title>
-<a xlink:href="../proc/matrix_to_string.html" xlink:title="matrix_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="212,-26 124,-26 124,-1.24345e-14 212,-3.55271e-15 212,-26"/>
-<text text-anchor="middle" x="168" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
+<!-- proc~optional_int_to_string -->
+<g id="node4" class="node"><title>proc~optional_int_to_string</title>
+<a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="225,-26 111,-26 111,-1.24345e-14 225,-3.55271e-15 225,-26"/>
+<text text-anchor="middle" x="168" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
 </a>
 </g>
-<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
-<g id="edge10" class="edge"><title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
+<!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
+<g id="edge10" class="edge"><title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M73.8394,-42.4701C87.1207,-38.3134 102.36,-33.5437 116.655,-29.0697"/>
 <polygon fill="#000000" stroke="#000000" points="117.867,-32.3579 126.365,-26.0308 115.776,-25.6775 117.867,-32.3579"/>
 </g>
+<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
+<g id="edge2" class="edge"><title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M212.613,-88.9883C227.968,-86.9192 245.225,-84.5938 260.849,-82.4885"/>
+<polygon fill="#000000" stroke="#000000" points="261.4,-85.9459 270.843,-81.1417 260.466,-79.0086 261.4,-85.9459"/>
+</g>
 <!-- proc~integer_to_string -->
-<g id="node5" class="node"><title>proc~integer_to_string</title>
+<g id="node6" class="node"><title>proc~integer_to_string</title>
 <a xlink:href="../proc/integer_to_string.html" xlink:title="integer_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="355,-108 263,-108 263,-82 355,-82 355,-108"/>
-<text text-anchor="middle" x="309" y="-92.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="355,-26 263,-26 263,-1.24345e-14 355,-3.55271e-15 355,-26"/>
+<text text-anchor="middle" x="309" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
 </a>
 </g>
 <!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
-<g id="edge2" class="edge"><title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
-<path fill="none" stroke="#000000" d="M225.757,-95C234.503,-95 243.52,-95 252.244,-95"/>
-<polygon fill="#000000" stroke="#000000" points="252.318,-98.5001 262.318,-95 252.318,-91.5001 252.318,-98.5001"/>
-</g>
-<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
-<g id="edge4" class="edge"><title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M212.613,-19.0117C227.968,-21.0808 245.225,-23.4062 260.849,-25.5115"/>
-<polygon fill="#000000" stroke="#000000" points="260.466,-28.9914 270.843,-26.8583 261.4,-22.0541 260.466,-28.9914"/>
+<g id="edge4" class="edge"><title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
+<path fill="none" stroke="#000000" d="M225.757,-13C234.503,-13 243.52,-13 252.244,-13"/>
+<polygon fill="#000000" stroke="#000000" points="252.318,-16.5001 262.318,-13 252.318,-9.5001 252.318,-16.5001"/>
 </g>
 </g>
 </svg>
@@ -637,7 +656,7 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_contour</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filled</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_contour</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filled</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>           <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>   <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
@@ -650,11 +669,12 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>        <span class="c">!! color of the contour line</span>
     <span class="kt">logical</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">filled</span>       <span class="c">!! use filled control (default=False)</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">cmap</span>         <span class="c">!! colormap if filled=True (examples: &#39;jet&#39;, &#39;bone&#39;)</span>
+    <span class="kt">integer</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
 
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>          <span class="c">!! x values strinfied</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>          <span class="c">!! y values strinfied</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">zstr</span>          <span class="c">!! z values strinfied</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">levelstr</span>      <span class="c">!! levels vector strinfied</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>          <span class="c">!! x values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>          <span class="c">!! y values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">zstr</span>          <span class="c">!! z values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">levelstr</span>      <span class="c">!! levels vector stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">iline</span>         <span class="c">!! actual line width</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>   <span class="c">!! x variable name for script</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>   <span class="c">!! y variable name for script</span>
@@ -666,6 +686,8 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">contourfunc</span>   <span class="c">!! &#39;contour&#39; or &#39;contourf&#39;</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
+
+<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="c">!convert the arrays to strings:</span>
         <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
@@ -709,7 +731,8 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>
-<span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
+<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
 
 <span class="k">    end subroutine </span><span class="n">add_contour</span>
@@ -749,6 +772,8 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
       
       <a class="list-group-item" href="../proc/execute.html">execute</a>
       
+      <a class="list-group-item" href="../proc/finish_ops.html">finish_ops</a>
+      
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
@@ -760,6 +785,8 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+      
+      <a class="list-group-item" href="../proc/showfig.html">showfig</a>
       
       <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
       

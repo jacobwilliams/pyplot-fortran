@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title=" 4.0% of total for procedures.">19 statements</a>
+	  title=" 5.9% of total for procedures.">34 statements</a>
      </li> 
      
      
@@ -217,6 +217,8 @@
       
       <a class="list-group-item" href="../proc/execute.html">execute</a>
       
+      <a class="list-group-item" href="../proc/finish_ops.html">finish_ops</a>
+      
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
@@ -228,6 +230,8 @@
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+      
+      <a class="list-group-item" href="../proc/showfig.html">showfig</a>
       
       <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
       
@@ -242,7 +246,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-private subroutine savefig(me, figfile, pyfile)
+private subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)
     
     
 	 
@@ -253,6 +257,11 @@ private subroutine savefig(me, figfile, pyfile)
 
     
     <p>Save the figure.</p>
+<h3>History</h3>
+<ul>
+<li>modified: Johannes Rieke 6/16/2017</li>
+<li>modified: Jacob Williams 6/16/2017</li>
+</ul>
     
 
     <h3>Arguments</h3>
@@ -273,7 +282,7 @@ private subroutine savefig(me, figfile, pyfile)
   
 <tr>
   
-  <td><span class="anchor" id="variable-me%7E11"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td><span class="anchor" id="variable-me%7E12"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
   <td>intent(inout)</td>
   <td></td>
   
@@ -309,6 +318,97 @@ private subroutine savefig(me, figfile, pyfile)
   
   <td></td><td>::</td>
   <td><strong>pyfile</strong></td><td><p>name of the Python script to generate</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dpi"></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>dpi</strong></td><td><p>resolution of the figure for png
+ [note this is a string]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-transparent"></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>transparent</strong></td><td><p>transparent background (T/F)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-facecolor"></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>facecolor</strong></td><td><p>the colors of the figure rectangle</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-edgecolor"></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>edgecolor</strong></td><td><p>the colors of the figure rectangle</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-orientation"></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>orientation</strong></td><td><p>'landscape' or 'portrait'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-istat%7E8"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
   
 </tr>
 
@@ -374,30 +474,50 @@ private subroutine savefig(me, figfile, pyfile)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">savefig</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">figfile</span><span class="p">,</span> <span class="n">pyfile</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">savefig</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">figfile</span><span class="p">,</span> <span class="n">pyfile</span><span class="p">,</span> <span class="n">dpi</span><span class="p">,</span> <span class="n">transparent</span><span class="p">,</span> <span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
 
-    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>      <span class="c">!! pyplot handler</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">figfile</span> <span class="c">!! file name for the figure</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">pyfile</span>  <span class="c">!! name of the Python script to generate</span>
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>          <span class="c">!! pyplot handler</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">figfile</span>     <span class="c">!! file name for the figure</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">pyfile</span>      <span class="c">!! name of the Python script to generate</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">dpi</span>         <span class="c">!! resolution of the figure for png</span>
+                                                          <span class="c">!! [note this is a string]</span>
+    <span class="kt">logical</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span>          <span class="kd">::</span> <span class="n">transparent</span> <span class="c">!! transparent background (T/F)</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">facecolor</span>   <span class="c">!! the colors of the figure rectangle</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">edgecolor</span>   <span class="c">!! the colors of the figure rectangle</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">orientation</span> <span class="c">!! &#39;landscape&#39; or &#39;portrait&#39;</span>
+    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">istat</span>       <span class="c">!! status output (0 means no problems)</span>
+
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">tmp</span>  <span class="c">!! for building the `savefig` arguments.</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
 
+<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
+
         <span class="c">!finish up the string:</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">show_legend</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.legend(loc=&quot;best&quot;)&#39;</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="k">end if</span>
-<span class="k">        if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">axis_equal</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.axis(&quot;equal&quot;)&#39;</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="k">end if</span>
-<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;plt.savefig(&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">figfile</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">finish_ops</span><span class="p">()</span>
+
+        <span class="c">!build the savefig arguments:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">figfile</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">dpi</span><span class="p">))</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, dpi=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">dpi</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">transparent</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">            if</span> <span class="p">(</span><span class="n">transparent</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">                </span><span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, transparent=True&#39;</span>
+            <span class="k">else</span>
+<span class="k">                </span><span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, transparent=False&#39;</span>
+            <span class="k">end if</span>
+<span class="k">        end if</span>
+<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">facecolor</span><span class="p">))</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, facecolor=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">facecolor</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">edgecolor</span><span class="p">))</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, edgecolor=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">edgecolor</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">orientation</span><span class="p">))</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, orientation=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">orientation</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;plt.savefig(&#39;</span><span class="o">//</span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="k">deallocate</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 
         <span class="c">!run it:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">execute</span><span class="p">(</span><span class="n">pyfile</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">execute</span><span class="p">(</span><span class="n">pyfile</span><span class="p">,</span> <span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="k">else</span>
-<span class="k">        </span><span class="n">error</span> <span class="k">stop</span> <span class="s1">&#39;error in savefig: pyplot class not properly initialized.&#39;</span>
+<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;error in savefig: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
 
 <span class="k">    end subroutine </span><span class="n">savefig</span>
@@ -437,6 +557,8 @@ private subroutine savefig(me, figfile, pyfile)
       
       <a class="list-group-item" href="../proc/execute.html">execute</a>
       
+      <a class="list-group-item" href="../proc/finish_ops.html">finish_ops</a>
+      
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
@@ -448,6 +570,8 @@ private subroutine savefig(me, figfile, pyfile)
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+      
+      <a class="list-group-item" href="../proc/showfig.html">showfig</a>
       
       <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
       

@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="22.1% of total for procedures.">106 statements</a>
+	  title="18.3% of total for procedures.">106 statements</a>
      </li> 
      
      
@@ -217,6 +217,8 @@
       
       <a class="list-group-item" href="../proc/execute.html">execute</a>
       
+      <a class="list-group-item" href="../proc/finish_ops.html">finish_ops</a>
+      
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
@@ -228,6 +230,8 @@
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+      
+      <a class="list-group-item" href="../proc/showfig.html">showfig</a>
       
       <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
       
@@ -832,9 +836,9 @@ private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, u
     <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">figsize</span><span class="p">))</span> <span class="k">then</span>  <span class="c">!if specifying the figure size</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = plt.figure(figsize=(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">width_str</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">height_str</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;))&#39;</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = plt.figure(figsize=(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">width_str</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">height_str</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;),facecolor=&quot;white&quot;)&#39;</span><span class="p">)</span>
     <span class="k">else</span>
-<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = plt.figure()&#39;</span><span class="p">)</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = plt.figure(facecolor=&quot;white&quot;)&#39;</span><span class="p">)</span>
     <span class="k">end if</span>
 
 <span class="k">    if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="p">)</span> <span class="k">then</span>
@@ -893,6 +897,8 @@ private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, u
       
       <a class="list-group-item" href="../proc/execute.html">execute</a>
       
+      <a class="list-group-item" href="../proc/finish_ops.html">finish_ops</a>
+      
       <a class="list-group-item" href="../proc/initialize.html">initialize</a>
       
       <a class="list-group-item" href="../proc/integer_to_string.html">integer_to_string</a>
@@ -904,6 +910,8 @@ private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, u
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
+      
+      <a class="list-group-item" href="../proc/showfig.html">showfig</a>
       
       <a class="list-group-item" href="../proc/vec_to_string.html">vec_to_string</a>
       
