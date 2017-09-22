@@ -51,6 +51,7 @@
 
         procedure, public :: add_plot      !! add a 2d plot to pyplot instance
         procedure, public :: add_3d_plot   !! add a 3d plot to pyplot instance
+        procedure, public :: add_sphere    !! add a 3d sphere to pyplot instance
         procedure, public :: add_contour   !! add a contour plot to pyplot instance
         procedure, public :: add_bar       !! add a barplot to pyplot instance
         procedure, public :: add_imshow    !! add an image plot (using `imshow`)
@@ -552,6 +553,58 @@
 !*****************************************************************************************
 !> author: Jacob Williams
 !
+! Add a sphere to a 3D x,y,z plot.
+!
+!@note Must initialize the class with `mplot3d=.true.` and `use_numpy=.true.`.
+
+    subroutine add_sphere(me, r, xc, yc, zc, istat)
+
+    implicit none
+
+    class(pyplot), intent (inout)   :: me         !! pyplot handler
+    real(wp),      intent (in)      :: r          !! radius of the sphere
+    real(wp),      intent (in)      :: xc         !! x value of sphere center
+    real(wp),      intent (in)      :: yc         !! y value of sphere center
+    real(wp),      intent (in)      :: zc         !! z value of sphere center
+    integer,       intent (out)     :: istat      !! status output (0 means no problems)
+
+    character(len=:), allocatable :: rstr         !! r value stringified
+    character(len=:), allocatable :: xcstr        !! xc value stringified
+    character(len=:), allocatable :: ycstr        !! yc value stringified
+    character(len=:), allocatable :: zcstr        !! zc value stringified
+    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
+    character(len=*), parameter   :: yname = 'y'  !! y variable name for script
+    character(len=*), parameter   :: zname = 'z'  !! z variable name for script
+
+    if (allocated(me%str)) then
+
+        istat = 0
+
+        !convert the arrays to strings:
+        call real_to_string(r , me%real_fmt, rstr)
+        call real_to_string(xc, me%real_fmt, xcstr)
+        call real_to_string(yc, me%real_fmt, ycstr)
+        call real_to_string(zc, me%real_fmt, zcstr)
+
+        call me%add_str('u = np.linspace(0, 2 * np.pi, 100)')
+        call me%add_str('v = np.linspace(0, np.pi, 100)')
+        call me%add_str(xname//' = '//xcstr//' + '//rstr//' * np.outer(np.cos(u), np.sin(v))')
+        call me%add_str(yname//' = '//ycstr//' + '//rstr//' * np.outer(np.sin(u), np.sin(v))')
+        call me%add_str(zname//' = '//zcstr//' + '//rstr//' * np.outer(np.ones(np.size(u)), np.cos(v))')
+        call me%add_str('ax.plot_surface('//xname//', '//yname//', '//zname//', color="Grey")')
+        call me%add_str('')
+
+    else
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_sphere: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_sphere
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
 ! Add a bar plot.
 
     subroutine add_bar(me, left, height, label, width, bottom, color, &
@@ -765,6 +818,35 @@
 !*****************************************************************************************
 !> author: Jacob Williams
 !
+! Real scalar to string.
+
+    subroutine real_to_string(v, fmt, str)
+
+    real(wp),                      intent(in)  :: v         !! real values
+    character(len=*),              intent(in)  :: fmt       !! real format string
+    character(len=:), allocatable, intent(out) :: str       !! real values stringified
+
+    integer                     :: istat     !! IO status
+    character(len=max_real_len) :: tmp       !! dummy string
+
+    if (fmt=='*') then
+        write(tmp, *, iostat=istat) v
+    else
+        write(tmp, fmt, iostat=istat) v
+    end if
+    if (istat/=0) then
+        write(error_unit,'(A)') 'Error in real_to_string'
+        str = '****'
+    else
+        str = trim(adjustl(tmp))
+    end if
+
+    end subroutine real_to_string
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
 ! Real vector to string.
 
     subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)
@@ -937,7 +1019,29 @@
         call me%add_str('')
     end if
     if (me%axis_equal) then
-        call me%add_str('ax.axis("equal")')
+        if (me%mplot3d) then
+            call me%add_str('ax.set_aspect("equal")')
+            call me%add_str('')
+
+            call me%add_str('def set_axes_equal(ax):')
+            call me%add_str('    x_limits = ax.get_xlim3d()')
+            call me%add_str('    y_limits = ax.get_ylim3d()')
+            call me%add_str('    z_limits = ax.get_zlim3d()')
+            call me%add_str('    x_range = abs(x_limits[1] - x_limits[0])')
+            call me%add_str('    x_middle = np.mean(x_limits)')
+            call me%add_str('    y_range = abs(y_limits[1] - y_limits[0])')
+            call me%add_str('    y_middle = np.mean(y_limits)')
+            call me%add_str('    z_range = abs(z_limits[1] - z_limits[0])')
+            call me%add_str('    z_middle = np.mean(z_limits)')
+            call me%add_str('    plot_radius = 0.5*max([x_range, y_range, z_range])')
+            call me%add_str('    ax.set_xlim3d([x_middle - plot_radius, x_middle + plot_radius])')
+            call me%add_str('    ax.set_ylim3d([y_middle - plot_radius, y_middle + plot_radius])')
+            call me%add_str('    ax.set_zlim3d([z_middle - plot_radius, z_middle + plot_radius])')
+            call me%add_str('set_axes_equal(ax)')
+
+        else
+            call me%add_str('ax.axis("equal")')
+        end if
         call me%add_str('')
     end if
 
