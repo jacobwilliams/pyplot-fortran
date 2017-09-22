@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="<p>100.0% of total for derived types.</p>Including implementation: 511 statements, 100.0% of total for derived types.">24 statements</a>
+	  title="<p>100.0% of total for derived types.</p>Including implementation: 565 statements, 100.0% of total for derived types.">25 statements</a>
      </li> 
      
      
@@ -212,6 +212,8 @@
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_sphere">add_sphere</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
       
@@ -326,6 +328,8 @@
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_sphere">add_sphere</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
       
@@ -1289,6 +1293,168 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
   
   <td></td><td>::</td>
   <td><strong>linewidth</strong></td><td><p>width of the plot line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_sphere"></span><h3>procedure, public :: <strong>add_sphere</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>add a 3d sphere to pyplot instance</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, istat)
+    
+    
+	 
+</h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a sphere to a 3D x,y,z plot.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>r</strong></td><td><p>radius of the sphere</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>xc</strong></td><td><p>x value of sphere center</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>yc</strong></td><td><p>y value of sphere center</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>zc</strong></td><td><p>z value of sphere center</p></td>
   
 </tr>
 
@@ -2980,6 +3146,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
 
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_plot</span>      <span class="c">!! add a 2d plot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_3d_plot</span>   <span class="c">!! add a 3d plot to pyplot instance</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_sphere</span>    <span class="c">!! add a 3d sphere to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_contour</span>   <span class="c">!! add a contour plot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_bar</span>       <span class="c">!! add a barplot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_imshow</span>    <span class="c">!! add an image plot (using `imshow`)</span>

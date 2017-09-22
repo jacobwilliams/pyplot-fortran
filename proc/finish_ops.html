@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title=" 1.9% of total for procedures.">11 statements</a>
+	  title=" 4.8% of total for procedures.">31 statements</a>
      </li> 
      
      
@@ -211,6 +211,8 @@
       
       <a class="list-group-item" href="../proc/add_plot.html">add_plot</a>
       
+      <a class="list-group-item" href="../proc/add_sphere.html">add_sphere</a>
+      
       <a class="list-group-item" href="../proc/add_str.html">add_str</a>
       
       <a class="list-group-item" href="../proc/destroy.html">destroy</a>
@@ -228,6 +230,8 @@
       <a class="list-group-item" href="../proc/optional_int_to_string.html">optional_int_to_string</a>
       
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
+      
+      <a class="list-group-item" href="../proc/real_to_string.html">real_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
       
@@ -277,7 +281,7 @@ private subroutine finish_ops(me)
   
 <tr>
   
-  <td><span class="anchor" id="variable-me%7E11"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td><span class="anchor" id="variable-me%7E12"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
   <td>intent(inout)</td>
   <td></td>
   
@@ -357,8 +361,30 @@ private subroutine finish_ops(me)
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="k">end if</span>
 <span class="k">    if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">axis_equal</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.axis(&quot;equal&quot;)&#39;</span><span class="p">)</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">        if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_aspect(&quot;equal&quot;)&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;def set_axes_equal(ax):&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    x_limits = ax.get_xlim3d()&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    y_limits = ax.get_ylim3d()&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    z_limits = ax.get_zlim3d()&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    x_range = abs(x_limits[1] - x_limits[0])&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    x_middle = np.mean(x_limits)&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    y_range = abs(y_limits[1] - y_limits[0])&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    y_middle = np.mean(y_limits)&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    z_range = abs(z_limits[1] - z_limits[0])&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    z_middle = np.mean(z_limits)&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    plot_radius = 0.5*max([x_range, y_range, z_range])&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    ax.set_xlim3d([x_middle - plot_radius, x_middle + plot_radius])&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    ax.set_ylim3d([y_middle - plot_radius, y_middle + plot_radius])&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    ax.set_zlim3d([z_middle - plot_radius, z_middle + plot_radius])&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;set_axes_equal(ax)&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.axis(&quot;equal&quot;)&#39;</span><span class="p">)</span>
+        <span class="k">end if</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="k">end if</span>
 
 <span class="k">    end subroutine </span><span class="n">finish_ops</span>
@@ -392,6 +418,8 @@ private subroutine finish_ops(me)
       
       <a class="list-group-item" href="../proc/add_plot.html">add_plot</a>
       
+      <a class="list-group-item" href="../proc/add_sphere.html">add_sphere</a>
+      
       <a class="list-group-item" href="../proc/add_str.html">add_str</a>
       
       <a class="list-group-item" href="../proc/destroy.html">destroy</a>
@@ -409,6 +437,8 @@ private subroutine finish_ops(me)
       <a class="list-group-item" href="../proc/optional_int_to_string.html">optional_int_to_string</a>
       
       <a class="list-group-item" href="../proc/optional_logical_to_string.html">optional_logical_to_string</a>
+      
+      <a class="list-group-item" href="../proc/real_to_string.html">real_to_string</a>
       
       <a class="list-group-item" href="../proc/savefig.html">savefig</a>
       
