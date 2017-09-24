@@ -557,26 +557,50 @@
 !
 !@note Must initialize the class with `mplot3d=.true.` and `use_numpy=.true.`.
 
-    subroutine add_sphere(me, r, xc, yc, zc, istat)
+    subroutine add_sphere(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)
 
     implicit none
 
-    class(pyplot), intent (inout)   :: me         !! pyplot handler
-    real(wp),      intent (in)      :: r          !! radius of the sphere
-    real(wp),      intent (in)      :: xc         !! x value of sphere center
-    real(wp),      intent (in)      :: yc         !! y value of sphere center
-    real(wp),      intent (in)      :: zc         !! z value of sphere center
-    integer,       intent (out)     :: istat      !! status output (0 means no problems)
+    class(pyplot),    intent (inout)        :: me            !! pyplot handler
+    real(wp),         intent (in)           :: r             !! radius of the sphere
+    real(wp),         intent (in)           :: xc            !! x value of sphere center
+    real(wp),         intent (in)           :: yc            !! y value of sphere center
+    real(wp),         intent (in)           :: zc            !! z value of sphere center
+    integer,          intent (in), optional :: n_facets      !! [default is 100]
+    integer,          intent (in), optional :: linewidth     !! line width
+    logical,          intent (in), optional :: antialiased   !! enabled anti-aliasing
+    character(len=*), intent (in), optional :: color         !! color of the contour line
+    integer,          intent (out)          :: istat         !! status output (0 means no problems)
 
-    character(len=:), allocatable :: rstr         !! r value stringified
-    character(len=:), allocatable :: xcstr        !! xc value stringified
-    character(len=:), allocatable :: ycstr        !! yc value stringified
-    character(len=:), allocatable :: zcstr        !! zc value stringified
-    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
-    character(len=*), parameter   :: yname = 'y'  !! y variable name for script
-    character(len=*), parameter   :: zname = 'z'  !! z variable name for script
+    character(len=:), allocatable :: rstr         !! `r` value stringified
+    character(len=:), allocatable :: xcstr        !! `xc` value stringified
+    character(len=:), allocatable :: ycstr        !! `yc` value stringified
+    character(len=:), allocatable :: zcstr        !! `zc` value stringified
+    character(len=*), parameter   :: xname = 'x'  !! `x` variable name for script
+    character(len=*), parameter   :: yname = 'y'  !! `y` variable name for script
+    character(len=*), parameter   :: zname = 'z'  !! `z` variable name for script
+
+    character(len=max_int_len)    :: linewidth_str       !! `linewidth` input stringified
+    character(len=:), allocatable :: antialiased_str     !! `antialised` input stringified
+    character(len=max_int_len)    :: n_facets_str        !! `n_facets` input stringified
+    character(len=:), allocatable :: extras              !! optional stuff string
 
     if (allocated(me%str)) then
+
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(n_facets, n_facets_str, '100')
+        extras = ''
+        if (present(linewidth)) then
+            call optional_int_to_string(linewidth, linewidth_str, '1')
+            extras = extras//','//'linewidth='//linewidth_str
+        end if
+        if (present(antialiased)) then
+            call optional_logical_to_string(antialiased, antialiased_str, 'False')
+            extras = extras//','//'antialiased='//antialiased_str
+        end if
+        if (present(color)) then
+            extras = extras//','//'color="'//trim(color)//'"'
+        end if
 
         istat = 0
 
@@ -586,12 +610,13 @@
         call real_to_string(yc, me%real_fmt, ycstr)
         call real_to_string(zc, me%real_fmt, zcstr)
 
-        call me%add_str('u = np.linspace(0, 2 * np.pi, 100)')
-        call me%add_str('v = np.linspace(0, np.pi, 100)')
+        ! sphere code:
+        call me%add_str('u = np.linspace(0, 2 * np.pi, '//n_facets_str//')')
+        call me%add_str('v = np.linspace(0, np.pi, '//n_facets_str//')')
         call me%add_str(xname//' = '//xcstr//' + '//rstr//' * np.outer(np.cos(u), np.sin(v))')
         call me%add_str(yname//' = '//ycstr//' + '//rstr//' * np.outer(np.sin(u), np.sin(v))')
         call me%add_str(zname//' = '//zcstr//' + '//rstr//' * np.outer(np.ones(np.size(u)), np.cos(v))')
-        call me%add_str('ax.plot_surface('//xname//', '//yname//', '//zname//', color="Grey")')
+        call me%add_str('ax.plot_surface('//xname//', '//yname//', '//zname//extras//')')
         call me%add_str('')
 
     else
