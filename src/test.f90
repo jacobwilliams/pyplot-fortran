@@ -19,6 +19,7 @@
     real(wp), dimension(n)   :: yerr  !! error values for bar chart
     real(wp), dimension(n)   :: sx    !! sin(x) values
     real(wp), dimension(n)   :: cx    !! cos(x) values
+    real(wp), dimension(n)   :: zx    !!
     real(wp), dimension(n)   :: tx    !! sin(x)*cos(x) values
     real(wp), dimension(n,n) :: z     !! z matrix for contour plot
     type(pyplot)             :: plt   !! pytplot handler
@@ -28,11 +29,15 @@
     real(wp), dimension(n,n) :: mat   !! image values
     integer                  :: istat !! status code
 
+    real(wp),parameter :: pi = acos(-1.0_wp)
+    real(wp),parameter :: deg2rad = pi/180.0_wp
+
     !generate some data:
     x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
     sx   = sin(x)
     cx   = cos(x)
     tx   = sx * cx
+    zx   = 0.0_wp
     yerr = abs(sx*.25_wp)
 
     do i=1,n
@@ -123,6 +128,29 @@
                         pyfile='histtest2.py', &
                         dpi='200', &
                         transparent=.true.,istat=istat)
+
+    !3D plot:
+    call plt%initialize(grid=.true.,&
+                        xlabel='x (km)',ylabel='y (km)',zlabel='z (km)',&
+                        title='Orbit',&
+                        axis_equal=.true.,&
+                        mplot3d=.true.,&
+                        figsize=[20,10])
+
+    x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
+    sx   = 7000.0_wp * cos(x * deg2rad)
+    cx   = 7000.0_wp * sin(x * deg2rad)
+    zx = 0.0_wp
+    call plt%add_3d_plot(sx,cx,zx,&
+                            label='orbit',linestyle='r-',&
+                            linewidth=2,istat=istat)
+    call plt%add_sphere(6378.0_wp,0.0_wp,0.0_wp,0.0_wp,&
+                        color='Blue',n_facets=500,&
+                        antialiased=.true.,istat=istat)
+    call plt%savefig('orbit.png', &
+                      pyfile='orbit.py', &
+                      dpi='200', &
+                      transparent=.true.,istat=istat)
 
     end program test
 !*****************************************************************************************

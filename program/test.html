@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="100.0% of total for programs.">59 statements</a>
+	  title="100.0% of total for programs.">71 statements</a>
      </li> 
      
      
@@ -184,6 +184,8 @@
       
       <a class="list-group-item" href="../program/test.html#variable-cx">cx</a>
       
+      <a class="list-group-item" href="../program/test.html#variable-zx">zx</a>
+      
       <a class="list-group-item" href="../program/test.html#variable-tx">tx</a>
       
       <a class="list-group-item" href="../program/test.html#variable-z%7E3">z</a>
@@ -199,6 +201,10 @@
       <a class="list-group-item" href="../program/test.html#variable-mat">mat</a>
       
       <a class="list-group-item" href="../program/test.html#variable-istat%7E11">istat</a>
+      
+      <a class="list-group-item" href="../program/test.html#variable-pi">pi</a>
+      
+      <a class="list-group-item" href="../program/test.html#variable-deg2rad">deg2rad</a>
       
     </div>
   </div>
@@ -405,6 +411,8 @@
       
       <a class="list-group-item" href="../program/test.html#variable-cx">cx</a>
       
+      <a class="list-group-item" href="../program/test.html#variable-zx">zx</a>
+      
       <a class="list-group-item" href="../program/test.html#variable-tx">tx</a>
       
       <a class="list-group-item" href="../program/test.html#variable-z%7E3">z</a>
@@ -420,6 +428,10 @@
       <a class="list-group-item" href="../program/test.html#variable-mat">mat</a>
       
       <a class="list-group-item" href="../program/test.html#variable-istat%7E11">istat</a>
+      
+      <a class="list-group-item" href="../program/test.html#variable-pi">pi</a>
+      
+      <a class="list-group-item" href="../program/test.html#variable-deg2rad">deg2rad</a>
       
     </div>
   </div>
@@ -559,6 +571,20 @@
   
 <tr>
   
+  <td><span class="anchor" id="variable-zx"></span>real(kind=wp),</td>
+  
+  
+  <td>dimension(n)</td><td>::</td>
+  <td><strong>zx</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-tx"></span>real(kind=wp),</td>
   
   
@@ -665,6 +691,34 @@
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-pi"></span>real(kind=wp),</td>
+  
+  
+  <td>parameter</td><td>::</td>
+  <td><strong>pi</strong></td><td> =</td><td>acos(-1.0_wp)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-deg2rad"></span>real(kind=wp),</td>
+  
+  
+  <td>parameter</td><td>::</td>
+  <td><strong>deg2rad</strong></td><td> =</td><td>pi/180.0_wp</td><td></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -702,6 +756,7 @@
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">yerr</span>  <span class="c">!! error values for bar chart</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">sx</span>    <span class="c">!! sin(x) values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">cx</span>    <span class="c">!! cos(x) values</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">zx</span>    <span class="c">!!</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">tx</span>    <span class="c">!! sin(x)*cos(x) values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="kd">::</span> <span class="n">z</span>     <span class="c">!! z matrix for contour plot</span>
     <span class="k">type</span><span class="p">(</span><span class="n">pyplot</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">plt</span>   <span class="c">!! pytplot handler</span>
@@ -711,11 +766,15 @@
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="kd">::</span> <span class="n">mat</span>   <span class="c">!! image values</span>
     <span class="kt">integer</span>                  <span class="kd">::</span> <span class="n">istat</span> <span class="c">!! status code</span>
 
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">pi</span> <span class="o">=</span> <span class="nb">acos</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0_wp</span><span class="p">)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">deg2rad</span> <span class="o">=</span> <span class="n">pi</span><span class="o">/</span><span class="mi">18</span><span class="mf">0.0_wp</span>
+
     <span class="c">!generate some data:</span>
     <span class="n">x</span>    <span class="o">=</span> <span class="p">[(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">wp</span><span class="p">),</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">/</span><span class="mf">5.0_wp</span>
     <span class="n">sx</span>   <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">cx</span>   <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">tx</span>   <span class="o">=</span> <span class="n">sx</span> <span class="o">*</span> <span class="n">cx</span>
+    <span class="n">zx</span>   <span class="o">=</span> <span class="mf">0.0_wp</span>
     <span class="n">yerr</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sx</span><span class="o">*</span><span class="p">.</span><span class="mi">25_wp</span><span class="p">)</span>
 
     <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span>
@@ -806,6 +865,29 @@
                         <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;histtest2.py&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
                         <span class="n">dpi</span><span class="o">=</span><span class="s1">&#39;200&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
                         <span class="n">transparent</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+
+    <span class="c">!3D plot:</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,&amp;</span>
+                        <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x (km)&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y (km)&#39;</span><span class="p">,</span><span class="n">zlabel</span><span class="o">=</span><span class="s1">&#39;z (km)&#39;</span><span class="p">,&amp;</span>
+                        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Orbit&#39;</span><span class="p">,&amp;</span>
+                        <span class="n">axis_equal</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,&amp;</span>
+                        <span class="n">mplot3d</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,&amp;</span>
+                        <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+
+    <span class="n">x</span>    <span class="o">=</span> <span class="p">[(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">wp</span><span class="p">),</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">/</span><span class="mf">5.0_wp</span>
+    <span class="n">sx</span>   <span class="o">=</span> <span class="mi">700</span><span class="mf">0.0_wp</span> <span class="o">*</span> <span class="nb">cos</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">deg2rad</span><span class="p">)</span>
+    <span class="n">cx</span>   <span class="o">=</span> <span class="mi">700</span><span class="mf">0.0_wp</span> <span class="o">*</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">deg2rad</span><span class="p">)</span>
+    <span class="n">zx</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_3d_plot</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span><span class="n">cx</span><span class="p">,</span><span class="n">zx</span><span class="p">,&amp;</span>
+                            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;orbit&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,&amp;</span>
+                            <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_sphere</span><span class="p">(</span><span class="mi">637</span><span class="mf">8.0_wp</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span>
+                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Blue&#39;</span><span class="p">,</span><span class="n">n_facets</span><span class="o">=</span><span class="mi">500</span><span class="p">,&amp;</span>
+                        <span class="n">antialiased</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+    <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;orbit.png&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+                      <span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;orbit.py&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+                      <span class="n">dpi</span><span class="o">=</span><span class="s1">&#39;200&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
+                      <span class="n">transparent</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="k">end program </span><span class="n">test</span>
 </pre></div>

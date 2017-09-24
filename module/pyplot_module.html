@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="100.0% of total for modules and submodules.">689 statements</a>
+	  title="100.0% of total for modules and submodules.">710 statements</a>
      </li> 
      
      
@@ -2327,7 +2327,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_sphere"></span><h3>
-private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, istat)
+private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)
     
     
 	 
@@ -2439,6 +2439,66 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
   
   <td></td><td>::</td>
   <td><strong>zc</strong></td><td><p>z value of sphere center</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>n_facets</strong></td><td><p>[default is 100]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>linewidth</strong></td><td><p>line width</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>antialiased</strong></td><td><p>enabled anti-aliasing</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>color</strong></td><td><p>color of the contour line</p></td>
   
 </tr>
 
