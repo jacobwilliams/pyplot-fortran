@@ -38,6 +38,7 @@
 
         logical :: show_legend = .false.     !! show legend into plot
         logical :: use_numpy   = .true.      !! use numpy python module
+        logical :: use_oo_api  = .false.     !! use OO interface of matplotlib (incopatible with showfig subroutine)
         logical :: mplot3d     = .false.     !! it is a 3d plot
         logical :: polar       = .false.     !! it is a polar plot
         logical :: axis_equal  = .false.     !! equal scale on each axis
@@ -107,7 +108,7 @@
 
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
-                          legend_fontsize, mplot3d, axis_equal, polar, real_fmt)
+                          legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -128,6 +129,7 @@
     logical,               intent(in), optional :: axis_equal      !! set true for axis = 'equal'
     logical,               intent(in), optional :: polar           !! set true for polar plots (cannot use with mplot3d)
     character(len=*),      intent(in), optional :: real_fmt        !! format string for real numbers (examples: '(E30.16)' [default], '*')
+    logical,               intent(in), optional :: use_oo_api      !! avoid matplotlib's GUI by using the OO interface (cannot use with showfig)
 
     character(len=max_int_len)  :: width_str                    !! figure width dummy string
     character(len=max_int_len)  :: height_str                   !! figure height dummy string
@@ -139,6 +141,8 @@
     character(len=max_int_len)  :: legend_fontsize_str          !! size of legend font dummy string
 
     character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
+    
+    character(:), allocatable :: python_fig_func                !! Python's function for creating a new Figure instance
 
     call me%destroy()
 
@@ -151,6 +155,11 @@
         me%use_numpy = use_numpy
     else
         me%use_numpy = .true.
+    end if
+    if (present(use_oo_api)) then
+        me%use_oo_api = use_oo_api
+    else
+        me%use_oo_api = .false.
     end if
     if (present(figsize)) then
         call integer_to_string(figsize(1), width_str)
@@ -190,7 +199,12 @@
     call me%add_str('')
 
     call me%add_str('import matplotlib')
-    call me%add_str('import matplotlib.pyplot as plt')
+    if (me%use_oo_api) then
+        call me%add_str('from matplotlib.figure import Figure')
+        call me%add_str('from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas')
+    else
+        call me%add_str('import matplotlib.pyplot as plt')
+    endif
     if (me%mplot3d) call me%add_str('from mpl_toolkits.mplot3d import Axes3D')
     if (me%use_numpy) call me%add_str('import numpy as np')
     call me%add_str('')
@@ -203,11 +217,16 @@
     call me%add_str('matplotlib.rcParams["legend.fontsize"] = '//trim(legend_fontsize_str))
 
     call me%add_str('')
-
-    if (present(figsize)) then  !if specifying the figure size
-        call me%add_str('fig = plt.figure(figsize=('//trim(width_str)//','//trim(height_str)//'),facecolor="white")')
+    
+    if (me%use_oo_api) then
+        python_fig_func = 'Figure'
     else
-        call me%add_str('fig = plt.figure(facecolor="white")')
+        python_fig_func = 'plt.figure'
+    endif
+    if (present(figsize)) then  !if specifying the figure size
+        call me%add_str('fig = '//python_fig_func//'(figsize=('//trim(width_str)//','//trim(height_str)//'),facecolor="white")')
+    else
+        call me%add_str('fig = '//python_fig_func//'(facecolor="white")')
     end if
 
     if (me%mplot3d) then
@@ -1117,7 +1136,12 @@
         if (present(facecolor)) tmp = tmp//', facecolor="'//trim(facecolor)//'"'
         if (present(edgecolor)) tmp = tmp//', edgecolor="'//trim(edgecolor)//'"'
         if (present(orientation)) tmp = tmp//', orientation="'//trim(orientation)//'"'
-        call me%add_str('plt.savefig('//tmp//')')
+        if (me%use_oo_api) then
+            call me%add_str('canvas = FigureCanvas(fig)')
+            call me%add_str('canvas.print_figure('//tmp//')')
+        else
+            call me%add_str('plt.savefig('//tmp//')')
+        endif
         deallocate(tmp)
 
         !run it:
@@ -1143,8 +1167,15 @@
     character(len=*), intent(in), optional :: pyfile  !! name of the Python script to generate
     integer,          intent (out)         :: istat   !! status output (0 means no problems)
 
-    if (allocated(me%str)) then
-
+    if (.not. allocated(me%str)) then
+        istat = -1
+        write(error_unit,'(A)') 'error in showfig: pyplot class not properly initialized.'
+    
+    elseif (me%use_oo_api) then
+        istat = -2
+        write(error_unit,'(A)') "error in showfig: not compatible with 'use_oo_api' option"
+    
+    else
         istat = 0
 
         !finish up the string:
@@ -1156,9 +1187,6 @@
         !run it:
         call me%execute(pyfile, istat=istat)
 
-    else
-        istat = -1
-        write(error_unit,'(A)') 'error in showfig: pyplot class not properly initialized.'
     end if
 
     end subroutine showfig
