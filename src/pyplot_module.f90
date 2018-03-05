@@ -42,6 +42,7 @@
         logical :: mplot3d     = .false.     !! it is a 3d plot
         logical :: polar       = .false.     !! it is a polar plot
         logical :: axis_equal  = .false.     !! equal scale on each axis
+        logical :: axisbelow   = .true.      !! axis below other chart elements
 
         character(len=:),allocatable :: real_fmt  !! real number formatting
 
@@ -108,7 +109,7 @@
 
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
-                          legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api)
+                          legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -130,6 +131,7 @@
     logical,               intent(in), optional :: polar           !! set true for polar plots (cannot use with mplot3d)
     character(len=*),      intent(in), optional :: real_fmt        !! format string for real numbers (examples: '(E30.16)' [default], '*')
     logical,               intent(in), optional :: use_oo_api      !! avoid matplotlib's GUI by using the OO interface (cannot use with showfig)
+    logical,               intent(in), optional :: axisbelow       !! to put the grid lines below the other chart elements [default is true]
 
     character(len=max_int_len)  :: width_str             !! figure width dummy string
     character(len=max_int_len)  :: height_str            !! figure height dummy string
@@ -239,6 +241,13 @@
     if (present(grid)) then
         if (grid) call me%add_str('ax.grid()')
     end if
+
+    if (present(axisbelow)) then
+        me%axisbelow = axisbelow
+    else
+        me%axisbelow = .true. ! default
+    end if
+    if (me%axisbelow) call me%add_str('ax.set_axisbelow(True)')
 
     if (present(xlabel)) call me%add_str('ax.set_xlabel("'//trim(xlabel)//'")')
     if (present(ylabel)) call me%add_str('ax.set_ylabel("'//trim(ylabel)//'")')
