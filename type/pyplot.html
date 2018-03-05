@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="<p>100.0% of total for derived types.</p>Including implementation: 586 statements, 100.0% of total for derived types.">25 statements</a>
+	  title="<p>100.0% of total for derived types.</p>Including implementation: 612 statements, 100.0% of total for derived types.">26 statements</a>
      </li> 
      
      
@@ -173,6 +173,8 @@
       <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy">use_numpy</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-use_oo_api">use_oo_api</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
       
@@ -289,6 +291,8 @@
       <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy">use_numpy</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-use_oo_api">use_oo_api</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
       
@@ -429,6 +433,20 @@
   
 <tr>
   
+  <td><span class="anchor" id="variable-use_oo_api"></span>logical,</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>use_oo_api</strong></td><td> =</td><td>.false.</td><td><p>use OO interface of matplotlib (incopatible with showfig subroutine)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-mplot3d"></span>logical,</td>
   
   <td>private</td>
@@ -514,7 +532,7 @@
          
     
     <h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api)
     
     
 	 
@@ -834,6 +852,21 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
   <td></td><td>::</td>
   <td><strong>real_fmt</strong></td><td><p>format string for real numbers (examples: '(E30.16)' [default], '*')</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>use_oo_api</strong></td><td><p>avoid matplotlib's GUI by using the OO interface (cannot use with showfig)</p></td>
   
 </tr>
 
@@ -3193,6 +3226,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
 
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">show_legend</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! show legend into plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">use_numpy</span>   <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>      <span class="c">!! use numpy python module</span>
+        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">use_oo_api</span>  <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! use OO interface of matplotlib (incopatible with showfig subroutine)</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">mplot3d</span>     <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a 3d plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">polar</span>       <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a polar plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axis_equal</span>  <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! equal scale on each axis</span>
@@ -3252,7 +3286,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2018 </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
