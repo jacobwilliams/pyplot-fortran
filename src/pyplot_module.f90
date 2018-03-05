@@ -131,18 +131,17 @@
     character(len=*),      intent(in), optional :: real_fmt        !! format string for real numbers (examples: '(E30.16)' [default], '*')
     logical,               intent(in), optional :: use_oo_api      !! avoid matplotlib's GUI by using the OO interface (cannot use with showfig)
 
-    character(len=max_int_len)  :: width_str                    !! figure width dummy string
-    character(len=max_int_len)  :: height_str                   !! figure height dummy string
-    character(len=max_int_len)  :: font_size_str                !! font size dummy string
-    character(len=max_int_len)  :: axes_labelsize_str           !! size of axis labels dummy string
-    character(len=max_int_len)  :: xtick_labelsize_str          !! size of x axis tick labels dummy string
-    character(len=max_int_len)  :: ytick_labelsize_str          !! size of x axis tick labels dummy string
-    character(len=max_int_len)  :: ztick_labelsize_str          !! size of z axis tick labels dummy string
-    character(len=max_int_len)  :: legend_fontsize_str          !! size of legend font dummy string
+    character(len=max_int_len)  :: width_str             !! figure width dummy string
+    character(len=max_int_len)  :: height_str            !! figure height dummy string
+    character(len=max_int_len)  :: font_size_str         !! font size dummy string
+    character(len=max_int_len)  :: axes_labelsize_str    !! size of axis labels dummy string
+    character(len=max_int_len)  :: xtick_labelsize_str   !! size of x axis tick labels dummy string
+    character(len=max_int_len)  :: ytick_labelsize_str   !! size of x axis tick labels dummy string
+    character(len=max_int_len)  :: ztick_labelsize_str   !! size of z axis tick labels dummy string
+    character(len=max_int_len)  :: legend_fontsize_str   !! size of legend font dummy string
+    character(len=:),allocatable :: python_fig_func      !! Python's function for creating a new Figure instance
 
     character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
-    
-    character(:), allocatable :: python_fig_func                !! Python's function for creating a new Figure instance
 
     call me%destroy()
 
@@ -217,7 +216,7 @@
     call me%add_str('matplotlib.rcParams["legend.fontsize"] = '//trim(legend_fontsize_str))
 
     call me%add_str('')
-    
+
     if (me%use_oo_api) then
         python_fig_func = 'Figure'
     else
@@ -1168,14 +1167,17 @@
     integer,          intent (out)         :: istat   !! status output (0 means no problems)
 
     if (.not. allocated(me%str)) then
+
         istat = -1
         write(error_unit,'(A)') 'error in showfig: pyplot class not properly initialized.'
-    
-    elseif (me%use_oo_api) then
+
+    else if (me%use_oo_api) then
+
         istat = -2
-        write(error_unit,'(A)') "error in showfig: not compatible with 'use_oo_api' option"
-    
+        write(error_unit,'(A)') 'error in showfig: not compatible with "use_oo_api" option'
+
     else
+
         istat = 0
 
         !finish up the string:
