@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="18.5% of total for procedures.">130 statements</a>
+	  title="19.0% of total for procedures.">136 statements</a>
      </li> 
      
      
@@ -250,7 +250,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow)
+private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout)
     
     
 	 
@@ -590,6 +590,21 @@ private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, u
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tight_layout%7E2"></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>tight_layout</strong></td><td><p>enable tight layout [default is false]</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -774,7 +789,8 @@ private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, u
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">initialize</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">zlabel</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">legend</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">,</span> <span class="n">figsize</span><span class="p">,</span> <span class="p">&amp;</span>
                           <span class="n">font_size</span><span class="p">,</span> <span class="n">axes_labelsize</span><span class="p">,</span> <span class="n">xtick_labelsize</span><span class="p">,</span> <span class="n">ytick_labelsize</span><span class="p">,</span> <span class="n">ztick_labelsize</span><span class="p">,</span> <span class="p">&amp;</span>
-                          <span class="n">legend_fontsize</span><span class="p">,</span> <span class="n">mplot3d</span><span class="p">,</span> <span class="n">axis_equal</span><span class="p">,</span> <span class="n">polar</span><span class="p">,</span> <span class="n">real_fmt</span><span class="p">,</span> <span class="n">use_oo_api</span><span class="p">,</span> <span class="n">axisbelow</span><span class="p">)</span>
+                          <span class="n">legend_fontsize</span><span class="p">,</span> <span class="n">mplot3d</span><span class="p">,</span> <span class="n">axis_equal</span><span class="p">,</span> <span class="n">polar</span><span class="p">,</span> <span class="n">real_fmt</span><span class="p">,</span> <span class="n">use_oo_api</span><span class="p">,</span> <span class="n">axisbelow</span><span class="p">,&amp;</span>
+                          <span class="n">tight_layout</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>         <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>              <span class="c">!! pyplot handler</span>
     <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">grid</span>            <span class="c">!! activate grid drawing</span>
@@ -797,6 +813,7 @@ private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, u
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">real_fmt</span>        <span class="c">!! format string for real numbers (examples: &#39;(E30.16)&#39; [default], &#39;*&#39;)</span>
     <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">use_oo_api</span>      <span class="c">!! avoid matplotlib&#39;s GUI by using the OO interface (cannot use with showfig)</span>
     <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">axisbelow</span>       <span class="c">!! to put the grid lines below the other chart elements [default is true]</span>
+    <span class="kt">logical</span><span class="p">,</span>               <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">tight_layout</span>    <span class="c">!! enable tight layout [default is false]</span>
 
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">width_str</span>             <span class="c">!! figure width dummy string</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">height_str</span>            <span class="c">!! figure height dummy string</span>
@@ -850,6 +867,11 @@ private subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, u
 <span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">real_fmt</span><span class="p">))</span>
     <span class="k">else</span>
 <span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span> <span class="o">=</span> <span class="n">real_fmt_default</span>
+    <span class="k">end if</span>
+<span class="k">    if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">tight_layout</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">tight_layout</span> <span class="o">=</span> <span class="n">tight_layout</span>
+    <span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">tight_layout</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
     <span class="k">end if</span>
 
 <span class="k">    call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">font_size</span><span class="p">,</span> <span class="n">font_size_str</span><span class="p">,</span> <span class="n">default_font_size_str</span><span class="p">)</span>

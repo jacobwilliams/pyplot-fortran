@@ -43,6 +43,7 @@
         logical :: polar       = .false.     !! it is a polar plot
         logical :: axis_equal  = .false.     !! equal scale on each axis
         logical :: axisbelow   = .true.      !! axis below other chart elements
+        logical :: tight_layout = .false.    !! tight layout option
 
         character(len=:),allocatable :: real_fmt  !! real number formatting
 
@@ -109,7 +110,8 @@
 
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
-                          legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow)
+                          legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow,&
+                          tight_layout)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -132,6 +134,7 @@
     character(len=*),      intent(in), optional :: real_fmt        !! format string for real numbers (examples: '(E30.16)' [default], '*')
     logical,               intent(in), optional :: use_oo_api      !! avoid matplotlib's GUI by using the OO interface (cannot use with showfig)
     logical,               intent(in), optional :: axisbelow       !! to put the grid lines below the other chart elements [default is true]
+    logical,               intent(in), optional :: tight_layout    !! enable tight layout [default is false]
 
     character(len=max_int_len)  :: width_str             !! figure width dummy string
     character(len=max_int_len)  :: height_str            !! figure height dummy string
@@ -185,6 +188,11 @@
         me%real_fmt = trim(adjustl(real_fmt))
     else
         me%real_fmt = real_fmt_default
+    end if
+    if (present(tight_layout)) then
+        me%tight_layout = tight_layout
+    else
+        me%tight_layout = .false.
     end if
 
     call optional_int_to_string(font_size, font_size_str, default_font_size_str)
@@ -1094,6 +1102,10 @@
         else
             call me%add_str('ax.axis("equal")')
         end if
+        call me%add_str('')
+    end if
+    if (me%tight_layout) then
+        call me%add_str('fig.tight_layout()')
         call me%add_str('')
     end if
 

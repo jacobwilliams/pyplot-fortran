@@ -48,7 +48,8 @@
 
     !2d line plot:
     call plt%initialize(grid=.true.,xlabel='angle (rad)',figsize=[20,10],&
-                        title='plot test',legend=.true.,axis_equal=.true.)
+                        title='plot test',legend=.true.,axis_equal=.true.,&
+                        tight_layout=.true.)
     call plt%add_plot(x,sx,label='$\sin (x)$',linestyle='b-o',markersize=5,linewidth=2,istat=istat)
     call plt%add_plot(x,cx,label='$\cos (x)$',linestyle='r-o',markersize=5,linewidth=2,istat=istat)
     call plt%add_plot(x,tx,label='$\sin (x) \cos (x)$',linestyle='g-o',markersize=2,linewidth=1,istat=istat)

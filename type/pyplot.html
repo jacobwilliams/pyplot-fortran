@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="<p>100.0% of total for derived types.</p>Including implementation: 620 statements, 100.0% of total for derived types.">27 statements</a>
+	  title="<p>100.0% of total for derived types.</p>Including implementation: 631 statements, 100.0% of total for derived types.">28 statements</a>
      </li> 
      
      
@@ -183,6 +183,8 @@
       <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-axisbelow">axisbelow</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-tight_layout">tight_layout</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
       
@@ -303,6 +305,8 @@
       <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-axisbelow">axisbelow</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-tight_layout">tight_layout</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
       
@@ -507,6 +511,20 @@
   
 <tr>
   
+  <td><span class="anchor" id="variable-tight_layout"></span>logical,</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>tight_layout</strong></td><td> =</td><td>.false.</td><td><p>tight layout option</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-real_fmt"></span>character(len=:),</td>
   
   <td>private,</td>
@@ -550,7 +568,7 @@
          
     
     <h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout)
     
     
 	 
@@ -900,6 +918,21 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
   <td></td><td>::</td>
   <td><strong>axisbelow</strong></td><td><p>to put the grid lines below the other chart elements [default is true]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>tight_layout</strong></td><td><p>enable tight layout [default is false]</p></td>
   
 </tr>
 
@@ -3264,6 +3297,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">polar</span>       <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! it is a polar plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axis_equal</span>  <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! equal scale on each axis</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axisbelow</span>   <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>      <span class="c">!! axis below other chart elements</span>
+        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">tight_layout</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>    <span class="c">!! tight layout option</span>
 
         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">real_fmt</span>  <span class="c">!! real number formatting</span>
 
