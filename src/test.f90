@@ -82,7 +82,8 @@
                         title='Contour plot test', real_fmt='*',&
                         axisbelow=.false.)
     call plt%add_contour(x, y, z, label='contour', linestyle='-', &
-                         linewidth=2, filled=.true., cmap='bone',istat=istat)
+                         linewidth=2, filled=.true., cmap='bone', colorbar=.true.,&
+                         istat=istat)
     call plt%savefig('contour.png',pyfile='contour.py',istat=istat)
 
     !image plot:

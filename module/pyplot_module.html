@@ -136,7 +136,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="100.0% of total for modules and submodules.">755 statements</a>
+	  title="100.0% of total for modules and submodules.">759 statements</a>
      </li> 
      
      
@@ -1991,7 +1991,7 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_contour"></span><h3>
-private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, istat)
+private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)
     
     
 	 
@@ -2193,6 +2193,21 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   
   <td></td><td>::</td>
   <td><strong>cmap</strong></td><td><p>colormap if filled=True (examples: 'jet', 'bone')</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>colorbar</strong></td><td><p>add a colorbar (default=False)</p></td>
   
 </tr>
 

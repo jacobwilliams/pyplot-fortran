@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title=" 7.8% of total for procedures.">56 statements</a>
+	  title=" 8.4% of total for procedures.">60 statements</a>
      </li> 
      
      
@@ -250,7 +250,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, istat)
+private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)
     
     
 	 
@@ -447,6 +447,21 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
   
 <tr>
   
+  <td><span class="anchor" id="variable-colorbar"></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>colorbar</strong></td><td><p>add a colorbar (default=False)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-istat%7E3"></span>integer,</td>
   <td>intent(out)</td>
   <td></td>
@@ -493,36 +508,31 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
 <path fill="none" stroke="#000000" d="M71.989,-66.0616C83.8559,-69.695 97.3678,-73.1954 110,-75 161.184,-82.3119 220.571,-80.6867 260.854,-78.102"/>
 <polygon fill="#000000" stroke="#000000" points="261.185,-81.5877 270.922,-77.4105 260.706,-74.6041 261.185,-81.5877"/>
 </g>
-<!-- proc~matrix_to_string -->
-<g id="proc~~add_contour~~CallsGraph_node3" class="node"><title>proc~matrix_to_string</title>
-<g id="a_proc~~add_contour~~CallsGraph_node3"><a xlink:href="../proc/matrix_to_string.html" xlink:title="matrix_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="212.5,-66 123.5,-66 123.5,-42 212.5,-42 212.5,-66"/>
-<text text-anchor="middle" x="168" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
-</a>
-</g>
-</g>
-<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge4" class="edge"><title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M73.5913,-54C85.8335,-54 99.8276,-54 113.192,-54"/>
-<polygon fill="#000000" stroke="#000000" points="113.249,-57.5001 123.249,-54 113.249,-50.5001 113.249,-57.5001"/>
-</g>
 <!-- proc~optional_int_to_string -->
-<g id="proc~~add_contour~~CallsGraph_node4" class="node"><title>proc~optional_int_to_string</title>
-<g id="a_proc~~add_contour~~CallsGraph_node4"><a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<g id="proc~~add_contour~~CallsGraph_node3" class="node"><title>proc~optional_int_to_string</title>
+<g id="a_proc~~add_contour~~CallsGraph_node3"><a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="225.5,-24 110.5,-24 110.5,-0 225.5,-0 225.5,-24"/>
 <text text-anchor="middle" x="168" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
 </a>
 </g>
 </g>
 <!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge5" class="edge"><title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
+<g id="proc~~add_contour~~CallsGraph_edge4" class="edge"><title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M73.5913,-42.4121C87.9065,-37.7514 104.617,-32.3107 119.915,-27.33"/>
 <polygon fill="#000000" stroke="#000000" points="121.299,-30.5602 129.724,-24.1362 119.132,-23.9041 121.299,-30.5602"/>
 </g>
-<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge1" class="edge"><title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M212.599,-60.2733C227.882,-62.4722 245.115,-64.9517 260.687,-67.1924"/>
-<polygon fill="#000000" stroke="#000000" points="260.247,-70.665 270.643,-68.625 261.244,-63.7364 260.247,-70.665"/>
+<!-- proc~matrix_to_string -->
+<g id="proc~~add_contour~~CallsGraph_node4" class="node"><title>proc~matrix_to_string</title>
+<g id="a_proc~~add_contour~~CallsGraph_node4"><a xlink:href="../proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="212.5,-66 123.5,-66 123.5,-42 212.5,-42 212.5,-66"/>
+<text text-anchor="middle" x="168" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
+<g id="proc~~add_contour~~CallsGraph_edge5" class="edge"><title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M73.5913,-54C85.8335,-54 99.8276,-54 113.192,-54"/>
+<polygon fill="#000000" stroke="#000000" points="113.249,-57.5001 123.249,-54 113.249,-50.5001 113.249,-57.5001"/>
 </g>
 <!-- proc~integer_to_string -->
 <g id="proc~~add_contour~~CallsGraph_node5" class="node"><title>proc~integer_to_string</title>
@@ -533,9 +543,14 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
 </g>
 </g>
 <!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge2" class="edge"><title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
+<g id="proc~~add_contour~~CallsGraph_edge1" class="edge"><title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
 <path fill="none" stroke="#000000" d="M225.537,-12C234.288,-12 243.324,-12 252.063,-12"/>
 <polygon fill="#000000" stroke="#000000" points="252.149,-15.5001 262.149,-12 252.149,-8.5001 252.149,-15.5001"/>
+</g>
+<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
+<g id="proc~~add_contour~~CallsGraph_edge2" class="edge"><title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M212.599,-60.2733C227.882,-62.4722 245.115,-64.9517 260.687,-67.1924"/>
+<polygon fill="#000000" stroke="#000000" points="260.247,-70.665 270.643,-68.625 261.244,-63.7364 260.247,-70.665"/>
 </g>
 </g>
 </svg>
@@ -664,7 +679,8 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_contour</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filled</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_contour</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="p">&amp;</span>
+                           <span class="n">filled</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">colorbar</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>           <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>   <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
@@ -677,6 +693,7 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>        <span class="c">!! color of the contour line</span>
     <span class="kt">logical</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">filled</span>       <span class="c">!! use filled control (default=False)</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">cmap</span>         <span class="c">!! colormap if filled=True (examples: &#39;jet&#39;, &#39;bone&#39;)</span>
+    <span class="kt">logical</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">colorbar</span>     <span class="c">!! add a colorbar (default=False)</span>
     <span class="kt">integer</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
 
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>          <span class="c">!! x values stringified</span>
@@ -713,8 +730,8 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
         <span class="c">!convert inputs for contour plotting:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39;, &#39;</span><span class="o">//</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39; = np.meshgrid(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;, &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">zname</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;, &#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39; = np.meshgrid(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;, &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39; = np.transpose(&#39;</span><span class="o">//</span><span class="n">zname</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 
         <span class="c">!optional arguments:</span>
         <span class="n">extras</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -735,7 +752,11 @@ private subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels,
                                         <span class="s1">&#39;linestyles=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">linestyle</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                                         <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.clabel(CS, fontsize=9, inline=1)&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">colorbar</span><span class="p">))</span> <span class="k">then</span>
+<span class="k">            if</span> <span class="p">(</span><span class="n">colorbar</span><span class="p">)</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig.colorbar(CS)&#39;</span><span class="p">)</span>
+        <span class="k">end if</span>
+
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.clabel(CS, fontsize=9, inline=1)&#39;</span><span class="p">)</span>
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>

@@ -437,7 +437,8 @@
 !
 !@note This requires `use_numpy` to be True.
 
-    subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, istat)
+    subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, &
+                           filled, cmap, colorbar, istat)
 
     class(pyplot),           intent (inout)        :: me           !! pyplot handler
     real(wp),dimension(:),   intent (in)           :: x            !! x values
@@ -450,6 +451,7 @@
     character(len=*),        intent (in), optional :: color        !! color of the contour line
     logical,                 intent (in), optional :: filled       !! use filled control (default=False)
     character(len=*),        intent (in), optional :: cmap         !! colormap if filled=True (examples: 'jet', 'bone')
+    logical,                 intent (in), optional :: colorbar     !! add a colorbar (default=False)
     integer,                 intent (out)          :: istat        !! status output (0 means no problems)
 
     character(len=:), allocatable :: xstr          !! x values stringified
@@ -486,8 +488,8 @@
         call me%add_str('')
 
         !convert inputs for contour plotting:
-        call me%add_str(yname_//', '//xname_//' = np.meshgrid('//trim(xname)//', '//trim(yname)//')')
-        call me%add_str(zname_//' = '//zname)
+        call me%add_str(xname_//', '//yname_//' = np.meshgrid('//trim(xname)//', '//trim(yname)//')')
+        call me%add_str(zname_//' = np.transpose('//zname//')')
 
         !optional arguments:
         extras = ''
@@ -507,6 +509,10 @@
                                         'label="'//trim(label)//'",'//&
                                         'linestyles="'//trim(adjustl(linestyle))//'"'//&
                                         extras//')')
+
+        if (present(colorbar)) then
+            if (colorbar) call me%add_str('fig.colorbar(CS)')
+        end if
 
         call me%add_str('ax.clabel(CS, fontsize=9, inline=1)')
         call me%add_str('')
