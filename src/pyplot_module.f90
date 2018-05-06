@@ -467,6 +467,7 @@
     character(len=*), parameter   :: zname_ = 'Z'  !! Z variable name for contour
     character(len=:), allocatable :: extras        !! optional stuff
     character(len=:), allocatable :: contourfunc   !! 'contour' or 'contourf'
+    logical :: is_filled !! if it is a filled contour plot
 
     if (allocated(me%str)) then
 
@@ -500,7 +501,9 @@
 
         !filled or regular:
         contourfunc = 'contour'  !default
+        is_filled = .false.
         if (present(filled)) then
+            is_filled = filled
             if (filled) contourfunc = 'contourf'  !filled contour
         end if
 
@@ -514,7 +517,7 @@
             if (colorbar) call me%add_str('fig.colorbar(CS)')
         end if
 
-        call me%add_str('ax.clabel(CS, fontsize=9, inline=1)')
+        if (.not. is_filled) call me%add_str('ax.clabel(CS, fontsize=9, inline=1)')
         call me%add_str('')
 
     else
