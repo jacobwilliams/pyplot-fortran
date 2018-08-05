@@ -64,7 +64,7 @@
                         xtick_labelsize = 20,&
                         ytick_labelsize = 20,&
                         legend_fontsize = 20 )
-    call plt%add_bar(left=x,height=sx,width=tx,label='$\sin (x)$',&
+    call plt%add_bar(x=x,height=sx,width=tx,label='$\sin (x)$',&
                         color='r',yerr=yerr,xlim=[0.0_wp, 20.0_wp],align='center',istat=istat)
     call plt%savefig('bartest.png', pyfile='bartest.py',istat=istat)
 

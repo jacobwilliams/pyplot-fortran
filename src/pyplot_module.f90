@@ -676,11 +676,11 @@
 !
 ! Add a bar plot.
 
-    subroutine add_bar(me, left, height, label, width, bottom, color, &
+    subroutine add_bar(me, x, height, label, width, bottom, color, &
                         yerr, align, xlim, ylim, xscale, yscale, istat)
 
     class(pyplot),          intent(inout)        :: me            !! pyplot handler
-    real(wp), dimension(:), intent(in)           :: left          !! left bar values
+    real(wp), dimension(:), intent(in)           :: x             !! x bar values
     real(wp), dimension(:), intent(in)           :: height        !! height bar values
     character(len=*),       intent(in)           :: label         !! plot label
     real(wp), dimension(:), intent(in), optional :: width         !! width values
@@ -717,7 +717,7 @@
         if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
 
         !convert the arrays to strings:
-                             call vec_to_string(left,   me%real_fmt, xstr,     me%use_numpy)
+                             call vec_to_string(x,      me%real_fmt, xstr,     me%use_numpy)
                              call vec_to_string(height, me%real_fmt, ystr,     me%use_numpy)
         if (present(width))  call vec_to_string(width,  me%real_fmt, wstr,     me%use_numpy)
         if (present(bottom)) call vec_to_string(bottom, me%real_fmt, bstr,     me%use_numpy)
@@ -733,7 +733,7 @@
 
         !create the plot string:
         plt_str = 'ax.bar('//&
-                  'left='//trim(xname)//','//&
+                  'x='//trim(xname)//','//&
                   'height='//trim(yname)//','
         if (present(yerr))   plt_str=plt_str//'yerr='//trim(yerrname)//','
         if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
