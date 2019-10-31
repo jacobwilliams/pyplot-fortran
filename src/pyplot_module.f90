@@ -56,6 +56,7 @@
         procedure, public :: add_3d_plot   !! add a 3d plot to pyplot instance
         procedure, public :: add_sphere    !! add a 3d sphere to pyplot instance
         procedure, public :: add_contour   !! add a contour plot to pyplot instance
+        procedure, public :: plot_surface  !! add a surface plot to pyplot instance
         procedure, public :: add_bar       !! add a barplot to pyplot instance
         procedure, public :: add_imshow    !! add an image plot (using `imshow`)
         procedure, public :: add_hist      !! add a histogram plot to pyplot instance
@@ -526,6 +527,96 @@
     end if
 
     end subroutine add_contour
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Add a surface plot.
+!
+!@note This requires `use_numpy` to be True.
+
+    subroutine plot_surface(me, x, y, z, label, linestyle, linewidth, levels, color, &
+                            cmap, colorbar, antialiased, istat)
+
+    class(pyplot),           intent (inout)        :: me           !! pyplot handler
+    real(wp),dimension(:),   intent (in)           :: x            !! x values
+    real(wp),dimension(:),   intent (in)           :: y            !! y values
+    real(wp),dimension(:,:), intent (in)           :: z            !! z values (a matrix)
+    character(len=*),        intent (in)           :: label        !! plot label
+    character(len=*),        intent (in)           :: linestyle    !! style of the plot line
+    integer,                 intent (in), optional :: linewidth    !! width of the plot line
+    real(wp),dimension(:),   intent (in), optional :: levels       !! contour levels to plot
+    character(len=*),        intent (in), optional :: color        !! Color of the surface patches
+    character(len=*),        intent (in), optional :: cmap         !! colormap if filled=True (examples: 'jet', 'bone')
+    logical,                 intent (in), optional :: colorbar     !! add a colorbar (default=False)
+    logical,                 intent (in), optional :: antialiased  !! The surface is made opaque by using antialiased=False
+    integer,                 intent (out)          :: istat        !! status output (0 means no problems)
+
+    character(len=:), allocatable :: xstr           !! x values stringified
+    character(len=:), allocatable :: ystr           !! y values stringified
+    character(len=:), allocatable :: zstr           !! z values stringified
+    character(len=:), allocatable :: levelstr       !! levels vector stringified
+    character(len=:), allocatable :: antialiasedstr !! antialiased stringified
+    character(len=max_int_len)    :: iline          !! actual line width
+    character(len=*), parameter   :: xname = 'x'    !! x variable name for script
+    character(len=*), parameter   :: yname = 'y'    !! y variable name for script
+    character(len=*), parameter   :: zname = 'z'    !! z variable name for script
+    character(len=*), parameter   :: xname_ = 'X'   !! X variable name for contour
+    character(len=*), parameter   :: yname_ = 'Y'   !! Y variable name for contour
+    character(len=*), parameter   :: zname_ = 'Z'   !! Z variable name for contour
+    character(len=:), allocatable :: extras         !! optional stuff
+
+    if (allocated(me%str)) then
+
+        istat = 0
+
+        !convert the arrays to strings:
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+        call vec_to_string(y, me%real_fmt, ystr, me%use_numpy)
+        call matrix_to_string(z, me%real_fmt, zstr, me%use_numpy)
+        if (present(levels)) call vec_to_string(levels, me%real_fmt, levelstr, me%use_numpy)
+
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(linewidth, iline, '3')
+        call optional_logical_to_string(antialiased, antialiasedstr, 'False')
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str(trim(yname)//' = '//ystr)
+        call me%add_str(trim(zname)//' = '//zstr)
+        call me%add_str('')
+
+        !convert inputs for contour plotting:
+        call me%add_str(xname_//', '//yname_//' = np.meshgrid('//trim(xname)//', '//trim(yname)//')')
+        call me%add_str(zname_//' = np.transpose('//zname//')')
+
+        !optional arguments:
+        extras = ''
+        if (present(levels))     extras = extras//','//'levels='//levelstr
+        if (present(color))      extras = extras//','//'colors="'//color//'"'
+        if (present(linewidth))  extras = extras//','//'linewidths='//trim(adjustl(iline))
+        if (present(cmap))       extras = extras//','//'cmap="'//cmap//'"'
+
+        !write the plot statement:
+        call me%add_str('CS = ax.plot_surface'//'('//xname_//','//yname_//','//zname_//','//&
+                                        'label="'//trim(label)//'",'//&
+                                        'antialiased='//trim(antialiasedstr)//','//&
+                                        'linestyles="'//trim(adjustl(linestyle))//'"'//&
+                                        extras//')')
+
+        if (present(colorbar)) then
+            if (colorbar) call me%add_str('fig.colorbar(CS)')
+        end if
+
+        call me%add_str('')
+
+    else
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_plot: pyplot class not properly initialized.'
+    end if
+
+    end subroutine plot_surface
 !*****************************************************************************************
 
 !*****************************************************************************************
