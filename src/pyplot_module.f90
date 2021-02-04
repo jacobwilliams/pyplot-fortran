@@ -53,6 +53,7 @@
         procedure, public :: initialize    !! initialize pyplot instance
 
         procedure, public :: add_plot      !! add a 2d plot to pyplot instance
+        procedure, public :: add_errorbar  !! add a 2d error bar plot to pyplot instance
         procedure, public :: add_3d_plot   !! add a 3d plot to pyplot instance
         procedure, public :: add_sphere    !! add a 3d sphere to pyplot instance
         procedure, public :: add_contour   !! add a contour plot to pyplot instance
@@ -1313,6 +1314,114 @@
     end if
 
     end subroutine showfig
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Alexander Sandrock
+!
+! Add an x,y plot.
+
+    subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
+
+    class(pyplot),          intent (inout)        :: me           !! pyplot handler
+    real(wp), dimension(:), intent (in)           :: x            !! x values
+    real(wp), dimension(:), intent (in)           :: y            !! y values
+    character(len=*),       intent (in)           :: label        !! plot label
+    character(len=*),       intent (in)           :: linestyle    !! style of the plot line
+    real(wp), dimension(:), intent (in), optional :: xerr         !! x errorbar sizes
+    real(wp), dimension(:), intent (in), optional :: yerr         !! y errorbar sizes
+    integer,                intent (in), optional :: markersize   !! size of the plot markers
+    integer,                intent (in), optional :: linewidth    !! width of the plot line
+    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
+    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
+    real(wp),dimension(:),  intent (in), optional :: color        !! RGB color tuple [0-1,0-1,0-1]
+    integer,                intent (out)          :: istat        !! status output (0 means no problems)
+
+    character(len=:), allocatable :: arg_str            !! the arguments to pass to `plot`
+    character(len=:), allocatable :: xstr               !! x values stringified
+    character(len=:), allocatable :: ystr               !! y values stringified
+    character(len=:), allocatable :: xlimstr            !! xlim values stringified
+    character(len=:), allocatable :: ylimstr            !! ylim values stringified
+    character(len=:), allocatable :: xerrstr            !! xerr values stringified
+    character(len=:), allocatable :: yerrstr            !! yerr values stringified
+    character(len=:), allocatable :: color_str          !! color values stringified
+    character(len=max_int_len)    :: imark              !! actual markers size
+    character(len=max_int_len)    :: iline              !! actual line width
+    character(len=*), parameter   :: xname = 'x'        !! x variable name for script
+    character(len=*), parameter   :: yname = 'y'        !! y variable name for script
+    character(len=*), parameter   :: xerrname = 'xerr'  !! xerr variable name for script
+    character(len=*), parameter   :: yerrname = 'yerr'  !! yerr variable name for script
+
+    if (allocated(me%str)) then
+
+        istat = 0
+
+        !axis limits (optional):
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
+        !errorbar sizes (optional):
+        if (present(xerr)) call vec_to_string(xerr, me%real_fmt, xerrstr, me%use_numpy)
+        if (present(yerr)) call vec_to_string(yerr, me%real_fmt, yerrstr, me%use_numpy)
+
+        !convert the arrays to strings:
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+        call vec_to_string(y, me%real_fmt, ystr, me%use_numpy)
+
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(markersize, imark, '3')
+        call optional_int_to_string(linewidth, iline, '3')
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str(trim(yname)//' = '//ystr)
+        call me%add_str('')
+        if (present(xerr)) call me%add_str(trim(xerrname)//' = '//xerrstr)
+        if (present(yerr)) call me%add_str(trim(yerrname)//' = '//yerrstr)
+        if (present(xerr) .or. present(yerr)) call me%add_str('')
+
+        !main arguments for plot:
+        arg_str = trim(xname)//','//&
+                  trim(yname)//','//&
+                  'fmt="'//trim(linestyle)//'",'//&
+                  'linewidth='//trim(adjustl(iline))//','//&
+                  'markersize='//trim(adjustl(imark))//','//&
+                  'label="'//trim(label)//'"'
+
+        ! optional arguments:
+        if (present(xerr)) then
+            arg_str = arg_str//','//'xerr='//trim(xerrname)
+        end if
+        if (present(yerr)) then
+            arg_str = arg_str//','//'yerr='//trim(yerrname)
+        end if
+        if (present(color)) then
+            if (size(color)<=3) then
+                call vec_to_string(color(1:3), '*', color_str, use_numpy=.false., is_tuple=.true.)
+                arg_str = arg_str//',color='//trim(color_str)
+            end if
+        end if
+
+        !write the plot statement:
+        call me%add_str('ax.errorbar('//arg_str//')')
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+        !axis scales:
+        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
+
+        call me%add_str('')
+
+    else
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_errorbar: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_errorbar
 !*****************************************************************************************
 
 !*****************************************************************************************
