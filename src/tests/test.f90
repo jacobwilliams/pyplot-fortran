@@ -92,7 +92,7 @@
                         ylabel='y angle (rad)',figsize=[10,10],&
                         title='Contour plot test', real_fmt='*',&
                         axisbelow=.false.)
-    call plt%add_contour(x, y, z, label='contour', linestyle='-', &
+    call plt%add_contour(x, y, z, linestyle='-', &
                          filled=.true., cmap='bone', colorbar=.true.,&
                          istat=istat)
     call plt%savefig('contour.png',pyfile='contour.py',istat=istat)
