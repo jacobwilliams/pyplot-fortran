@@ -1,0 +1,68 @@
+name: CI
+
+on: [push]
+
+jobs:
+  Build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        gcc_v: [9, 10] # Version of GFortran we want to use.
+    env:
+      FC: gfortran-${{ matrix.gcc_v }}
+      GCC_V: ${{ matrix.gcc_v }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v1
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
+      with:
+        python-version: 3.x
+
+    - name: Install other tools
+      if: contains( matrix.os, 'ubuntu')
+      run: |
+        sudo apt-get install graphviz
+        sudo -H pip install FoBiS.py && FoBiS.py --version
+        sudo -H pip install ford==5.0.6 && ford --version
+        sudo -H pip install --upgrade markdown==2.6.9
+        sudo -H pip install matplotlib
+
+    - name: Install GFortran Linux
+      if: contains( matrix.os, 'ubuntu')
+      run: |
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo apt-get update
+        sudo apt-get install -y gcc-${GCC_V} gfortran-${GCC_V}
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 100 \
+        --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-${GCC_V} \
+        --slave /usr/bingcov gcov /usr/bin/gcov-${GCC_V}
+
+    - name: Build and compile
+      run: |
+        FoBiS.py build -compiler gnu -cflags "-c -O2 -std=f2008" -dbld ./lib/ -s ./src/ -dmod ./ -dobj ./ -t pyplot_module.f90 -o libpyplot.a -mklib static -colors
+        FoBiS.py build -compiler gnu -cflags "-c -O2 -std=f2008" -dbld ./bin/ -s ./src/tests/ -dmod ./ -dobj ./ -colors -libs ./lib/libpyplot.a --include ./lib/
+
+    - name: catch build fail
+      run: cmake --build build --verbose --parallel 1
+      if: failure()
+
+    - name: test
+      run: ./bin/test
+
+    - name: Install project
+      run: |
+        git config --global user.name "TRAVIS-CI-for-$(git --no-pager show -s --format='%cn' $TRAVIS_COMMIT)"
+        git config --global user.email "$(git --no-pager show -s --format='%ce' $TRAVIS_COMMIT)"
+        git clone -q --branch=gh-pages "https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG" gh-pages >/dev/null 2>&1
+        rm -rf gh-pages/*
+        ford ./pyplot-fortran.md
+        cp -rf ./doc/* gh-pages/
+        cd gh-pages/
+        git add -f --all * || true
+        git commit -m "Travis CI autocommit from Travis job $TRAVIS_JOB_NUMBER for tag $TRAVIS_TAG $TRAVIS_COMMIT" || true
+        git push -fq origin gh-pages > /dev/null 2>&1 || true
