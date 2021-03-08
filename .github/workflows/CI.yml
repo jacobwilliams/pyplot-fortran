@@ -42,7 +42,9 @@ jobs:
         --slave /usr/bingcov gcov /usr/bin/gcov-${GCC_V}
 
     - name: Compile
-      run: gfortran -O2 ./src/pyplot_module.f90 ./src/tests/test.f90 -o ./bin/test
+      run: |
+        mkdir bin
+        gfortran -O2 ./src/pyplot_module.f90 ./src/tests/test.f90 -o ./bin/test
 
     - name: Run test
       run: ./bin/test
