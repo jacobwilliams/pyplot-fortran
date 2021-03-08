@@ -1,8 +1,0 @@
-digraph "module~~pyplot_module~~UsedByGraph" {
-	graph [concentrate=true rankdir=LR size="8.90625,1000.0"]
-	node [fontname=Helvetica fontsize=10.5 height=0.0 margin=0.08 shape=box]
-	edge [fontname=Helvetica fontsize=9.5]
-		"module~pyplot_module" [label=pyplot_module]
-		"program~test" [label=test URL="../program/test.html" color="#f0ad4e" fontcolor=white style=filled]
-			"module~pyplot_module" -> "program~test" [style=dashed]
-}

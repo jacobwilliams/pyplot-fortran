@@ -10,7 +10,7 @@
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
-    <title>add_contour &ndash; pyplot-fortran</title>
+    <title>plot_surface &ndash; pyplot-fortran</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -112,7 +112,7 @@
     
   
   <div class="row">
-    <h1>add_contour
+    <h1>plot_surface
       <small>Subroutine</small>
     
     </h1>
@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 7.3% of total for procedures.">62 statements</a>
+    title=" 6.6% of total for procedures.">56 statements</a>
      </li> 
      
      
@@ -149,7 +149,7 @@
      <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
     
   
-     <li class="active">add_contour</li>
+     <li class="active">plot_surface</li>
   </ol>
 </div>
 </div>
@@ -193,7 +193,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../proc/add_contour.html#src">add_contour</a>
+    <a class="list-group-item" href="../proc/plot_surface.html#src">plot_surface</a>
   </div>
 </div>
 
@@ -205,7 +205,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)
+private subroutine plot_surface(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)
     
     
    
@@ -215,7 +215,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
 
 
     
-    <p>Add a contour plot.</p>
+    <p>Add a surface plot.</p>
 <p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>This requires <code>use_numpy</code> to be True.</p></div>
     
 
@@ -237,7 +237,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-me%7E6"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td><span class="anchor" id="variable-me%7E7"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
   <td>intent(inout)</td>
   <td></td>
   
@@ -252,7 +252,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-x%7E3"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-x%7E4"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -267,7 +267,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-y%7E2"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-y%7E3"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -282,7 +282,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-z"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-z%7E2"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -297,7 +297,22 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-linestyle%7E2"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-label%7E3"></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>label</strong></td><td><p>plot label</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-linestyle%7E3"></span>character(len=*),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -312,12 +327,12 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-linewidth%7E2"></span>integer,</td>
+  <td><span class="anchor" id="variable-linewidth%7E3"></span>integer,</td>
   <td>intent(in),</td>
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>linewidth</strong></td><td><p>width of the plot line [only used when <code>filled=False</code>]</p></td>
+  <td><strong>linewidth</strong></td><td><p>width of the plot line</p></td>
   
 </tr>
 
@@ -327,7 +342,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-levels"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-levels%7E2"></span>real(kind=wp),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -342,12 +357,12 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-color%7E2"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-color%7E3"></span>character(len=*),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>color</strong></td><td><p>color of the contour line</p></td>
+  <td><strong>color</strong></td><td><p>Color of the surface patches</p></td>
   
 </tr>
 
@@ -357,22 +372,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-filled"></span>logical,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
-  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-cmap"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-cmap%7E2"></span>character(len=*),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -387,7 +387,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-colorbar"></span>logical,</td>
+  <td><span class="anchor" id="variable-colorbar%7E2"></span>logical,</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -402,7 +402,22 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
   
 <tr>
   
-  <td><span class="anchor" id="variable-istat%7E3"></span>integer,</td>
+  <td><span class="anchor" id="variable-antialiased"></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>antialiased</strong></td><td><p>The surface is made opaque by using antialiased=False</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-istat%7E4"></span>integer,</td>
   <td>intent(out)</td>
   <td></td>
   
@@ -430,77 +445,92 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
-<!-- Title: proc~~add_contour~~CallsGraph Pages: 1 -->
-<svg id="procadd_contourCallsGraph" width="387pt" height="116pt"
- viewBox="0.00 0.00 387.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~add_contour~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
-<title>proc~~add_contour~~CallsGraph</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-112 383,-112 383,4 -4,4"/>
-<!-- proc~add_contour -->
-<g id="proc~~add_contour~~CallsGraph_node1" class="node">
-<title>proc~add_contour</title>
-<polygon fill="none" stroke="#000000" points="79,-66 0,-66 0,-42 79,-42 79,-66"/>
-<text text-anchor="middle" x="39.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">add_contour</text>
+<!-- Title: proc~~plot_surface~~CallsGraph Pages: 1 -->
+<svg id="procplot_surfaceCallsGraph" width="408pt" height="158pt"
+ viewBox="0.00 0.00 408.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~plot_surface~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~plot_surface~~CallsGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-154 404,-154 404,4 -4,4"/>
+<!-- proc~plot_surface -->
+<g id="proc~~plot_surface~~CallsGraph_node1" class="node">
+<title>proc~plot_surface</title>
+<polygon fill="none" stroke="#000000" points="78,-87 0,-87 0,-63 78,-63 78,-87"/>
+<text text-anchor="middle" x="39" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">plot_surface</text>
 </g>
 <!-- proc~matrix_to_string -->
-<g id="proc~~add_contour~~CallsGraph_node2" class="node">
+<g id="proc~~plot_surface~~CallsGraph_node2" class="node">
 <title>proc~matrix_to_string</title>
-<g id="a_proc~~add_contour~~CallsGraph_node2"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="227,-108 129,-108 129,-84 227,-84 227,-108"/>
-<text text-anchor="middle" x="178" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">matrix_to_string</text>
+<g id="a_proc~~plot_surface~~CallsGraph_node2"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-150 139,-150 139,-126 237,-126 237,-150"/>
+<text text-anchor="middle" x="188" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">matrix_to_string</text>
 </a>
 </g>
 </g>
-<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge1" class="edge">
-<title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M79.1885,-66.0355C94.546,-70.6926 112.2913,-76.0739 128.47,-80.9801"/>
-<polygon fill="#000000" stroke="#000000" points="127.7203,-84.4101 138.3057,-83.9627 129.7517,-77.7113 127.7203,-84.4101"/>
+<!-- proc~plot_surface&#45;&gt;proc~matrix_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge1" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M57.8013,-87.1614C72.6079,-96.3307 94.0148,-108.7031 114,-117 119.0106,-119.0802 124.2945,-121.029 129.6387,-122.8357"/>
+<polygon fill="#000000" stroke="#000000" points="128.6862,-126.2059 139.2775,-125.9322 130.8272,-119.5413 128.6862,-126.2059"/>
+</g>
+<!-- proc~optional_logical_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_node3" class="node">
+<title>proc~optional_logical_to_string</title>
+<g id="a_proc~~plot_surface~~CallsGraph_node3"><a xlink:href=".././proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="262,-108 114,-108 114,-84 262,-84 262,-108"/>
+<text text-anchor="middle" x="188" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">optional_logical_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~optional_logical_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge2" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M78.148,-80.5175C86.1667,-81.6477 94.8968,-82.8781 103.8152,-84.135"/>
+<polygon fill="#000000" stroke="#000000" points="103.5459,-87.6316 113.9365,-85.5615 104.5229,-80.7001 103.5459,-87.6316"/>
 </g>
 <!-- proc~vec_to_string -->
-<g id="proc~~add_contour~~CallsGraph_node3" class="node">
+<g id="proc~~plot_surface~~CallsGraph_node4" class="node">
 <title>proc~vec_to_string</title>
-<g id="a_proc~~add_contour~~CallsGraph_node3"><a xlink:href=".././proc/vec_to_string.html" xlink:title="vec_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="219,-66 137,-66 137,-42 219,-42 219,-66"/>
-<text text-anchor="middle" x="178" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">vec_to_string</text>
+<g id="a_proc~~plot_surface~~CallsGraph_node4"><a xlink:href=".././proc/vec_to_string.html" xlink:title="vec_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="229,-66 147,-66 147,-42 229,-42 229,-66"/>
+<text text-anchor="middle" x="188" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">vec_to_string</text>
 </a>
 </g>
 </g>
-<!-- proc~add_contour&#45;&gt;proc~vec_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge2" class="edge">
-<title>proc~add_contour&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M79.1885,-54C94.0077,-54 111.0502,-54 126.7631,-54"/>
-<polygon fill="#000000" stroke="#000000" points="126.86,-57.5001 136.8599,-54 126.8599,-50.5001 126.86,-57.5001"/>
+<!-- proc~plot_surface&#45;&gt;proc~vec_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge3" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M78.148,-69.4825C96.0544,-66.9588 117.5079,-63.9351 136.685,-61.2323"/>
+<polygon fill="#000000" stroke="#000000" points="137.3566,-64.6723 146.7703,-59.8109 136.3797,-57.7408 137.3566,-64.6723"/>
 </g>
 <!-- proc~optional_int_to_string -->
-<g id="proc~~add_contour~~CallsGraph_node4" class="node">
+<g id="proc~~plot_surface~~CallsGraph_node5" class="node">
 <title>proc~optional_int_to_string</title>
-<g id="a_proc~~add_contour~~CallsGraph_node4"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="241,-24 115,-24 115,0 241,0 241,-24"/>
-<text text-anchor="middle" x="178" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">optional_int_to_string</text>
+<g id="a_proc~~plot_surface~~CallsGraph_node5"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="251,-24 125,-24 125,0 251,0 251,-24"/>
+<text text-anchor="middle" x="188" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">optional_int_to_string</text>
 </a>
 </g>
 </g>
-<!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge3" class="edge">
-<title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M79.1885,-41.9645C94.546,-37.3074 112.2913,-31.9261 128.47,-27.0199"/>
-<polygon fill="#000000" stroke="#000000" points="129.7517,-30.2887 138.3057,-24.0373 127.7203,-23.5899 129.7517,-30.2887"/>
+<!-- proc~plot_surface&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge4" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M57.8013,-62.8386C72.6079,-53.6693 94.0148,-41.2969 114,-33 119.0106,-30.9198 124.2945,-28.971 129.6387,-27.1643"/>
+<polygon fill="#000000" stroke="#000000" points="130.8272,-30.4587 139.2775,-24.0678 128.6862,-23.7941 130.8272,-30.4587"/>
 </g>
 <!-- proc~integer_to_string -->
-<g id="proc~~add_contour~~CallsGraph_node5" class="node">
+<g id="proc~~plot_surface~~CallsGraph_node6" class="node">
 <title>proc~integer_to_string</title>
-<g id="a_proc~~add_contour~~CallsGraph_node5"><a xlink:href=".././proc/integer_to_string.html" xlink:title="integer_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="379,-24 277,-24 277,0 379,0 379,-24"/>
-<text text-anchor="middle" x="328" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">integer_to_string</text>
+<g id="a_proc~~plot_surface~~CallsGraph_node6"><a xlink:href=".././proc/integer_to_string.html" xlink:title="integer_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="400,-24 298,-24 298,0 400,0 400,-24"/>
+<text text-anchor="middle" x="349" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">integer_to_string</text>
 </a>
 </g>
 </g>
 <!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge4" class="edge">
+<g id="proc~~plot_surface~~CallsGraph_edge5" class="edge">
 <title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
-<path fill="none" stroke="#000000" d="M241.1788,-12C249.6032,-12 258.2318,-12 266.6249,-12"/>
-<polygon fill="#000000" stroke="#000000" points="266.7162,-15.5001 276.7162,-12 266.7161,-8.5001 266.7162,-15.5001"/>
+<path fill="none" stroke="#000000" d="M251.1694,-12C263.1614,-12 275.6921,-12 287.6274,-12"/>
+<polygon fill="#000000" stroke="#000000" points="287.9342,-15.5001 297.9342,-12 287.9342,-8.5001 287.9342,-15.5001"/>
 </g>
 </g>
 </svg>
@@ -597,7 +627,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../proc/add_contour.html#src">add_contour</a>
+    <a class="list-group-item" href="../proc/plot_surface.html#src">plot_surface</a>
   </div>
 </div>
 
@@ -626,36 +656,36 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_contour</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="p">&amp;</span>
-                           <span class="n">filled</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">colorbar</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">plot_surface</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="p">&amp;</span>
+                            <span class="n">cmap</span><span class="p">,</span> <span class="n">colorbar</span><span class="p">,</span> <span class="n">antialiased</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
 
     <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>           <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>   <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>   <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">y</span>            <span class="c">!! y values</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">z</span>            <span class="c">!! z values (a matrix)</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">label</span>        <span class="c">!! plot label</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">linestyle</span>    <span class="c">!! style of the plot line</span>
-    <span class="kt">integer</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line [only used when `filled=False`]</span>
+    <span class="kt">integer</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>   <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">levels</span>       <span class="c">!! contour levels to plot</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>        <span class="c">!! color of the contour line</span>
-    <span class="kt">logical</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">filled</span>       <span class="c">!! use filled control (default=False)</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>        <span class="c">!! Color of the surface patches</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>        <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">cmap</span>         <span class="c">!! colormap if filled=True (examples: &#39;jet&#39;, &#39;bone&#39;)</span>
     <span class="kt">logical</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">colorbar</span>     <span class="c">!! add a colorbar (default=False)</span>
+    <span class="kt">logical</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">antialiased</span>  <span class="c">!! The surface is made opaque by using antialiased=False</span>
     <span class="kt">integer</span><span class="p">,</span>                 <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
 
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>          <span class="c">!! x values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>          <span class="c">!! y values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">zstr</span>          <span class="c">!! z values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">levelstr</span>      <span class="c">!! levels vector stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">iline</span>         <span class="c">!! actual line width</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>   <span class="c">!! x variable name for script</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>   <span class="c">!! y variable name for script</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">zname</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>   <span class="c">!! z variable name for script</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname_</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>  <span class="c">!! X variable name for contour</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname_</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>  <span class="c">!! Y variable name for contour</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">zname_</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>  <span class="c">!! Z variable name for contour</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">extras</span>        <span class="c">!! optional stuff</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">contourfunc</span>   <span class="c">!! &#39;contour&#39; or &#39;contourf&#39;</span>
-    <span class="kt">logical</span> <span class="kd">::</span> <span class="n">is_filled</span> <span class="c">!! if it is a filled contour plot</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>           <span class="c">!! x values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>           <span class="c">!! y values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">zstr</span>           <span class="c">!! z values stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">levelstr</span>       <span class="c">!! levels vector stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">antialiasedstr</span> <span class="c">!! antialiased stringified</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">iline</span>          <span class="c">!! actual line width</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>    <span class="c">!! x variable name for script</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>    <span class="c">!! y variable name for script</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">zname</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>    <span class="c">!! z variable name for script</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname_</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>   <span class="c">!! X variable name for contour</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">yname_</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>   <span class="c">!! Y variable name for contour</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">zname_</span> <span class="o">=</span> <span class="s1">&#39;Z&#39;</span>   <span class="c">!! Z variable name for contour</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">extras</span>         <span class="c">!! optional stuff</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
 
@@ -669,6 +699,7 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
 
         <span class="c">!get optional inputs (if not present, set default value):</span>
         <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">iline</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">antialiased</span><span class="p">,</span> <span class="n">antialiasedstr</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">)</span>
 
         <span class="c">!write the arrays:</span>
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">xstr</span><span class="p">)</span>
@@ -687,16 +718,10 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">linewidth</span><span class="p">))</span>  <span class="n">extras</span> <span class="o">=</span> <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;linewidths=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">iline</span><span class="p">))</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">cmap</span><span class="p">))</span>       <span class="n">extras</span> <span class="o">=</span> <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;cmap=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="n">cmap</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
 
-        <span class="c">!filled or regular:</span>
-        <span class="n">contourfunc</span> <span class="o">=</span> <span class="s1">&#39;contour&#39;</span>  <span class="c">!default</span>
-        <span class="n">is_filled</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">filled</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">            </span><span class="n">is_filled</span> <span class="o">=</span> <span class="n">filled</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">filled</span><span class="p">)</span> <span class="n">contourfunc</span> <span class="o">=</span> <span class="s1">&#39;contourf&#39;</span>  <span class="c">!filled contour</span>
-        <span class="k">end if</span>
-
         <span class="c">!write the plot statement:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;CS = ax.&#39;</span><span class="o">//</span><span class="n">contourfunc</span><span class="o">//</span><span class="s1">&#39;(&#39;</span><span class="o">//</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;CS = ax.plot_surface&#39;</span><span class="o">//</span><span class="s1">&#39;(&#39;</span><span class="o">//</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                        <span class="s1">&#39;label=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+                        <span class="s1">&#39;antialiased=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">antialiasedstr</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                         <span class="s1">&#39;linestyles=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">linestyle</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="p">&amp;</span>
                         <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 
@@ -704,15 +729,14 @@ private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color,
 <span class="k">            if</span> <span class="p">(</span><span class="n">colorbar</span><span class="p">)</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig.colorbar(CS)&#39;</span><span class="p">)</span>
         <span class="k">end if</span>
 
-<span class="k">        if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="n">is_filled</span><span class="p">)</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.clabel(CS, fontsize=9, inline=1)&#39;</span><span class="p">)</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>
 <span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
 
-<span class="k">    end subroutine </span><span class="n">add_contour</span>
+<span class="k">    end subroutine </span><span class="n">plot_surface</span>
 </pre></div>
 
     </section>

@@ -14,23 +14,34 @@
 
     integer,parameter :: n = 100
 
-    real(wp), dimension(n)   :: x     !! x values
-    real(wp), dimension(n)   :: y     !! y values
-    real(wp), dimension(n)   :: yerr  !! error values for bar chart
-    real(wp), dimension(n)   :: sx    !! sin(x) values
-    real(wp), dimension(n)   :: cx    !! cos(x) values
-    real(wp), dimension(n)   :: zx    !!
-    real(wp), dimension(n)   :: tx    !! sin(x)*cos(x) values
-    real(wp), dimension(n,n) :: z     !! z matrix for contour plot
+    real(wp), dimension(:),allocatable   :: x     !! x values
+    real(wp), dimension(:),allocatable   :: y     !! y values
+    real(wp), dimension(:),allocatable   :: yerr  !! error values for bar chart
+    real(wp), dimension(:),allocatable   :: sx    !! sin(x) values
+    real(wp), dimension(:),allocatable   :: cx    !! cos(x) values
+    real(wp), dimension(:),allocatable   :: zx    !!
+    real(wp), dimension(:),allocatable   :: tx    !! sin(x)*cos(x) values
+    real(wp), dimension(:,:),allocatable :: z     !! z matrix for contour plot
+    real(wp), dimension(:,:),allocatable :: mat   !! image values
     type(pyplot)             :: plt   !! pytplot handler
     integer                  :: i     !! counter
     integer                  :: j     !! counter
     real(wp)                 :: r2    !! temp variable
-    real(wp), dimension(n,n) :: mat   !! image values
     integer                  :: istat !! status code
 
     real(wp),parameter :: pi = acos(-1.0_wp)
     real(wp),parameter :: deg2rad = pi/180.0_wp
+
+    ! size arrays:
+    allocate(x(n))   
+    allocate(y(n))   
+    allocate(yerr(n))
+    allocate(sx(n))  
+    allocate(cx(n))  
+    allocate(zx(n))  
+    allocate(tx(n))  
+    allocate(z(n,n))   
+    allocate(mat(n,n)) 
 
     !generate some data:
     x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
@@ -63,7 +74,7 @@
                         axes_labelsize = 20,&
                         xtick_labelsize = 20,&
                         ytick_labelsize = 20,&
-                        legend_fontsize = 20 )
+                        legend_fontsize = 20, raw_strings=.true. )
     call plt%add_bar(x=x,height=sx,width=tx,label='$\sin (x)$',&
                         color='r',yerr=yerr,xlim=[0.0_wp, 20.0_wp],align='center',istat=istat)
     call plt%savefig('bartest.png', pyfile='bartest.py',istat=istat)
@@ -81,8 +92,8 @@
                         ylabel='y angle (rad)',figsize=[10,10],&
                         title='Contour plot test', real_fmt='*',&
                         axisbelow=.false.)
-    call plt%add_contour(x, y, z, label='contour', linestyle='-', &
-                         linewidth=2, filled=.true., cmap='bone', colorbar=.true.,&
+    call plt%add_contour(x, y, z, linestyle='-', &
+                         filled=.true., cmap='bone', colorbar=.true.,&
                          istat=istat)
     call plt%savefig('contour.png',pyfile='contour.py',istat=istat)
 
@@ -114,7 +125,7 @@
                         ytick_labelsize = 20,&
                         legend_fontsize = 20 )
 
-    call plt%add_hist(x=x, label='x', normed=.true.,istat=istat)
+    call plt%add_hist(x=x, label='x',istat=istat)
     call plt%savefig('histtest1.png', pyfile='histtest1.py',istat=istat)
 
     call plt%initialize(grid=.true.,xlabel='x',&
@@ -138,7 +149,7 @@
                         title='Orbit',&
                         axis_equal=.true.,&
                         mplot3d=.true.,&
-                        figsize=[20,10])
+                        figsize=[20,10] )
 
     x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
     sx   = 7000.0_wp * cos(x * deg2rad)

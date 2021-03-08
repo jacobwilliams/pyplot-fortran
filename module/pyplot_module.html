@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+   
+   <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
     
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,37 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
+        
+        
             <li><a href="../program/test.html">Program</a></li>
-	    
+      
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -135,17 +135,21 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title="100.0% of total for modules and submodules.">762 statements</a>
+    data-placement="bottom" data-html="true"
+    title="100.0% of total for modules and submodules.">893 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.f90</a></li>
+    
   
      <li class="active">pyplot_module</li>
   </ol>
@@ -165,6 +169,9 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -199,6 +206,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
   <div id="types-0" class="panel-collapse collapse">
@@ -209,6 +217,7 @@
     </div>
   </div>
 </div>
+
 
 
 
@@ -229,6 +238,8 @@
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_contour">add_contour</a>
       
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-plot_surface">plot_surface</a>
+      
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_3d_plot">add_3d_plot</a>
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_sphere">add_sphere</a>
@@ -236,6 +247,8 @@
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_bar">add_bar</a>
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_imshow">add_imshow</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_errorbar">add_errorbar</a>
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_int_to_string">optional_int_to_string</a>
       
@@ -269,250 +282,251 @@
 
 
 
-  <hr>
-  
 
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-0">All Modules</a></h3></div>
-  <div id="allmods-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../module/pyplot_module.html">pyplot_module</a>
-      
-    </div>
-  </div>
 </div>
-
-
-</div>  
 
     </div>
     
     <div class="col-md-9" id='text'>
-      
-    
-  
-    <ul class="list-inline">
-      <li><h4>Uses:</h4></li>
-      
-      <li><a href="https://software.intel.com/en-us/node/511041">iso_fortran_env</a></li>
-      
-    </ul>
-    
-                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: module~~pyplot_module~~UsesGraph Pages: 1 -->
-<svg id="modulepyplot_moduleUsesGraph" width="214pt" height="32pt"
- viewBox="0.00 0.00 214.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~pyplot_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>module~~pyplot_module~~UsesGraph</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 210,-28 210,4 -4,4"/>
-<!-- module~pyplot_module -->
-<g id="module~~pyplot_module~~UsesGraph_node1" class="node"><title>module~pyplot_module</title>
-<polygon fill="none" stroke="black" points="206,-24 124,-24 124,-0 206,-0 206,-24"/>
-<text text-anchor="middle" x="165" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">pyplot_module</text>
-</g>
-<!-- iso_fortran_env -->
-<g id="module~~pyplot_module~~UsesGraph_node2" class="node"><title>iso_fortran_env</title>
-<g id="a_module~~pyplot_module~~UsesGraph_node2"><a xlink:href="https://software.intel.com/en-us/node/511041" xlink:title="iso_fortran_env">
-<polygon fill="#337ab7" stroke="#337ab7" points="87.5,-24 0.5,-24 0.5,-0 87.5,-0 87.5,-24"/>
-<text text-anchor="middle" x="44" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
-</a>
-</g>
-</g>
-<!-- iso_fortran_env&#45;&gt;module~pyplot_module -->
-<g id="module~~pyplot_module~~UsesGraph_edge1" class="edge"><title>iso_fortran_env&#45;&gt;module~pyplot_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.6256,-12C96.062,-12 104.992,-12 113.656,-12"/>
-<polygon fill="#000000" stroke="#000000" points="113.66,-15.5001 123.66,-12 113.66,-8.5001 113.66,-15.5001"/>
-</g>
-</g>
-</svg>
-</div>
-                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                      </div>
-                      <div class="modal-body">
-                        
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
- -->
-<!-- Title: Graph Key Pages: 1 -->
-<svg width="489pt" height="32pt"
- viewBox="0.00 0.00 489.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>Graph Key</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 485,-28 485,4 -4,4"/>
-<!-- Module -->
-<g id="node1" class="node"><title>Module</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
-</g>
-<!-- Submodule -->
-<g id="node2" class="node"><title>Submodule</title>
-<polygon fill="#5bc0de" stroke="#5bc0de" points="139.25,-24 72.75,-24 72.75,-0 139.25,-0 139.25,-24"/>
-<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
-</g>
-<!-- Subroutine -->
-<g id="node3" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="222,-24 158,-24 158,-0 222,-0 222,-24"/>
-<text text-anchor="middle" x="190" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
-</g>
-<!-- Function -->
-<g id="node4" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="294,-24 240,-24 240,-0 294,-0 294,-24"/>
-<text text-anchor="middle" x="267" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Program -->
-<g id="node5" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
-<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
-</g>
-<!-- This Page&#39;s Entity -->
-<g id="node6" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="481.25,-24 384.75,-24 384.75,-0 481.25,-0 481.25,-24"/>
-<text text-anchor="middle" x="433" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
-</g>
-</g>
-</svg>
-
-    
-    <p>Solid arrows point from a parent (sub)module to the submodule which is
-    descended from it. Dashed arrows point from a module being used to the
-    module or program unit using it.
-    </p>
-    
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-    
-
-    
     <p>For making simple x-y plots from Fortran.
   It works by generating a Python script and executing it.</p>
 <h1>See also</h1>
 <ul>
 <li>Inspired by: <a href="https://pypi.python.org/pypi/EasyPlot">EasyPlot</a></li>
 </ul>
+      <br>
     
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
     
-    <h3>Used By</h3>
+    <li><a href="http://fortranwiki.org/fortran/show/ISO_FORTRAN_ENV">iso_fortran_env</a></li>
     
-                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+  </ul>
+      </li>
+      
+      
+      
+      <li class="list-group-item">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
-<!-- Title: module~~pyplot_module~~UsedByGraph Pages: 1 -->
-<svg id="modulepyplot_moduleUsedByGraph" width="180pt" height="32pt"
- viewBox="0.00 0.00 180.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~pyplot_module~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>module~~pyplot_module~~UsedByGraph</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 176,-28 176,4 -4,4"/>
+<!-- Title: module~~pyplot_module~~UsesGraph Pages: 1 -->
+<svg id="modulepyplot_moduleUsesGraph" width="229pt" height="32pt"
+ viewBox="0.00 0.00 229.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~pyplot_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>module~~pyplot_module~~UsesGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 225,-28 225,4 -4,4"/>
 <!-- module~pyplot_module -->
-<g id="module~~pyplot_module~~UsedByGraph_node1" class="node"><title>module~pyplot_module</title>
-<polygon fill="none" stroke="black" points="82,-24 0,-24 0,-0 82,-0 82,-24"/>
-<text text-anchor="middle" x="41" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">pyplot_module</text>
+<g id="module~~pyplot_module~~UsesGraph_node1" class="node">
+<title>module~pyplot_module</title>
+<polygon fill="none" stroke="#000000" points="221,-24 130,-24 130,0 221,0 221,-24"/>
+<text text-anchor="middle" x="175.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">pyplot_module</text>
 </g>
-<!-- program~test -->
-<g id="module~~pyplot_module~~UsedByGraph_node2" class="node"><title>program~test</title>
-<g id="a_module~~pyplot_module~~UsedByGraph_node2"><a xlink:href="../program/test.html" xlink:title="test">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="172,-24 118,-24 118,-0 172,-0 172,-24"/>
-<text text-anchor="middle" x="145" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test</text>
+<!-- iso_fortran_env -->
+<g id="module~~pyplot_module~~UsesGraph_node2" class="node">
+<title>iso_fortran_env</title>
+<g id="a_module~~pyplot_module~~UsesGraph_node2"><a xlink:href="http://fortranwiki.org/fortran/show/ISO_FORTRAN_ENV" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="94,-24 0,-24 0,0 94,0 94,-24"/>
+<text text-anchor="middle" x="47" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">iso_fortran_env</text>
 </a>
 </g>
 </g>
-<!-- module~pyplot_module&#45;&gt;program~test -->
-<g id="module~~pyplot_module~~UsedByGraph_edge1" class="edge"><title>module~pyplot_module&#45;&gt;program~test</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M82.0203,-12C90.4968,-12 99.3981,-12 107.726,-12"/>
-<polygon fill="#000000" stroke="#000000" points="107.894,-15.5001 117.894,-12 107.894,-8.5001 107.894,-15.5001"/>
+<!-- module~pyplot_module&#45;&gt;iso_fortran_env -->
+<g id="module~~pyplot_module~~UsesGraph_edge1" class="edge">
+<title>module~pyplot_module&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M129.8339,-12C121.6282,-12 112.98,-12 104.491,-12"/>
+<polygon fill="#000000" stroke="#000000" points="104.2557,-8.5001 94.2556,-12 104.2556,-15.5001 104.2557,-8.5001"/>
 </g>
 </g>
 </svg>
-</div>
-                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                      </div>
-                      <div class="modal-body">
-                        
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
     <p>Nodes of different colours represent the following: </p>
     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="489pt" height="32pt"
- viewBox="0.00 0.00 489.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="517pt" height="32pt"
+ viewBox="0.00 0.00 517.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-28 485,-28 485,4 -4,4"/>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 513,-28 513,4 -4,4"/>
 <!-- Module -->
-<g id="node1" class="node"><title>Module</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Module</text>
 </g>
 <!-- Submodule -->
-<g id="node2" class="node"><title>Submodule</title>
-<polygon fill="#5bc0de" stroke="#5bc0de" points="139.25,-24 72.75,-24 72.75,-0 139.25,-0 139.25,-24"/>
-<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Submodule</text>
 </g>
 <!-- Subroutine -->
-<g id="node3" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="222,-24 158,-24 158,-0 222,-0 222,-24"/>
-<text text-anchor="middle" x="190" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234.5,-24 163.5,-24 163.5,0 234.5,0 234.5,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Subroutine</text>
 </g>
 <!-- Function -->
-<g id="node4" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="294,-24 240,-24 240,-0 294,-0 294,-24"/>
-<text text-anchor="middle" x="267" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="311,-24 253,-24 253,0 311,0 311,-24"/>
+<text text-anchor="middle" x="282" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Function</text>
 </g>
 <!-- Program -->
-<g id="node5" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
-<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="387,-24 329,-24 329,0 387,0 387,-24"/>
+<text text-anchor="middle" x="358" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node6" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="481.25,-24 384.75,-24 384.75,-0 481.25,-0 481.25,-24"/>
-<text text-anchor="middle" x="433" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="509,-24 405,-24 405,0 509,0 509,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
 
     
-    <p>Solid arrows point from a parent (sub)module to the submodule which is
-    descended from it. Dashed arrows point from a module being used to the
-    module or program unit using it.
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
     </p>
+    </div></div></div></div>
+      </li>
+      
+      </ul>
+    </div>
     
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
+
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Used by</h3>
+      </div>
+      <ul class="list-group">
+  
+  
+  <li class="list-group-item">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: module~~pyplot_module~~UsedByGraph Pages: 1 -->
+<svg id="modulepyplot_moduleUsedByGraph" width="189pt" height="32pt"
+ viewBox="0.00 0.00 189.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~pyplot_module~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>module~~pyplot_module~~UsedByGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 185,-28 185,4 -4,4"/>
+<!-- module~pyplot_module -->
+<g id="module~~pyplot_module~~UsedByGraph_node1" class="node">
+<title>module~pyplot_module</title>
+<polygon fill="none" stroke="#000000" points="91,-24 0,-24 0,0 91,0 91,-24"/>
+<text text-anchor="middle" x="45.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">pyplot_module</text>
+</g>
+<!-- program~test -->
+<g id="module~~pyplot_module~~UsedByGraph_node2" class="node">
+<title>program~test</title>
+<g id="a_module~~pyplot_module~~UsedByGraph_node2"><a xlink:href=".././program/test.html" xlink:title="test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="181,-24 127,-24 127,0 181,0 181,-24"/>
+<text text-anchor="middle" x="154" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">test</text>
+</a>
+</g>
+</g>
+<!-- program~test&#45;&gt;module~pyplot_module -->
+<g id="module~~pyplot_module~~UsedByGraph_edge1" class="edge">
+<title>program~test&#45;&gt;module~pyplot_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M126.9008,-12C119.0568,-12 110.1925,-12 101.2732,-12"/>
+<polygon fill="#000000" stroke="#000000" points="101.2313,-8.5001 91.2312,-12 101.2312,-15.5001 101.2313,-8.5001"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="517pt" height="32pt"
+ viewBox="0.00 0.00 517.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 513,-28 513,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234.5,-24 163.5,-24 163.5,0 234.5,0 234.5,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="311,-24 253,-24 253,0 311,0 311,-24"/>
+<text text-anchor="middle" x="282" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="387,-24 329,-24 329,0 387,0 387,-24"/>
+<text text-anchor="middle" x="358" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="509,-24 405,-24 405,0 509,0 509,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+  </li>
+  
+      </ul>
+    </div>
+    
+
     <br>
-    
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -547,6 +561,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
   <div id="types-1" class="panel-collapse collapse">
@@ -557,6 +572,7 @@
     </div>
   </div>
 </div>
+
 
 
 
@@ -577,6 +593,8 @@
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_contour">add_contour</a>
       
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-plot_surface">plot_surface</a>
+      
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_3d_plot">add_3d_plot</a>
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_sphere">add_sphere</a>
@@ -584,6 +602,8 @@
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_bar">add_bar</a>
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-add_imshow">add_imshow</a>
+      
+      <a class="list-group-item" href="../module/pyplot_module.html#proc-add_errorbar">add_errorbar</a>
       
       <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_int_to_string">optional_int_to_string</a>
       
@@ -608,6 +628,7 @@
     </div>
   </div>
 </div>
+
 
 
 
@@ -750,8 +771,8 @@
     
     <section>
      <h2>Derived Types</h2>
-	 
-	   
+   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="type-pyplot"></span><h3>type, public :: <a href='../type/pyplot.html'>pyplot</a>
     
@@ -784,6 +805,20 @@
   <td>private,</td>
   <td>allocatable</td><td>::</td>
   <td><strong>str</strong></td><td></td><td></td><td><p>string buffer</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-raw_str_token"></span>character(len=1),</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>raw_str_token</strong></td><td> =</td><td>' '</td><td><p>will be 'r' if using raw strings</p></td>
   
 </tr>
 
@@ -930,6 +965,9 @@
        <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_plot'>add_plot</a></strong>  </td>
        <td><p>add a 2d plot to pyplot instance</p></td></tr>
       
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_errorbar'>add_errorbar</a></strong>  </td>
+       <td><p>add a 2d error bar plot to pyplot instance</p></td></tr>
+      
        <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_3d_plot'>add_3d_plot</a></strong>  </td>
        <td><p>add a 3d plot to pyplot instance</p></td></tr>
       
@@ -938,6 +976,9 @@
       
        <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_contour'>add_contour</a></strong>  </td>
        <td><p>add a contour plot to pyplot instance</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-plot_surface'>plot_surface</a></strong>  </td>
+       <td><p>add a surface plot to pyplot instance</p></td></tr>
       
        <tr><td>procedure, public :: <strong><a href='../type/pyplot.html#boundprocedure-add_bar'>add_bar</a></strong>  </td>
        <td><p>add a barplot to pyplot instance</p></td></tr>
@@ -974,7 +1015,7 @@
 
      
     </section>
-	<br>
+  <br>
     
     
     
@@ -989,7 +1030,7 @@
 private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1058,7 +1099,7 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
 private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1139,10 +1180,10 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-initialize"></span><h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1509,6 +1550,22 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>raw_strings</strong></td><td><p>if True, all strings sent to Python are treated as
+ raw strings (e.g., r'str'). Default is False.</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -1526,7 +1583,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
 private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1775,7 +1832,7 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
 private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1943,7 +2000,7 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>normed</strong></td><td><p>boolean flag that determines whether bin counts are normalized</p></td>
+  <td><strong>normed</strong></td><td><p>boolean flag that determines whether bin counts are normalized [NO LONGER USED]</p></td>
   
 </tr>
 
@@ -1991,10 +2048,10 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
     
   <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-add_contour"></span><h3>
-private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)
+private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2016,7 +2073,241 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
 
 
 
-<p>Add a contour plot.</p>
+<p>Add a contour plot.</p><a href="../proc/add_contour.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>x values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y</strong></td><td><p>y values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:,:)</td><td>::</td>
+  <td><strong>z</strong></td><td><p>z values (a matrix)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>linestyle</strong></td><td><p>style of the plot line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>linewidth</strong></td><td><p>width of the plot line [only used when <code>filled=False</code>]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>levels</strong></td><td><p>contour levels to plot</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>color</strong></td><td><p>color of the contour line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>cmap</strong></td><td><p>colormap if filled=True (examples: 'jet', 'bone')</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>colorbar</strong></td><td><p>add a colorbar (default=False)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-plot_surface"></span><h3>
+private subroutine <a href='../proc/plot_surface.html'>plot_surface</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a surface plot.</p><a href="../proc/plot_surface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -2162,22 +2453,7 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>color</strong></td><td><p>color of the contour line</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>logical,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
-  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
+  <td><strong>color</strong></td><td><p>Color of the surface patches</p></td>
   
 </tr>
 
@@ -2217,6 +2493,21 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   
 <tr>
   
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>antialiased</strong></td><td><p>The surface is made opaque by using antialiased=False</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" ></span>integer,</td>
   <td>intent(out)</td>
   <td></td>
@@ -2243,7 +2534,7 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
 private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2265,7 +2556,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
 
 
 
-<p>Add a 3D x,y,z plot.</p>
+<p>Add a 3D x,y,z plot.</p><a href="../proc/add_3d_plot.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -2432,7 +2723,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
 private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2454,7 +2745,7 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
 
 
 
-<p>Add a sphere to a 3D x,y,z plot.</p>
+<p>Add a sphere to a 3D x,y,z plot.</p><a href="../proc/add_sphere.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -2636,7 +2927,7 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
 private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2900,7 +3191,7 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, lab
 private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2912,7 +3203,7 @@ private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim,
 
 
 
-<p>Add an image plot using <code>imshow</code>.</p>
+<p>Add an image plot using <code>imshow</code>.</p><a href="../proc/add_imshow.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -3015,11 +3306,290 @@ private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim,
     
     
   <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-add_errorbar"></span><h3>
+private subroutine <a href='../proc/add_errorbar.html'>add_errorbar</a>(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Alexander Sandrock</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add an x,y plot with errorbars.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>x values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y</strong></td><td><p>y values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>label</strong></td><td><p>plot label</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>linestyle</strong></td><td><p>style of the plot line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>xerr</strong></td><td><p>x errorbar sizes</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>yerr</strong></td><td><p>y errorbar sizes</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>markersize</strong></td><td><p>size of the plot markers</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>linewidth</strong></td><td><p>width of the plot line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>xscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>yscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>color</strong></td><td><p>RGB color tuple [0-1,0-1,0-1]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="proc-optional_int_to_string"></span><h3>
 private subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to_string</a>(int_value, string_value, default_value)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3119,7 +3689,7 @@ private subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to
 private subroutine <a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a>(logical_value, string_value, default_value)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3219,7 +3789,7 @@ private subroutine <a href='../proc/optional_logical_to_string.html'>optional_lo
 private subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a>(i, s)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3303,7 +3873,7 @@ private subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a
 private subroutine <a href='../proc/real_to_string.html'>real_to_string</a>(v, fmt, str)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3402,7 +3972,7 @@ private subroutine <a href='../proc/real_to_string.html'>real_to_string</a>(v, f
 private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy, is_tuple)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3531,7 +4101,7 @@ private subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt
 private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(v, fmt, str, use_numpy)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3645,7 +4215,7 @@ private subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(
 private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3669,7 +4239,7 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
 
 
 
-<p>Write the buffer to a file, and then execute it with Python.</p>
+<p>Write the buffer to a file, and then execute it with Python.</p><a href="../proc/execute.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -3746,7 +4316,7 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
 private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3815,7 +4385,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
 private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -3837,7 +4407,7 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
 
 
 
-<p>Save the figure.</p>
+<p>Save the figure.</p><a href="../proc/savefig.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -4005,7 +4575,7 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
 private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -4108,30 +4678,14 @@ private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-1">All Modules</a></h3></div>
-  <div id="allmods-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../module/pyplot_module.html">pyplot_module</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
   
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2018 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -4162,12 +4716,17 @@ private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

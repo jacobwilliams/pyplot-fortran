@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+   
+   <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
     
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,33 +48,37 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-								
+        
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
+        
+        
             <li><a href="../program/test.html">Program</a></li>
-	    
+      
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -129,19 +129,23 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title="<p>100.0% of total for derived types.</p>Including implementation: 638 statements, 100.0% of total for derived types.">28 statements</a>
+    data-placement="bottom" data-html="true"
+    title="<p>100.0% of total for derived types.</p>Including implementation: 769 statements, 100.0% of total for derived types.">31 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.f90</a></li>
-  
+    
      <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
+    
   
      <li class="active">pyplot</li>
   </ol>
@@ -161,6 +165,9 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -169,6 +176,8 @@
     <div class="list-group">
       
       <a class="list-group-item" href="../type/pyplot.html#variable-str">str</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-raw_str_token">raw_str_token</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
       
@@ -191,6 +200,7 @@
     </div>
   </div>
 </div>
+
 
 
 
@@ -217,11 +227,15 @@
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
       
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_errorbar">add_errorbar</a>
+      
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_sphere">add_sphere</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-plot_surface">plot_surface</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
       
@@ -247,6 +261,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -255,34 +270,24 @@
 </div>
 
 
-  <hr>
-  
 
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-0">All Derived Types</a></h3></div>
-  <div id="alltypes-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/pyplot.html">pyplot</a>
-      
-    </div>
-  </div>
 </div>
-
-
-</div>  
 
     </div>
     
     <div class="col-md-9" id='text'>
       <h2>type, public :: pyplot</h2>
-    
     <p>The main pyplot class.</p>
-    <br>
     
+    
+    
+    <br>
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -291,6 +296,8 @@
     <div class="list-group">
       
       <a class="list-group-item" href="../type/pyplot.html#variable-str">str</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-raw_str_token">raw_str_token</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
       
@@ -330,6 +337,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-1" class="panel-collapse collapse">
@@ -339,11 +347,15 @@
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
       
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_errorbar">add_errorbar</a>
+      
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_sphere">add_sphere</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#boundprocedure-plot_surface">plot_surface</a>
       
       <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
       
@@ -369,12 +381,14 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
     <a class="list-group-item" href="../type/pyplot.html#src">pyplot</a>
   </div>
 </div>
+
 
 
     </section>
@@ -404,6 +418,20 @@
   <td>private,</td>
   <td>allocatable</td><td>::</td>
   <td><strong>str</strong></td><td></td><td></td><td><p>string buffer</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-raw_str_token"></span>character(len=1),</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>raw_str_token</strong></td><td> =</td><td>' '</td><td><p>will be 'r' if using raw strings</p></td>
   
 </tr>
 
@@ -548,7 +576,7 @@
     <section>
     <h2>Type-Bound Procedures</h2>
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initialize"></span><h3>procedure, public :: <strong>initialize</strong>  
     
@@ -565,13 +593,14 @@
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings)
     
     
-	 
+   
 </h3>
     
 
@@ -936,6 +965,22 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>raw_strings</strong></td><td><p>if True, all strings sent to Python are treated as
+ raw strings (e.g., r'str'). Default is False.</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -943,6 +988,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
     
     
 
+        
       
       </li>
     
@@ -950,7 +996,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_plot"></span><h3>procedure, public :: <strong>add_plot</strong>  
     
@@ -967,13 +1013,14 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -1210,6 +1257,7 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
     
     
 
+        
       
       </li>
     
@@ -1217,7 +1265,306 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
 </div>
 
     
-	   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_errorbar"></span><h3>procedure, public :: <strong>add_errorbar</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>add a 2d error bar plot to pyplot instance</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private subroutine <a href='../proc/add_errorbar.html'>add_errorbar</a>(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Alexander Sandrock</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add an x,y plot with errorbars.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>x values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y</strong></td><td><p>y values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>label</strong></td><td><p>plot label</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>linestyle</strong></td><td><p>style of the plot line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>xerr</strong></td><td><p>x errorbar sizes</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>yerr</strong></td><td><p>y errorbar sizes</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>markersize</strong></td><td><p>size of the plot markers</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>linewidth</strong></td><td><p>width of the plot line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(2)</td><td>::</td>
+  <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>xscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>yscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>color</strong></td><td><p>RGB color tuple [0-1,0-1,0-1]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_3d_plot"></span><h3>procedure, public :: <strong>add_3d_plot</strong>  
     
@@ -1234,13 +1581,14 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -1260,7 +1608,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
 
 
 
-<p>Add a 3D x,y,z plot.</p>
+<p>Add a 3D x,y,z plot.</p><a href="../proc/add_3d_plot.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -1417,6 +1765,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
     
     
 
+        
       
       </li>
     
@@ -1424,7 +1773,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_sphere"></span><h3>procedure, public :: <strong>add_sphere</strong>  
     
@@ -1441,13 +1790,14 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -1467,7 +1817,7 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
 
 
 
-<p>Add a sphere to a 3D x,y,z plot.</p>
+<p>Add a sphere to a 3D x,y,z plot.</p><a href="../proc/add_sphere.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -1639,6 +1989,7 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
     
     
 
+        
       
       </li>
     
@@ -1646,7 +1997,7 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_contour"></span><h3>procedure, public :: <strong>add_contour</strong>  
     
@@ -1663,13 +2014,14 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
-private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, label, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)
+private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -1689,7 +2041,261 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
 
 
 
-<p>Add a contour plot.</p>
+<p>Add a contour plot.</p><a href="../proc/add_contour.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p>x values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y</strong></td><td><p>y values</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:,:)</td><td>::</td>
+  <td><strong>z</strong></td><td><p>z values (a matrix)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>linestyle</strong></td><td><p>style of the plot line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>linewidth</strong></td><td><p>width of the plot line [only used when <code>filled=False</code>]</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>levels</strong></td><td><p>contour levels to plot</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>color</strong></td><td><p>color of the contour line</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>cmap</strong></td><td><p>colormap if filled=True (examples: 'jet', 'bone')</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>colorbar</strong></td><td><p>add a colorbar (default=False)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-plot_surface"></span><h3>procedure, public :: <strong>plot_surface</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>add a surface plot to pyplot instance</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private subroutine <a href='../proc/plot_surface.html'>plot_surface</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Jacob Williams</dd>
+    
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Add a surface plot.</p><a href="../proc/plot_surface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -1835,22 +2441,7 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>color</strong></td><td><p>color of the contour line</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>logical,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
-  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
+  <td><strong>color</strong></td><td><p>Color of the surface patches</p></td>
   
 </tr>
 
@@ -1890,6 +2481,21 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   
 <tr>
   
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>antialiased</strong></td><td><p>The surface is made opaque by using antialiased=False</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" ></span>integer,</td>
   <td>intent(out)</td>
   <td></td>
@@ -1906,6 +2512,7 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
     
     
 
+        
       
       </li>
     
@@ -1913,7 +2520,7 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_bar"></span><h3>procedure, public :: <strong>add_bar</strong>  
     
@@ -1930,13 +2537,14 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -2188,6 +2796,7 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, lab
     
     
 
+        
       
       </li>
     
@@ -2195,7 +2804,7 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, lab
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_imshow"></span><h3>procedure, public :: <strong>add_imshow</strong>  
     
@@ -2212,13 +2821,14 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, lab
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -2228,7 +2838,7 @@ private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim,
 
 
 
-<p>Add an image plot using <code>imshow</code>.</p>
+<p>Add an image plot using <code>imshow</code>.</p><a href="../proc/add_imshow.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -2325,6 +2935,7 @@ private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim,
     
     
 
+        
       
       </li>
     
@@ -2332,7 +2943,7 @@ private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim,
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_hist"></span><h3>procedure, public :: <strong>add_hist</strong>  
     
@@ -2349,13 +2960,14 @@ private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim,
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -2521,7 +3133,7 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
   <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>normed</strong></td><td><p>boolean flag that determines whether bin counts are normalized</p></td>
+  <td><strong>normed</strong></td><td><p>boolean flag that determines whether bin counts are normalized [NO LONGER USED]</p></td>
   
 </tr>
 
@@ -2562,6 +3174,7 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
     
     
 
+        
       
       </li>
     
@@ -2569,7 +3182,7 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-savefig"></span><h3>procedure, public :: <strong>savefig</strong>  
     
@@ -2586,13 +3199,14 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -2612,7 +3226,7 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
 
 
 
-<p>Save the figure.</p>
+<p>Save the figure.</p><a href="../proc/savefig.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -2770,6 +3384,7 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
     
     
 
+        
       
       </li>
     
@@ -2777,7 +3392,7 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-showfig"></span><h3>procedure, public :: <strong>showfig</strong>  
     
@@ -2794,13 +3409,14 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -2889,6 +3505,7 @@ private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
     
     
 
+        
       
       </li>
     
@@ -2896,7 +3513,7 @@ private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy"></span><h3>procedure, public :: <strong>destroy</strong>  
     
@@ -2913,13 +3530,14 @@ private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
     
     
-	 
+   
 </h3>
     
 
@@ -2976,6 +3594,7 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
     
     
 
+        
       
       </li>
     
@@ -2983,7 +3602,7 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-execute"></span><h3>procedure, public :: <strong>execute</strong>  
     
@@ -3000,13 +3619,14 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -3028,7 +3648,7 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
 
 
 
-<p>Write the buffer to a file, and then execute it with Python.</p>
+<p>Write the buffer to a file, and then execute it with Python.</p><a href="../proc/execute.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -3095,6 +3715,7 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
     
     
 
+        
       
       </li>
     
@@ -3102,7 +3723,7 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_str"></span><h3>procedure, public :: <strong>add_str</strong>  
     
@@ -3119,13 +3740,14 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
     
-	 
+   
 </h3>
     
 
@@ -3197,6 +3819,7 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
     
 
+        
       
       </li>
     
@@ -3204,7 +3827,7 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-finish_ops"></span><h3>procedure, public :: <strong>finish_ops</strong>  
     
@@ -3221,13 +3844,14 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
     
     
-	 
+   
 </h3>
     
 
@@ -3284,6 +3908,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
     
     
 
+        
       
       </li>
     
@@ -3296,7 +3921,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
     
     
     <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
     <div class="highlight"><pre><span></span>    <span class="k">type</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">pyplot</span>
 
         <span class="c">!!  The main pyplot class.</span>
@@ -3304,6 +3929,8 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
         <span class="k">private</span>
 
 <span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">str</span> <span class="c">!! string buffer</span>
+
+        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="kd">::</span> <span class="n">raw_str_token</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="c">!! will be &#39;r&#39; if using raw strings</span>
 
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">show_legend</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! show legend into plot</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">use_numpy</span>   <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>      <span class="c">!! use numpy python module</span>
@@ -3322,9 +3949,11 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">initialize</span>    <span class="c">!! initialize pyplot instance</span>
 
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_plot</span>      <span class="c">!! add a 2d plot to pyplot instance</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_errorbar</span>  <span class="c">!! add a 2d error bar plot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_3d_plot</span>   <span class="c">!! add a 3d plot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_sphere</span>    <span class="c">!! add a 3d sphere to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_contour</span>   <span class="c">!! add a contour plot to pyplot instance</span>
+        <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">plot_surface</span>  <span class="c">!! add a surface plot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_bar</span>       <span class="c">!! add a barplot to pyplot instance</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_imshow</span>    <span class="c">!! add an image plot (using `imshow`)</span>
         <span class="k">procedure</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">add_hist</span>      <span class="c">!! add a histogram plot to pyplot instance</span>
@@ -3346,30 +3975,14 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-1">All Derived Types</a></h3></div>
-  <div id="alltypes-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/pyplot.html">pyplot</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2018 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -3400,12 +4013,17 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>
