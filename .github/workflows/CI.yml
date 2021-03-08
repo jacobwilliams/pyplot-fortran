@@ -1,7 +1,5 @@
 name: CI
-
 on: [push]
-
 jobs:
   Build:
     runs-on: ${{ matrix.os }}
@@ -9,7 +7,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        gcc_v: [9, 10] # Version of GFortran we want to use.
+        gcc_v: [9] # Version of GFortran we want to use.
     env:
       FC: gfortran-${{ matrix.gcc_v }}
       GCC_V: ${{ matrix.gcc_v }}
@@ -17,19 +15,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v1
-
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
-      with:
-        python-version: 3.x
-
-    - name: Install other tools
-      if: contains( matrix.os, 'ubuntu')
-      run: |
-        sudo apt-get install graphviz
-        sudo -H pip install numpy
-        sudo -H pip install ford && ford --version
-        sudo -H pip install matplotlib
 
     - name: Install GFortran Linux
       if: contains( matrix.os, 'ubuntu')
@@ -48,6 +33,31 @@ jobs:
 
     - name: Run test
       run: ./bin/test
+
+name: Build and Deploy Documentation
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v1
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
+      with:
+        python-version: 3.x
+
+    - name: Install other tools
+      if: contains( matrix.os, 'ubuntu')
+      run: |
+        sudo apt-get install graphviz
+        sudo -H pip install numpy
+        sudo -H pip install ford && ford --version
+        sudo -H pip install matplotlib
 
     - name: Build documentation
       run: ford ./pyplot-fortran.md
