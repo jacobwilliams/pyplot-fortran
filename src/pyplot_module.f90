@@ -36,6 +36,8 @@
 
         character(len=:), allocatable :: str !! string buffer
 
+        character(len=1) :: raw_str_token = ' ' !! will be 'r' if using raw strings
+
         logical :: show_legend = .false.     !! show legend into plot
         logical :: use_numpy   = .true.      !! use numpy python module
         logical :: use_oo_api  = .false.     !! use OO interface of matplotlib (incopatible with showfig subroutine)
@@ -87,6 +89,8 @@
     if (allocated(me%str))      deallocate(me%str)
     if (allocated(me%real_fmt)) deallocate(me%real_fmt)
 
+    me%raw_str_token = ' '
+
     end subroutine destroy
 !*****************************************************************************************
 
@@ -113,7 +117,7 @@
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
                           legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow,&
-                          tight_layout)
+                          tight_layout, raw_strings)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -137,6 +141,8 @@
     logical,               intent(in), optional :: use_oo_api      !! avoid matplotlib's GUI by using the OO interface (cannot use with showfig)
     logical,               intent(in), optional :: axisbelow       !! to put the grid lines below the other chart elements [default is true]
     logical,               intent(in), optional :: tight_layout    !! enable tight layout [default is false]
+    logical,               intent(in), optional :: raw_strings     !! if True, all strings sent to Python are treated as
+                                                                   !! raw strings (e.g., r'str'). Default is False.
 
     character(len=max_int_len)  :: width_str             !! figure width dummy string
     character(len=max_int_len)  :: height_str            !! figure height dummy string
@@ -151,6 +157,10 @@
     character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
 
     call me%destroy()
+
+    if (present(raw_strings)) then
+        if (raw_strings) me%raw_str_token = 'r'
+    end if
 
     if (present(legend)) then
         me%show_legend = legend
@@ -259,10 +269,10 @@
     end if
     if (me%axisbelow) call me%add_str('ax.set_axisbelow(True)')
 
-    if (present(xlabel)) call me%add_str('ax.set_xlabel("'//trim(xlabel)//'")')
-    if (present(ylabel)) call me%add_str('ax.set_ylabel("'//trim(ylabel)//'")')
-    if (present(zlabel)) call me%add_str('ax.set_zlabel("'//trim(zlabel)//'")')
-    if (present(title))  call me%add_str('ax.set_title("' //trim(title) //'")')
+    if (present(xlabel)) call me%add_str('ax.set_xlabel('//trim(me%raw_str_token)//'"'//trim(xlabel)//'")')
+    if (present(ylabel)) call me%add_str('ax.set_ylabel('//trim(me%raw_str_token)//'"'//trim(ylabel)//'")')
+    if (present(zlabel)) call me%add_str('ax.set_zlabel('//trim(me%raw_str_token)//'"'//trim(zlabel)//'")')
+    if (present(title))  call me%add_str('ax.set_title('//trim(me%raw_str_token)//'"' //trim(title) //'")')
 
     call me%add_str('')
 
@@ -325,10 +335,10 @@
         !main arguments for plot:
         arg_str = trim(xname)//','//&
                   trim(yname)//','//&
-                  '"'//trim(linestyle)//'",'//&
+                  trim(me%raw_str_token)//'"'//trim(linestyle)//'",'//&
                   'linewidth='//trim(adjustl(iline))//','//&
                   'markersize='//trim(adjustl(imark))//','//&
-                  'label="'//trim(label)//'"'
+                  'label='//trim(me%raw_str_token)//'"'//trim(label)//'"'
 
         ! optional arguments:
         if (present(color)) then
@@ -346,8 +356,8 @@
         if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
 
         !axis scales:
-        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
-        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
+        if (present(xscale)) call me%add_str('ax.set_xscale('//trim(me%raw_str_token)//'"'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale('//trim(me%raw_str_token)//'"'//yscale//'")')
 
         call me%add_str('')
 
@@ -374,7 +384,7 @@
     character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
     character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
     integer,                intent (in), optional :: bins         !! number of bins
-    logical,                intent (in), optional :: normed       !! boolean flag that determines whether bin counts are normalized
+    logical,                intent (in), optional :: normed       !! boolean flag that determines whether bin counts are normalized [NO LONGER USED]
     logical,                intent (in), optional :: cumulative   !! boolean flag that determines whether histogram represents the cumulative density of dataset
     integer,                intent (out)          :: istat        !! status output (0 means no problems)
 
@@ -382,7 +392,6 @@
     character(len=:), allocatable :: xstr             !! x values stringified
     character(len=:), allocatable :: xlimstr          !! xlim values stringified
     character(len=:), allocatable :: ylimstr          !! ylim values stringified
-    character(len=:), allocatable :: normedstr        !! optional stuff
     character(len=:), allocatable :: cumulativestr    !!
     character(len=max_int_len)    :: binsstr          !!
 
@@ -403,24 +412,22 @@
 
         !get optional inputs (if not present, set default value):
         call optional_int_to_string(bins, binsstr, '10')
-        call optional_logical_to_string(normed, normedstr, 'False')
         call optional_logical_to_string(cumulative, cumulativestr, 'False')
 
         !write the plot statement:
         call me%add_str('ax.hist('//&
                         trim(xname)//','//&
-                        'label="'//trim(label)//'",'//&
+                        'label='//trim(me%raw_str_token)//'"'//trim(label)//'",'//&
                         'bins='//trim(binsstr)//','//&
-                        'cumulative='//trim(cumulativestr)//','//&
-                        'normed='//trim(normedstr)//')')
+                        'cumulative='//trim(cumulativestr)//')') 
 
         !axis limits:
         if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
         if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
 
         !axis scales:
-        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
-        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
+        if (present(xscale)) call me%add_str('ax.set_xscale('//trim(me%raw_str_token)//'"'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale('//trim(me%raw_str_token)//'"'//yscale//'")')
 
         call me%add_str('')
 
@@ -439,16 +446,15 @@
 !
 !@note This requires `use_numpy` to be True.
 
-    subroutine add_contour(me, x, y, z, label, linestyle, linewidth, levels, color, &
+    subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color, &
                            filled, cmap, colorbar, istat)
 
     class(pyplot),           intent (inout)        :: me           !! pyplot handler
     real(wp),dimension(:),   intent (in)           :: x            !! x values
     real(wp),dimension(:),   intent (in)           :: y            !! y values
     real(wp),dimension(:,:), intent (in)           :: z            !! z values (a matrix)
-    character(len=*),        intent (in)           :: label        !! plot label
     character(len=*),        intent (in)           :: linestyle    !! style of the plot line
-    integer,                 intent (in), optional :: linewidth    !! width of the plot line
+    integer,                 intent (in), optional :: linewidth    !! width of the plot line [only used when `filled=False`]
     real(wp),dimension(:),   intent (in), optional :: levels       !! contour levels to plot
     character(len=*),        intent (in), optional :: color        !! color of the contour line
     logical,                 intent (in), optional :: filled       !! use filled control (default=False)
@@ -497,9 +503,9 @@
         !optional arguments:
         extras = ''
         if (present(levels))     extras = extras//','//'levels='//levelstr
-        if (present(color))      extras = extras//','//'colors="'//color//'"'
+        if (present(color))      extras = extras//','//'colors='//trim(me%raw_str_token)//'"'//color//'"'
         if (present(linewidth))  extras = extras//','//'linewidths='//trim(adjustl(iline))
-        if (present(cmap))       extras = extras//','//'cmap="'//cmap//'"'
+        if (present(cmap))       extras = extras//','//'cmap='//trim(me%raw_str_token)//'"'//cmap//'"'
 
         !filled or regular:
         contourfunc = 'contour'  !default
@@ -511,9 +517,8 @@
 
         !write the plot statement:
         call me%add_str('CS = ax.'//contourfunc//'('//xname_//','//yname_//','//zname_//','//&
-                                        'label="'//trim(label)//'",'//&
-                                        'linestyles="'//trim(adjustl(linestyle))//'"'//&
-                                        extras//')')
+                        'linestyles='//trim(me%raw_str_token)//'"'//trim(adjustl(linestyle))//'"'//&
+                        extras//')')
 
         if (present(colorbar)) then
             if (colorbar) call me%add_str('fig.colorbar(CS)')
@@ -595,16 +600,16 @@
         !optional arguments:
         extras = ''
         if (present(levels))     extras = extras//','//'levels='//levelstr
-        if (present(color))      extras = extras//','//'colors="'//color//'"'
+        if (present(color))      extras = extras//','//'colors='//trim(me%raw_str_token)//'"'//color//'"'
         if (present(linewidth))  extras = extras//','//'linewidths='//trim(adjustl(iline))
-        if (present(cmap))       extras = extras//','//'cmap="'//cmap//'"'
+        if (present(cmap))       extras = extras//','//'cmap='//trim(me%raw_str_token)//'"'//cmap//'"'
 
         !write the plot statement:
         call me%add_str('CS = ax.plot_surface'//'('//xname_//','//yname_//','//zname_//','//&
-                                        'label="'//trim(label)//'",'//&
-                                        'antialiased='//trim(antialiasedstr)//','//&
-                                        'linestyles="'//trim(adjustl(linestyle))//'"'//&
-                                        extras//')')
+                        'label='//trim(me%raw_str_token)//'"'//trim(label)//'",'//&
+                        'antialiased='//trim(antialiasedstr)//','//&
+                        'linestyles='//trim(me%raw_str_token)//'"'//trim(adjustl(linestyle))//'"'//&
+                        extras//')')
 
         if (present(colorbar)) then
             if (colorbar) call me%add_str('fig.colorbar(CS)')
@@ -672,10 +677,10 @@
                         trim(xname)//','//&
                         trim(yname)//','//&
                         trim(zname)//','//&
-                        '"'//trim(linestyle)//'",'//&
+                        trim(me%raw_str_token)//'"'//trim(linestyle)//'",'//&
                         'linewidth='//trim(adjustl(iline))//','//&
                         'markersize='//trim(adjustl(imark))//','//&
-                        'label="'//trim(label)//'")')
+                        'label='//trim(me%raw_str_token)//'"'//trim(label)//'")')
         call me%add_str('')
 
     else
@@ -735,7 +740,7 @@
             extras = extras//','//'antialiased='//antialiased_str
         end if
         if (present(color)) then
-            extras = extras//','//'color="'//trim(color)//'"'
+            extras = extras//','//'color='//trim(me%raw_str_token)//'"'//trim(color)//'"'
         end if
 
         istat = 0
@@ -830,9 +835,9 @@
         if (present(yerr))   plt_str=plt_str//'yerr='//trim(yerrname)//','
         if (present(width))  plt_str=plt_str//'width='//trim(wname)//','
         if (present(bottom)) plt_str=plt_str//'bottom='//trim(bstr)//','
-        if (present(color))  plt_str=plt_str//'color="'//trim(color)//'",'
-        if (present(align))  plt_str=plt_str//'align="'//trim(align)//'",'
-        plt_str=plt_str//'label="'//trim(label)//'")'
+        if (present(color))  plt_str=plt_str//'color='//trim(me%raw_str_token)//'"'//trim(color)//'",'
+        if (present(align))  plt_str=plt_str//'align='//trim(me%raw_str_token)//'"'//trim(align)//'",'
+        plt_str=plt_str//'label='//trim(me%raw_str_token)//'"'//trim(label)//'")'
 
         !write the plot statement:
         call me%add_str(plt_str)
@@ -842,8 +847,8 @@
         if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
 
         !axis scales:
-        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
-        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
+        if (present(xscale)) call me%add_str('ax.set_xscale('//trim(me%raw_str_token)//'"'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale('//trim(me%raw_str_token)//'"'//yscale//'")')
 
         call me%add_str('')
 
@@ -905,6 +910,114 @@
     end if
 
     end subroutine add_imshow
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Alexander Sandrock
+!
+! Add an x,y plot with errorbars.
+
+    subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
+
+    class(pyplot),          intent (inout)        :: me           !! pyplot handler
+    real(wp), dimension(:), intent (in)           :: x            !! x values
+    real(wp), dimension(:), intent (in)           :: y            !! y values
+    character(len=*),       intent (in)           :: label        !! plot label
+    character(len=*),       intent (in)           :: linestyle    !! style of the plot line
+    real(wp), dimension(:), intent (in), optional :: xerr         !! x errorbar sizes
+    real(wp), dimension(:), intent (in), optional :: yerr         !! y errorbar sizes
+    integer,                intent (in), optional :: markersize   !! size of the plot markers
+    integer,                intent (in), optional :: linewidth    !! width of the plot line
+    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
+    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
+    real(wp),dimension(:),  intent (in), optional :: color        !! RGB color tuple [0-1,0-1,0-1]
+    integer,                intent (out)          :: istat        !! status output (0 means no problems)
+
+    character(len=:), allocatable :: arg_str            !! the arguments to pass to `plot`
+    character(len=:), allocatable :: xstr               !! x values stringified
+    character(len=:), allocatable :: ystr               !! y values stringified
+    character(len=:), allocatable :: xlimstr            !! xlim values stringified
+    character(len=:), allocatable :: ylimstr            !! ylim values stringified
+    character(len=:), allocatable :: xerrstr            !! xerr values stringified
+    character(len=:), allocatable :: yerrstr            !! yerr values stringified
+    character(len=:), allocatable :: color_str          !! color values stringified
+    character(len=max_int_len)    :: imark              !! actual markers size
+    character(len=max_int_len)    :: iline              !! actual line width
+    character(len=*), parameter   :: xname = 'x'        !! x variable name for script
+    character(len=*), parameter   :: yname = 'y'        !! y variable name for script
+    character(len=*), parameter   :: xerrname = 'xerr'  !! xerr variable name for script
+    character(len=*), parameter   :: yerrname = 'yerr'  !! yerr variable name for script
+
+    if (allocated(me%str)) then
+
+        istat = 0
+
+        !axis limits (optional):
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
+        !errorbar sizes (optional):
+        if (present(xerr)) call vec_to_string(xerr, me%real_fmt, xerrstr, me%use_numpy)
+        if (present(yerr)) call vec_to_string(yerr, me%real_fmt, yerrstr, me%use_numpy)
+
+        !convert the arrays to strings:
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+        call vec_to_string(y, me%real_fmt, ystr, me%use_numpy)
+
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(markersize, imark, '3')
+        call optional_int_to_string(linewidth, iline, '3')
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str(trim(yname)//' = '//ystr)
+        call me%add_str('')
+        if (present(xerr)) call me%add_str(trim(xerrname)//' = '//xerrstr)
+        if (present(yerr)) call me%add_str(trim(yerrname)//' = '//yerrstr)
+        if (present(xerr) .or. present(yerr)) call me%add_str('')
+
+        !main arguments for plot:
+        arg_str = trim(xname)//','//&
+                  trim(yname)//','//&
+                  'fmt='//trim(me%raw_str_token)//'"'//trim(linestyle)//'",'//&
+                  'linewidth='//trim(adjustl(iline))//','//&
+                  'markersize='//trim(adjustl(imark))//','//&
+                  'label='//trim(me%raw_str_token)//'"'//trim(label)//'"'
+
+        ! optional arguments:
+        if (present(xerr)) then
+            arg_str = arg_str//','//'xerr='//trim(xerrname)
+        end if
+        if (present(yerr)) then
+            arg_str = arg_str//','//'yerr='//trim(yerrname)
+        end if
+        if (present(color)) then
+            if (size(color)<=3) then
+                call vec_to_string(color(1:3), '*', color_str, use_numpy=.false., is_tuple=.true.)
+                arg_str = arg_str//',color='//trim(color_str)
+            end if
+        end if
+
+        !write the plot statement:
+        call me%add_str('ax.errorbar('//arg_str//')')
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+        !axis scales:
+        if (present(xscale)) call me%add_str('ax.set_xscale('//trim(me%raw_str_token)//'"'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale('//trim(me%raw_str_token)//'"'//yscale//'")')
+
+        call me%add_str('')
+
+    else
+        istat = -1
+        write(error_unit,'(A)') 'Error in add_errorbar: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_errorbar
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -1181,7 +1294,7 @@
     end if
     if (me%axis_equal) then
         if (me%mplot3d) then
-            call me%add_str('ax.set_aspect("equal")')
+            call me%add_str('ax.set_aspect("auto")')
             call me%add_str('')
 
             call me%add_str('def set_axes_equal(ax):')
@@ -1245,7 +1358,7 @@
         call me%finish_ops()
 
         !build the savefig arguments:
-        tmp = '"'//trim(figfile)//'"'
+        tmp = trim(me%raw_str_token)//'"'//trim(figfile)//'"'
         if (present(dpi)) tmp = tmp//', dpi='//trim(dpi)
         if (present(transparent)) then
             if (transparent) then
@@ -1314,114 +1427,6 @@
     end if
 
     end subroutine showfig
-!*****************************************************************************************
-
-!*****************************************************************************************
-!> author: Alexander Sandrock
-!
-! Add an x,y plot.
-
-    subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
-
-    class(pyplot),          intent (inout)        :: me           !! pyplot handler
-    real(wp), dimension(:), intent (in)           :: x            !! x values
-    real(wp), dimension(:), intent (in)           :: y            !! y values
-    character(len=*),       intent (in)           :: label        !! plot label
-    character(len=*),       intent (in)           :: linestyle    !! style of the plot line
-    real(wp), dimension(:), intent (in), optional :: xerr         !! x errorbar sizes
-    real(wp), dimension(:), intent (in), optional :: yerr         !! y errorbar sizes
-    integer,                intent (in), optional :: markersize   !! size of the plot markers
-    integer,                intent (in), optional :: linewidth    !! width of the plot line
-    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
-    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
-    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
-    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
-    real(wp),dimension(:),  intent (in), optional :: color        !! RGB color tuple [0-1,0-1,0-1]
-    integer,                intent (out)          :: istat        !! status output (0 means no problems)
-
-    character(len=:), allocatable :: arg_str            !! the arguments to pass to `plot`
-    character(len=:), allocatable :: xstr               !! x values stringified
-    character(len=:), allocatable :: ystr               !! y values stringified
-    character(len=:), allocatable :: xlimstr            !! xlim values stringified
-    character(len=:), allocatable :: ylimstr            !! ylim values stringified
-    character(len=:), allocatable :: xerrstr            !! xerr values stringified
-    character(len=:), allocatable :: yerrstr            !! yerr values stringified
-    character(len=:), allocatable :: color_str          !! color values stringified
-    character(len=max_int_len)    :: imark              !! actual markers size
-    character(len=max_int_len)    :: iline              !! actual line width
-    character(len=*), parameter   :: xname = 'x'        !! x variable name for script
-    character(len=*), parameter   :: yname = 'y'        !! y variable name for script
-    character(len=*), parameter   :: xerrname = 'xerr'  !! xerr variable name for script
-    character(len=*), parameter   :: yerrname = 'yerr'  !! yerr variable name for script
-
-    if (allocated(me%str)) then
-
-        istat = 0
-
-        !axis limits (optional):
-        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
-        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
-        !errorbar sizes (optional):
-        if (present(xerr)) call vec_to_string(xerr, me%real_fmt, xerrstr, me%use_numpy)
-        if (present(yerr)) call vec_to_string(yerr, me%real_fmt, yerrstr, me%use_numpy)
-
-        !convert the arrays to strings:
-        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
-        call vec_to_string(y, me%real_fmt, ystr, me%use_numpy)
-
-        !get optional inputs (if not present, set default value):
-        call optional_int_to_string(markersize, imark, '3')
-        call optional_int_to_string(linewidth, iline, '3')
-
-        !write the arrays:
-        call me%add_str(trim(xname)//' = '//xstr)
-        call me%add_str(trim(yname)//' = '//ystr)
-        call me%add_str('')
-        if (present(xerr)) call me%add_str(trim(xerrname)//' = '//xerrstr)
-        if (present(yerr)) call me%add_str(trim(yerrname)//' = '//yerrstr)
-        if (present(xerr) .or. present(yerr)) call me%add_str('')
-
-        !main arguments for plot:
-        arg_str = trim(xname)//','//&
-                  trim(yname)//','//&
-                  'fmt="'//trim(linestyle)//'",'//&
-                  'linewidth='//trim(adjustl(iline))//','//&
-                  'markersize='//trim(adjustl(imark))//','//&
-                  'label="'//trim(label)//'"'
-
-        ! optional arguments:
-        if (present(xerr)) then
-            arg_str = arg_str//','//'xerr='//trim(xerrname)
-        end if
-        if (present(yerr)) then
-            arg_str = arg_str//','//'yerr='//trim(yerrname)
-        end if
-        if (present(color)) then
-            if (size(color)<=3) then
-                call vec_to_string(color(1:3), '*', color_str, use_numpy=.false., is_tuple=.true.)
-                arg_str = arg_str//',color='//trim(color_str)
-            end if
-        end if
-
-        !write the plot statement:
-        call me%add_str('ax.errorbar('//arg_str//')')
-
-        !axis limits:
-        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
-        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
-
-        !axis scales:
-        if (present(xscale)) call me%add_str('ax.set_xscale("'//xscale//'")')
-        if (present(yscale)) call me%add_str('ax.set_yscale("'//yscale//'")')
-
-        call me%add_str('')
-
-    else
-        istat = -1
-        write(error_unit,'(A)') 'Error in add_errorbar: pyplot class not properly initialized.'
-    end if
-
-    end subroutine add_errorbar
 !*****************************************************************************************
 
 !*****************************************************************************************

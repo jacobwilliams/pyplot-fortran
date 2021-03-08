@@ -22,6 +22,7 @@ Supported plot types
 * ```matplotlib.pyplot.contourf``` -- filled contour plot
 * ```matplotlib.pyplot.imshow``` -- image plot
 * ```matplotlib.pyplot.hist``` -- histogram plot
+* ```matplotlib.pyplot.errorbar``` -- errorbar plot
 
 Example
 ---------------

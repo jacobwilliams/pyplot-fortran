@@ -1,0 +1,59 @@
+name: CI
+on: [push]
+jobs:
+
+  Build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        gcc_v: [9] # Version of GFortran we want to use.
+    env:
+      FC: gfortran-${{ matrix.gcc_v }}
+      GCC_V: ${{ matrix.gcc_v }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v1
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
+      with:
+        python-version: 3.x
+
+    - name: Install other tools
+      if: contains( matrix.os, 'ubuntu')
+      run: |
+        sudo apt-get install graphviz
+        sudo -H pip install numpy
+        sudo -H pip install ford && ford --version
+        sudo -H pip install matplotlib
+
+    - name: Install GFortran Linux
+      if: contains( matrix.os, 'ubuntu')
+      run: |
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo apt-get update
+        sudo apt-get install -y gcc-${GCC_V} gfortran-${GCC_V}
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 100 \
+        --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-${GCC_V} \
+        --slave /usr/bingcov gcov /usr/bin/gcov-${GCC_V}
+
+    - name: Compile
+      run: |
+        mkdir bin
+        gfortran -O2 ./src/pyplot_module.f90 ./src/tests/test.f90 -o ./bin/test
+
+    - name: Run test
+      run: ./bin/test
+
+    - name: Build documentation
+      run: ford ./pyplot-fortran.md
+
+    - name: Deploy Documentation
+      if: github.ref == 'refs/heads/master' 
+      uses: JamesIves/github-pages-deploy-action@4.1.0
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: doc  # The folder the action should deploy.
