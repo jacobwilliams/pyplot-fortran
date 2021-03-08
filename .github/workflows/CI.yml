@@ -1,6 +1,7 @@
 name: CI
 on: [push]
 jobs:
+
   Build:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -34,14 +35,9 @@ jobs:
     - name: Run test
       run: ./bin/test
 
-name: Build and Deploy Documentation
-on:
-  push:
-    branches:
-      - master
-jobs:
-  build-and-deploy:
+  Deploy:
     runs-on: ubuntu-latest
+    if: {{ github.ref == 'ref/head/master' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v1
