@@ -17,6 +17,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v1
 
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
+      with:
+        python-version: 3.x
+
+    - name: Install other tools
+      if: contains( matrix.os, 'ubuntu')
+      run: |
+        sudo apt-get install graphviz
+        sudo -H pip install numpy
+        sudo -H pip install ford && ford --version
+        sudo -H pip install matplotlib
+
     - name: Install GFortran Linux
       if: contains( matrix.os, 'ubuntu')
       run: |
@@ -35,29 +48,11 @@ jobs:
     - name: Run test
       run: ./bin/test
 
-  Deploy-Docs:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v1
-
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
-      with:
-        python-version: 3.x
-
-    - name: Install other tools
-      if: contains( matrix.os, 'ubuntu')
-      run: |
-        sudo apt-get install graphviz
-        sudo -H pip install numpy
-        sudo -H pip install ford && ford --version
-        sudo -H pip install matplotlib
-
     - name: Build documentation
       run: ford ./pyplot-fortran.md
 
     - name: Deploy Documentation
+      if: github.ref == 'refs/heads/master' 
       uses: JamesIves/github-pages-deploy-action@4.1.0
       with:
         branch: gh-pages # The branch the action should deploy to.
