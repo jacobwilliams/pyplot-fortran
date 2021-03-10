@@ -16,6 +16,7 @@
 
     real(wp), dimension(:),allocatable   :: x     !! x values
     real(wp), dimension(:),allocatable   :: y     !! y values
+    real(wp), dimension(:),allocatable   :: xerr  !! error values  
     real(wp), dimension(:),allocatable   :: yerr  !! error values for bar chart
     real(wp), dimension(:),allocatable   :: sx    !! sin(x) values
     real(wp), dimension(:),allocatable   :: cx    !! cos(x) values
@@ -165,6 +166,24 @@
                       pyfile='orbit.py', &
                       dpi='200', &
                       transparent=.true.,istat=istat)
+
+    ! Errorbar plot:
+    call plt%initialize(grid=.true.,&
+                        xlabel='x',ylabel='y',&
+                        title='Errorbar Plot Example',&
+                        figsize=[20,10] )
+
+    x = [(real(i,wp), i=0, 360, 10)]
+    y = 10.0_wp * cos(x * deg2rad)
+    xerr =  sin(x * deg2rad) * 5.0_wp
+    yerr =  sin(y * deg2rad) * 10.0_wp
+
+    call plt%add_errorbar(x, y, label='y', linestyle='.', &
+                            xerr=xerr, yerr=yerr, istat=istat)
+    call plt%savefig('errorbar.png', &
+                     pyfile='errorbar.py', &
+                     dpi='200', &
+                     transparent=.true.,istat=istat)
 
     end program test
 !*****************************************************************************************
