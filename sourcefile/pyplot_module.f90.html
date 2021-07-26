@@ -608,11 +608,11 @@
 <a name="ln-259"></a>    <span class="k">end if</span>
 <a name="ln-260"></a>
 <a name="ln-261"></a><span class="k">    if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-262"></a><span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.gca(projection=&#39;&#39;3d&#39;&#39;)&#39;</span><span class="p">)</span>
+<a name="ln-262"></a><span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.add_subplot(1, 1, 1, projection=&#39;&#39;3d&#39;&#39;)&#39;</span><span class="p">)</span>
 <a name="ln-263"></a>    <span class="n">elseif</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">polar</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-264"></a><span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.gca(projection=&#39;&#39;polar&#39;&#39;)&#39;</span><span class="p">)</span>
+<a name="ln-264"></a><span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.add_subplot(1, 1, 1, projection=&#39;&#39;polar&#39;&#39;)&#39;</span><span class="p">)</span>
 <a name="ln-265"></a>    <span class="k">else</span>
-<a name="ln-266"></a><span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.gca()&#39;</span><span class="p">)</span>
+<a name="ln-266"></a><span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.add_subplot(1, 1, 1)&#39;</span><span class="p">)</span>
 <a name="ln-267"></a>    <span class="k">end if</span>
 <a name="ln-268"></a>
 <a name="ln-269"></a><span class="k">    if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span> <span class="k">then</span>
