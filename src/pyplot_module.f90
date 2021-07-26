@@ -259,11 +259,11 @@
     end if
 
     if (me%mplot3d) then
-        call me%add_str('ax = fig.gca(projection=''3d'')')
+        call me%add_str('ax = fig.add_subplot(1, 1, 1, projection=''3d'')')
     elseif (me%polar) then
-        call me%add_str('ax = fig.gca(projection=''polar'')')
+        call me%add_str('ax = fig.add_subplot(1, 1, 1, projection=''polar'')')
     else
-        call me%add_str('ax = fig.gca()')
+        call me%add_str('ax = fig.add_subplot(1, 1, 1)')
     end if
 
     if (present(grid)) then
