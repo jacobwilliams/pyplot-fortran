@@ -72,8 +72,11 @@
         
         
             <li><a href="../program/test.html">Program</a></li>
-      
+               
+        
+        
             </ul>
+        
             </li>
 
 
@@ -92,6 +95,8 @@
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../program/test.html">Program</a></li>
+
+
 
           </ul>
         
@@ -125,12 +130,13 @@
      
      
      
+     
     
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="<p>100.0% of total for derived types.</p>Including implementation: 769 statements, 100.0% of total for derived types.">31 statements</a>
+    title="<p>100.0% of total for derived types.</p>Including implementation: 777 statements, 100.0% of total for derived types.">32 statements</a>
      </li> 
      
      
@@ -194,6 +200,8 @@
       <a class="list-group-item" href="../type/pyplot.html#variable-axisbelow">axisbelow</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-tight_layout">tight_layout</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-usetex">usetex</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
       
@@ -314,6 +322,8 @@
       <a class="list-group-item" href="../type/pyplot.html#variable-axisbelow">axisbelow</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-tight_layout">tight_layout</a>
+      
+      <a class="list-group-item" href="../type/pyplot.html#variable-usetex">usetex</a>
       
       <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
       
@@ -553,6 +563,20 @@
   
 <tr>
   
+  <td><span class="anchor" id="variable-usetex"></span>logical,</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>usetex</strong></td><td> =</td><td>.false.</td><td><p>enable LaTeX</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-real_fmt"></span>character(len=:),</td>
   
   <td>private,</td>
@@ -597,7 +621,7 @@
           
     
     <h3>
-private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings)
+private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex)
     
     
    
@@ -611,6 +635,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   <dl class="dl-horizontal">
     
     <dt>Author</dt><dd>Jacob Williams</dd>
+    
     
     
     
@@ -981,6 +1006,21 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>usetex</strong></td><td><p>if True, enable LaTeX. (default if false)</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -1031,6 +1071,7 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
   <dl class="dl-horizontal">
     
     <dt>Author</dt><dd>Jacob Williams</dd>
+    
     
     
     
@@ -1300,6 +1341,7 @@ private subroutine <a href='../proc/add_errorbar.html'>add_errorbar</a>(me, x, y
   <dl class="dl-horizontal">
     
     <dt>Author</dt><dd>Alexander Sandrock</dd>
+    
     
     
     
@@ -1604,6 +1646,7 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
     
     
     
+    
   </dl>
 
 
@@ -1808,6 +1851,7 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
   <dl class="dl-horizontal">
     
     <dt>Author</dt><dd>Jacob Williams</dd>
+    
     
     
     
@@ -2032,6 +2076,7 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
   <dl class="dl-horizontal">
     
     <dt>Author</dt><dd>Jacob Williams</dd>
+    
     
     
     
@@ -2286,6 +2331,7 @@ private subroutine <a href='../proc/plot_surface.html'>plot_surface</a>(me, x, y
   <dl class="dl-horizontal">
     
     <dt>Author</dt><dd>Jacob Williams</dd>
+    
     
     
     
@@ -2555,6 +2601,7 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, lab
   <dl class="dl-horizontal">
     
     <dt>Author</dt><dd>Jacob Williams</dd>
+    
     
     
     
@@ -2983,6 +3030,7 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
     
     
     
+    
   </dl>
 
 
@@ -3222,6 +3270,7 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
     
     
     
+    
   </dl>
 
 
@@ -3434,6 +3483,7 @@ private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
     
     
     
+    
   </dl>
 
 
@@ -3553,6 +3603,7 @@ private subroutine <a href='../proc/destroy.html'>destroy</a>(me)
     
     
     
+    
   </dl>
 
 
@@ -3640,6 +3691,7 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
     
     
     <dt>Date</dt><dd>8/16/2015</dd>
+    
     
     
     
@@ -3763,6 +3815,7 @@ private subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)
     
     
     
+    
   </dl>
 
 
@@ -3867,6 +3920,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
     
     
     
+    
   </dl>
 
 
@@ -3940,6 +3994,7 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axis_equal</span>  <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! equal scale on each axis</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">axisbelow</span>   <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>      <span class="c">!! axis below other chart elements</span>
         <span class="kt">logical</span> <span class="kd">::</span> <span class="n">tight_layout</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>    <span class="c">!! tight layout option</span>
+        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">usetex</span>      <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>     <span class="c">!! enable LaTeX</span>
 
         <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">real_fmt</span>  <span class="c">!! real number formatting</span>
 
@@ -3981,16 +4036,17 @@ private subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2021 
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
             
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> pyplot-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    

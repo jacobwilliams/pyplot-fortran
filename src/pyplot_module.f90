@@ -46,6 +46,7 @@
         logical :: axis_equal  = .false.     !! equal scale on each axis
         logical :: axisbelow   = .true.      !! axis below other chart elements
         logical :: tight_layout = .false.    !! tight layout option
+        logical :: usetex      = .false.     !! enable LaTeX
 
         character(len=:),allocatable :: real_fmt  !! real number formatting
 
@@ -117,7 +118,7 @@
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
                           legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow,&
-                          tight_layout, raw_strings)
+                          tight_layout, raw_strings, usetex)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -143,6 +144,7 @@
     logical,               intent(in), optional :: tight_layout    !! enable tight layout [default is false]
     logical,               intent(in), optional :: raw_strings     !! if True, all strings sent to Python are treated as
                                                                    !! raw strings (e.g., r'str'). Default is False.
+    logical,               intent(in), optional :: usetex          !! if True, enable LaTeX. (default if false)
 
     character(len=max_int_len)  :: width_str             !! figure width dummy string
     character(len=max_int_len)  :: height_str            !! figure height dummy string
@@ -206,6 +208,11 @@
     else
         me%tight_layout = .false.
     end if
+    if (present(usetex)) then
+        me%usetex = usetex
+    else
+        me%usetex = .false.
+    end if
 
     call optional_int_to_string(font_size, font_size_str, default_font_size_str)
     call optional_int_to_string(axes_labelsize, axes_labelsize_str, default_font_size_str)
@@ -236,6 +243,7 @@
     call me%add_str('matplotlib.rcParams["xtick.labelsize"] = '//trim(xtick_labelsize_str))
     call me%add_str('matplotlib.rcParams["ytick.labelsize"] = '//trim(ytick_labelsize_str))
     call me%add_str('matplotlib.rcParams["legend.fontsize"] = '//trim(legend_fontsize_str))
+    if (me%usetex) call me%add_str('matplotlib.rcParams["text.usetex"] = True') 
 
     call me%add_str('')
 
