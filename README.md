@@ -1,5 +1,7 @@
-### Pyplot-Fortran
+![Pyplot-Fortran](media/logo.png)
+============
 
+### Pyplot-Fortran
 
 A simple module for generating plots from Fortran using Python's matplotlib.pyplot.
 
