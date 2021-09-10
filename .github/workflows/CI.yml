@@ -54,7 +54,7 @@ jobs:
       run: fpm build --profile release
 
     - name: Run test
-      run: ./bin/test
+      run: fpm test
 
     - name: Build documentation
       run: ford ./pyplot-fortran.md
