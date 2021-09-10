@@ -57,7 +57,7 @@
         <ul class="dropdown-menu">
           
               
-            <li><a href="../lists/files.html">Source Files</a></li>
+            <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
         
         
         
@@ -70,8 +70,6 @@
                
             <li><a href="../lists/types.html">Derived Types</a></li>
         
-        
-            <li><a href="../program/test.html">Program</a></li>
                
         
         
@@ -80,7 +78,7 @@
             </li>
 
 
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
 
 
 
@@ -93,8 +91,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/test.html">Program</a></li>
 
 
 
@@ -484,8 +480,8 @@ private subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edg
             <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;canvas.print_figure(&#39;</span><span class="o">//</span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
         <span class="k">else</span>
 <span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;plt.savefig(&#39;</span><span class="o">//</span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-        <span class="n">endif</span>
-        <span class="k">deallocate</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="k">endif</span>
+<span class="k">        deallocate</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 
         <span class="c">!run it:</span>
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">execute</span><span class="p">(</span><span class="n">pyfile</span><span class="p">,</span> <span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>

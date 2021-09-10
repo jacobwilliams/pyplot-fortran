@@ -243,7 +243,7 @@
     call me%add_str('matplotlib.rcParams["xtick.labelsize"] = '//trim(xtick_labelsize_str))
     call me%add_str('matplotlib.rcParams["ytick.labelsize"] = '//trim(ytick_labelsize_str))
     call me%add_str('matplotlib.rcParams["legend.fontsize"] = '//trim(legend_fontsize_str))
-    if (me%usetex) call me%add_str('matplotlib.rcParams["text.usetex"] = True') 
+    if (me%usetex) call me%add_str('matplotlib.rcParams["text.usetex"] = True')
 
     call me%add_str('')
 
@@ -427,7 +427,7 @@
                         trim(xname)//','//&
                         'label='//trim(me%raw_str_token)//'"'//trim(label)//'",'//&
                         'bins='//trim(binsstr)//','//&
-                        'cumulative='//trim(cumulativestr)//')') 
+                        'cumulative='//trim(cumulativestr)//')')
 
         !axis limits:
         if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
