@@ -9,26 +9,36 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         gcc_v: [9] # Version of GFortran we want to use.
+        python-version: [3.7]
     env:
       FC: gfortran-${{ matrix.gcc_v }}
       GCC_V: ${{ matrix.gcc_v }}
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
 
     - name: Set up Python 3.x
       uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
       with:
-        python-version: 3.x
+        python-version: ${{ matrix.python-version }}
 
-    - name: Install other tools
+    - name: Setup Graphviz
+      uses: ts-graphviz/setup-graphviz@v1
+
+    - name: Setup Fortran Package Manager
+      uses: fortran-lang/setup-fpm@v3
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Install Python dependencies
       if: contains( matrix.os, 'ubuntu')
       run: |
-        sudo apt-get install graphviz
-        sudo -H pip install numpy
-        sudo -H pip install ford && ford --version
-        sudo -H pip install matplotlib
+        python -m pip install --upgrade pip
+        pip install numpy matplotlib ford
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Install GFortran Linux
       if: contains( matrix.os, 'ubuntu')
@@ -41,9 +51,7 @@ jobs:
         --slave /usr/bingcov gcov /usr/bin/gcov-${GCC_V}
 
     - name: Compile
-      run: |
-        mkdir bin
-        gfortran -O2 ./src/pyplot_module.f90 ./src/tests/test.f90 -o ./bin/test
+      run: fpm build --profile release
 
     - name: Run test
       run: ./bin/test
@@ -52,7 +60,7 @@ jobs:
       run: ford ./pyplot-fortran.md
 
     - name: Deploy Documentation
-      if: github.ref == 'refs/heads/master' 
+      if: github.ref == 'refs/heads/master'
       uses: JamesIves/github-pages-deploy-action@4.1.0
       with:
         branch: gh-pages # The branch the action should deploy to.
