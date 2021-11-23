@@ -294,19 +294,19 @@
 
     subroutine add_plot(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)
 
-    class(pyplot),          intent (inout)        :: me           !! pyplot handler
-    real(wp), dimension(:), intent (in)           :: x            !! x values
-    real(wp), dimension(:), intent (in)           :: y            !! y values
-    character(len=*),       intent (in)           :: label        !! plot label
-    character(len=*),       intent (in)           :: linestyle    !! style of the plot line
-    integer,                intent (in), optional :: markersize   !! size of the plot markers
-    integer,                intent (in), optional :: linewidth    !! width of the plot line
-    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
-    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
-    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
-    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
-    real(wp),dimension(:),  intent (in), optional :: color        !! RGB color tuple [0-1,0-1,0-1]
-    integer,                intent (out)          :: istat        !! status output (0 means no problems)
+    class(pyplot),          intent (inout)         :: me           !! pyplot handler
+    real(wp), dimension(:), intent (in)            :: x            !! x values
+    real(wp), dimension(:), intent (in)            :: y            !! y values
+    character(len=*),       intent (in)            :: label        !! plot label
+    character(len=*),       intent (in)            :: linestyle    !! style of the plot line
+    integer,                intent (in), optional  :: markersize   !! size of the plot markers
+    integer,                intent (in), optional  :: linewidth    !! width of the plot line
+    real(wp),dimension(2),  intent (in), optional  :: xlim         !! x-axis range
+    real(wp),dimension(2),  intent (in), optional  :: ylim         !! y-axis range
+    character(len=*),       intent (in), optional  :: xscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent (in), optional  :: yscale       !! example: 'linear' (default), 'log'
+    real(wp),dimension(:),  intent (in), optional  :: color        !! RGB color tuple [0-1,0-1,0-1]
+    integer,                intent (out), optional :: istat        !! status output (0 means no problems)
 
     character(len=:), allocatable :: arg_str      !! the arguments to pass to `plot`
     character(len=:), allocatable :: xstr         !! x values stringified
@@ -321,7 +321,7 @@
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !axis limits (optional):
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
@@ -370,7 +370,7 @@
         call me%add_str('')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_plot: pyplot class not properly initialized.'
     end if
 
@@ -394,7 +394,7 @@
     integer,                intent (in), optional :: bins         !! number of bins
     logical,                intent (in), optional :: normed       !! boolean flag that determines whether bin counts are normalized [NO LONGER USED]
     logical,                intent (in), optional :: cumulative   !! boolean flag that determines whether histogram represents the cumulative density of dataset
-    integer,                intent (out)          :: istat        !! status output (0 means no problems)
+    integer,                intent (out),optional :: istat        !! status output (0 means no problems)
 
     character(len=*), parameter   :: xname = 'x'      !! x variable name for script
     character(len=:), allocatable :: xstr             !! x values stringified
@@ -405,7 +405,7 @@
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !axis limits (optional):
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
@@ -440,7 +440,7 @@
         call me%add_str('')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_plot: pyplot class not properly initialized.'
     end if
 
@@ -468,7 +468,7 @@
     logical,                 intent (in), optional :: filled       !! use filled control (default=False)
     character(len=*),        intent (in), optional :: cmap         !! colormap if filled=True (examples: 'jet', 'bone')
     logical,                 intent (in), optional :: colorbar     !! add a colorbar (default=False)
-    integer,                 intent (out)          :: istat        !! status output (0 means no problems)
+    integer,                 intent (out),optional :: istat        !! status output (0 means no problems)
 
     character(len=:), allocatable :: xstr          !! x values stringified
     character(len=:), allocatable :: ystr          !! y values stringified
@@ -487,7 +487,7 @@
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !convert the arrays to strings:
         call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
@@ -536,7 +536,7 @@
         call me%add_str('')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_plot: pyplot class not properly initialized.'
     end if
 
@@ -553,19 +553,19 @@
     subroutine plot_surface(me, x, y, z, label, linestyle, linewidth, levels, color, &
                             cmap, colorbar, antialiased, istat)
 
-    class(pyplot),           intent (inout)        :: me           !! pyplot handler
-    real(wp),dimension(:),   intent (in)           :: x            !! x values
-    real(wp),dimension(:),   intent (in)           :: y            !! y values
-    real(wp),dimension(:,:), intent (in)           :: z            !! z values (a matrix)
-    character(len=*),        intent (in)           :: label        !! plot label
-    character(len=*),        intent (in)           :: linestyle    !! style of the plot line
-    integer,                 intent (in), optional :: linewidth    !! width of the plot line
-    real(wp),dimension(:),   intent (in), optional :: levels       !! contour levels to plot
-    character(len=*),        intent (in), optional :: color        !! Color of the surface patches
-    character(len=*),        intent (in), optional :: cmap         !! colormap if filled=True (examples: 'jet', 'bone')
-    logical,                 intent (in), optional :: colorbar     !! add a colorbar (default=False)
-    logical,                 intent (in), optional :: antialiased  !! The surface is made opaque by using antialiased=False
-    integer,                 intent (out)          :: istat        !! status output (0 means no problems)
+    class(pyplot),           intent (inout)         :: me           !! pyplot handler
+    real(wp),dimension(:),   intent (in)            :: x            !! x values
+    real(wp),dimension(:),   intent (in)            :: y            !! y values
+    real(wp),dimension(:,:), intent (in)            :: z            !! z values (a matrix)
+    character(len=*),        intent (in)            :: label        !! plot label
+    character(len=*),        intent (in)            :: linestyle    !! style of the plot line
+    integer,                 intent (in),  optional :: linewidth    !! width of the plot line
+    real(wp),dimension(:),   intent (in),  optional :: levels       !! contour levels to plot
+    character(len=*),        intent (in),  optional :: color        !! Color of the surface patches
+    character(len=*),        intent (in),  optional :: cmap         !! colormap if filled=True (examples: 'jet', 'bone')
+    logical,                 intent (in),  optional :: colorbar     !! add a colorbar (default=False)
+    logical,                 intent (in),  optional :: antialiased  !! The surface is made opaque by using antialiased=False
+    integer,                 intent (out), optional :: istat        !! status output (0 means no problems)
 
     character(len=:), allocatable :: xstr           !! x values stringified
     character(len=:), allocatable :: ystr           !! y values stringified
@@ -583,7 +583,7 @@
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !convert the arrays to strings:
         call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
@@ -626,7 +626,7 @@
         call me%add_str('')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_plot: pyplot class not properly initialized.'
     end if
 
@@ -642,15 +642,15 @@
 
     subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewidth, istat)
 
-    class(pyplot),          intent (inout)        :: me           !! pyplot handler
-    real(wp), dimension(:), intent (in)           :: x            !! x values
-    real(wp), dimension(:), intent (in)           :: y            !! y values
-    real(wp), dimension(:), intent (in)           :: z            !! z values
-    character(len=*),       intent (in)           :: label        !! plot label
-    character(len=*),       intent (in)           :: linestyle    !! style of the plot line
-    integer,                intent (in), optional :: markersize   !! size of the plot markers
-    integer,                intent (in), optional :: linewidth    !! width of the plot line
-    integer,                intent (out)          :: istat        !! status output (0 means no problems)
+    class(pyplot),          intent (inout)         :: me           !! pyplot handler
+    real(wp), dimension(:), intent (in)            :: x            !! x values
+    real(wp), dimension(:), intent (in)            :: y            !! y values
+    real(wp), dimension(:), intent (in)            :: z            !! z values
+    character(len=*),       intent (in)            :: label        !! plot label
+    character(len=*),       intent (in)            :: linestyle    !! style of the plot line
+    integer,                intent (in),  optional :: markersize   !! size of the plot markers
+    integer,                intent (in),  optional :: linewidth    !! width of the plot line
+    integer,                intent (out), optional :: istat        !! status output (0 means no problems)
 
     character(len=:), allocatable :: xstr         !! x values stringified
     character(len=:), allocatable :: ystr         !! y values stringified
@@ -663,7 +663,7 @@
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !convert the arrays to strings:
         call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
@@ -692,7 +692,7 @@
         call me%add_str('')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_3d_plot: pyplot class not properly initialized.'
     end if
 
@@ -710,16 +710,16 @@
 
     implicit none
 
-    class(pyplot),    intent (inout)        :: me            !! pyplot handler
-    real(wp),         intent (in)           :: r             !! radius of the sphere
-    real(wp),         intent (in)           :: xc            !! x value of sphere center
-    real(wp),         intent (in)           :: yc            !! y value of sphere center
-    real(wp),         intent (in)           :: zc            !! z value of sphere center
-    integer,          intent (in), optional :: n_facets      !! [default is 100]
-    integer,          intent (in), optional :: linewidth     !! line width
-    logical,          intent (in), optional :: antialiased   !! enabled anti-aliasing
-    character(len=*), intent (in), optional :: color         !! color of the contour line
-    integer,          intent (out)          :: istat         !! status output (0 means no problems)
+    class(pyplot),    intent (inout)         :: me            !! pyplot handler
+    real(wp),         intent (in)            :: r             !! radius of the sphere
+    real(wp),         intent (in)            :: xc            !! x value of sphere center
+    real(wp),         intent (in)            :: yc            !! y value of sphere center
+    real(wp),         intent (in)            :: zc            !! z value of sphere center
+    integer,          intent (in),  optional :: n_facets      !! [default is 100]
+    integer,          intent (in),  optional :: linewidth     !! line width
+    logical,          intent (in),  optional :: antialiased   !! enabled anti-aliasing
+    character(len=*), intent (in),  optional :: color         !! color of the contour line
+    integer,          intent (out), optional :: istat         !! status output (0 means no problems)
 
     character(len=:), allocatable :: rstr         !! `r` value stringified
     character(len=:), allocatable :: xcstr        !! `xc` value stringified
@@ -751,7 +751,7 @@
             extras = extras//','//'color='//trim(me%raw_str_token)//'"'//trim(color)//'"'
         end if
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !convert the arrays to strings:
         call real_to_string(r , me%real_fmt, rstr)
@@ -769,7 +769,7 @@
         call me%add_str('')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_sphere: pyplot class not properly initialized.'
     end if
 
@@ -784,20 +784,20 @@
     subroutine add_bar(me, x, height, label, width, bottom, color, &
                         yerr, align, xlim, ylim, xscale, yscale, istat)
 
-    class(pyplot),          intent(inout)        :: me            !! pyplot handler
-    real(wp), dimension(:), intent(in)           :: x             !! x bar values
-    real(wp), dimension(:), intent(in)           :: height        !! height bar values
-    character(len=*),       intent(in)           :: label         !! plot label
-    real(wp), dimension(:), intent(in), optional :: width         !! width values
-    real(wp), dimension(:), intent(in), optional :: bottom        !! bottom values
-    character(len=*),       intent(in), optional :: color         !! plot color
-    real(wp), dimension(:), intent(in), optional :: yerr          !! yerr values
-    character(len=*),       intent(in), optional :: align         !! default: 'center'
-    real(wp),dimension(2),  intent (in), optional :: xlim         !! x-axis range
-    real(wp),dimension(2),  intent (in), optional :: ylim         !! y-axis range
-    character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
-    character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
-    integer,                intent (out)          :: istat        !! status output (0 means no problems)
+    class(pyplot),          intent(inout)         :: me            !! pyplot handler
+    real(wp), dimension(:), intent(in)            :: x             !! x bar values
+    real(wp), dimension(:), intent(in)            :: height        !! height bar values
+    character(len=*),       intent(in)            :: label         !! plot label
+    real(wp), dimension(:), intent(in),  optional :: width         !! width values
+    real(wp), dimension(:), intent(in),  optional :: bottom        !! bottom values
+    character(len=*),       intent(in),  optional :: color         !! plot color
+    real(wp), dimension(:), intent(in),  optional :: yerr          !! yerr values
+    character(len=*),       intent(in),  optional :: align         !! default: 'center'
+    real(wp),dimension(2),  intent (in), optional :: xlim          !! x-axis range
+    real(wp),dimension(2),  intent (in), optional :: ylim          !! y-axis range
+    character(len=*),       intent (in), optional :: xscale        !! example: 'linear' (default), 'log'
+    character(len=*),       intent (in), optional :: yscale        !! example: 'linear' (default), 'log'
+    integer,                intent (out),optional :: istat         !! status output (0 means no problems)
 
     character(len=:), allocatable :: xstr               !! x axis values stringified
     character(len=:), allocatable :: ystr               !! y axis values stringified
@@ -815,7 +815,7 @@
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !axis limits (optional):
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
@@ -861,7 +861,7 @@
         call me%add_str('')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_bar: pyplot class not properly initialized.'
     end if
 
@@ -881,7 +881,7 @@
     real(wp),dimension(:,:),intent (in)    :: x             !! x values
     real(wp),dimension(2),  intent (in), optional :: xlim   !! x-axis range
     real(wp),dimension(2),  intent (in), optional :: ylim   !! y-axis range
-    integer,                intent (out)          :: istat  !! status output (0 means no problems)
+    integer,                intent (out),optional :: istat  !! status output (0 means no problems)
 
     character(len=:), allocatable :: xstr         !! x values stringified
     character(len=*), parameter   :: xname = 'x'  !! x variable name for script
@@ -892,7 +892,7 @@
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
         if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
@@ -913,7 +913,7 @@
         if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_imshow: pyplot class not properly initialized.'
     end if
 
@@ -941,7 +941,7 @@
     character(len=*),       intent (in), optional :: xscale       !! example: 'linear' (default), 'log'
     character(len=*),       intent (in), optional :: yscale       !! example: 'linear' (default), 'log'
     real(wp),dimension(:),  intent (in), optional :: color        !! RGB color tuple [0-1,0-1,0-1]
-    integer,                intent (out)          :: istat        !! status output (0 means no problems)
+    integer,                intent (out),optional :: istat        !! status output (0 means no problems)
 
     character(len=:), allocatable :: arg_str            !! the arguments to pass to `plot`
     character(len=:), allocatable :: xstr               !! x values stringified
@@ -960,7 +960,7 @@
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !axis limits (optional):
         if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
@@ -1021,7 +1021,7 @@
         call me%add_str('')
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'Error in add_errorbar: pyplot class not properly initialized.'
     end if
 
@@ -1083,7 +1083,8 @@
 
     integer,          intent(in), optional  :: i     !! integer value
     character(len=*), intent(out)           :: s     !! integer value stringified
-    integer                                 :: istat !! IO status
+
+    integer :: istat !! IO status
 
     write(s, int_fmt, iostat=istat) i
 
@@ -1142,7 +1143,7 @@
     integer                     :: i         !! counter
     integer                     :: istat     !! IO status
     character(len=max_real_len) :: tmp       !! dummy string
-    logical :: tuple
+    logical                     :: tuple
 
     if (present(is_tuple)) then
         tuple = is_tuple
@@ -1223,15 +1224,18 @@
 
     subroutine execute(me, pyfile, istat)
 
-    class(pyplot),    intent(inout)        :: me     !! pytplot handler
-    character(len=*), intent(in), optional :: pyfile !! name of the python script to generate
-    integer,          intent (out)         :: istat  !! status output (0 means no problems)
+    class(pyplot),    intent(inout)         :: me     !! pytplot handler
+    character(len=*), intent(in),  optional :: pyfile !! name of the python script to generate
+    integer,          intent (out),optional :: istat  !! status output (0 means no problems)
 
     integer                       :: iunit   !! IO unit
     character(len=:), allocatable :: file    !! file name
     logical                       :: scratch !! if a scratch file is to be used
+    integer                       :: iostat  !! open/close status code
 
     if (allocated(me%str)) then
+
+        if (present(istat)) istat = 0
 
         scratch = (.not. present(pyfile))
 
@@ -1243,8 +1247,9 @@
         end if
 
         !open the file:
-        open(newunit=iunit, file=file, status='REPLACE', iostat=istat)
-        if (istat/=0) then
+        open(newunit=iunit, file=file, status='REPLACE', iostat=iostat)
+        if (iostat/=0) then
+            if (present(istat)) istat = iostat
             write(error_unit,'(A)') 'Error opening file: '//trim(file)
             return
         end if
@@ -1254,8 +1259,9 @@
 
         !to ensure that the file is there for the next
         !command line call, we have to close it here.
-        close(iunit, iostat=istat)
-        if (istat/=0) then
+        close(iunit, iostat=iostat)
+        if (iostat/=0) then
+            if (present(istat)) istat = iostat
             write(error_unit,'(A)') 'Error closing file: '//trim(file)
         else
 
@@ -1270,10 +1276,11 @@
             if (scratch) then
                 !delete the file (have to reopen it because
                 !Fortran has no file delete function)
-                open(newunit=iunit, file=file, status='OLD', iostat=istat)
-                if (istat==0) close(iunit, status='DELETE', iostat=istat)
+                open(newunit=iunit, file=file, status='OLD', iostat=iostat)
+                if (iostat==0) close(iunit, status='DELETE', iostat=iostat)
             end if
-            if (istat/=0) then
+            if (iostat/=0) then
+                if (present(istat)) istat = iostat
                 write(error_unit,'(A)') 'Error closing file.'
             end if
 
@@ -1282,6 +1289,8 @@
         !cleanup:
         if (allocated(file)) deallocate(file)
 
+    else
+        if (present(istat)) istat = -1
     end if
 
     end subroutine execute
@@ -1345,22 +1354,22 @@
 
     subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)
 
-    class(pyplot),    intent(inout)        :: me          !! pyplot handler
-    character(len=*), intent(in)           :: figfile     !! file name for the figure
-    character(len=*), intent(in), optional :: pyfile      !! name of the Python script to generate
-    character(len=*), intent(in), optional :: dpi         !! resolution of the figure for png
-                                                          !! [note this is a string]
-    logical, intent(in), optional          :: transparent !! transparent background (T/F)
-    character(len=*), intent(in), optional :: facecolor   !! the colors of the figure rectangle
-    character(len=*), intent(in), optional :: edgecolor   !! the colors of the figure rectangle
-    character(len=*), intent(in), optional :: orientation !! 'landscape' or 'portrait'
-    integer,          intent (out)         :: istat       !! status output (0 means no problems)
+    class(pyplot),    intent(inout)          :: me          !! pyplot handler
+    character(len=*), intent(in)             :: figfile     !! file name for the figure
+    character(len=*), intent(in), optional   :: pyfile      !! name of the Python script to generate
+    character(len=*), intent(in), optional   :: dpi         !! resolution of the figure for png
+                                                            !! [note this is a string]
+    logical, intent(in), optional            :: transparent !! transparent background (T/F)
+    character(len=*), intent(in), optional   :: facecolor   !! the colors of the figure rectangle
+    character(len=*), intent(in), optional   :: edgecolor   !! the colors of the figure rectangle
+    character(len=*), intent(in), optional   :: orientation !! 'landscape' or 'portrait'
+    integer,          intent (out), optional :: istat       !! status output (0 means no problems)
 
     character(len=:),allocatable :: tmp  !! for building the `savefig` arguments.
 
     if (allocated(me%str)) then
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !finish up the string:
         call me%finish_ops()
@@ -1390,7 +1399,7 @@
         call me%execute(pyfile, istat=istat)
 
     else
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'error in savefig: pyplot class not properly initialized.'
     end if
 
@@ -1405,23 +1414,23 @@
 
     subroutine showfig(me, pyfile, istat)
 
-    class(pyplot),    intent(inout)        :: me      !! pyplot handler
-    character(len=*), intent(in), optional :: pyfile  !! name of the Python script to generate
-    integer,          intent (out)         :: istat   !! status output (0 means no problems)
+    class(pyplot),    intent(inout)          :: me      !! pyplot handler
+    character(len=*), intent(in), optional   :: pyfile  !! name of the Python script to generate
+    integer,          intent (out), optional :: istat   !! status output (0 means no problems)
 
     if (.not. allocated(me%str)) then
 
-        istat = -1
+        if (present(istat)) istat = -1
         write(error_unit,'(A)') 'error in showfig: pyplot class not properly initialized.'
 
     else if (me%use_oo_api) then
 
-        istat = -2
+        if (present(istat)) istat = -2
         write(error_unit,'(A)') 'error in showfig: not compatible with "use_oo_api" option'
 
     else
 
-        istat = 0
+        if (present(istat)) istat = 0
 
         !finish up the string:
         call me%finish_ops()
