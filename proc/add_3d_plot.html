@@ -360,8 +360,8 @@ private subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewi
 <tr>
   
   <td><span class="anchor" id="variable-istat~5"></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -409,7 +409,7 @@ private subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewi
 </g>
 </g>
 <!-- proc~add_3d_plot&#45;&gt;proc~vec_to_string -->
-<g id="proc~~add_3d_plot~~CallsGraph_edge2" class="edge">
+<g id="proc~~add_3d_plot~~CallsGraph_edge1" class="edge">
 <title>proc~add_3d_plot&#45;&gt;proc~vec_to_string</title>
 <path fill="none" stroke="#000000" d="M77.24,-38.85C91.89,-41.12 108.88,-43.75 124.55,-46.18"/>
 <polygon fill="#000000" stroke="#000000" points="124.2,-49.67 134.62,-47.74 125.27,-42.75 124.2,-49.67"/>
@@ -424,7 +424,7 @@ private subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewi
 </g>
 </g>
 <!-- proc~add_3d_plot&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~add_3d_plot~~CallsGraph_edge1" class="edge">
+<g id="proc~~add_3d_plot~~CallsGraph_edge2" class="edge">
 <title>proc~add_3d_plot&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M77.24,-27.15C85.27,-25.91 93.99,-24.55 102.82,-23.19"/>
 <polygon fill="#000000" stroke="#000000" points="103.45,-26.63 112.79,-21.64 102.38,-19.71 103.45,-26.63"/>
@@ -570,15 +570,15 @@ private subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewi
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_3d_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">linestyle</span><span class="p">,</span> <span class="n">markersize</span><span class="p">,</span> <span class="n">linewidth</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
 
-    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">y</span>            <span class="c">!! y values</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">z</span>            <span class="c">!! z values</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">label</span>        <span class="c">!! plot label</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">linestyle</span>    <span class="c">!! style of the plot line</span>
-    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">markersize</span>   <span class="c">!! size of the plot markers</span>
-    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line</span>
-    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
+    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! x values</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">y</span>            <span class="c">!! y values</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">z</span>            <span class="c">!! z values</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">label</span>        <span class="c">!! plot label</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">linestyle</span>    <span class="c">!! style of the plot line</span>
+    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span>  <span class="k">optional</span> <span class="kd">::</span> <span class="n">markersize</span>   <span class="c">!! size of the plot markers</span>
+    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span>  <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>    <span class="c">!! width of the plot line</span>
+    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
 
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>         <span class="c">!! x values stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ystr</span>         <span class="c">!! y values stringified</span>
@@ -591,7 +591,7 @@ private subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewi
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
 
-<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="c">!convert the arrays to strings:</span>
         <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
@@ -620,7 +620,7 @@ private subroutine add_3d_plot(me, x, y, z, label, linestyle, markersize, linewi
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>
-<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;Error in add_3d_plot: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
 

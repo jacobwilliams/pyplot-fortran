@@ -375,8 +375,8 @@ private subroutine add_sphere(me, r, xc, yc, zc, n_facets, linewidth, antialiase
 <tr>
   
   <td><span class="anchor" id="variable-istat~6"></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -424,7 +424,7 @@ private subroutine add_sphere(me, r, xc, yc, zc, n_facets, linewidth, antialiase
 </g>
 </g>
 <!-- proc~add_sphere&#45;&gt;proc~optional_logical_to_string -->
-<g id="proc~~add_sphere~~CallsGraph_edge3" class="edge">
+<g id="proc~~add_sphere~~CallsGraph_edge1" class="edge">
 <title>proc~add_sphere&#45;&gt;proc~optional_logical_to_string</title>
 <path fill="none" stroke="#000000" d="M74.25,-64.6C85.69,-67.94 98.37,-71.63 110,-75 116.88,-76.99 124.13,-79.09 131.27,-81.15"/>
 <polygon fill="#000000" stroke="#000000" points="130.34,-84.52 140.92,-83.92 132.28,-77.79 130.34,-84.52"/>
@@ -454,7 +454,7 @@ private subroutine add_sphere(me, r, xc, yc, zc, n_facets, linewidth, antialiase
 </g>
 </g>
 <!-- proc~add_sphere&#45;&gt;proc~real_to_string -->
-<g id="proc~~add_sphere~~CallsGraph_edge1" class="edge">
+<g id="proc~~add_sphere~~CallsGraph_edge3" class="edge">
 <title>proc~add_sphere&#45;&gt;proc~real_to_string</title>
 <path fill="none" stroke="#000000" d="M74.25,-43.4C85.69,-40.06 98.37,-36.37 110,-33 117.05,-30.96 124.49,-28.81 131.82,-26.7"/>
 <polygon fill="#000000" stroke="#000000" points="133.04,-29.99 141.68,-23.86 131.11,-23.26 133.04,-29.99"/>
@@ -602,16 +602,16 @@ private subroutine add_sphere(me, r, xc, yc, zc, n_facets, linewidth, antialiase
 
     <span class="k">implicit none</span>
 
-<span class="k">    class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>            <span class="c">!! pyplot handler</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span>         <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">r</span>             <span class="c">!! radius of the sphere</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span>         <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">xc</span>            <span class="c">!! x value of sphere center</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span>         <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">yc</span>            <span class="c">!! y value of sphere center</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span>         <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">zc</span>            <span class="c">!! z value of sphere center</span>
-    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">n_facets</span>      <span class="c">!! [default is 100]</span>
-    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>     <span class="c">!! line width</span>
-    <span class="kt">logical</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">antialiased</span>   <span class="c">!! enabled anti-aliasing</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>         <span class="c">!! color of the contour line</span>
-    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">istat</span>         <span class="c">!! status output (0 means no problems)</span>
+<span class="k">    class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">me</span>            <span class="c">!! pyplot handler</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span>         <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">r</span>             <span class="c">!! radius of the sphere</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span>         <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">xc</span>            <span class="c">!! x value of sphere center</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span>         <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">yc</span>            <span class="c">!! y value of sphere center</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span>         <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">zc</span>            <span class="c">!! z value of sphere center</span>
+    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span>  <span class="k">optional</span> <span class="kd">::</span> <span class="n">n_facets</span>      <span class="c">!! [default is 100]</span>
+    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span>  <span class="k">optional</span> <span class="kd">::</span> <span class="n">linewidth</span>     <span class="c">!! line width</span>
+    <span class="kt">logical</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span>  <span class="k">optional</span> <span class="kd">::</span> <span class="n">antialiased</span>   <span class="c">!! enabled anti-aliasing</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span>  <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>         <span class="c">!! color of the contour line</span>
+    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">istat</span>         <span class="c">!! status output (0 means no problems)</span>
 
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">rstr</span>         <span class="c">!! `r` value stringified</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xcstr</span>        <span class="c">!! `xc` value stringified</span>
@@ -643,7 +643,7 @@ private subroutine add_sphere(me, r, xc, yc, zc, n_facets, linewidth, antialiase
 <span class="k">            </span><span class="n">extras</span> <span class="o">=</span> <span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;color=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
         <span class="k">end if</span>
 
-<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="c">!convert the arrays to strings:</span>
         <span class="k">call </span><span class="n">real_to_string</span><span class="p">(</span><span class="n">r</span> <span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">rstr</span><span class="p">)</span>
@@ -661,7 +661,7 @@ private subroutine add_sphere(me, r, xc, yc, zc, n_facets, linewidth, antialiase
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>
-<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;Error in add_sphere: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
 

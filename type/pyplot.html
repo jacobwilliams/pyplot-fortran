@@ -132,7 +132,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="<p>100.0% of total for derived types.</p>Including implementation: 777 statements, 100.0% of total for derived types.">32 statements</a>
+    title="<p>100.0% of total for derived types.</p>Including implementation: 784 statements, 100.0% of total for derived types.">32 statements</a>
      </li> 
      
      
@@ -998,7 +998,7 @@ private subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xl
   
   <td></td><td>::</td>
   <td><strong>raw_strings</strong></td><td><p>if True, all strings sent to Python are treated as
- raw strings (e.g., r'str'). Default is False.</p></td>
+raw strings (e.g., r'str'). Default is False.</p></td>
   
 </tr>
 
@@ -1279,8 +1279,8 @@ private subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label,
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -1579,8 +1579,8 @@ private subroutine <a href='../proc/add_errorbar.html'>add_errorbar</a>(me, x, y
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -1789,8 +1789,8 @@ private subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, 
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -2014,8 +2014,8 @@ private subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, y
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -2269,8 +2269,8 @@ private subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, 
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -2539,8 +2539,8 @@ private subroutine <a href='../proc/plot_surface.html'>plot_surface</a>(me, x, y
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -2824,8 +2824,8 @@ private subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, lab
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -2963,8 +2963,8 @@ private subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim,
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -3203,8 +3203,8 @@ private subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xl
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -3343,7 +3343,7 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
   
   <td></td><td>::</td>
   <td><strong>dpi</strong></td><td><p>resolution of the figure for png
- [note this is a string]</p></td>
+[note this is a string]</p></td>
   
 </tr>
 
@@ -3414,8 +3414,8 @@ private subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfil
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -3536,8 +3536,8 @@ private subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -3748,8 +3748,8 @@ private subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>

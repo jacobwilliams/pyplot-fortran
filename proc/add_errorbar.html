@@ -134,7 +134,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 8.2% of total for procedures.">70 statements</a>
+    title=" 8.1% of total for procedures.">70 statements</a>
      </li> 
      
      
@@ -449,8 +449,8 @@ private subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersi
 <tr>
   
   <td><span class="anchor" id="variable-istat~9"></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -498,7 +498,7 @@ private subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersi
 </g>
 </g>
 <!-- proc~add_errorbar&#45;&gt;proc~vec_to_string -->
-<g id="proc~~add_errorbar~~CallsGraph_edge2" class="edge">
+<g id="proc~~add_errorbar~~CallsGraph_edge1" class="edge">
 <title>proc~add_errorbar&#45;&gt;proc~vec_to_string</title>
 <path fill="none" stroke="#000000" d="M82.29,-39.13C97.17,-41.39 114.21,-43.99 129.86,-46.37"/>
 <polygon fill="#000000" stroke="#000000" points="129.49,-49.85 139.9,-47.9 130.54,-42.93 129.49,-49.85"/>
@@ -513,7 +513,7 @@ private subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersi
 </g>
 </g>
 <!-- proc~add_errorbar&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~add_errorbar~~CallsGraph_edge1" class="edge">
+<g id="proc~~add_errorbar~~CallsGraph_edge2" class="edge">
 <title>proc~add_errorbar&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M82.29,-26.87C90.38,-25.64 99.11,-24.31 107.91,-22.97"/>
 <polygon fill="#000000" stroke="#000000" points="108.49,-26.42 117.85,-21.46 107.43,-19.5 108.49,-26.42"/>
@@ -673,7 +673,7 @@ private subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersi
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xscale</span>       <span class="c">!! example: &#39;linear&#39; (default), &#39;log&#39;</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">yscale</span>       <span class="c">!! example: &#39;linear&#39; (default), &#39;log&#39;</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">color</span>        <span class="c">!! RGB color tuple [0-1,0-1,0-1]</span>
-    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
+    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span> <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
 
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">arg_str</span>            <span class="c">!! the arguments to pass to `plot`</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>               <span class="c">!! x values stringified</span>
@@ -692,7 +692,7 @@ private subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersi
 
     <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
 
-<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="c">!axis limits (optional):</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xlim</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">xlim</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">xlimstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
@@ -753,7 +753,7 @@ private subroutine add_errorbar(me, x, y, label, linestyle, xerr, yerr, markersi
         <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">else</span>
-<span class="k">        </span><span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;Error in add_errorbar: pyplot class not properly initialized.&#39;</span>
     <span class="k">end if</span>
 
