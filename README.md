@@ -5,6 +5,8 @@
 
 A simple module for generating plots from Fortran using Python's matplotlib.pyplot.
 
+![Build Status](https://github.com/jacobwilliams/pyplot-fortran/actions/workflows/CI.yml/badge.svg)
+
 ### Overview
 
 Currently, this module can be used to generate simple plots from Fortran.  Eventually, it may be expanded to provide additional features and other types of plots.
