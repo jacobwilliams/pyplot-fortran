@@ -7,8 +7,7 @@
 
     program test
 
-    use, intrinsic :: iso_fortran_env, only : wp => real64
-    use pyplot_module, only : pyplot
+    use pyplot_module, only : pyplot, wp => pyplot_wp
 
     implicit none
 

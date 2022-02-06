@@ -8,16 +8,39 @@
 !
 !# See also
 !   * Inspired by: [EasyPlot](https://pypi.python.org/pypi/EasyPlot)
+!
+!@note The default real kind (`wp`) can be
+!      changed using optional preprocessor flags.
+!      This library was built with real kind:
+#ifdef REAL32
+!      `real(kind=real32)` [4 bytes]
+#elif REAL64
+!      `real(kind=real64)` [8 bytes]
+#elif REAL128
+!      `real(kind=real128)` [16 bytes]
+#else
+!      `real(kind=real64)` [8 bytes]
+#endif
 
     module pyplot_module
 
-    use, intrinsic :: iso_fortran_env, only : real64, error_unit
+    use, intrinsic :: iso_fortran_env 
 
     implicit none
 
     private
 
-    integer, parameter, private :: wp = real64 !! Default real kind [8 bytes].
+#ifdef REAL32
+    integer,parameter,public :: pyplot_wp = real32   !! real kind used by this module [4 bytes]
+#elif REAL64
+    integer,parameter,public :: pyplot_wp = real64   !! real kind used by this module [8 bytes]
+#elif REAL128
+    integer,parameter,public :: pyplot_wp = real128  !! real kind used by this module [16 bytes]
+#else
+    integer,parameter,public :: pyplot_wp = real64   !! real kind used by this module [8 bytes]
+#endif
+
+    integer,parameter :: wp = pyplot_wp  !! local copy of `pyplot_wp` with a shorter name
 
     character(len=*), parameter :: tmp_file = 'pyplot_module_temp_1234567890.py' !! Default name of the temporary file
                                                                                  !! (this can also be user-specified).
