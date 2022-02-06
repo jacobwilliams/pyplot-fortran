@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,54 +43,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -104,53 +70,30 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>matrix_to_string
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
      <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 1.9% of total for procedures.">16 statements</a>
      </li> 
-     
-     
-     
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
-     
-     
+    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.f90</a></li>
-    
+     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
      <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-    
-  
      <li class="active">matrix_to_string</li>
   </ol>
 </div>
@@ -166,141 +109,61 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/matrix_to_string.html#src">matrix_to_string</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/matrix_to_string.html#variable-i~3">i</a>
+      <a class="list-group-item" href="../proc/matrix_to_string.html#variable-tmp~3">tmp</a>
+    </div>
   </div>
 </div>
-
-
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private subroutine matrix_to_string(v, fmt, str, use_numpy)
+    <h2>private subroutine matrix_to_string(v, fmt, str, use_numpy)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Real matrix (rank 2) to string.</p>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-v~3"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(:,:)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(:,:)</td><td>::</td>
   <td><strong>v</strong></td><td><p>real values</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-fmt~3"></span>character(len=*),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>fmt</strong></td><td><p>real format string</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-str~5"></span>character(len=:),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>allocatable</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>allocatable</td><td>::</td>
   <td><strong>str</strong></td><td><p>real values stringified</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-use_numpy~4"></span>logical,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>use_numpy</strong></td><td><p>activate numpy python module usage</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -401,8 +264,6 @@ private subroutine matrix_to_string(v, fmt, str, use_numpy)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -440,33 +301,33 @@ private subroutine matrix_to_string(v, fmt, str, use_numpy)
 <path fill="none" stroke="#000000" d="M75.6,-83.96C88.93,-79.4 104.29,-74.13 118.38,-69.3"/>
 <polygon fill="#000000" stroke="#000000" points="119.57,-72.59 127.89,-66.04 117.3,-65.97 119.57,-72.59"/>
 </g>
-<!-- proc~add_contour -->
-<g id="proc~~matrix_to_string~~CalledByGraph_node3" class="node">
-<title>proc~add_contour</title>
-<g id="a_proc~~matrix_to_string~~CalledByGraph_node3"><a xlink:href=".././proc/add_contour.html" xlink:title="add_contour">
-<polygon fill="#d9534f" stroke="#d9534f" points="79,-66 0,-66 0,-42 79,-42 79,-66"/>
-<text text-anchor="middle" x="39.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_contour</text>
-</a>
-</g>
-</g>
-<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~matrix_to_string~~CalledByGraph_edge2" class="edge">
-<title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M79.26,-54C87.32,-54 95.99,-54 104.58,-54"/>
-<polygon fill="#000000" stroke="#000000" points="104.58,-57.5 114.58,-54 104.58,-50.5 104.58,-57.5"/>
-</g>
 <!-- proc~plot_surface -->
-<g id="proc~~matrix_to_string~~CalledByGraph_node4" class="node">
+<g id="proc~~matrix_to_string~~CalledByGraph_node3" class="node">
 <title>proc~plot_surface</title>
-<g id="a_proc~~matrix_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
-<polygon fill="#d9534f" stroke="#d9534f" points="78.5,-24 0.5,-24 0.5,0 78.5,0 78.5,-24"/>
-<text text-anchor="middle" x="39.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
+<g id="a_proc~~matrix_to_string~~CalledByGraph_node3"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
+<polygon fill="#d9534f" stroke="#d9534f" points="78.5,-66 0.5,-66 0.5,-42 78.5,-42 78.5,-66"/>
+<text text-anchor="middle" x="39.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
 </a>
 </g>
 </g>
 <!-- proc~plot_surface&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~matrix_to_string~~CalledByGraph_edge3" class="edge">
+<g id="proc~~matrix_to_string~~CalledByGraph_edge2" class="edge">
 <title>proc~plot_surface&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M78.59,-54C86.96,-54 96,-54 104.96,-54"/>
+<polygon fill="#000000" stroke="#000000" points="104.99,-57.5 114.99,-54 104.99,-50.5 104.99,-57.5"/>
+</g>
+<!-- proc~add_contour -->
+<g id="proc~~matrix_to_string~~CalledByGraph_node4" class="node">
+<title>proc~add_contour</title>
+<g id="a_proc~~matrix_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/add_contour.html" xlink:title="add_contour">
+<polygon fill="#d9534f" stroke="#d9534f" points="79,-24 0,-24 0,0 79,0 79,-24"/>
+<text text-anchor="middle" x="39.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_contour</text>
+</a>
+</g>
+</g>
+<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
+<g id="proc~~matrix_to_string~~CalledByGraph_edge3" class="edge">
+<title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
 <path fill="none" stroke="#000000" d="M75.6,-24.04C88.93,-28.6 104.29,-33.87 118.38,-38.7"/>
 <polygon fill="#000000" stroke="#000000" points="117.3,-42.03 127.89,-41.96 119.57,-35.41 117.3,-42.03"/>
 </g>
@@ -533,112 +394,69 @@ private subroutine matrix_to_string(v, fmt, str, use_numpy)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/matrix_to_string.html#src">matrix_to_string</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/matrix_to_string.html#variable-i~3">i</a>
+      <a class="list-group-item" href="../proc/matrix_to_string.html#variable-tmp~3">tmp</a>
+    </div>
   </div>
 </div>
-
-
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-
-
-    
-    
-    
-    <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">matrix_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">)</span>
-
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:,:),</span>      <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">v</span>         <span class="c">!! real values</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>              <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">fmt</span>       <span class="c">!! real format string</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">str</span>       <span class="c">!! real values stringified</span>
-    <span class="kt">logical</span><span class="p">,</span>                       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">use_numpy</span> <span class="c">!! activate numpy python module usage</span>
-
-    <span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">i</span>         <span class="c">!! counter</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">tmp</span>       <span class="c">!! dummy string</span>
-
-    <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>
-    <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c">!rows</span>
-        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">)</span>  <span class="c">!one row at a time</span>
-        <span class="n">str</span> <span class="o">=</span> <span class="n">str</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">tmp</span><span class="p">))</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;,&#39;</span>
-    <span class="k">end do</span>
-<span class="k">    </span><span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;]&#39;</span>
-
-    <span class="c">!convert to numpy array if necessary:</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">use_numpy</span><span class="p">)</span> <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;np.array(&#39;</span><span class="o">//</span><span class="n">str</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
-
-    <span class="k">end subroutine </span><span class="n">matrix_to_string</span>
-</pre></div>
+    <section>    
+      <h2>Variables</h2>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-i~3"></span>integer,</td>
+<td>private</td>  <td></td><td>::</td>
+  <td><strong>i</strong></td><td></td><td></td><td><p>counter</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-tmp~3"></span>character(len=:),</td>
+<td>private,</td>  <td>allocatable</td><td>::</td>
+  <td><strong>tmp</strong></td><td></td><td></td><td><p>dummy string</p></td>
+</tr>
+</tbody>
+</table>
 
     </section>
     <br>
     
     
+
+    
+    
+
+
+    
+    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -666,14 +484,11 @@ private subroutine matrix_to_string(v, fmt, str, use_numpy)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

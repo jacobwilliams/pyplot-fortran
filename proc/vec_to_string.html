@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,54 +43,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -104,53 +70,30 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>vec_to_string
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
      <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 4.8% of total for procedures.">41 statements</a>
      </li> 
-     
-     
-     
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
-     
-     
+    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.f90</a></li>
-    
+     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
      <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-    
-  
      <li class="active">vec_to_string</li>
   </ol>
 </div>
@@ -166,157 +109,69 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/vec_to_string.html#src">vec_to_string</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/vec_to_string.html#variable-i~2">i</a>
+      <a class="list-group-item" href="../proc/vec_to_string.html#variable-istat~12">istat</a>
+      <a class="list-group-item" href="../proc/vec_to_string.html#variable-tmp~2">tmp</a>
+      <a class="list-group-item" href="../proc/vec_to_string.html#variable-tuple">tuple</a>
+    </div>
   </div>
 </div>
-
-
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)
+    <h2>private subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Real vector to string.</p>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-v~2"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(:)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(:)</td><td>::</td>
   <td><strong>v</strong></td><td><p>real values</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-fmt~2"></span>character(len=*),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>fmt</strong></td><td><p>real format string</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-str~4"></span>character(len=:),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>allocatable</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>allocatable</td><td>::</td>
   <td><strong>str</strong></td><td><p>real values stringified</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-use_numpy~3"></span>logical,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>use_numpy</strong></td><td><p>activate numpy python module usage</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-is_tuple"></span>logical,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>is_tuple</strong></td><td><p>if true [default], use '()', if false use '[]'</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -328,46 +183,31 @@ private subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~vec_to_string~~CalledByGraph Pages: 1 -->
-<svg id="procvec_to_stringCalledByGraph" width="339pt" height="343pt"
- viewBox="0.00 0.00 339.00 342.54" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~vec_to_string~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 338.54)">
+<svg id="procvec_to_stringCalledByGraph" width="339pt" height="339pt"
+ viewBox="0.00 0.00 339.00 338.86" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~vec_to_string~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 334.86)">
 <title>proc~~vec_to_string~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-338.54 335,-338.54 335,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-334.86 335,-334.86 335,4 -4,4"/>
 <!-- proc~vec_to_string -->
 <g id="proc~~vec_to_string~~CalledByGraph_node1" class="node">
 <title>proc~vec_to_string</title>
-<polygon fill="none" stroke="black" points="331,-188 249,-188 249,-164 331,-164 331,-188"/>
-<text text-anchor="middle" x="290" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50">vec_to_string</text>
-</g>
-<!-- proc~add_imshow -->
-<g id="proc~~vec_to_string~~CalledByGraph_node2" class="node">
-<title>proc~add_imshow</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node2"><a xlink:href=".././proc/add_imshow.html" xlink:title="add_imshow">
-<polygon fill="#d9534f" stroke="#d9534f" points="79,-320 0,-320 0,-296 79,-296 79,-320"/>
-<text text-anchor="middle" x="39.5" y="-305.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_imshow</text>
-</a>
-</g>
-</g>
-<!-- proc~add_imshow&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge1" class="edge">
-<title>proc~add_imshow&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M71.99,-320.11C108.64,-332.04 169.66,-345.05 213,-319 256.95,-292.59 276.85,-231.23 284.66,-198.12"/>
-<polygon fill="#000000" stroke="#000000" points="288.14,-198.59 286.87,-188.07 281.31,-197.09 288.14,-198.59"/>
+<polygon fill="none" stroke="black" points="331,-186 249,-186 249,-162 331,-162 331,-186"/>
+<text text-anchor="middle" x="290" y="-171.6" font-family="Helvetica,sans-Serif" font-size="10.50">vec_to_string</text>
 </g>
 <!-- proc~matrix_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_node5" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node2" class="node">
 <title>proc~matrix_to_string</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node5"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<g id="a_proc~~vec_to_string~~CalledByGraph_node2"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="213,-268 115,-268 115,-244 213,-244 213,-268"/>
 <text text-anchor="middle" x="164" y="-253.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
 </a>
 </g>
 </g>
-<!-- proc~add_imshow&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge10" class="edge">
-<title>proc~add_imshow&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M68.91,-295.94C85.49,-288.9 106.63,-279.93 124.66,-272.27"/>
-<polygon fill="#000000" stroke="#000000" points="126.48,-275.3 134.32,-268.18 123.75,-268.86 126.48,-275.3"/>
+<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge1" class="edge">
+<title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M195.82,-243.96C201.67,-241.27 207.63,-238.25 213,-235 233.15,-222.8 253.86,-205.83 268.56,-192.89"/>
+<polygon fill="#000000" stroke="#000000" points="270.95,-195.44 276.07,-186.16 266.29,-190.23 270.95,-195.44"/>
 </g>
 <!-- proc~add_errorbar -->
 <g id="proc~~vec_to_string~~CalledByGraph_node3" class="node">
@@ -381,116 +221,131 @@ private subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)
 <!-- proc~add_errorbar&#45;&gt;proc~vec_to_string -->
 <g id="proc~~vec_to_string~~CalledByGraph_edge2" class="edge">
 <title>proc~add_errorbar&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M198.55,-286C203.64,-283.44 208.65,-280.44 213,-277 241.32,-254.61 264.62,-219.29 277.67,-196.9"/>
-<polygon fill="#000000" stroke="#000000" points="280.73,-198.6 282.61,-188.18 274.64,-195.15 280.73,-198.6"/>
-</g>
-<!-- proc~plot_surface -->
-<g id="proc~~vec_to_string~~CalledByGraph_node4" class="node">
-<title>proc~plot_surface</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
-<polygon fill="#d9534f" stroke="#d9534f" points="78.5,-248 0.5,-248 0.5,-224 78.5,-224 78.5,-248"/>
-<text text-anchor="middle" x="39.5" y="-233.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
-</a>
-</g>
-</g>
-<!-- proc~plot_surface&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge3" class="edge">
-<title>proc~plot_surface&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M78.65,-227.92C113.69,-220.36 166.99,-208.55 213,-197 221.49,-194.87 230.48,-192.49 239.19,-190.13"/>
-<polygon fill="#000000" stroke="#000000" points="240.14,-193.49 248.86,-187.47 238.29,-186.74 240.14,-193.49"/>
-</g>
-<!-- proc~plot_surface&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge12" class="edge">
-<title>proc~plot_surface&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M78.59,-242.22C86.96,-243.58 96,-245.06 104.96,-246.52"/>
-<polygon fill="#000000" stroke="#000000" points="104.55,-250 114.99,-248.16 105.68,-243.1 104.55,-250"/>
-</g>
-<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge4" class="edge">
-<title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M188.76,-243.86C196.6,-239.67 205.28,-234.81 213,-230 230.92,-218.84 250.3,-205.04 265.01,-194.18"/>
-<polygon fill="#000000" stroke="#000000" points="267.15,-196.95 273.08,-188.17 262.97,-191.33 267.15,-196.95"/>
-</g>
-<!-- proc~add_plot -->
-<g id="proc~~vec_to_string~~CalledByGraph_node6" class="node">
-<title>proc~add_plot</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node6"><a xlink:href=".././proc/add_plot.html" xlink:title="add_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="193,-188 135,-188 135,-164 193,-164 193,-188"/>
-<text text-anchor="middle" x="164" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_plot</text>
-</a>
-</g>
-</g>
-<!-- proc~add_plot&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge5" class="edge">
-<title>proc~add_plot&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M193.14,-176C206.62,-176 223.18,-176 238.72,-176"/>
-<polygon fill="#000000" stroke="#000000" points="238.75,-179.5 248.75,-176 238.75,-172.5 238.75,-179.5"/>
-</g>
-<!-- proc~add_3d_plot -->
-<g id="proc~~vec_to_string~~CalledByGraph_node7" class="node">
-<title>proc~add_3d_plot</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node7"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="add_3d_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="202.5,-146 125.5,-146 125.5,-122 202.5,-122 202.5,-146"/>
-<text text-anchor="middle" x="164" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
-</a>
-</g>
-</g>
-<!-- proc~add_3d_plot&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge6" class="edge">
-<title>proc~add_3d_plot&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M200.53,-146.04C214.02,-150.6 229.57,-155.87 243.83,-160.7"/>
-<polygon fill="#000000" stroke="#000000" points="242.87,-164.07 253.46,-163.96 245.11,-157.44 242.87,-164.07"/>
-</g>
-<!-- proc~add_bar -->
-<g id="proc~~vec_to_string~~CalledByGraph_node8" class="node">
-<title>proc~add_bar</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node8"><a xlink:href=".././proc/add_bar.html" xlink:title="add_bar">
-<polygon fill="#d9534f" stroke="#d9534f" points="192,-104 136,-104 136,-80 192,-80 192,-104"/>
-<text text-anchor="middle" x="164" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_bar</text>
-</a>
-</g>
-</g>
-<!-- proc~add_bar&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge7" class="edge">
-<title>proc~add_bar&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M192.08,-102.27C199.09,-105.35 206.5,-108.99 213,-113 233.56,-125.67 254.51,-143.48 269.19,-156.93"/>
-<polygon fill="#000000" stroke="#000000" points="266.96,-159.64 276.66,-163.9 271.74,-154.52 266.96,-159.64"/>
+<path fill="none" stroke="#000000" d="M198.83,-285.91C203.83,-283.37 208.74,-280.41 213,-277 241.72,-254.07 265.05,-217.78 277.97,-194.96"/>
+<polygon fill="#000000" stroke="#000000" points="281.1,-196.54 282.85,-186.09 274.97,-193.16 281.1,-196.54"/>
 </g>
 <!-- proc~add_contour -->
-<g id="proc~~vec_to_string~~CalledByGraph_node9" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node4" class="node">
 <title>proc~add_contour</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node9"><a xlink:href=".././proc/add_contour.html" xlink:title="add_contour">
-<polygon fill="#d9534f" stroke="#d9534f" points="79,-145 0,-145 0,-121 79,-121 79,-145"/>
-<text text-anchor="middle" x="39.5" y="-130.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_contour</text>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/add_contour.html" xlink:title="add_contour">
+<polygon fill="#d9534f" stroke="#d9534f" points="79,-293 0,-293 0,-269 79,-269 79,-293"/>
+<text text-anchor="middle" x="39.5" y="-278.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_contour</text>
 </a>
 </g>
 </g>
 <!-- proc~add_contour&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge8" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge3" class="edge">
 <title>proc~add_contour&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M50.28,-120.8C63.23,-105.73 87.62,-80.9 115,-71 155.96,-56.19 174.21,-51.19 213,-71 247,-88.36 269.31,-128.82 280.49,-154.14"/>
-<polygon fill="#000000" stroke="#000000" points="277.39,-155.78 284.48,-163.64 283.84,-153.07 277.39,-155.78"/>
+<path fill="none" stroke="#000000" d="M58.78,-293.13C91.9,-313.43 163.01,-349.24 213,-319 257.35,-292.17 277.08,-229.97 284.76,-196.42"/>
+<polygon fill="#000000" stroke="#000000" points="288.27,-196.74 286.92,-186.23 281.43,-195.29 288.27,-196.74"/>
 </g>
 <!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge11" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge12" class="edge">
 <title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M52.69,-145.24C73.97,-166.61 118.05,-210.87 143.58,-236.5"/>
-<polygon fill="#000000" stroke="#000000" points="141.32,-239.19 150.86,-243.81 146.28,-234.25 141.32,-239.19"/>
+<path fill="none" stroke="#000000" d="M79.26,-273.09C87.32,-271.44 95.99,-269.68 104.58,-267.92"/>
+<polygon fill="#000000" stroke="#000000" points="105.49,-271.31 114.58,-265.88 104.09,-264.45 105.49,-271.31"/>
+</g>
+<!-- proc~add_bar -->
+<g id="proc~~vec_to_string~~CalledByGraph_node5" class="node">
+<title>proc~add_bar</title>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node5"><a xlink:href=".././proc/add_bar.html" xlink:title="add_bar">
+<polygon fill="#d9534f" stroke="#d9534f" points="192,-226 136,-226 136,-202 192,-202 192,-226"/>
+<text text-anchor="middle" x="164" y="-211.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_bar</text>
+</a>
+</g>
+</g>
+<!-- proc~add_bar&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge4" class="edge">
+<title>proc~add_bar&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M192.21,-205.22C206.75,-200.53 225.07,-194.62 241.85,-189.21"/>
+<polygon fill="#000000" stroke="#000000" points="243.06,-192.5 251.5,-186.1 240.91,-185.83 243.06,-192.5"/>
+</g>
+<!-- proc~plot_surface -->
+<g id="proc~~vec_to_string~~CalledByGraph_node6" class="node">
+<title>proc~plot_surface</title>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node6"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
+<polygon fill="#d9534f" stroke="#d9534f" points="78.5,-242 0.5,-242 0.5,-218 78.5,-218 78.5,-242"/>
+<text text-anchor="middle" x="39.5" y="-227.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge5" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M59.96,-217.95C74.55,-209.52 95.32,-198.76 115,-193 155.61,-181.11 203.53,-176.53 238.78,-174.83"/>
+<polygon fill="#000000" stroke="#000000" points="238.99,-178.33 248.83,-174.41 238.69,-171.33 238.99,-178.33"/>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~matrix_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge11" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M78.59,-238.08C86.96,-239.86 96,-241.78 104.96,-243.68"/>
+<polygon fill="#000000" stroke="#000000" points="104.48,-247.16 114.99,-245.81 105.93,-240.31 104.48,-247.16"/>
+</g>
+<!-- proc~add_imshow -->
+<g id="proc~~vec_to_string~~CalledByGraph_node7" class="node">
+<title>proc~add_imshow</title>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node7"><a xlink:href=".././proc/add_imshow.html" xlink:title="add_imshow">
+<polygon fill="#d9534f" stroke="#d9534f" points="79,-182 0,-182 0,-158 79,-158 79,-182"/>
+<text text-anchor="middle" x="39.5" y="-167.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_imshow</text>
+</a>
+</g>
+</g>
+<!-- proc~add_imshow&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge6" class="edge">
+<title>proc~add_imshow&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M79.07,-163.83C90.59,-162.25 103.28,-160.78 115,-160 158.46,-157.1 169.62,-156.04 213,-160 221.45,-160.77 230.36,-162.02 239,-163.45"/>
+<polygon fill="#000000" stroke="#000000" points="238.5,-166.92 248.96,-165.21 239.72,-160.03 238.5,-166.92"/>
+</g>
+<!-- proc~add_imshow&#45;&gt;proc~matrix_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge10" class="edge">
+<title>proc~add_imshow&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M52.22,-182.29C66.17,-196.39 90.64,-219.56 115,-235 117.41,-236.53 119.96,-238 122.56,-239.4"/>
+<polygon fill="#000000" stroke="#000000" points="121.05,-242.56 131.56,-243.9 124.18,-236.3 121.05,-242.56"/>
 </g>
 <!-- proc~add_hist -->
-<g id="proc~~vec_to_string~~CalledByGraph_node10" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node8" class="node">
 <title>proc~add_hist</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node10"><a xlink:href=".././proc/add_hist.html" xlink:title="add_hist">
-<polygon fill="#d9534f" stroke="#d9534f" points="192.5,-24 135.5,-24 135.5,0 192.5,0 192.5,-24"/>
-<text text-anchor="middle" x="164" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_hist</text>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node8"><a xlink:href=".././proc/add_hist.html" xlink:title="add_hist">
+<polygon fill="#d9534f" stroke="#d9534f" points="192.5,-108 135.5,-108 135.5,-84 192.5,-84 192.5,-108"/>
+<text text-anchor="middle" x="164" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_hist</text>
 </a>
 </g>
 </g>
 <!-- proc~add_hist&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge9" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge7" class="edge">
 <title>proc~add_hist&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M192.74,-23.57C199.9,-27.44 207.22,-32.26 213,-38 247.22,-71.99 270.36,-124.63 281.45,-154.1"/>
-<polygon fill="#000000" stroke="#000000" points="278.28,-155.63 284.98,-163.84 284.86,-153.24 278.28,-155.63"/>
+<path fill="none" stroke="#000000" d="M188.71,-108.22C196.54,-112.42 205.24,-117.26 213,-122 230.4,-132.63 249.33,-145.57 263.94,-155.89"/>
+<polygon fill="#000000" stroke="#000000" points="262.25,-158.98 272.43,-161.92 266.31,-153.28 262.25,-158.98"/>
+</g>
+<!-- proc~add_plot -->
+<g id="proc~~vec_to_string~~CalledByGraph_node9" class="node">
+<title>proc~add_plot</title>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node9"><a xlink:href=".././proc/add_plot.html" xlink:title="add_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="193,-66 135,-66 135,-42 193,-42 193,-66"/>
+<text text-anchor="middle" x="164" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_plot&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge8" class="edge">
+<title>proc~add_plot&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M193.24,-63.54C200.09,-66.59 207.13,-70.4 213,-75 240.79,-96.76 263.99,-130.91 277.18,-152.87"/>
+<polygon fill="#000000" stroke="#000000" points="274.3,-154.88 282.37,-161.74 280.34,-151.34 274.3,-154.88"/>
+</g>
+<!-- proc~add_3d_plot -->
+<g id="proc~~vec_to_string~~CalledByGraph_node10" class="node">
+<title>proc~add_3d_plot</title>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node10"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="add_3d_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="202.5,-24 125.5,-24 125.5,0 202.5,0 202.5,-24"/>
+<text text-anchor="middle" x="164" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_3d_plot&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge9" class="edge">
+<title>proc~add_3d_plot&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M200.25,-24.11C204.85,-26.6 209.25,-29.55 213,-33 249.41,-66.54 271.93,-121.61 282.27,-152.05"/>
+<polygon fill="#000000" stroke="#000000" points="279,-153.3 285.43,-161.72 285.65,-151.13 279,-153.3"/>
 </g>
 </g>
 </svg>
@@ -555,140 +410,81 @@ private subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/vec_to_string.html#src">vec_to_string</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/vec_to_string.html#variable-i~2">i</a>
+      <a class="list-group-item" href="../proc/vec_to_string.html#variable-istat~12">istat</a>
+      <a class="list-group-item" href="../proc/vec_to_string.html#variable-tmp~2">tmp</a>
+      <a class="list-group-item" href="../proc/vec_to_string.html#variable-tuple">tuple</a>
+    </div>
   </div>
 </div>
-
-
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-
-
-    
-    
-    
-    <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">use_numpy</span><span class="p">,</span> <span class="n">is_tuple</span><span class="p">)</span>
-
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span>        <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">v</span>         <span class="c">!! real values</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>              <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">fmt</span>       <span class="c">!! real format string</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">str</span>       <span class="c">!! real values stringified</span>
-    <span class="kt">logical</span><span class="p">,</span>                       <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">use_numpy</span> <span class="c">!! activate numpy python module usage</span>
-    <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span>                <span class="kd">::</span> <span class="n">is_tuple</span>  <span class="c">!! if true [default], use &#39;()&#39;, if false use &#39;[]&#39;</span>
-
-    <span class="kt">integer</span>                     <span class="kd">::</span> <span class="n">i</span>         <span class="c">!! counter</span>
-    <span class="kt">integer</span>                     <span class="kd">::</span> <span class="n">istat</span>     <span class="c">!! IO status</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_real_len</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tmp</span>       <span class="c">!! dummy string</span>
-    <span class="kt">logical</span>                     <span class="kd">::</span> <span class="n">tuple</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">is_tuple</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">        </span><span class="n">tuple</span> <span class="o">=</span> <span class="n">is_tuple</span>
-    <span class="k">else</span>
-<span class="k">        </span><span class="n">tuple</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
-    <span class="k">end if</span>
-
-<span class="k">    if</span> <span class="p">(</span><span class="n">tuple</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">        </span><span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;(&#39;</span>
-    <span class="k">else</span>
-<span class="k">        </span><span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>
-    <span class="k">end if</span>
-
-<span class="k">    do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">fmt</span><span class="o">==</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">            write</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span> <span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-        <span class="k">else</span>
-<span class="k">            write</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span> <span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-        <span class="k">end if</span>
-<span class="k">        if</span> <span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">            write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;Error in vec_to_string&#39;</span>
-            <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;****&#39;</span>
-            <span class="k">return</span>
-<span class="k">        end if</span>
-<span class="k">        </span><span class="n">str</span> <span class="o">=</span> <span class="n">str</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">tmp</span><span class="p">))</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;,&#39;</span>
-    <span class="k">end do</span>
-
-<span class="k">    if</span> <span class="p">(</span><span class="n">tuple</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">        </span><span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;)&#39;</span>
-    <span class="k">else</span>
-<span class="k">        </span><span class="n">str</span> <span class="o">=</span> <span class="n">str</span> <span class="o">//</span> <span class="s1">&#39;]&#39;</span>
-    <span class="k">end if</span>
-
-    <span class="c">!convert to numpy array if necessary:</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">use_numpy</span><span class="p">)</span> <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;np.array(&#39;</span><span class="o">//</span><span class="n">str</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
-
-    <span class="k">end subroutine </span><span class="n">vec_to_string</span>
-</pre></div>
+    <section>    
+      <h2>Variables</h2>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-i~2"></span>integer,</td>
+<td>private</td>  <td></td><td>::</td>
+  <td><strong>i</strong></td><td></td><td></td><td><p>counter</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-istat~12"></span>integer,</td>
+<td>private</td>  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td></td><td></td><td><p>IO status</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-tmp~2"></span>character(len=max_real_len),</td>
+<td>private</td>  <td></td><td>::</td>
+  <td><strong>tmp</strong></td><td></td><td></td><td><p>dummy string</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-tuple"></span>logical,</td>
+<td>private</td>  <td></td><td>::</td>
+  <td><strong>tuple</strong></td><td></td><td></td><td></td>
+</tr>
+</tbody>
+</table>
 
     </section>
     <br>
     
     
+
+    
+    
+
+
+    
+    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -716,14 +512,11 @@ private subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

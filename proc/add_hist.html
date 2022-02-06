@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,54 +43,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -104,53 +70,30 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>add_hist
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
      <li><i class="fa fa-pencil"></i> Jimmy Leta</li>
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 4.4% of total for procedures.">38 statements</a>
      </li> 
-     
-     
-     
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
-     
-     
+    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.f90</a></li>
-    
+     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
      <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-    
-  
      <li class="active">add_hist</li>
   </ol>
 </div>
@@ -166,246 +109,107 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/add_hist.html#src">add_hist</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/add_hist.html#variable-xname~2">xname</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-xstr~2">xstr</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-xlimstr~2">xlimstr</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-ylimstr~2">ylimstr</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-cumulativestr">cumulativestr</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-binsstr">binsstr</a>
+    </div>
   </div>
 </div>
-
-
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)
+    <h2>private subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Add a histogram plot.</p>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-me~5"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>me</strong></td><td><p>pyplot handler</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-x~2"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(:)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(:)</td><td>::</td>
   <td><strong>x</strong></td><td><p>array of data</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-label~2"></span>character(len=*),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>label</strong></td><td><p>plot label</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-xlim~2"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td>dimension(2)</td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(2)</td><td>::</td>
   <td><strong>xlim</strong></td><td><p>x-axis range</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-ylim~2"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td>dimension(2)</td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(2)</td><td>::</td>
   <td><strong>ylim</strong></td><td><p>y-axis range</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-xscale~2"></span>character(len=*),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>xscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-yscale~2"></span>character(len=*),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>yscale</strong></td><td><p>example: 'linear' (default), 'log'</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-bins"></span>integer,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>bins</strong></td><td><p>number of bins</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-normed"></span>logical,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>normed</strong></td><td><p>boolean flag that determines whether bin counts are normalized [NO LONGER USED]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-cumulative"></span>logical,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>cumulative</strong></td><td><p>boolean flag that determines whether histogram represents the cumulative density of dataset</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-istat~2"></span>integer,</td>
-  <td>intent(out),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(out),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -428,65 +232,65 @@ private subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, norm
 <polygon fill="none" stroke="black" points="57,-66 0,-66 0,-42 57,-42 57,-66"/>
 <text text-anchor="middle" x="28.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">add_hist</text>
 </g>
-<!-- proc~vec_to_string -->
-<g id="proc~~add_hist~~CallsGraph_node2" class="node">
-<title>proc~vec_to_string</title>
-<g id="a_proc~~add_hist~~CallsGraph_node2"><a xlink:href=".././proc/vec_to_string.html" xlink:title="vec_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="208,-108 126,-108 126,-84 208,-84 208,-108"/>
-<text text-anchor="middle" x="167" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
-</a>
-</g>
-</g>
-<!-- proc~add_hist&#45;&gt;proc~vec_to_string -->
-<g id="proc~~add_hist~~CallsGraph_edge1" class="edge">
-<title>proc~add_hist&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M57.24,-63.44C68.33,-67.14 81.24,-71.37 93,-75 100.44,-77.3 108.34,-79.66 116.08,-81.92"/>
-<polygon fill="#000000" stroke="#000000" points="115.17,-85.3 125.75,-84.73 117.13,-78.58 115.17,-85.3"/>
-</g>
 <!-- proc~optional_int_to_string -->
-<g id="proc~~add_hist~~CallsGraph_node3" class="node">
+<g id="proc~~add_hist~~CallsGraph_node2" class="node">
 <title>proc~optional_int_to_string</title>
-<g id="a_proc~~add_hist~~CallsGraph_node3"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="230,-66 104,-66 104,-42 230,-42 230,-66"/>
-<text text-anchor="middle" x="167" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
+<g id="a_proc~~add_hist~~CallsGraph_node2"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="230,-108 104,-108 104,-84 230,-84 230,-108"/>
+<text text-anchor="middle" x="167" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
 </a>
 </g>
 </g>
 <!-- proc~add_hist&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~add_hist~~CallsGraph_edge3" class="edge">
+<g id="proc~~add_hist~~CallsGraph_edge1" class="edge">
 <title>proc~add_hist&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M57.12,-54C67.76,-54 80.46,-54 93.37,-54"/>
-<polygon fill="#000000" stroke="#000000" points="93.74,-57.5 103.74,-54 93.74,-50.5 93.74,-57.5"/>
+<path fill="none" stroke="#000000" d="M57.24,-63.44C68.33,-67.14 81.24,-71.37 93,-75 99.52,-77.01 106.38,-79.07 113.19,-81.07"/>
+<polygon fill="#000000" stroke="#000000" points="112.49,-84.52 123.07,-83.95 114.45,-77.8 112.49,-84.52"/>
 </g>
 <!-- proc~optional_logical_to_string -->
-<g id="proc~~add_hist~~CallsGraph_node4" class="node">
+<g id="proc~~add_hist~~CallsGraph_node3" class="node">
 <title>proc~optional_logical_to_string</title>
-<g id="a_proc~~add_hist~~CallsGraph_node4"><a xlink:href=".././proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="241,-24 93,-24 93,0 241,0 241,-24"/>
-<text text-anchor="middle" x="167" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_logical_to_string</text>
+<g id="a_proc~~add_hist~~CallsGraph_node3"><a xlink:href=".././proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="241,-66 93,-66 93,-42 241,-42 241,-66"/>
+<text text-anchor="middle" x="167" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_logical_to_string</text>
 </a>
 </g>
 </g>
 <!-- proc~add_hist&#45;&gt;proc~optional_logical_to_string -->
 <g id="proc~~add_hist~~CallsGraph_edge2" class="edge">
 <title>proc~add_hist&#45;&gt;proc~optional_logical_to_string</title>
-<path fill="none" stroke="#000000" d="M57.24,-44.56C68.33,-40.86 81.24,-36.63 93,-33 99.52,-30.99 106.38,-28.93 113.19,-26.93"/>
-<polygon fill="#000000" stroke="#000000" points="114.45,-30.2 123.07,-24.05 112.49,-23.48 114.45,-30.2"/>
+<path fill="none" stroke="#000000" d="M57.12,-54C64.85,-54 73.66,-54 82.85,-54"/>
+<polygon fill="#000000" stroke="#000000" points="82.95,-57.5 92.95,-54 82.95,-50.5 82.95,-57.5"/>
+</g>
+<!-- proc~vec_to_string -->
+<g id="proc~~add_hist~~CallsGraph_node4" class="node">
+<title>proc~vec_to_string</title>
+<g id="a_proc~~add_hist~~CallsGraph_node4"><a xlink:href=".././proc/vec_to_string.html" xlink:title="vec_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="208,-24 126,-24 126,0 208,0 208,-24"/>
+<text text-anchor="middle" x="167" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_hist&#45;&gt;proc~vec_to_string -->
+<g id="proc~~add_hist~~CallsGraph_edge3" class="edge">
+<title>proc~add_hist&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M57.24,-44.56C68.33,-40.86 81.24,-36.63 93,-33 100.44,-30.7 108.34,-28.34 116.08,-26.08"/>
+<polygon fill="#000000" stroke="#000000" points="117.13,-29.42 125.75,-23.27 115.17,-22.7 117.13,-29.42"/>
 </g>
 <!-- proc~integer_to_string -->
 <g id="proc~~add_hist~~CallsGraph_node5" class="node">
 <title>proc~integer_to_string</title>
 <g id="a_proc~~add_hist~~CallsGraph_node5"><a xlink:href=".././proc/integer_to_string.html" xlink:title="integer_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="379,-66 277,-66 277,-42 379,-42 379,-66"/>
-<text text-anchor="middle" x="328" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="379,-108 277,-108 277,-84 379,-84 379,-108"/>
+<text text-anchor="middle" x="328" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
 </a>
 </g>
 </g>
 <!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
 <g id="proc~~add_hist~~CallsGraph_edge4" class="edge">
 <title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
-<path fill="none" stroke="#000000" d="M230.38,-54C242.23,-54 254.6,-54 266.39,-54"/>
-<polygon fill="#000000" stroke="#000000" points="266.57,-57.5 276.57,-54 266.57,-50.5 266.57,-57.5"/>
+<path fill="none" stroke="#000000" d="M230.38,-96C242.23,-96 254.6,-96 266.39,-96"/>
+<polygon fill="#000000" stroke="#000000" points="266.57,-99.5 276.57,-96 266.57,-92.5 266.57,-99.5"/>
 </g>
 </g>
 </svg>
@@ -551,154 +355,93 @@ private subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, norm
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/add_hist.html#src">add_hist</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/add_hist.html#variable-xname~2">xname</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-xstr~2">xstr</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-xlimstr~2">xlimstr</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-ylimstr~2">ylimstr</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-cumulativestr">cumulativestr</a>
+      <a class="list-group-item" href="../proc/add_hist.html#variable-binsstr">binsstr</a>
+    </div>
   </div>
 </div>
-
-
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-
-
-    
-    
-    
-    <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">add_hist</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">xscale</span><span class="p">,</span> <span class="n">yscale</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">normed</span><span class="p">,</span> <span class="n">cumulative</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
-
-    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">inout</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">me</span>           <span class="c">!! pyplot handler</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span> <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">x</span>            <span class="c">!! array of data</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">label</span>        <span class="c">!! plot label</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xlim</span>         <span class="c">!! x-axis range</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>  <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">ylim</span>         <span class="c">!! y-axis range</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">xscale</span>       <span class="c">!! example: &#39;linear&#39; (default), &#39;log&#39;</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span>       <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">yscale</span>       <span class="c">!! example: &#39;linear&#39; (default), &#39;log&#39;</span>
-    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">bins</span>         <span class="c">!! number of bins</span>
-    <span class="kt">logical</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">normed</span>       <span class="c">!! boolean flag that determines whether bin counts are normalized [NO LONGER USED]</span>
-    <span class="kt">logical</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">cumulative</span>   <span class="c">!! boolean flag that determines whether histogram represents the cumulative density of dataset</span>
-    <span class="kt">integer</span><span class="p">,</span>                <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span> <span class="kd">::</span> <span class="n">istat</span>        <span class="c">!! status output (0 means no problems)</span>
-
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">parameter</span>   <span class="kd">::</span> <span class="n">xname</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>      <span class="c">!! x variable name for script</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xstr</span>             <span class="c">!! x values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">xlimstr</span>          <span class="c">!! xlim values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">ylimstr</span>          <span class="c">!! ylim values stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">cumulativestr</span>    <span class="c">!!</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">binsstr</span>          <span class="c">!!</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
-
-<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
-
-        <span class="c">!axis limits (optional):</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xlim</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">xlim</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">xlimstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">ylim</span><span class="p">))</span> <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">ylim</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">ylimstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-
-        <span class="c">!convert the arrays to strings:</span>
-        <span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span> <span class="n">xstr</span><span class="p">,</span> <span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
-
-        <span class="c">!write the arrays:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">xstr</span><span class="p">)</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-
-        <span class="c">!get optional inputs (if not present, set default value):</span>
-        <span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">binsstr</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">)</span>
-        <span class="k">call </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">cumulative</span><span class="p">,</span> <span class="n">cumulativestr</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">)</span>
-
-        <span class="c">!write the plot statement:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.hist(&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="s1">&#39;label=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="s1">&#39;bins=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">binsstr</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
-                        <span class="s1">&#39;cumulative=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">cumulativestr</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-
-        <span class="c">!axis limits:</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">xlimstr</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_xlim(&#39;</span><span class="o">//</span><span class="n">xlimstr</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">ylimstr</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_ylim(&#39;</span><span class="o">//</span><span class="n">ylimstr</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-
-        <span class="c">!axis scales:</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xscale</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_xscale(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="n">xscale</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yscale</span><span class="p">))</span> <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_yscale(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="n">yscale</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
-
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-
-    <span class="k">else</span>
-<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
-    <span class="k">end if</span>
-
-<span class="k">    end subroutine </span><span class="n">add_hist</span>
-</pre></div>
+    <section>    
+      <h2>Variables</h2>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-xname~2"></span>character(len=*),</td>
+<td>private,</td>  <td>parameter</td><td>::</td>
+  <td><strong>xname</strong></td><td> =</td><td>'x'</td><td><p>x variable name for script</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-xstr~2"></span>character(len=:),</td>
+<td>private,</td>  <td>allocatable</td><td>::</td>
+  <td><strong>xstr</strong></td><td></td><td></td><td><p>x values stringified</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-xlimstr~2"></span>character(len=:),</td>
+<td>private,</td>  <td>allocatable</td><td>::</td>
+  <td><strong>xlimstr</strong></td><td></td><td></td><td><p>xlim values stringified</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ylimstr~2"></span>character(len=:),</td>
+<td>private,</td>  <td>allocatable</td><td>::</td>
+  <td><strong>ylimstr</strong></td><td></td><td></td><td><p>ylim values stringified</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-cumulativestr"></span>character(len=:),</td>
+<td>private,</td>  <td>allocatable</td><td>::</td>
+  <td><strong>cumulativestr</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-binsstr"></span>character(len=max_int_len),</td>
+<td>private</td>  <td></td><td>::</td>
+  <td><strong>binsstr</strong></td><td></td><td></td><td></td>
+</tr>
+</tbody>
+</table>
 
     </section>
     <br>
     
     
+
+    
+    
+
+
+    
+    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -726,14 +469,11 @@ private subroutine add_hist(me, x, label, xlim, ylim, xscale, yscale, bins, norm
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

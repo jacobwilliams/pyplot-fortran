@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,54 +43,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -104,53 +70,30 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>savefig
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
      <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 4.5% of total for procedures.">39 statements</a>
      </li> 
-     
-     
-     
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
-     
-     
+    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.f90</a></li>
-    
+     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
      <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-    
-  
      <li class="active">savefig</li>
   </ol>
 </div>
@@ -166,356 +109,152 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/savefig.html#src">savefig</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/savefig.html#variable-tmp~4">tmp</a>
+    </div>
   </div>
 </div>
-
-
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)
+    <h2>private subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Save the figure.</p>
 <h3>History</h3>
 <ul>
 <li>modified: Johannes Rieke 6/16/2017</li>
 <li>modified: Jacob Williams 6/16/2017</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-me~15"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>me</strong></td><td><p>pyplot handler</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-figfile"></span>character(len=*),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>figfile</strong></td><td><p>file name for the figure</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-pyfile~2"></span>character(len=*),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>pyfile</strong></td><td><p>name of the Python script to generate</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dpi"></span>character(len=*),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>dpi</strong></td><td><p>resolution of the figure for png
 [note this is a string]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-transparent"></span>logical,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>transparent</strong></td><td><p>transparent background (T/F)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-facecolor"></span>character(len=*),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>facecolor</strong></td><td><p>the colors of the figure rectangle</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-edgecolor"></span>character(len=*),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>edgecolor</strong></td><td><p>the colors of the figure rectangle</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-orientation"></span>character(len=*),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>orientation</strong></td><td><p>'landscape' or 'portrait'</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
-  <td><span class="anchor" id="variable-istat~11"></span>integer,</td>
-  <td>intent(out),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+  <td><span class="anchor" id="variable-istat~14"></span>integer,</td>
+<td>intent(out),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
-    
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/savefig.html#src">savefig</a>
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../proc/savefig.html#variable-tmp~4">tmp</a>
+    </div>
   </div>
 </div>
-
-
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-
-
-    
-    
-    
-    <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">savefig</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">figfile</span><span class="p">,</span> <span class="n">pyfile</span><span class="p">,</span> <span class="n">dpi</span><span class="p">,</span> <span class="n">transparent</span><span class="p">,</span> <span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">istat</span><span class="p">)</span>
-
-    <span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">me</span>          <span class="c">!! pyplot handler</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">figfile</span>     <span class="c">!! file name for the figure</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span>   <span class="kd">::</span> <span class="n">pyfile</span>      <span class="c">!! name of the Python script to generate</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span>   <span class="kd">::</span> <span class="n">dpi</span>         <span class="c">!! resolution of the figure for png</span>
-                                                            <span class="c">!! [note this is a string]</span>
-    <span class="kt">logical</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span>            <span class="kd">::</span> <span class="n">transparent</span> <span class="c">!! transparent background (T/F)</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span>   <span class="kd">::</span> <span class="n">facecolor</span>   <span class="c">!! the colors of the figure rectangle</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span>   <span class="kd">::</span> <span class="n">edgecolor</span>   <span class="c">!! the colors of the figure rectangle</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span>   <span class="kd">::</span> <span class="n">orientation</span> <span class="c">!! &#39;landscape&#39; or &#39;portrait&#39;</span>
-    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span> <span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">istat</span>       <span class="c">!! status output (0 means no problems)</span>
-
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">tmp</span>  <span class="c">!! for building the `savefig` arguments.</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
-
-<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
-
-        <span class="c">!finish up the string:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">finish_ops</span><span class="p">()</span>
-
-        <span class="c">!build the savefig arguments:</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">figfile</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">dpi</span><span class="p">))</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, dpi=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">dpi</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">transparent</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">            if</span> <span class="p">(</span><span class="n">transparent</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">                </span><span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, transparent=True&#39;</span>
-            <span class="k">else</span>
-<span class="k">                </span><span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, transparent=False&#39;</span>
-            <span class="k">end if</span>
-<span class="k">        end if</span>
-<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">facecolor</span><span class="p">))</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, facecolor=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">facecolor</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">edgecolor</span><span class="p">))</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, edgecolor=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">edgecolor</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">orientation</span><span class="p">))</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, orientation=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">orientation</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">use_oo_api</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;canvas = FigureCanvas(fig)&#39;</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;canvas.print_figure(&#39;</span><span class="o">//</span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-        <span class="k">else</span>
-<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;plt.savefig(&#39;</span><span class="o">//</span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-        <span class="k">endif</span>
-<span class="k">        deallocate</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-
-        <span class="c">!run it:</span>
-        <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">execute</span><span class="p">(</span><span class="n">pyfile</span><span class="p">,</span> <span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
-
-    <span class="k">else</span>
-<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="s1">&#39;error in savefig: pyplot class not properly initialized.&#39;</span>
-    <span class="k">end if</span>
-
-<span class="k">    end subroutine </span><span class="n">savefig</span>
-</pre></div>
+    <section>    
+      <h2>Variables</h2>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-tmp~4"></span>character(len=:),</td>
+<td>private,</td>  <td>allocatable</td><td>::</td>
+  <td><strong>tmp</strong></td><td></td><td></td><td><p>for building the <code>savefig</code> arguments.</p></td>
+</tr>
+</tbody>
+</table>
 
     </section>
     <br>
     
     
+
+    
+    
+
+
+    
+    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -543,14 +282,11 @@ private subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edg
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,54 +43,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -104,53 +70,30 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>optional_logical_to_string
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
      <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 1.6% of total for procedures.">14 statements</a>
      </li> 
-     
-     
-     
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
-     
-     
+    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.f90</a></li>
-    
+     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
      <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-    
-  
      <li class="active">optional_logical_to_string</li>
   </ol>
 </div>
@@ -166,128 +109,48 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/optional_logical_to_string.html#src">optional_logical_to_string</a>
-  </div>
-</div>
-
-
+<em>None</em>
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private subroutine optional_logical_to_string(logical_value, string_value, default_value)
+    <h2>private subroutine optional_logical_to_string(logical_value, string_value, default_value)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Logical to string, specifying the default value if
 the optional argument is not present.</p>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-logical_value"></span>logical,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>logical_value</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-string_value~2"></span>character(len=:),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>allocatable</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>allocatable</td><td>::</td>
   <td><strong>string_value</strong></td><td><p>integer value stringified</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-default_value~2"></span>character(len=*),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>default_value</strong></td><td><p>default integer value</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -320,7 +183,7 @@ the optional argument is not present.</p>
 </g>
 </g>
 <!-- proc~add_hist&#45;&gt;proc~optional_logical_to_string -->
-<g id="proc~~optional_logical_to_string~~CalledByGraph_edge2" class="edge">
+<g id="proc~~optional_logical_to_string~~CalledByGraph_edge1" class="edge">
 <title>proc~add_hist&#45;&gt;proc~optional_logical_to_string</title>
 <path fill="none" stroke="#000000" d="M67.65,-88.1C86.56,-82.7 112.21,-75.37 134.88,-68.89"/>
 <polygon fill="#000000" stroke="#000000" points="136.07,-72.19 144.72,-66.08 134.15,-65.46 136.07,-72.19"/>
@@ -335,7 +198,7 @@ the optional argument is not present.</p>
 </g>
 </g>
 <!-- proc~add_sphere&#45;&gt;proc~optional_logical_to_string -->
-<g id="proc~~optional_logical_to_string~~CalledByGraph_edge1" class="edge">
+<g id="proc~~optional_logical_to_string~~CalledByGraph_edge2" class="edge">
 <title>proc~add_sphere&#45;&gt;proc~optional_logical_to_string</title>
 <path fill="none" stroke="#000000" d="M76.34,-54C84.79,-54 94.14,-54 103.71,-54"/>
 <polygon fill="#000000" stroke="#000000" points="103.74,-57.5 113.74,-54 103.74,-50.5 103.74,-57.5"/>
@@ -418,107 +281,41 @@ the optional argument is not present.</p>
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/optional_logical_to_string.html#src">optional_logical_to_string</a>
-  </div>
-</div>
-
-
+<em>None</em>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
-    
-    <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">logical_value</span><span class="p">,</span> <span class="n">string_value</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
-
-    <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span>              <span class="kd">::</span> <span class="n">logical_value</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">string_value</span>   <span class="c">!! integer value stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">default_value</span>  <span class="c">!! default integer value</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">logical_value</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">        if</span> <span class="p">(</span><span class="n">logical_value</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">            </span><span class="n">string_value</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
-        <span class="k">else</span>
-<span class="k">            </span><span class="n">string_value</span> <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
-        <span class="k">end if</span>
-<span class="k">    else</span>
-<span class="k">        </span><span class="n">string_value</span> <span class="o">=</span> <span class="n">default_value</span>
-    <span class="k">end if</span>
-
-<span class="k">    end subroutine </span><span class="n">optional_logical_to_string</span>
-</pre></div>
-
-    </section>
-    <br>
     
     
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -546,14 +343,11 @@ the optional argument is not present.</p>
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

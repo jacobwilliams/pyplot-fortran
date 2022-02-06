@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,54 +43,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -104,53 +70,30 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>optional_int_to_string
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
      <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 1.2% of total for procedures.">10 statements</a>
      </li> 
-     
-     
-     
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.f90"> Source File</a></li>
-     
-     
+    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.f90</a></li>
-    
+     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
      <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-    
-  
      <li class="active">optional_int_to_string</li>
   </ol>
 </div>
@@ -166,127 +109,48 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/optional_int_to_string.html#src">optional_int_to_string</a>
-  </div>
-</div>
-
-
+<em>None</em>
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private subroutine optional_int_to_string(int_value, string_value, default_value)
+    <h2>private subroutine optional_int_to_string(int_value, string_value, default_value)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Integer to string, specifying the default value if
 the optional argument is not present.</p>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-int_value"></span>integer,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>int_value</strong></td><td><p>integer value</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-string_value"></span>character(len=*),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>string_value</strong></td><td><p>integer value stringified</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-default_value"></span>character(len=*),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>default_value</strong></td><td><p>default integer value</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -387,8 +251,6 @@ the optional argument is not present.</p>
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -426,33 +288,33 @@ the optional argument is not present.</p>
 <path fill="none" stroke="#000000" d="M68.83,-293.96C73.45,-291.33 78.03,-288.32 82,-285 119.08,-253.98 151.13,-206.74 167.79,-179.78"/>
 <polygon fill="#000000" stroke="#000000" points="170.83,-181.51 173.02,-171.15 164.84,-177.88 170.83,-181.51"/>
 </g>
-<!-- proc~plot_surface -->
+<!-- proc~add_contour -->
 <g id="proc~~optional_int_to_string~~CalledByGraph_node3" class="node">
+<title>proc~add_contour</title>
+<g id="a_proc~~optional_int_to_string~~CalledByGraph_node3"><a xlink:href=".././proc/add_contour.html" xlink:title="add_contour">
+<polygon fill="#d9534f" stroke="#d9534f" points="80.5,-276 1.5,-276 1.5,-252 80.5,-252 80.5,-276"/>
+<text text-anchor="middle" x="41" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_contour</text>
+</a>
+</g>
+</g>
+<!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~optional_int_to_string~~CalledByGraph_edge2" class="edge">
+<title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M67.04,-251.96C72.12,-249.22 77.33,-246.17 82,-243 111.05,-223.3 141.23,-196.26 160.29,-178.24"/>
+<polygon fill="#000000" stroke="#000000" points="162.94,-180.56 167.74,-171.12 158.1,-175.5 162.94,-180.56"/>
+</g>
+<!-- proc~plot_surface -->
+<g id="proc~~optional_int_to_string~~CalledByGraph_node4" class="node">
 <title>proc~plot_surface</title>
-<g id="a_proc~~optional_int_to_string~~CalledByGraph_node3"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
-<polygon fill="#d9534f" stroke="#d9534f" points="80,-276 2,-276 2,-252 80,-252 80,-276"/>
-<text text-anchor="middle" x="41" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
+<g id="a_proc~~optional_int_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
+<polygon fill="#d9534f" stroke="#d9534f" points="80,-234 2,-234 2,-210 80,-210 80,-234"/>
+<text text-anchor="middle" x="41" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
 </a>
 </g>
 </g>
 <!-- proc~plot_surface&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_edge2" class="edge">
-<title>proc~plot_surface&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M67.04,-251.96C72.12,-249.22 77.33,-246.17 82,-243 111.05,-223.3 141.23,-196.26 160.29,-178.24"/>
-<polygon fill="#000000" stroke="#000000" points="162.94,-180.56 167.74,-171.12 158.1,-175.5 162.94,-180.56"/>
-</g>
-<!-- proc~add_plot -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_node4" class="node">
-<title>proc~add_plot</title>
-<g id="a_proc~~optional_int_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/add_plot.html" xlink:title="add_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="70,-234 12,-234 12,-210 70,-210 70,-234"/>
-<text text-anchor="middle" x="41" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_plot</text>
-</a>
-</g>
-</g>
-<!-- proc~add_plot&#45;&gt;proc~optional_int_to_string -->
 <g id="proc~~optional_int_to_string~~CalledByGraph_edge3" class="edge">
-<title>proc~add_plot&#45;&gt;proc~optional_int_to_string</title>
+<title>proc~plot_surface&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M68.61,-209.85C90.09,-200.05 120.51,-186.16 144.14,-175.37"/>
 <polygon fill="#000000" stroke="#000000" points="145.83,-178.45 153.47,-171.11 142.92,-172.08 145.83,-178.45"/>
 </g>
@@ -471,63 +333,63 @@ the optional argument is not present.</p>
 <path fill="none" stroke="#000000" d="M69.59,-175.8C80.8,-174.1 94.31,-172.04 107.98,-169.96"/>
 <polygon fill="#000000" stroke="#000000" points="108.58,-173.41 117.94,-168.44 107.52,-166.49 108.58,-173.41"/>
 </g>
-<!-- proc~add_3d_plot -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_node6" class="node">
-<title>proc~add_3d_plot</title>
-<g id="a_proc~~optional_int_to_string~~CalledByGraph_node6"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="add_3d_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="79.5,-150 2.5,-150 2.5,-126 79.5,-126 79.5,-150"/>
-<text text-anchor="middle" x="41" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
-</a>
-</g>
-</g>
-<!-- proc~add_3d_plot&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_edge5" class="edge">
-<title>proc~add_3d_plot&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M79.71,-143.74C88.47,-145.07 98.1,-146.54 107.8,-148.01"/>
-<polygon fill="#000000" stroke="#000000" points="107.5,-151.51 117.91,-149.55 108.55,-144.59 107.5,-151.51"/>
-</g>
-<!-- proc~add_contour -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_node7" class="node">
-<title>proc~add_contour</title>
-<g id="a_proc~~optional_int_to_string~~CalledByGraph_node7"><a xlink:href=".././proc/add_contour.html" xlink:title="add_contour">
-<polygon fill="#d9534f" stroke="#d9534f" points="80.5,-108 1.5,-108 1.5,-84 80.5,-84 80.5,-108"/>
-<text text-anchor="middle" x="41" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_contour</text>
-</a>
-</g>
-</g>
-<!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_edge6" class="edge">
-<title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M68.61,-108.15C90.09,-117.95 120.51,-131.84 144.14,-142.63"/>
-<polygon fill="#000000" stroke="#000000" points="142.92,-145.92 153.47,-146.89 145.83,-139.55 142.92,-145.92"/>
-</g>
 <!-- proc~add_hist -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_node8" class="node">
+<g id="proc~~optional_int_to_string~~CalledByGraph_node6" class="node">
 <title>proc~add_hist</title>
-<g id="a_proc~~optional_int_to_string~~CalledByGraph_node8"><a xlink:href=".././proc/add_hist.html" xlink:title="add_hist">
-<polygon fill="#d9534f" stroke="#d9534f" points="69.5,-66 12.5,-66 12.5,-42 69.5,-42 69.5,-66"/>
-<text text-anchor="middle" x="41" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_hist</text>
+<g id="a_proc~~optional_int_to_string~~CalledByGraph_node6"><a xlink:href=".././proc/add_hist.html" xlink:title="add_hist">
+<polygon fill="#d9534f" stroke="#d9534f" points="69.5,-150 12.5,-150 12.5,-126 69.5,-126 69.5,-150"/>
+<text text-anchor="middle" x="41" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_hist</text>
 </a>
 </g>
 </g>
 <!-- proc~add_hist&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_edge7" class="edge">
+<g id="proc~~optional_int_to_string~~CalledByGraph_edge5" class="edge">
 <title>proc~add_hist&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M67.04,-66.04C72.12,-68.78 77.33,-71.83 82,-75 111.05,-94.7 141.23,-121.74 160.29,-139.76"/>
-<polygon fill="#000000" stroke="#000000" points="158.1,-142.5 167.74,-146.88 162.94,-137.44 158.1,-142.5"/>
+<path fill="none" stroke="#000000" d="M69.59,-142.2C80.8,-143.9 94.31,-145.96 107.98,-148.04"/>
+<polygon fill="#000000" stroke="#000000" points="107.52,-151.51 117.94,-149.56 108.58,-144.59 107.52,-151.51"/>
 </g>
 <!-- proc~add_sphere -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_node9" class="node">
+<g id="proc~~optional_int_to_string~~CalledByGraph_node7" class="node">
 <title>proc~add_sphere</title>
-<g id="a_proc~~optional_int_to_string~~CalledByGraph_node9"><a xlink:href=".././proc/add_sphere.html" xlink:title="add_sphere">
-<polygon fill="#d9534f" stroke="#d9534f" points="78,-24 4,-24 4,0 78,0 78,-24"/>
-<text text-anchor="middle" x="41" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_sphere</text>
+<g id="a_proc~~optional_int_to_string~~CalledByGraph_node7"><a xlink:href=".././proc/add_sphere.html" xlink:title="add_sphere">
+<polygon fill="#d9534f" stroke="#d9534f" points="78,-108 4,-108 4,-84 78,-84 78,-108"/>
+<text text-anchor="middle" x="41" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_sphere</text>
 </a>
 </g>
 </g>
 <!-- proc~add_sphere&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~optional_int_to_string~~CalledByGraph_edge8" class="edge">
+<g id="proc~~optional_int_to_string~~CalledByGraph_edge6" class="edge">
 <title>proc~add_sphere&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M68.61,-108.15C90.09,-117.95 120.51,-131.84 144.14,-142.63"/>
+<polygon fill="#000000" stroke="#000000" points="142.92,-145.92 153.47,-146.89 145.83,-139.55 142.92,-145.92"/>
+</g>
+<!-- proc~add_plot -->
+<g id="proc~~optional_int_to_string~~CalledByGraph_node8" class="node">
+<title>proc~add_plot</title>
+<g id="a_proc~~optional_int_to_string~~CalledByGraph_node8"><a xlink:href=".././proc/add_plot.html" xlink:title="add_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-66 12,-66 12,-42 70,-42 70,-66"/>
+<text text-anchor="middle" x="41" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_plot&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~optional_int_to_string~~CalledByGraph_edge7" class="edge">
+<title>proc~add_plot&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M67.04,-66.04C72.12,-68.78 77.33,-71.83 82,-75 111.05,-94.7 141.23,-121.74 160.29,-139.76"/>
+<polygon fill="#000000" stroke="#000000" points="158.1,-142.5 167.74,-146.88 162.94,-137.44 158.1,-142.5"/>
+</g>
+<!-- proc~add_3d_plot -->
+<g id="proc~~optional_int_to_string~~CalledByGraph_node9" class="node">
+<title>proc~add_3d_plot</title>
+<g id="a_proc~~optional_int_to_string~~CalledByGraph_node9"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="add_3d_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="79.5,-24 2.5,-24 2.5,0 79.5,0 79.5,-24"/>
+<text text-anchor="middle" x="41" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_3d_plot&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~optional_int_to_string~~CalledByGraph_edge8" class="edge">
+<title>proc~add_3d_plot&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M68.83,-24.04C73.45,-26.67 78.03,-29.68 82,-33 119.08,-64.02 151.13,-111.26 167.79,-138.22"/>
 <polygon fill="#000000" stroke="#000000" points="164.84,-140.12 173.02,-146.85 170.83,-136.49 164.84,-140.12"/>
 </g>
@@ -594,103 +456,41 @@ the optional argument is not present.</p>
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/optional_int_to_string.html#src">optional_int_to_string</a>
-  </div>
-</div>
-
-
+<em>None</em>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
-    
-    <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">int_value</span><span class="p">,</span> <span class="n">string_value</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
-
-    <span class="kt">integer</span><span class="p">,</span>          <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">int_value</span>      <span class="c">!! integer value</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">string_value</span>   <span class="c">!! integer value stringified</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">default_value</span>  <span class="c">!! default integer value</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">int_value</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">        call </span><span class="n">integer_to_string</span><span class="p">(</span><span class="n">int_value</span><span class="p">,</span> <span class="n">string_value</span><span class="p">)</span>
-    <span class="k">else</span>
-<span class="k">        </span><span class="n">string_value</span> <span class="o">=</span> <span class="n">default_value</span>
-    <span class="k">end if</span>
-
-<span class="k">    end subroutine </span><span class="n">optional_int_to_string</span>
-</pre></div>
-
-    </section>
-    <br>
     
     
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -718,14 +518,11 @@ the optional argument is not present.</p>
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>
