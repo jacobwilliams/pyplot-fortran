@@ -1,11 +1,13 @@
 ![Pyplot-Fortran](media/logo.png)
 ============
 
-### Pyplot-Fortran
-
 A simple module for generating plots from Fortran using Python's matplotlib.pyplot.
 
+### Status 
+
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/pyplot-fortran.svg?style=plastic)](https://github.com/jacobwilliams/pyplot-fortran/releases/latest)
 ![Build Status](https://github.com/jacobwilliams/pyplot-fortran/actions/workflows/CI.yml/badge.svg)
+[![codecov](https://codecov.io/gh/jacobwilliams/pyplot-fortran/branch/master/graph/badge.svg?token=BHtd51oUTE)](https://codecov.io/gh/jacobwilliams/pyplot-fortran)
 
 ### Overview
 

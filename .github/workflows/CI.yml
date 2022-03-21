@@ -8,8 +8,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        gcc_v: [9] # Version of GFortran we want to use.
-        python-version: [3.7]
+        gcc_v: [10] # Version of GFortran we want to use.
+        python-version: [3.9]
     env:
       FC: gfortran-${{ matrix.gcc_v }}
       GCC_V: ${{ matrix.gcc_v }}
@@ -43,18 +43,31 @@ jobs:
     - name: Install GFortran Linux
       if: contains( matrix.os, 'ubuntu')
       run: |
-        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-        sudo apt-get update
-        sudo apt-get install -y gcc-${GCC_V} gfortran-${GCC_V}
-        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 100 \
-        --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-${GCC_V} \
-        --slave /usr/bingcov gcov /usr/bin/gcov-${GCC_V}
+        sudo apt-get install lcov
+        sudo update-alternatives \
+           --install /usr/bin/gcc gcc /usr/bin/gcc-${{ matrix.gcc_v }} 100 \
+           --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-${{ matrix.gcc_v }} \
+           --slave /usr/bin/gcov gcov /usr/bin/gcov-${{ matrix.gcc_v }}
 
-    - name: Compile
-      run: fpm build --profile release
+    # - name: Compile
+    #   run: fpm build --profile release
 
-    - name: Run test
-      run: fpm test
+    - name: Run tests
+      run: fpm test --profile debug --flag -coverage
+
+    - name: Create coverage report
+      run: |
+        mkdir -p ${{ env.COV_DIR }}
+        lcov --capture --initial --base-directory . --directory build/gfortran_*/ --output-file ${{ env.COV_DIR }}/coverage.base
+        lcov --capture --base-directory . --directory build/gfortran_*/ --output-file ${{ env.COV_DIR }}/coverage.capture
+        lcov --add-tracefile ${{ env.COV_DIR }}/coverage.base --add-tracefile ${{ env.COV_DIR }}/coverage.capture --output-file ${{ env.COV_DIR }}/coverage.info
+      env:
+        COV_DIR: build/coverage
+
+    - name: Upload coverage report
+      uses: codecov/codecov-action@v2
+      with:
+        files: build/coverage/coverage.info      
 
     - name: Build documentation
       run: ford ./pyplot-fortran.md
