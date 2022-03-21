@@ -10,4 +10,4 @@ coverage:
         target: 20%
     project:
       default:
-        target: 60%
+        target: 70%
