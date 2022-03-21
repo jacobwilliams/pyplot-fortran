@@ -112,7 +112,12 @@
     <div id="sidebar">
   <h3>Contents</h3>
  
-<em>None</em>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/finish_ops.html#src">finish_ops</a>
+  </div>
+</div>
 
 </div>
 
@@ -142,7 +147,12 @@
     <section class="visible-xs visible-sm hidden-md">
       <h3>Contents</h3>
  
-<em>None</em>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/finish_ops.html#src">finish_ops</a>
+  </div>
+</div>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
@@ -156,6 +166,52 @@
 
 
     
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">finish_ops</span><span class="p">(</span><span class="n">me</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="c">!! pyplot handler</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">show_legend</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.legend(loc=&quot;best&quot;)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">axis_equal</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_aspect(&quot;auto&quot;)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;def set_axes_equal(ax):&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    x_limits = ax.get_xlim3d()&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    y_limits = ax.get_ylim3d()&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    z_limits = ax.get_zlim3d()&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    x_range = abs(x_limits[1] - x_limits[0])&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    x_middle = np.mean(x_limits)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    y_range = abs(y_limits[1] - y_limits[0])&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    y_middle = np.mean(y_limits)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    z_range = abs(z_limits[1] - z_limits[0])&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    z_middle = np.mean(z_limits)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    plot_radius = 0.5*max([x_range, y_range, z_range])&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    ax.set_xlim3d([x_middle - plot_radius, x_middle + plot_radius])&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    ax.set_ylim3d([y_middle - plot_radius, y_middle + plot_radius])&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;    ax.set_zlim3d([z_middle - plot_radius, z_middle + plot_radius])&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;set_axes_equal(ax)&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.axis(&quot;equal&quot;)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">tight_layout</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig.tight_layout()&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">finish_ops</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    <br>
     
     </div>
   </div>

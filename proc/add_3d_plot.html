@@ -113,18 +113,9 @@
   <h3>Contents</h3>
  
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
-  <div id="vars-0" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-xstr~5">xstr</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-ystr~4">ystr</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-zstr~3">zstr</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-imark~2">imark</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-iline~4">iline</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-xname~5">xname</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-yname~4">yname</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-zname~3">zname</a>
-    </div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/add_3d_plot.html#src">add_3d_plot</a>
   </div>
 </div>
 
@@ -337,18 +328,9 @@
       <h3>Contents</h3>
  
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
-  <div id="vars-1" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-xstr~5">xstr</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-ystr~4">ystr</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-zstr~3">zstr</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-imark~2">imark</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-iline~4">iline</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-xname~5">xname</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-yname~4">yname</a>
-      <a class="list-group-item" href="../proc/add_3d_plot.html#variable-zname~3">zname</a>
-    </div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/add_3d_plot.html#src">add_3d_plot</a>
   </div>
 </div>
 
@@ -356,64 +338,77 @@
     <br class="visible-xs visible-sm hidden-md">
 
 
-    <section>    
-      <h2>Variables</h2>
-    <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-xstr~5"></span>character(len=:),</td>
-<td>private,</td>  <td>allocatable</td><td>::</td>
-  <td><strong>xstr</strong></td><td></td><td></td><td><p>x values stringified</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-ystr~4"></span>character(len=:),</td>
-<td>private,</td>  <td>allocatable</td><td>::</td>
-  <td><strong>ystr</strong></td><td></td><td></td><td><p>y values stringified</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-zstr~3"></span>character(len=:),</td>
-<td>private,</td>  <td>allocatable</td><td>::</td>
-  <td><strong>zstr</strong></td><td></td><td></td><td><p>z values stringified</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-imark~2"></span>character(len=max_int_len),</td>
-<td>private</td>  <td></td><td>::</td>
-  <td><strong>imark</strong></td><td></td><td></td><td><p>actual markers size</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-iline~4"></span>character(len=max_int_len),</td>
-<td>private</td>  <td></td><td>::</td>
-  <td><strong>iline</strong></td><td></td><td></td><td><p>actual line width</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-xname~5"></span>character(len=*),</td>
-<td>private,</td>  <td>parameter</td><td>::</td>
-  <td><strong>xname</strong></td><td> =</td><td>'x'</td><td><p>x variable name for script</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-yname~4"></span>character(len=*),</td>
-<td>private,</td>  <td>parameter</td><td>::</td>
-  <td><strong>yname</strong></td><td> =</td><td>'y'</td><td><p>y variable name for script</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-zname~3"></span>character(len=*),</td>
-<td>private,</td>  <td>parameter</td><td>::</td>
-  <td><strong>zname</strong></td><td> =</td><td>'z'</td><td><p>z variable name for script</p></td>
-</tr>
-</tbody>
-</table>
+    
+    
+
+    
+    
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">add_3d_plot</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">linestyle</span><span class="p">,</span><span class="w"> </span><span class="n">markersize</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="w">          </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">           </span><span class="c">!! pyplot handler</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w">            </span><span class="c">!! x values</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="w">            </span><span class="c">!! y values</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">z</span><span class="w">            </span><span class="c">!! z values</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">       </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">label</span><span class="w">        </span><span class="c">!! plot label</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">       </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">linestyle</span><span class="w">    </span><span class="c">!! style of the plot line</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">                </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">markersize</span><span class="w">   </span><span class="c">!! size of the plot markers</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">                </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">linewidth</span><span class="w">    </span><span class="c">!! width of the plot line</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">                </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w">        </span><span class="c">!! status output (0 means no problems)</span>
+
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xstr</span><span class="w">         </span><span class="c">!! x values stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ystr</span><span class="w">         </span><span class="c">!! y values stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">zstr</span><span class="w">         </span><span class="c">!! z values stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">imark</span><span class="w">        </span><span class="c">!! actual markers size</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">iline</span><span class="w">        </span><span class="c">!! actual line width</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">xname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="w">  </span><span class="c">!! x variable name for script</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">yname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;y&#39;</span><span class="w">  </span><span class="c">!! y variable name for script</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">zname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;z&#39;</span><span class="w">  </span><span class="c">!! z variable name for script</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!convert the arrays to strings:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">xstr</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">ystr</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">zstr</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!get optional inputs (if not present, set default value):</span>
+<span class="w">        </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">markersize</span><span class="p">,</span><span class="w"> </span><span class="n">imark</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">linewidth</span><span class="p">,</span><span class="w"> </span><span class="n">iline</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!write the arrays:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">xstr</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">ystr</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">zname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">zstr</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!write the plot statement:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.plot(&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                        </span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                        </span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                        </span><span class="nb">trim</span><span class="p">(</span><span class="n">zname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                        </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">linestyle</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                        </span><span class="s1">&#39;linewidth=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">iline</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                        </span><span class="s1">&#39;markersize=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">imark</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                        </span><span class="s1">&#39;label=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Error in add_3d_plot: pyplot class not properly initialized.&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">add_3d_plot</span><span class="w"></span>
+</pre></div>
 
     </section>
     <br>
-    
-    
-
-    
-    
-
-
-    
     
     </div>
   </div>

@@ -113,11 +113,9 @@
   <h3>Contents</h3>
  
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
-  <div id="vars-0" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/savefig.html#variable-tmp~4">tmp</a>
-    </div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/savefig.html#src">savefig</a>
   </div>
 </div>
 
@@ -190,7 +188,7 @@
   <td><strong>orientation</strong></td><td><p>'landscape' or 'portrait'</p></td>
 </tr>
 <tr>
-  <td><span class="anchor" id="variable-istat~14"></span>integer,</td>
+  <td><span class="anchor" id="variable-istat~11"></span>integer,</td>
 <td>intent(out),</td>
   <td>optional</td>  <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
@@ -204,11 +202,9 @@
       <h3>Contents</h3>
  
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
-  <div id="vars-1" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/savefig.html#variable-tmp~4">tmp</a>
-    </div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/savefig.html#src">savefig</a>
   </div>
 </div>
 
@@ -216,29 +212,72 @@
     <br class="visible-xs visible-sm hidden-md">
 
 
-    <section>    
-      <h2>Variables</h2>
-    <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-tmp~4"></span>character(len=:),</td>
-<td>private,</td>  <td>allocatable</td><td>::</td>
-  <td><strong>tmp</strong></td><td></td><td></td><td><p>for building the <code>savefig</code> arguments.</p></td>
-</tr>
-</tbody>
-</table>
+    
+    
+
+    
+    
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">savefig</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">figfile</span><span class="p">,</span><span class="w"> </span><span class="n">pyfile</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="p">,</span><span class="w"> </span><span class="n">transparent</span><span class="p">,</span><span class="w"> </span><span class="n">facecolor</span><span class="p">,</span><span class="w"> </span><span class="n">edgecolor</span><span class="p">,</span><span class="w"> </span><span class="n">orientation</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="w">    </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">          </span><span class="c">!! pyplot handler</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">figfile</span><span class="w">     </span><span class="c">!! file name for the figure</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">pyfile</span><span class="w">      </span><span class="c">!! name of the Python script to generate</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">dpi</span><span class="w">         </span><span class="c">!! resolution of the figure for png</span>
+<span class="w">                                                            </span><span class="c">!! [note this is a string]</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">transparent</span><span class="w"> </span><span class="c">!! transparent background (T/F)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">facecolor</span><span class="w">   </span><span class="c">!! the colors of the figure rectangle</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">edgecolor</span><span class="w">   </span><span class="c">!! the colors of the figure rectangle</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">orientation</span><span class="w"> </span><span class="c">!! &#39;landscape&#39; or &#39;portrait&#39;</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w">       </span><span class="c">!! status output (0 means no problems)</span>
+
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp</span><span class="w">  </span><span class="c">!! for building the `savefig` arguments.</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!finish up the string:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">finish_ops</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!build the savefig arguments:</span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">figfile</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">dpi</span><span class="p">))</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, dpi=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">dpi</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">transparent</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            if</span><span class="w"> </span><span class="p">(</span><span class="n">transparent</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, transparent=True&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">else</span>
+<span class="k">                </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, transparent=False&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">end if</span>
+<span class="k">        end if</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">facecolor</span><span class="p">))</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, facecolor=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">facecolor</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">edgecolor</span><span class="p">))</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, edgecolor=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">edgecolor</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">orientation</span><span class="p">))</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;, orientation=&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">orientation</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">use_oo_api</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;canvas = FigureCanvas(fig)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;canvas.print_figure(&#39;</span><span class="o">//</span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;plt.savefig(&#39;</span><span class="o">//</span><span class="n">tmp</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">endif</span>
+<span class="k">        deallocate</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!run it:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">execute</span><span class="p">(</span><span class="n">pyfile</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error in savefig: pyplot class not properly initialized.&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">savefig</span><span class="w"></span>
+</pre></div>
 
     </section>
     <br>
-    
-    
-
-    
-    
-
-
-    
     
     </div>
   </div>

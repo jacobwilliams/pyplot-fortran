@@ -153,6 +153,12 @@
     </div>
   </div>
 </div>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/pyplot.html#src">pyplot</a>
+  </div>
+</div>
 
 </div>
 
@@ -208,6 +214,12 @@
     </div>
   </div>
 </div>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/pyplot.html#src">pyplot</a>
+  </div>
+</div>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
@@ -219,62 +231,62 @@
 <tbody>
 <tr>
   <td><span class="anchor" id="variable-str"></span>character(len=:),</td>
-<td>private,</td>  <td>allocatable</td><td>::</td>
+<td>public,</td>  <td>allocatable</td><td>::</td>
   <td><strong>str</strong></td><td></td><td></td><td><p>string buffer</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-raw_str_token"></span>character(len=1),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>raw_str_token</strong></td><td> =</td><td>' '</td><td><p>will be 'r' if using raw strings</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-show_legend"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>show_legend</strong></td><td> =</td><td>.false.</td><td><p>show legend into plot</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-use_numpy"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>use_numpy</strong></td><td> =</td><td>.true.</td><td><p>use numpy python module</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-use_oo_api"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>use_oo_api</strong></td><td> =</td><td>.false.</td><td><p>use OO interface of matplotlib (incopatible with showfig subroutine)</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-mplot3d"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>mplot3d</strong></td><td> =</td><td>.false.</td><td><p>it is a 3d plot</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-polar"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>polar</strong></td><td> =</td><td>.false.</td><td><p>it is a polar plot</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-axis_equal"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>axis_equal</strong></td><td> =</td><td>.false.</td><td><p>equal scale on each axis</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-axisbelow"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>axisbelow</strong></td><td> =</td><td>.true.</td><td><p>axis below other chart elements</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-tight_layout"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>tight_layout</strong></td><td> =</td><td>.false.</td><td><p>tight layout option</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-usetex"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>usetex</strong></td><td> =</td><td>.false.</td><td><p>enable LaTeX</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-real_fmt"></span>character(len=:),</td>
-<td>private,</td>  <td>allocatable</td><td>::</td>
+<td>public,</td>  <td>allocatable</td><td>::</td>
   <td><strong>real_fmt</strong></td><td></td><td></td><td><p>real number formatting</p></td>
 </tr>
 </tbody>
@@ -1561,6 +1573,57 @@ raw strings (e.g., r'str'). Default is False.</p></td>
 
     </section>
     
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pyplot</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!!  The main pyplot class.</span>
+
+<span class="w">        </span><span class="k">private</span>
+
+<span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="c">!! string buffer</span>
+
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">raw_str_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="c">!! will be &#39;r&#39; if using raw strings</span>
+
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">show_legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">     </span><span class="c">!! show legend into plot</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">use_numpy</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w">      </span><span class="c">!! use numpy python module</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">use_oo_api</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">     </span><span class="c">!! use OO interface of matplotlib (incopatible with showfig subroutine)</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mplot3d</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">     </span><span class="c">!! it is a 3d plot</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">polar</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">     </span><span class="c">!! it is a polar plot</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">axis_equal</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">     </span><span class="c">!! equal scale on each axis</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">axisbelow</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w">      </span><span class="c">!! axis below other chart elements</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tight_layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">    </span><span class="c">!! tight layout option</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">usetex</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">     </span><span class="c">!! enable LaTeX</span>
+
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">real_fmt</span><span class="w">  </span><span class="c">!! real number formatting</span>
+
+<span class="w">    </span><span class="k">contains</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">! public methods</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">initialize</span><span class="w">    </span><span class="c">!! initialize pyplot instance</span>
+
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_plot</span><span class="w">      </span><span class="c">!! add a 2d plot to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_errorbar</span><span class="w">  </span><span class="c">!! add a 2d error bar plot to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_3d_plot</span><span class="w">   </span><span class="c">!! add a 3d plot to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_sphere</span><span class="w">    </span><span class="c">!! add a 3d sphere to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_contour</span><span class="w">   </span><span class="c">!! add a contour plot to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">plot_surface</span><span class="w">  </span><span class="c">!! add a surface plot to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_bar</span><span class="w">       </span><span class="c">!! add a barplot to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_imshow</span><span class="w">    </span><span class="c">!! add an image plot (using `imshow`)</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_hist</span><span class="w">      </span><span class="c">!! add a histogram plot to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">savefig</span><span class="w">       </span><span class="c">!! save plots of pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">showfig</span><span class="w">       </span><span class="c">!! show plots of pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">destroy</span><span class="w">       </span><span class="c">!! destroy pyplot instance</span>
+
+<span class="w">        </span><span class="c">! private methods</span>
+<span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">execute</span><span class="w">    </span><span class="c">!! execute pyplot commands</span>
+<span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_str</span><span class="w">    </span><span class="c">!! add string to pytplot instance buffer</span>
+<span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">finish_ops</span><span class="w"> </span><span class="c">!! some final ops before saving</span>
+
+<span class="w">    </span><span class="k">end type </span><span class="n">pyplot</span><span class="w"></span>
+</pre></div>
+
+    </section>
     
     </div>
   </div>
