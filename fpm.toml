@@ -2,7 +2,7 @@ name = "pyplot-fortran"
 version = "3.1.0"
 author = "Jacob Williams"
 maintainer = "Jacob Williams"
-copyright = "Copyright (c) 2015-2021, Jacob Williams"
+copyright = "Copyright (c) 2015-2022, Jacob Williams"
 license = "BSD-3"
 description = "A simple module for generating plots from Fortran using Python's matplotlib.pyplot."
 homepage = "https://github.com/jacobwilliams/pyplot-fortran"
@@ -16,9 +16,4 @@ library = true
 [build]
 auto-executables = false
 auto-examples = false
-auto-tests = false
-
-[[test]]
-name = "test"
-source-dir = "tests"
-main = "test.f90"
+auto-tests = true
