@@ -49,7 +49,7 @@
     character(len=*), parameter :: int_fmt          = '(I10)'    !! integer format string
     integer, parameter          :: max_int_len      = 10         !! max string length for integers
     character(len=*), parameter :: real_fmt_default = '(E30.16)' !! default real number format string
-    integer, parameter          :: max_real_len     = 30         !! max string length for reals
+    integer, parameter          :: max_real_len     = 60         !! max string length for reals
 
     type, public :: pyplot
 
