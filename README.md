@@ -55,7 +55,7 @@ pyplot-fortran = { git="https://github.com/jacobwilliams/pyplot-fortran.git" }
 or, to use a specific version:
 ```toml
 [dependencies]
-pyplot-fortran = { git="https://github.com/jacobwilliams/pyplot-fortran.git", tag = "3.2.0" }
+pyplot-fortran = { git="https://github.com/jacobwilliams/pyplot-fortran.git", tag = "3.3.0" }
 ```
 
 To generate the documentation using [ford](https://github.com/Fortran-FOSS-Programmers/ford), run: ```ford pyplot-fortran.md```
