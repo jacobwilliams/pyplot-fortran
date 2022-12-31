@@ -88,7 +88,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p>100.0% of total for derived types.</p>Including implementation: 841 statements, 100.0% of total for derived types.">33 statements</a>
+               title="<p>100.0% of total for derived types.</p>Including implementation: 850 statements, 100.0% of total for derived types.">33 statements</a>
           </li>
 
             <li id="source-file">
@@ -3021,7 +3021,7 @@ raw strings (e.g., r'str'). Default is False.</p>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)  
+    private  subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
@@ -3181,6 +3181,21 @@ raw strings (e.g., r'str'). Default is False.</p>
 <p>status output (0 means no problems)</p>
             </td>
         </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>python</strong></td>
+            <td>
+<p>python executable to use. (by default, this is 'python')</p>
+            </td>
+        </tr>
     </tbody>
   </table>
 
@@ -3199,7 +3214,7 @@ raw strings (e.g., r'str'). Default is False.</p>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)  
+    private  subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat, python)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Johannes Rieke</dd>
@@ -3262,6 +3277,21 @@ raw strings (e.g., r'str'). Default is False.</p>
             <td><strong>istat</strong></td>
             <td>
 <p>status output (0 means no problems)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>python</strong></td>
+            <td>
+<p>python executable to use. (by default, this is 'python')</p>
             </td>
         </tr>
     </tbody>
@@ -3334,7 +3364,7 @@ raw strings (e.g., r'str'). Default is False.</p>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)  
+    private  subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat, python)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
@@ -3399,6 +3429,21 @@ raw strings (e.g., r'str'). Default is False.</p>
             <td><strong>istat</strong></td>
             <td>
 <p>status output (0 means no problems)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>python</strong></td>
+            <td>
+<p>python executable to use. (by default, this is 'python')</p>
             </td>
         </tr>
     </tbody>

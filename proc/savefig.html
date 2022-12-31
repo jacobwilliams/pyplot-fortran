@@ -89,7 +89,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 4.2% of total for procedures.">39 statements</a>
+               title=" 4.3% of total for procedures.">40 statements</a>
           </li>
 
             <li id="source-file">
@@ -149,7 +149,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private  subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)  
+    <h2>private  subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)  
 </h2>
     
 
@@ -307,6 +307,21 @@
                 <p>status output (0 means no problems)</p>
             </td>
         </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-python~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>python</strong></td>
+            <td>
+                <p>python executable to use. (by default, this is 'python')</p>
+            </td>
+        </tr>
     </tbody>
   </table>
 
@@ -355,7 +370,7 @@
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">savefig</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">figfile</span><span class="p">,</span><span class="w"> </span><span class="n">pyfile</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="p">,</span><span class="w"> </span><span class="n">transparent</span><span class="p">,</span><span class="w"> </span><span class="n">facecolor</span><span class="p">,</span><span class="w"> </span><span class="n">edgecolor</span><span class="p">,</span><span class="w"> </span><span class="n">orientation</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">savefig</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">figfile</span><span class="p">,</span><span class="w"> </span><span class="n">pyfile</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="p">,</span><span class="w"> </span><span class="n">transparent</span><span class="p">,</span><span class="w"> </span><span class="n">facecolor</span><span class="p">,</span><span class="w"> </span><span class="n">edgecolor</span><span class="p">,</span><span class="w"> </span><span class="n">orientation</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">,</span><span class="w"> </span><span class="n">python</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="w">    </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">          </span><span class="c">!! pyplot handler</span>
 <span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">figfile</span><span class="w">     </span><span class="c">!! file name for the figure</span>
@@ -367,6 +382,7 @@
 <span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">edgecolor</span><span class="w">   </span><span class="c">!! the colors of the figure rectangle</span>
 <span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">orientation</span><span class="w"> </span><span class="c">!! &#39;landscape&#39; or &#39;portrait&#39;</span>
 <span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w">       </span><span class="c">!! status output (0 means no problems)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">python</span><span class="w">      </span><span class="c">!! python executable to use. (by default, this is &#39;python&#39;)</span>
 
 <span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp</span><span class="w">  </span><span class="c">!! for building the `savefig` arguments.</span>
 
@@ -399,7 +415,7 @@
 <span class="k">        deallocate</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">        </span><span class="c">!run it:</span>
-<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">execute</span><span class="p">(</span><span class="n">pyfile</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">execute</span><span class="p">(</span><span class="n">pyfile</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">,</span><span class="w"> </span><span class="n">python</span><span class="o">=</span><span class="n">python</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">else</span>
 <span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>

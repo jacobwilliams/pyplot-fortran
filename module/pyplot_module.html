@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="100.0% of total for modules and submodules.">966 statements</a>
+               title="100.0% of total for modules and submodules.">975 statements</a>
           </li>
 
             <li id="source-file">
@@ -3927,7 +3927,7 @@ the optional argument is not present.</p>
   </div>
 
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-execute"></span><h3>private  subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-execute"></span><h3>private  subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat, python)  
 </h3></div>
     <div class="panel-body">
               <dl class="dl-horizontal">
@@ -3993,6 +3993,21 @@ the optional argument is not present.</p>
 <p>status output (0 means no problems)</p>
             </td>
         </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>python</strong></td>
+            <td>
+<p>python executable to use. (by default, this is 'python')</p>
+            </td>
+        </tr>
     </tbody>
   </table>
 
@@ -4044,7 +4059,7 @@ the optional argument is not present.</p>
   </div>
 
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-savefig"></span><h3>private  subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-savefig"></span><h3>private  subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)  
 </h3></div>
     <div class="panel-body">
               <dl class="dl-horizontal">
@@ -4200,6 +4215,21 @@ the optional argument is not present.</p>
 <p>status output (0 means no problems)</p>
             </td>
         </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>python</strong></td>
+            <td>
+<p>python executable to use. (by default, this is 'python')</p>
+            </td>
+        </tr>
     </tbody>
   </table>
 
@@ -4208,7 +4238,7 @@ the optional argument is not present.</p>
   </div>
 
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-showfig"></span><h3>private  subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-showfig"></span><h3>private  subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat, python)  
 </h3></div>
     <div class="panel-body">
               <dl class="dl-horizontal">
@@ -4272,6 +4302,21 @@ the optional argument is not present.</p>
             <td><strong>istat</strong></td>
             <td>
 <p>status output (0 means no problems)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>python</strong></td>
+            <td>
+<p>python executable to use. (by default, this is 'python')</p>
             </td>
         </tr>
     </tbody>

@@ -1336,16 +1336,18 @@
 !  If user specifies a Python file name, then the file is kept, otherwise
 !  a temporary filename is used, and the file is deleted after it is used.
 
-    subroutine execute(me, pyfile, istat)
+    subroutine execute(me, pyfile, istat, python)
 
     class(pyplot),    intent(inout)         :: me     !! pytplot handler
     character(len=*), intent(in),  optional :: pyfile !! name of the python script to generate
     integer,          intent (out),optional :: istat  !! status output (0 means no problems)
+    character(len=*), intent(in),optional   :: python !! python executable to use. (by default, this is 'python')
 
     integer                       :: iunit   !! IO unit
     character(len=:), allocatable :: file    !! file name
     logical                       :: scratch !! if a scratch file is to be used
     integer                       :: iostat  !! open/close status code
+    character(len=:), allocatable :: python_ !! python executable to use
 
     if (allocated(me%str)) then
 
@@ -1379,12 +1381,18 @@
             write(error_unit,'(A)') 'Error closing file: '//trim(file)
         else
 
+            if (present(python)) then 
+                python_ = trim(python)
+            else 
+                python_ = python_exe
+            end if 
+
             !run the file using python:
             if (index(file,' ')>0) then
                 ! space in path, probably should enclose in quotes
-                call execute_command_line(python_exe//' "'//file//'"')
+                call execute_command_line(python_//' "'//file//'"')
             else
-                call execute_command_line(python_exe//' '//file)
+                call execute_command_line(python_//' '//file)
             end if
 
             if (scratch) then
@@ -1466,7 +1474,7 @@
 !  * modified: Johannes Rieke 6/16/2017
 !  * modified: Jacob Williams 6/16/2017
 
-    subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat)
+    subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)
 
     class(pyplot),    intent(inout)          :: me          !! pyplot handler
     character(len=*), intent(in)             :: figfile     !! file name for the figure
@@ -1478,6 +1486,7 @@
     character(len=*), intent(in), optional   :: edgecolor   !! the colors of the figure rectangle
     character(len=*), intent(in), optional   :: orientation !! 'landscape' or 'portrait'
     integer,          intent (out), optional :: istat       !! status output (0 means no problems)
+    character(len=*), intent(in),optional    :: python      !! python executable to use. (by default, this is 'python')
 
     character(len=:),allocatable :: tmp  !! for building the `savefig` arguments.
 
@@ -1510,7 +1519,7 @@
         deallocate(tmp)
 
         !run it:
-        call me%execute(pyfile, istat=istat)
+        call me%execute(pyfile, istat=istat, python=python)
 
     else
         if (present(istat)) istat = -1
@@ -1526,11 +1535,12 @@
 !
 ! Shows the figure.
 
-    subroutine showfig(me, pyfile, istat)
+    subroutine showfig(me, pyfile, istat, python)
 
     class(pyplot),    intent(inout)          :: me      !! pyplot handler
     character(len=*), intent(in), optional   :: pyfile  !! name of the Python script to generate
     integer,          intent (out), optional :: istat   !! status output (0 means no problems)
+    character(len=*), intent(in),optional    :: python  !! python executable to use. (by default, this is 'python')
 
     if (.not. allocated(me%str)) then
 
@@ -1553,7 +1563,7 @@
         call me%add_str('plt.show()')
 
         !run it:
-        call me%execute(pyfile, istat=istat)
+        call me%execute(pyfile, istat=istat, python=python)
 
     end if
 
