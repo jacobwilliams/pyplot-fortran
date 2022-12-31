@@ -62,13 +62,15 @@ To generate the documentation using [ford](https://github.com/Fortran-FOSS-Progr
 
 ### Supported plot types
 
-* ```matplotlib.pyplot.plot``` -- 2D/3D plot of lines and/or markers
-* ```matplotlib.pyplot.bar``` -- bar plot
-* ```matplotlib.pyplot.contour``` -- contour plot
-* ```matplotlib.pyplot.contourf``` -- filled contour plot
-* ```matplotlib.pyplot.imshow``` -- image plot
-* ```matplotlib.pyplot.hist``` -- histogram plot
-* ```matplotlib.pyplot.errorbar``` -- errorbar plot
+* `matplotlib.pyplot.plot` -- 2D/3D plot of lines and/or markers
+* `matplotlib.pyplot.bar` -- bar plot
+* `matplotlib.pyplot.contour` -- contour plot
+* `matplotlib.pyplot.contourf` -- filled contour plot
+* `matplotlib.pyplot.imshow` -- image plot
+* `matplotlib.pyplot.hist` -- histogram plot
+* `matplotlib.pyplot.errorbar` -- errorbar plot
+* `mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface` -- surface plot
+* `mpl_toolkits.mplot3d.axes3d.Axes3D.plot_wireframe` -- 3D wireframe
 
 ### Example
 
