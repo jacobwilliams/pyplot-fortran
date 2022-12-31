@@ -8,7 +8,7 @@
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
-    <title>plot_surface &ndash; pyplot-fortran</title>
+    <title>plot_wireframe &ndash; pyplot-fortran</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -76,7 +76,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>plot_surface
+    <h1>plot_wireframe
       <small>Subroutine</small>
       
     </h1>
@@ -100,7 +100,7 @@
         <ol class="breadcrumb in-well text-right">
               <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
               <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-          <li class="active">plot_surface</li>
+          <li class="active">plot_wireframe</li>
         </ol>
       </div>
     </div>
@@ -139,7 +139,7 @@
     <div class="panel panel-primary">
       <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
       <div class="list-group">
-        <a class="list-group-item" href="../proc/plot_surface.html#src">plot_surface</a>
+        <a class="list-group-item" href="../proc/plot_wireframe.html#src">plot_wireframe</a>
       </div>
     </div>
 
@@ -149,11 +149,11 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private  subroutine plot_surface(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
+    <h2>private  subroutine plot_wireframe(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
 </h2>
     
 
-    <p>Add a surface plot.</p>
+    <p>Add a wireframe plot.</p>
 <p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>This requires <code>use_numpy</code> to be True.</p></div>
 
     <h3>Arguments</h3>
@@ -169,7 +169,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~7"></span>
+              <span class="anchor" id="variable-me~8"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -184,7 +184,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~4"></span>
+              <span class="anchor" id="variable-x~5"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -199,7 +199,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-y~3"></span>
+              <span class="anchor" id="variable-y~4"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -214,7 +214,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-z~2"></span>
+              <span class="anchor" id="variable-z~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -229,7 +229,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-label~3"></span>
+              <span class="anchor" id="variable-label~4"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -244,7 +244,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-linestyle~3"></span>
+              <span class="anchor" id="variable-linestyle~4"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -259,7 +259,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-linewidth~3"></span>
+              <span class="anchor" id="variable-linewidth~4"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -274,7 +274,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-levels~2"></span>
+              <span class="anchor" id="variable-levels~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -289,7 +289,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-color~3"></span>
+              <span class="anchor" id="variable-color~4"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -304,7 +304,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-cmap~2"></span>
+              <span class="anchor" id="variable-cmap~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -319,7 +319,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-colorbar~2"></span>
+              <span class="anchor" id="variable-colorbar~3"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -334,7 +334,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-antialiased"></span>
+              <span class="anchor" id="variable-antialiased~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -349,7 +349,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-istat~4"></span>
+              <span class="anchor" id="variable-istat~5"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -376,98 +376,98 @@
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
-<!-- Title: proc~~plot_surface~~CallsGraph Pages: 1 -->
-<svg id="procplot_surfaceCallsGraph" width="408pt" height="137pt"
- viewBox="0.00 0.00 408.00 136.68" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~plot_surface~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 132.68)">
-<title>proc~~plot_surface~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-132.68 404,-132.68 404,4 -4,4"/>
-<!-- proc~plot_surface -->
-<g id="proc~~plot_surface~~CallsGraph_node1" class="node">
-<title>proc~plot_surface</title>
-<polygon fill="none" stroke="black" points="78,-87 0,-87 0,-63 78,-63 78,-87"/>
-<text text-anchor="middle" x="39" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">plot_surface</text>
+<!-- Title: proc~~plot_wireframe~~CallsGraph Pages: 1 -->
+<svg id="procplot_wireframeCallsGraph" width="422pt" height="136pt"
+ viewBox="0.00 0.00 422.00 136.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~plot_wireframe~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 132)">
+<title>proc~~plot_wireframe~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-132 418,-132 418,4 -4,4"/>
+<!-- proc~plot_wireframe -->
+<g id="proc~~plot_wireframe~~CallsGraph_node1" class="node">
+<title>proc~plot_wireframe</title>
+<polygon fill="none" stroke="black" points="92,-87 0,-87 0,-63 92,-63 92,-87"/>
+<text text-anchor="middle" x="46" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">plot_wireframe</text>
 </g>
 <!-- proc~vec_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_node2" class="node">
+<g id="proc~~plot_wireframe~~CallsGraph_node2" class="node">
 <title>proc~vec_to_string</title>
-<g id="a_proc~~plot_surface~~CallsGraph_node2"><a xlink:href=".././proc/vec_to_string.html" xlink:title="vec_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="390,-128 308,-128 308,-104 390,-104 390,-128"/>
-<text text-anchor="middle" x="349" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
+<g id="a_proc~~plot_wireframe~~CallsGraph_node2"><a xlink:href=".././proc/vec_to_string.html" xlink:title="vec_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="404,-128 322,-128 322,-104 404,-104 404,-128"/>
+<text text-anchor="middle" x="363" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
 </a>
 </g>
 </g>
-<!-- proc~plot_surface&#45;&gt;proc~vec_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_edge1" class="edge">
-<title>proc~plot_surface&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M55.69,-87.12C69.98,-97.36 92.15,-111.23 114,-117 175.66,-133.28 249.69,-129.22 297.73,-123.64"/>
-<polygon fill="#000000" stroke="#000000" points="298.37,-127.09 307.87,-122.39 297.52,-120.14 298.37,-127.09"/>
+<!-- proc~plot_wireframe&#45;&gt;proc~vec_to_string -->
+<g id="proc~~plot_wireframe~~CallsGraph_edge1" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M64.35,-87.14C80.12,-97.38 104.45,-111.26 128,-117 189.96,-132.11 263.92,-128.31 311.87,-123.11"/>
+<polygon fill="#000000" stroke="#000000" points="312.45,-126.57 321.98,-121.95 311.65,-119.62 312.45,-126.57"/>
 </g>
 <!-- proc~matrix_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_node3" class="node">
+<g id="proc~~plot_wireframe~~CallsGraph_node3" class="node">
 <title>proc~matrix_to_string</title>
-<g id="a_proc~~plot_surface~~CallsGraph_node3"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-108 139,-108 139,-84 237,-84 237,-108"/>
-<text text-anchor="middle" x="188" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
+<g id="a_proc~~plot_wireframe~~CallsGraph_node3"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="251,-108 153,-108 153,-84 251,-84 251,-108"/>
+<text text-anchor="middle" x="202" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
 </a>
 </g>
 </g>
-<!-- proc~plot_surface&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_edge4" class="edge">
-<title>proc~plot_surface&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M78.24,-80.46C93.6,-82.66 111.65,-85.24 128.58,-87.65"/>
-<polygon fill="#000000" stroke="#000000" points="128.55,-91.19 138.94,-89.13 129.54,-84.26 128.55,-91.19"/>
+<!-- proc~plot_wireframe&#45;&gt;proc~matrix_to_string -->
+<g id="proc~~plot_wireframe~~CallsGraph_edge4" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M92.37,-81.19C108.1,-83.33 125.95,-85.77 142.57,-88.03"/>
+<polygon fill="#000000" stroke="#000000" points="142.35,-91.54 152.74,-89.42 143.3,-84.6 142.35,-91.54"/>
 </g>
 <!-- proc~optional_int_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_node4" class="node">
+<g id="proc~~plot_wireframe~~CallsGraph_node4" class="node">
 <title>proc~optional_int_to_string</title>
-<g id="a_proc~~plot_surface~~CallsGraph_node4"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="251,-66 125,-66 125,-42 251,-42 251,-66"/>
-<text text-anchor="middle" x="188" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
+<g id="a_proc~~plot_wireframe~~CallsGraph_node4"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="265,-66 139,-66 139,-42 265,-42 265,-66"/>
+<text text-anchor="middle" x="202" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
 </a>
 </g>
 </g>
-<!-- proc~plot_surface&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_edge3" class="edge">
-<title>proc~plot_surface&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M78.24,-69.54C89.45,-67.94 102.09,-66.13 114.69,-64.33"/>
-<polygon fill="#000000" stroke="#000000" points="115.35,-67.77 124.75,-62.89 114.36,-60.84 115.35,-67.77"/>
+<!-- proc~plot_wireframe&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~plot_wireframe~~CallsGraph_edge3" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M92.37,-68.81C103.85,-67.25 116.47,-65.53 128.92,-63.83"/>
+<polygon fill="#000000" stroke="#000000" points="129.4,-67.3 138.83,-62.48 128.45,-60.36 129.4,-67.3"/>
 </g>
 <!-- proc~optional_logical_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_node5" class="node">
+<g id="proc~~plot_wireframe~~CallsGraph_node5" class="node">
 <title>proc~optional_logical_to_string</title>
-<g id="a_proc~~plot_surface~~CallsGraph_node5"><a xlink:href=".././proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="262,-24 114,-24 114,0 262,0 262,-24"/>
-<text text-anchor="middle" x="188" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_logical_to_string</text>
+<g id="a_proc~~plot_wireframe~~CallsGraph_node5"><a xlink:href=".././proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="276,-24 128,-24 128,0 276,0 276,-24"/>
+<text text-anchor="middle" x="202" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_logical_to_string</text>
 </a>
 </g>
 </g>
-<!-- proc~plot_surface&#45;&gt;proc~optional_logical_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_edge2" class="edge">
-<title>proc~plot_surface&#45;&gt;proc~optional_logical_to_string</title>
-<path fill="none" stroke="#000000" d="M58.54,-62.84C73.14,-53.68 94.26,-41.31 114,-33 118.81,-30.97 123.89,-29.07 129.02,-27.31"/>
-<polygon fill="#000000" stroke="#000000" points="130.5,-30.5 138.92,-24.08 128.33,-23.85 130.5,-30.5"/>
+<!-- proc~plot_wireframe&#45;&gt;proc~optional_logical_to_string -->
+<g id="proc~~plot_wireframe~~CallsGraph_edge2" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M67.44,-62.95C83.51,-53.85 106.66,-41.5 128,-33 133.13,-30.96 138.53,-29.02 143.99,-27.21"/>
+<polygon fill="#000000" stroke="#000000" points="145.33,-30.45 153.8,-24.09 143.21,-23.78 145.33,-30.45"/>
 </g>
 <!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_edge5" class="edge">
+<g id="proc~~plot_wireframe~~CallsGraph_edge5" class="edge">
 <title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M237.14,-102.05C256.27,-104.46 278.3,-107.23 297.65,-109.67"/>
-<polygon fill="#000000" stroke="#000000" points="297.43,-113.17 307.79,-110.94 298.31,-106.22 297.43,-113.17"/>
+<path fill="none" stroke="#000000" d="M251.14,-102.05C270.27,-104.46 292.3,-107.23 311.65,-109.67"/>
+<polygon fill="#000000" stroke="#000000" points="311.43,-113.17 321.79,-110.94 312.31,-106.22 311.43,-113.17"/>
 </g>
 <!-- proc~integer_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_node6" class="node">
+<g id="proc~~plot_wireframe~~CallsGraph_node6" class="node">
 <title>proc~integer_to_string</title>
-<g id="a_proc~~plot_surface~~CallsGraph_node6"><a xlink:href=".././proc/integer_to_string.html" xlink:title="integer_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="400,-66 298,-66 298,-42 400,-42 400,-66"/>
-<text text-anchor="middle" x="349" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
+<g id="a_proc~~plot_wireframe~~CallsGraph_node6"><a xlink:href=".././proc/integer_to_string.html" xlink:title="integer_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="414,-66 312,-66 312,-42 414,-42 414,-66"/>
+<text text-anchor="middle" x="363" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
 </a>
 </g>
 </g>
 <!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
-<g id="proc~~plot_surface~~CallsGraph_edge6" class="edge">
+<g id="proc~~plot_wireframe~~CallsGraph_edge6" class="edge">
 <title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
-<path fill="none" stroke="#000000" d="M251.38,-54C263.23,-54 275.6,-54 287.39,-54"/>
-<polygon fill="#000000" stroke="#000000" points="287.57,-57.5 297.57,-54 287.57,-50.5 287.57,-57.5"/>
+<path fill="none" stroke="#000000" d="M265.38,-54C277.23,-54 289.6,-54 301.39,-54"/>
+<polygon fill="#000000" stroke="#000000" points="301.57,-57.5 311.57,-54 301.57,-50.5 301.57,-57.5"/>
 </g>
 </g>
 </svg>
@@ -558,7 +558,7 @@
     <div class="panel panel-primary">
       <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
       <div class="list-group">
-        <a class="list-group-item" href="../proc/plot_surface.html#src">plot_surface</a>
+        <a class="list-group-item" href="../proc/plot_wireframe.html#src">plot_wireframe</a>
       </div>
     </div>
 
@@ -577,7 +577,7 @@
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">plot_surface</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">linestyle</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">linestyle</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
 <span class="w">                            </span><span class="n">cmap</span><span class="p">,</span><span class="w"> </span><span class="n">colorbar</span><span class="p">,</span><span class="w"> </span><span class="n">antialiased</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="w">           </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">           </span><span class="c">!! pyplot handler</span>
@@ -640,7 +640,7 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">cmap</span><span class="p">))</span><span class="w">       </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;cmap=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="n">cmap</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="w"></span>
 
 <span class="w">        </span><span class="c">!write the plot statement:</span>
-<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;CS = ax.plot_surface&#39;</span><span class="o">//</span><span class="s1">&#39;(&#39;</span><span class="o">//</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;CS = ax.plot_wireframe&#39;</span><span class="o">//</span><span class="s1">&#39;(&#39;</span><span class="o">//</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
 <span class="w">                        </span><span class="s1">&#39;label=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
 <span class="w">                        </span><span class="s1">&#39;antialiased=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">antialiasedstr</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
 <span class="w">                        </span><span class="s1">&#39;linestyles=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">linestyle</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="p">&amp;</span><span class="w"></span>
@@ -657,7 +657,7 @@
 <span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span><span class="w"></span>
 <span class="w">    </span><span class="k">end if</span>
 
-<span class="k">    end subroutine </span><span class="n">plot_surface</span><span class="w"></span>
+<span class="k">    end subroutine </span><span class="n">plot_wireframe</span><span class="w"></span>
 </pre></div>
 
     </section>

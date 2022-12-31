@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="100.0% of total for modules and submodules.">909 statements</a>
+               title="100.0% of total for modules and submodules.">966 statements</a>
           </li>
 
             <li id="source-file">
@@ -176,6 +176,7 @@
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_hist">add_hist</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_contour">add_contour</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-plot_surface">plot_surface</a>
+            <a class="list-group-item" href="../module/pyplot_module.html#proc-plot_wireframe">plot_wireframe</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_3d_plot">add_3d_plot</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_sphere">add_sphere</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_bar">add_bar</a>
@@ -388,6 +389,7 @@
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_hist">add_hist</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_contour">add_contour</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-plot_surface">plot_surface</a>
+            <a class="list-group-item" href="../module/pyplot_module.html#proc-plot_wireframe">plot_wireframe</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_3d_plot">add_3d_plot</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_sphere">add_sphere</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_bar">add_bar</a>
@@ -862,6 +864,14 @@ parameter
                   :: <strong><a href='../type/pyplot.html#boundprocedure-add_contour'>add_contour</a></strong>
 <small>Subroutine</small>                </td>
                 <td><p>add a contour plot to pyplot instance</p></td>
+              </tr>
+              <tr>
+                <td>
+                    procedure
+                    ,                  public
+                  :: <strong><a href='../type/pyplot.html#boundprocedure-plot_wireframe'>plot_wireframe</a></strong>
+<small>Subroutine</small>                </td>
+                <td><p>add a wireframe plot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>
@@ -2077,6 +2087,229 @@ raw strings (e.g., r'str'). Default is False.</p>
     </dl>
 
   <p>Add a surface plot.</p><a href="../proc/plot_surface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/pyplot.html'>pyplot</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+<p>pyplot handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+<p>x values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+<p>y values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:,:)
+            </td>
+            <td>::</td>
+            <td><strong>z</strong></td>
+            <td>
+<p>z values (a matrix)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>label</strong></td>
+            <td>
+<p>plot label</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linestyle</strong></td>
+            <td>
+<p>style of the plot line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linewidth</strong></td>
+            <td>
+<p>width of the plot line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td>optional,</td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>levels</strong></td>
+            <td>
+<p>contour levels to plot</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>color</strong></td>
+            <td>
+<p>Color of the surface patches</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cmap</strong></td>
+            <td>
+<p>colormap if filled=True (examples: 'jet', 'bone')</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>colorbar</strong></td>
+            <td>
+<p>add a colorbar (default=False)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>antialiased</strong></td>
+            <td>
+<p>The surface is made opaque by using antialiased=False</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>istat</strong></td>
+            <td>
+<p>status output (0 means no problems)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+      <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-plot_wireframe"></span><h3>private  subroutine <a href='../proc/plot_wireframe.html'>plot_wireframe</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
+</h3></div>
+    <div class="panel-body">
+              <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Jacob Williams</dd>
+    </dl>
+
+  <p>Add a wireframe plot.</p><a href="../proc/plot_wireframe.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">

@@ -88,7 +88,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p>100.0% of total for derived types.</p>Including implementation: 784 statements, 100.0% of total for derived types.">32 statements</a>
+               title="<p>100.0% of total for derived types.</p>Including implementation: 841 statements, 100.0% of total for derived types.">33 statements</a>
           </li>
 
             <li id="source-file">
@@ -170,6 +170,7 @@
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_sphere">add_sphere</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
+            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-plot_wireframe">plot_wireframe</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-plot_surface">plot_surface</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_imshow">add_imshow</a>
@@ -258,6 +259,7 @@
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_sphere">add_sphere</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
+            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-plot_wireframe">plot_wireframe</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-plot_surface">plot_surface</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_imshow">add_imshow</a>
@@ -1982,6 +1984,239 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
             <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-plot_wireframe"></span><h3>procedure, public :: <strong>plot_wireframe</strong>          
+    </h3></div>
+      <div class="panel-body">
+        
+        <p>add a wireframe plot to pyplot instance</p>
+      </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private  subroutine <a href='../proc/plot_wireframe.html'>plot_wireframe</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
+</h3>
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Jacob Williams</dd>
+    </dl>
+
+  <p>Add a wireframe plot.</p>
+<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>This requires <code>use_numpy</code> to be True.</p></div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/pyplot.html'>pyplot</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+<p>pyplot handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+<p>x values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+<p>y values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:,:)
+            </td>
+            <td>::</td>
+            <td><strong>z</strong></td>
+            <td>
+<p>z values (a matrix)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>label</strong></td>
+            <td>
+<p>plot label</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linestyle</strong></td>
+            <td>
+<p>style of the plot line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linewidth</strong></td>
+            <td>
+<p>width of the plot line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td>optional,</td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>levels</strong></td>
+            <td>
+<p>contour levels to plot</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>color</strong></td>
+            <td>
+<p>Color of the surface patches</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cmap</strong></td>
+            <td>
+<p>colormap if filled=True (examples: 'jet', 'bone')</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>colorbar</strong></td>
+            <td>
+<p>add a colorbar (default=False)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>antialiased</strong></td>
+            <td>
+<p>The surface is made opaque by using antialiased=False</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>istat</strong></td>
+            <td>
+<p>status output (0 means no problems)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
     <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-plot_surface"></span><h3>procedure, public :: <strong>plot_surface</strong>          
     </h3></div>
       <div class="panel-body">
@@ -3329,6 +3564,7 @@ raw strings (e.g., r'str'). Default is False.</p>
 <span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_3d_plot</span><span class="w">   </span><span class="c">!! add a 3d plot to pyplot instance</span>
 <span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_sphere</span><span class="w">    </span><span class="c">!! add a 3d sphere to pyplot instance</span>
 <span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_contour</span><span class="w">   </span><span class="c">!! add a contour plot to pyplot instance</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">plot_wireframe</span><span class="c">!! add a wireframe plot to pyplot instance</span>
 <span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">plot_surface</span><span class="w">  </span><span class="c">!! add a surface plot to pyplot instance</span>
 <span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_bar</span><span class="w">       </span><span class="c">!! add a barplot to pyplot instance</span>
 <span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_imshow</span><span class="w">    </span><span class="c">!! add an image plot (using `imshow`)</span>
