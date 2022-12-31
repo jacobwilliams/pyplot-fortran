@@ -104,6 +104,16 @@
     call plt%add_imshow(mat,xlim=[0.0_wp, 100.0_wp],ylim=[0.0_wp, 100.0_wp],istat=istat)
     call plt%savefig('imshow.png', pyfile='imshow.py',istat=istat)
 
+    !wireframe plot:
+    call plt%initialize(grid=.true.,xlabel='x angle (rad)',&
+                        ylabel='y angle (rad)',figsize=[10,10],&
+                        title='Wireframe plot test', real_fmt='*',&
+                        axisbelow=.false.,mplot3d=.true.,use_numpy=.true.)
+    call plt%plot_wireframe(x, y, z, label='', linestyle='-', &
+                         cmap='bone', colorbar=.true.,&
+                         istat=istat)
+    call plt%savefig('wireframe.png', pyfile='wireframe.py',istat=istat)
+
     !histogram chart:
     x = [0.194,0.501,-1.241,1.425,-2.217,-0.342,-0.979,0.909,0.994,0.101,       &
          -0.131,-0.627,0.463,1.404,0.036,-2.000,0.109,1.250,-1.035,-1.115,      &
