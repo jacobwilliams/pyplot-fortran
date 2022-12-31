@@ -192,7 +192,7 @@
     call plt%savefig('errorbar.png', &
                      pyfile='errorbar.py', &
                      dpi='200', &
-                     transparent=.true.,istat=istat)
+                     transparent=.true.,istat=istat, python='python')
 
     end program test
 !*****************************************************************************************
