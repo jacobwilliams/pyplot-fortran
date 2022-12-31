@@ -78,75 +78,126 @@
   <div class="row">
     <h1>integer_to_string
       <small>Subroutine</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title=" 1.4% of total for procedures.">12 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
-     <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-     <li class="active">integer_to_string</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title=" 1.4% of total for procedures.">12 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/pyplot_module.F90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
+              <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
+          <li class="active">integer_to_string</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
   </div>
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/integer_to_string.html#src">integer_to_string</a>
-  </div>
-</div>
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/integer_to_string.html#src">integer_to_string</a>
+      </div>
+    </div>
 
-</div>
+
+  </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private subroutine integer_to_string(i, s)</h2>
+    <h2>private  subroutine integer_to_string(i, s)  
+</h2>
     
 
     <p>Integer to string conversion.</p>
 
     <h3>Arguments</h3>
-      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-i"></span>integer,</td>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-i"></span>
+              integer,
+            </td>
 <td>intent(in),</td>
-  <td>optional</td>  <td></td><td>::</td>
-  <td><strong>i</strong></td><td><p>integer value</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-s"></span>character(len=*),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>i</strong></td>
+            <td>
+                <p>integer value</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-s"></span>
+              character(len=*),
+            </td>
 <td>intent(out)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>s</strong></td><td><p>integer value stringified</p></td>
-</tr>
-</tbody>
-</table>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>s</strong></td>
+            <td>
+                <p>integer value stringified</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
 
     <br>
     <div class="panel panel-default">
@@ -196,7 +247,7 @@
 </g>
 </g>
 <!-- proc~initialize&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~integer_to_string~~CalledByGraph_edge3" class="edge">
+<g id="proc~~integer_to_string~~CalledByGraph_edge8" class="edge">
 <title>proc~initialize&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M68.17,-293.89C72.95,-291.23 77.76,-288.23 82,-285 90.98,-278.15 136.31,-228.43 162.06,-199.94"/>
 <polygon fill="#000000" stroke="#000000" points="164.95,-201.95 169.06,-192.18 159.76,-197.26 164.95,-201.95"/>
@@ -217,98 +268,98 @@
 </g>
 </g>
 <!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~integer_to_string~~CalledByGraph_edge4" class="edge">
+<g id="proc~~integer_to_string~~CalledByGraph_edge3" class="edge">
 <title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M65.88,-251.9C71.23,-249.07 76.85,-246 82,-243 106.86,-228.52 134.34,-210.69 153.86,-197.69"/>
 <polygon fill="#000000" stroke="#000000" points="155.87,-200.56 162.23,-192.09 151.97,-194.74 155.87,-200.56"/>
 </g>
-<!-- proc~add_errorbar -->
-<g id="proc~~integer_to_string~~CalledByGraph_node5" class="node">
-<title>proc~add_errorbar</title>
-<g id="a_proc~~integer_to_string~~CalledByGraph_node5"><a xlink:href=".././proc/add_errorbar.html" xlink:title="add_errorbar">
-<polygon fill="#d9534f" stroke="#d9534f" points="82,-234 0,-234 0,-210 82,-210 82,-234"/>
-<text text-anchor="middle" x="41" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_errorbar</text>
-</a>
-</g>
-</g>
-<!-- proc~add_errorbar&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~integer_to_string~~CalledByGraph_edge7" class="edge">
-<title>proc~add_errorbar&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M81.55,-209.96C96.85,-205.31 114.53,-199.93 130.65,-195.02"/>
-<polygon fill="#000000" stroke="#000000" points="131.9,-198.3 140.45,-192.04 129.86,-191.6 131.9,-198.3"/>
-</g>
-<!-- proc~add_3d_plot -->
-<g id="proc~~integer_to_string~~CalledByGraph_node6" class="node">
-<title>proc~add_3d_plot</title>
-<g id="a_proc~~integer_to_string~~CalledByGraph_node6"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="add_3d_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="79.5,-192 2.5,-192 2.5,-168 79.5,-168 79.5,-192"/>
-<text text-anchor="middle" x="41" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
-</a>
-</g>
-</g>
-<!-- proc~add_3d_plot&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~integer_to_string~~CalledByGraph_edge5" class="edge">
-<title>proc~add_3d_plot&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M79.71,-180C88.47,-180 98.1,-180 107.8,-180"/>
-<polygon fill="#000000" stroke="#000000" points="107.91,-183.5 117.91,-180 107.91,-176.5 107.91,-183.5"/>
-</g>
-<!-- proc~add_sphere -->
-<g id="proc~~integer_to_string~~CalledByGraph_node7" class="node">
-<title>proc~add_sphere</title>
-<g id="a_proc~~integer_to_string~~CalledByGraph_node7"><a xlink:href=".././proc/add_sphere.html" xlink:title="add_sphere">
-<polygon fill="#d9534f" stroke="#d9534f" points="78,-150 4,-150 4,-126 78,-126 78,-150"/>
-<text text-anchor="middle" x="41" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_sphere</text>
-</a>
-</g>
-</g>
-<!-- proc~add_sphere&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~integer_to_string~~CalledByGraph_edge6" class="edge">
-<title>proc~add_sphere&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M78.26,-149.04C94.15,-153.87 113.05,-159.62 130.22,-164.85"/>
-<polygon fill="#000000" stroke="#000000" points="129.52,-168.29 140.1,-167.86 131.55,-161.6 129.52,-168.29"/>
-</g>
 <!-- proc~plot_surface -->
-<g id="proc~~integer_to_string~~CalledByGraph_node8" class="node">
+<g id="proc~~integer_to_string~~CalledByGraph_node5" class="node">
 <title>proc~plot_surface</title>
-<g id="a_proc~~integer_to_string~~CalledByGraph_node8"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
-<polygon fill="#d9534f" stroke="#d9534f" points="80,-108 2,-108 2,-84 80,-84 80,-108"/>
-<text text-anchor="middle" x="41" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
+<g id="a_proc~~integer_to_string~~CalledByGraph_node5"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
+<polygon fill="#d9534f" stroke="#d9534f" points="80,-234 2,-234 2,-210 80,-210 80,-234"/>
+<text text-anchor="middle" x="41" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
 </a>
 </g>
 </g>
 <!-- proc~plot_surface&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~integer_to_string~~CalledByGraph_edge8" class="edge">
+<g id="proc~~integer_to_string~~CalledByGraph_edge4" class="edge">
 <title>proc~plot_surface&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M65.88,-108.1C71.23,-110.93 76.85,-114 82,-117 106.86,-131.48 134.34,-149.31 153.86,-162.31"/>
-<polygon fill="#000000" stroke="#000000" points="151.97,-165.26 162.23,-167.91 155.87,-159.44 151.97,-165.26"/>
-</g>
-<!-- proc~add_plot -->
-<g id="proc~~integer_to_string~~CalledByGraph_node9" class="node">
-<title>proc~add_plot</title>
-<g id="a_proc~~integer_to_string~~CalledByGraph_node9"><a xlink:href=".././proc/add_plot.html" xlink:title="add_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="70,-66 12,-66 12,-42 70,-42 70,-66"/>
-<text text-anchor="middle" x="41" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_plot</text>
-</a>
-</g>
-</g>
-<!-- proc~add_plot&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~integer_to_string~~CalledByGraph_edge9" class="edge">
-<title>proc~add_plot&#45;&gt;proc~optional_int_to_string</title>
-<path fill="none" stroke="#000000" d="M68.17,-66.11C72.95,-68.77 77.76,-71.77 82,-75 115.05,-100.21 146.61,-137.11 164.61,-159.79"/>
-<polygon fill="#000000" stroke="#000000" points="161.9,-162.01 170.82,-167.73 167.42,-157.69 161.9,-162.01"/>
+<path fill="none" stroke="#000000" d="M80.07,-210.41C95.53,-205.71 113.61,-200.21 130.1,-195.19"/>
+<polygon fill="#000000" stroke="#000000" points="131.58,-198.4 140.12,-192.14 129.54,-191.7 131.58,-198.4"/>
 </g>
 <!-- proc~add_hist -->
-<g id="proc~~integer_to_string~~CalledByGraph_node10" class="node">
+<g id="proc~~integer_to_string~~CalledByGraph_node6" class="node">
 <title>proc~add_hist</title>
-<g id="a_proc~~integer_to_string~~CalledByGraph_node10"><a xlink:href=".././proc/add_hist.html" xlink:title="add_hist">
-<polygon fill="#d9534f" stroke="#d9534f" points="69.5,-24 12.5,-24 12.5,0 69.5,0 69.5,-24"/>
-<text text-anchor="middle" x="41" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_hist</text>
+<g id="a_proc~~integer_to_string~~CalledByGraph_node6"><a xlink:href=".././proc/add_hist.html" xlink:title="add_hist">
+<polygon fill="#d9534f" stroke="#d9534f" points="69.5,-192 12.5,-192 12.5,-168 69.5,-168 69.5,-192"/>
+<text text-anchor="middle" x="41" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_hist</text>
 </a>
 </g>
 </g>
 <!-- proc~add_hist&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~integer_to_string~~CalledByGraph_edge10" class="edge">
+<g id="proc~~integer_to_string~~CalledByGraph_edge5" class="edge">
 <title>proc~add_hist&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M69.59,-180C80.69,-180 94.05,-180 107.59,-180"/>
+<polygon fill="#000000" stroke="#000000" points="107.94,-183.5 117.94,-180 107.94,-176.5 107.94,-183.5"/>
+</g>
+<!-- proc~add_plot -->
+<g id="proc~~integer_to_string~~CalledByGraph_node7" class="node">
+<title>proc~add_plot</title>
+<g id="a_proc~~integer_to_string~~CalledByGraph_node7"><a xlink:href=".././proc/add_plot.html" xlink:title="add_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-150 12,-150 12,-126 70,-126 70,-150"/>
+<text text-anchor="middle" x="41" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_plot&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~integer_to_string~~CalledByGraph_edge6" class="edge">
+<title>proc~add_plot&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M70.26,-146.6C87.68,-151.9 110.49,-158.84 130.8,-165.03"/>
+<polygon fill="#000000" stroke="#000000" points="129.95,-168.42 140.53,-167.99 131.98,-161.73 129.95,-168.42"/>
+</g>
+<!-- proc~add_3d_plot -->
+<g id="proc~~integer_to_string~~CalledByGraph_node8" class="node">
+<title>proc~add_3d_plot</title>
+<g id="a_proc~~integer_to_string~~CalledByGraph_node8"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="add_3d_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="79.5,-108 2.5,-108 2.5,-84 79.5,-84 79.5,-108"/>
+<text text-anchor="middle" x="41" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_3d_plot&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~integer_to_string~~CalledByGraph_edge7" class="edge">
+<title>proc~add_3d_plot&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M65.88,-108.1C71.23,-110.93 76.85,-114 82,-117 106.86,-131.48 134.34,-149.31 153.86,-162.31"/>
+<polygon fill="#000000" stroke="#000000" points="151.97,-165.26 162.23,-167.91 155.87,-159.44 151.97,-165.26"/>
+</g>
+<!-- proc~add_sphere -->
+<g id="proc~~integer_to_string~~CalledByGraph_node9" class="node">
+<title>proc~add_sphere</title>
+<g id="a_proc~~integer_to_string~~CalledByGraph_node9"><a xlink:href=".././proc/add_sphere.html" xlink:title="add_sphere">
+<polygon fill="#d9534f" stroke="#d9534f" points="78,-66 4,-66 4,-42 78,-42 78,-66"/>
+<text text-anchor="middle" x="41" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_sphere</text>
+</a>
+</g>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~integer_to_string~~CalledByGraph_edge9" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M68.17,-66.11C72.95,-68.77 77.76,-71.77 82,-75 115.05,-100.21 146.61,-137.11 164.61,-159.79"/>
+<polygon fill="#000000" stroke="#000000" points="161.9,-162.01 170.82,-167.73 167.42,-157.69 161.9,-162.01"/>
+</g>
+<!-- proc~add_errorbar -->
+<g id="proc~~integer_to_string~~CalledByGraph_node10" class="node">
+<title>proc~add_errorbar</title>
+<g id="a_proc~~integer_to_string~~CalledByGraph_node10"><a xlink:href=".././proc/add_errorbar.html" xlink:title="add_errorbar">
+<polygon fill="#d9534f" stroke="#d9534f" points="82,-24 0,-24 0,0 82,0 82,-24"/>
+<text text-anchor="middle" x="41" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_errorbar</text>
+</a>
+</g>
+</g>
+<!-- proc~add_errorbar&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~integer_to_string~~CalledByGraph_edge10" class="edge">
+<title>proc~add_errorbar&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M69.46,-24.05C73.9,-26.65 78.27,-29.64 82,-33 123.13,-70.04 154.97,-127.91 170.18,-158.84"/>
 <polygon fill="#000000" stroke="#000000" points="167.04,-160.37 174.53,-167.87 173.35,-157.34 167.04,-160.37"/>
 </g>
@@ -378,14 +429,33 @@
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/integer_to_string.html#src">integer_to_string</a>
-  </div>
-</div>
+        <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/integer_to_string.html#src">integer_to_string</a>
+      </div>
+    </div>
+
 
     </section>
     <br class="visible-xs visible-sm hidden-md">

@@ -78,93 +78,171 @@
   <div class="row">
     <h1>vec_to_string
       <small>Subroutine</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title=" 4.8% of total for procedures.">41 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
-     <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-     <li class="active">vec_to_string</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title=" 4.8% of total for procedures.">41 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/pyplot_module.F90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
+              <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
+          <li class="active">vec_to_string</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
   </div>
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/vec_to_string.html#src">vec_to_string</a>
-  </div>
-</div>
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/vec_to_string.html#src">vec_to_string</a>
+      </div>
+    </div>
 
-</div>
+
+  </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)</h2>
+    <h2>private  subroutine vec_to_string(v, fmt, str, use_numpy, is_tuple)  
+</h2>
     
 
     <p>Real vector to string.</p>
 
     <h3>Arguments</h3>
-      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-v~2"></span>real(kind=wp),</td>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-v~2"></span>
+              real(kind=wp),
+            </td>
 <td>intent(in),</td>
-  <td></td>  <td>dimension(:)</td><td>::</td>
-  <td><strong>v</strong></td><td><p>real values</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-fmt~2"></span>character(len=*),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>v</strong></td>
+            <td>
+                <p>real values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fmt~2"></span>
+              character(len=*),
+            </td>
 <td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>fmt</strong></td><td><p>real format string</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-str~4"></span>character(len=:),</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fmt</strong></td>
+            <td>
+                <p>real format string</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-str~3"></span>
+              character(len=:),
+            </td>
 <td>intent(out),</td>
-  <td></td>  <td>allocatable</td><td>::</td>
-  <td><strong>str</strong></td><td><p>real values stringified</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-use_numpy~3"></span>logical,</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>str</strong></td>
+            <td>
+                <p>real values stringified</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-use_numpy~2"></span>
+              logical,
+            </td>
 <td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>use_numpy</strong></td><td><p>activate numpy python module usage</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-is_tuple"></span>logical,</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>use_numpy</strong></td>
+            <td>
+                <p>activate numpy python module usage</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-is_tuple"></span>
+              logical,
+            </td>
 <td>intent(in),</td>
-  <td>optional</td>  <td></td><td>::</td>
-  <td><strong>is_tuple</strong></td><td><p>if true [default], use '()', if false use '[]'</p></td>
-</tr>
-</tbody>
-</table>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>is_tuple</strong></td>
+            <td>
+                <p>if true [default], use '()', if false use '[]'</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
 
     <br>
     <div class="panel panel-default">
@@ -178,169 +256,169 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~vec_to_string~~CalledByGraph Pages: 1 -->
-<svg id="procvec_to_stringCalledByGraph" width="339pt" height="326pt"
- viewBox="0.00 0.00 339.00 325.86" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~vec_to_string~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 321.86)">
+<svg id="procvec_to_stringCalledByGraph" width="339pt" height="356pt"
+ viewBox="0.00 0.00 339.00 356.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~vec_to_string~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 352)">
 <title>proc~~vec_to_string~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-321.86 335,-321.86 335,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-352 335,-352 335,4 -4,4"/>
 <!-- proc~vec_to_string -->
 <g id="proc~~vec_to_string~~CalledByGraph_node1" class="node">
 <title>proc~vec_to_string</title>
-<polygon fill="none" stroke="black" points="331,-173.59 249,-173.59 249,-149.59 331,-149.59 331,-173.59"/>
-<text text-anchor="middle" x="290" y="-159.19" font-family="Helvetica,sans-Serif" font-size="10.50">vec_to_string</text>
+<polygon fill="none" stroke="black" points="331,-184 249,-184 249,-160 331,-160 331,-184"/>
+<text text-anchor="middle" x="290" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50">vec_to_string</text>
+</g>
+<!-- proc~add_plot -->
+<g id="proc~~vec_to_string~~CalledByGraph_node2" class="node">
+<title>proc~add_plot</title>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node2"><a xlink:href=".././proc/add_plot.html" xlink:title="add_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="193,-348 135,-348 135,-324 193,-324 193,-348"/>
+<text text-anchor="middle" x="164" y="-333.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_plot&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge1" class="edge">
+<title>proc~add_plot&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M193.24,-324.16C200.24,-320.34 207.35,-315.61 213,-310 247.22,-276.01 270.36,-223.37 281.45,-193.9"/>
+<polygon fill="#000000" stroke="#000000" points="284.86,-194.76 284.98,-184.16 278.28,-192.37 284.86,-194.76"/>
 </g>
 <!-- proc~add_contour -->
-<g id="proc~~vec_to_string~~CalledByGraph_node2" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node3" class="node">
 <title>proc~add_contour</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node2"><a xlink:href=".././proc/add_contour.html" xlink:title="add_contour">
-<polygon fill="#d9534f" stroke="#d9534f" points="79,-274.59 0,-274.59 0,-250.59 79,-250.59 79,-274.59"/>
-<text text-anchor="middle" x="39.5" y="-260.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_contour</text>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node3"><a xlink:href=".././proc/add_contour.html" xlink:title="add_contour">
+<polygon fill="#d9534f" stroke="#d9534f" points="79,-288 0,-288 0,-264 79,-264 79,-288"/>
+<text text-anchor="middle" x="39.5" y="-273.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_contour</text>
 </a>
 </g>
 </g>
 <!-- proc~add_contour&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge1" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge2" class="edge">
 <title>proc~add_contour&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M56.3,-274.71C70.71,-284.95 93.03,-298.82 115,-304.59 157.13,-315.65 175.67,-327.02 213,-304.59 256.95,-278.17 276.85,-216.82 284.66,-183.71"/>
-<polygon fill="#000000" stroke="#000000" points="288.14,-184.18 286.87,-173.66 281.31,-182.68 288.14,-184.18"/>
+<path fill="none" stroke="#000000" d="M79.15,-285.93C115.73,-293.16 171.12,-298.38 213,-277 247,-259.64 269.31,-219.18 280.49,-193.86"/>
+<polygon fill="#000000" stroke="#000000" points="283.84,-194.93 284.48,-184.36 277.39,-192.22 283.84,-194.93"/>
 </g>
 <!-- proc~matrix_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_node5" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node9" class="node">
 <title>proc~matrix_to_string</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node5"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="213,-131.59 115,-131.59 115,-107.59 213,-107.59 213,-131.59"/>
-<text text-anchor="middle" x="164" y="-117.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node9"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="213,-268 115,-268 115,-244 213,-244 213,-268"/>
+<text text-anchor="middle" x="164" y="-253.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
 </a>
 </g>
 </g>
 <!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
 <g id="proc~~vec_to_string~~CalledByGraph_edge10" class="edge">
 <title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M44.96,-250.53C54.4,-226.54 78.54,-172.41 115,-140.59 116.49,-139.29 118.07,-138.06 119.72,-136.89"/>
-<polygon fill="#000000" stroke="#000000" points="121.68,-139.8 128.41,-131.62 118.04,-133.82 121.68,-139.8"/>
-</g>
-<!-- proc~add_errorbar -->
-<g id="proc~~vec_to_string~~CalledByGraph_node3" class="node">
-<title>proc~add_errorbar</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node3"><a xlink:href=".././proc/add_errorbar.html" xlink:title="add_errorbar">
-<polygon fill="#d9534f" stroke="#d9534f" points="205,-295.59 123,-295.59 123,-271.59 205,-271.59 205,-295.59"/>
-<text text-anchor="middle" x="164" y="-281.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_errorbar</text>
-</a>
-</g>
-</g>
-<!-- proc~add_errorbar&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge3" class="edge">
-<title>proc~add_errorbar&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M198.55,-271.59C203.64,-269.02 208.65,-266.03 213,-262.59 241.32,-240.2 264.62,-204.88 277.67,-182.49"/>
-<polygon fill="#000000" stroke="#000000" points="280.73,-184.19 282.61,-173.76 274.64,-180.74 280.73,-184.19"/>
-</g>
-<!-- proc~add_3d_plot -->
-<g id="proc~~vec_to_string~~CalledByGraph_node4" class="node">
-<title>proc~add_3d_plot</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="add_3d_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="202.5,-253.59 125.5,-253.59 125.5,-229.59 202.5,-229.59 202.5,-253.59"/>
-<text text-anchor="middle" x="164" y="-239.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
-</a>
-</g>
-</g>
-<!-- proc~add_3d_plot&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge2" class="edge">
-<title>proc~add_3d_plot&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M188.76,-229.45C196.6,-225.26 205.28,-220.4 213,-215.59 230.92,-204.43 250.3,-190.63 265.01,-179.77"/>
-<polygon fill="#000000" stroke="#000000" points="267.15,-182.54 273.08,-173.76 262.97,-176.92 267.15,-182.54"/>
-</g>
-<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge5" class="edge">
-<title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M200.53,-131.62C214.02,-136.19 229.57,-141.46 243.83,-146.29"/>
-<polygon fill="#000000" stroke="#000000" points="242.87,-149.66 253.46,-149.55 245.11,-143.03 242.87,-149.66"/>
-</g>
-<!-- proc~add_plot -->
-<g id="proc~~vec_to_string~~CalledByGraph_node6" class="node">
-<title>proc~add_plot</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node6"><a xlink:href=".././proc/add_plot.html" xlink:title="add_plot">
-<polygon fill="#d9534f" stroke="#d9534f" points="193,-173.59 135,-173.59 135,-149.59 193,-149.59 193,-173.59"/>
-<text text-anchor="middle" x="164" y="-159.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_plot</text>
-</a>
-</g>
-</g>
-<!-- proc~add_plot&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge4" class="edge">
-<title>proc~add_plot&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M193.14,-161.59C206.62,-161.59 223.18,-161.59 238.72,-161.59"/>
-<polygon fill="#000000" stroke="#000000" points="238.75,-165.09 248.75,-161.59 238.75,-158.09 238.75,-165.09"/>
+<path fill="none" stroke="#000000" d="M79.26,-269.67C87.32,-268.36 95.99,-266.94 104.58,-265.54"/>
+<polygon fill="#000000" stroke="#000000" points="105.28,-268.97 114.58,-263.9 104.15,-262.06 105.28,-268.97"/>
 </g>
 <!-- proc~plot_surface -->
-<g id="proc~~vec_to_string~~CalledByGraph_node7" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node4" class="node">
 <title>proc~plot_surface</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node7"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
-<polygon fill="#d9534f" stroke="#d9534f" points="78.5,-172.59 0.5,-172.59 0.5,-148.59 78.5,-148.59 78.5,-172.59"/>
-<text text-anchor="middle" x="39.5" y="-158.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/plot_surface.html" xlink:title="plot_surface">
+<polygon fill="#d9534f" stroke="#d9534f" points="78.5,-216 0.5,-216 0.5,-192 78.5,-192 78.5,-216"/>
+<text text-anchor="middle" x="39.5" y="-201.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">plot_surface</text>
 </a>
 </g>
 </g>
 <!-- proc~plot_surface&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge6" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge3" class="edge">
 <title>proc~plot_surface&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M73.79,-172.64C86.51,-176.65 101.25,-180.6 115,-182.59 158.11,-188.82 169.84,-188.44 213,-182.59 222.97,-181.24 233.48,-178.93 243.4,-176.33"/>
-<polygon fill="#000000" stroke="#000000" points="244.37,-179.69 253.08,-173.65 242.51,-172.94 244.37,-179.69"/>
+<path fill="none" stroke="#000000" d="M45.66,-191.79C55.5,-170.31 79.19,-126.42 115,-109 154.16,-89.94 172.03,-94.23 213,-109 236.67,-117.53 258.19,-137 272.23,-152.05"/>
+<polygon fill="#000000" stroke="#000000" points="269.96,-154.75 279.24,-159.86 275.17,-150.08 269.96,-154.75"/>
 </g>
 <!-- proc~plot_surface&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge12" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge11" class="edge">
 <title>proc~plot_surface&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M76.59,-148.51C89.31,-144.25 103.79,-139.41 117.2,-134.92"/>
-<polygon fill="#000000" stroke="#000000" points="118.37,-138.22 126.74,-131.72 116.15,-131.58 118.37,-138.22"/>
+<path fill="none" stroke="#000000" d="M68.91,-216.06C85.49,-223.1 106.63,-232.07 124.66,-239.73"/>
+<polygon fill="#000000" stroke="#000000" points="123.75,-243.14 134.32,-243.82 126.48,-236.7 123.75,-243.14"/>
 </g>
 <!-- proc~add_hist -->
-<g id="proc~~vec_to_string~~CalledByGraph_node8" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node5" class="node">
 <title>proc~add_hist</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node8"><a xlink:href=".././proc/add_hist.html" xlink:title="add_hist">
-<polygon fill="#d9534f" stroke="#d9534f" points="192.5,-89.59 135.5,-89.59 135.5,-65.59 192.5,-65.59 192.5,-89.59"/>
-<text text-anchor="middle" x="164" y="-75.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_hist</text>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node5"><a xlink:href=".././proc/add_hist.html" xlink:title="add_hist">
+<polygon fill="#d9534f" stroke="#d9534f" points="192.5,-226 135.5,-226 135.5,-202 192.5,-202 192.5,-226"/>
+<text text-anchor="middle" x="164" y="-211.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_hist</text>
 </a>
 </g>
 </g>
 <!-- proc~add_hist&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge7" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge4" class="edge">
 <title>proc~add_hist&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M192.58,-88.08C199.44,-91.11 206.65,-94.68 213,-98.59 233.56,-111.26 254.51,-129.07 269.19,-142.52"/>
-<polygon fill="#000000" stroke="#000000" points="266.96,-145.22 276.66,-149.48 271.74,-140.1 266.96,-145.22"/>
+<path fill="none" stroke="#000000" d="M192.52,-204.68C207.55,-199.59 226.54,-193.15 243.7,-187.34"/>
+<polygon fill="#000000" stroke="#000000" points="245.19,-190.53 253.54,-184.01 242.94,-183.9 245.19,-190.53"/>
+</g>
+<!-- proc~add_3d_plot -->
+<g id="proc~~vec_to_string~~CalledByGraph_node6" class="node">
+<title>proc~add_3d_plot</title>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node6"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="add_3d_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="202.5,-184 125.5,-184 125.5,-160 202.5,-160 202.5,-184"/>
+<text text-anchor="middle" x="164" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_3d_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_3d_plot&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge5" class="edge">
+<title>proc~add_3d_plot&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M202.54,-172C213.79,-172 226.31,-172 238.26,-172"/>
+<polygon fill="#000000" stroke="#000000" points="238.57,-175.5 248.57,-172 238.57,-168.5 238.57,-175.5"/>
 </g>
 <!-- proc~add_bar -->
-<g id="proc~~vec_to_string~~CalledByGraph_node9" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node7" class="node">
 <title>proc~add_bar</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node9"><a xlink:href=".././proc/add_bar.html" xlink:title="add_bar">
-<polygon fill="#d9534f" stroke="#d9534f" points="192,-47.59 136,-47.59 136,-23.59 192,-23.59 192,-47.59"/>
-<text text-anchor="middle" x="164" y="-33.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_bar</text>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node7"><a xlink:href=".././proc/add_bar.html" xlink:title="add_bar">
+<polygon fill="#d9534f" stroke="#d9534f" points="192,-142 136,-142 136,-118 192,-118 192,-142"/>
+<text text-anchor="middle" x="164" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_bar</text>
 </a>
 </g>
 </g>
 <!-- proc~add_bar&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge8" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge6" class="edge">
 <title>proc~add_bar&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M192.08,-44.47C199.32,-47.61 206.84,-51.62 213,-56.59 241.98,-79.94 265.23,-116.94 278.06,-140.21"/>
-<polygon fill="#000000" stroke="#000000" points="275.11,-142.1 282.91,-149.26 281.28,-138.79 275.11,-142.1"/>
+<path fill="none" stroke="#000000" d="M192.21,-139.22C207.23,-144.3 226.27,-150.75 243.49,-156.59"/>
+<polygon fill="#000000" stroke="#000000" points="242.78,-160.04 253.37,-159.93 245.02,-153.41 242.78,-160.04"/>
 </g>
 <!-- proc~add_imshow -->
-<g id="proc~~vec_to_string~~CalledByGraph_node10" class="node">
+<g id="proc~~vec_to_string~~CalledByGraph_node8" class="node">
 <title>proc~add_imshow</title>
-<g id="a_proc~~vec_to_string~~CalledByGraph_node10"><a xlink:href=".././proc/add_imshow.html" xlink:title="add_imshow">
-<polygon fill="#d9534f" stroke="#d9534f" points="79,-89.59 0,-89.59 0,-65.59 79,-65.59 79,-89.59"/>
-<text text-anchor="middle" x="39.5" y="-75.19" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_imshow</text>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node8"><a xlink:href=".././proc/add_imshow.html" xlink:title="add_imshow">
+<polygon fill="#d9534f" stroke="#d9534f" points="79,-114 0,-114 0,-90 79,-90 79,-114"/>
+<text text-anchor="middle" x="39.5" y="-99.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_imshow</text>
 </a>
 </g>
 </g>
 <!-- proc~add_imshow&#45;&gt;proc~vec_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge9" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge7" class="edge">
 <title>proc~add_imshow&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M50.02,-65.46C62.85,-50.18 87.32,-24.72 115,-14.59 155.9,0.39 175.8,8.06 213,-14.59 257.95,-41.95 277.49,-105.42 284.96,-139.31"/>
-<polygon fill="#000000" stroke="#000000" points="281.55,-140.1 286.98,-149.19 288.41,-138.7 281.55,-140.1"/>
+<path fill="none" stroke="#000000" d="M79.22,-90.16C115.35,-81.29 170,-73.54 213,-92 240.96,-104 263.48,-131.91 276.55,-151.37"/>
+<polygon fill="#000000" stroke="#000000" points="273.68,-153.36 282.03,-159.88 279.56,-149.57 273.68,-153.36"/>
 </g>
 <!-- proc~add_imshow&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~vec_to_string~~CalledByGraph_edge11" class="edge">
+<g id="proc~~vec_to_string~~CalledByGraph_edge12" class="edge">
 <title>proc~add_imshow&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M75.6,-89.62C88.93,-94.19 104.29,-99.46 118.38,-104.29"/>
-<polygon fill="#000000" stroke="#000000" points="117.3,-107.62 127.89,-107.55 119.57,-101 117.3,-107.62"/>
+<path fill="none" stroke="#000000" d="M46.2,-114.42C59.91,-143.9 95.1,-216.96 115,-235 116.3,-236.18 117.67,-237.29 119.1,-238.36"/>
+<polygon fill="#000000" stroke="#000000" points="117.47,-241.46 127.8,-243.84 121.21,-235.54 117.47,-241.46"/>
+</g>
+<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge8" class="edge">
+<title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M196.12,-243.91C201.88,-241.25 207.73,-238.24 213,-235 233.56,-222.33 254.51,-204.52 269.19,-191.07"/>
+<polygon fill="#000000" stroke="#000000" points="271.74,-193.48 276.66,-184.1 266.96,-188.36 271.74,-193.48"/>
+</g>
+<!-- proc~add_errorbar -->
+<g id="proc~~vec_to_string~~CalledByGraph_node10" class="node">
+<title>proc~add_errorbar</title>
+<g id="a_proc~~vec_to_string~~CalledByGraph_node10"><a xlink:href=".././proc/add_errorbar.html" xlink:title="add_errorbar">
+<polygon fill="#d9534f" stroke="#d9534f" points="205,-24 123,-24 123,0 205,0 205,-24"/>
+<text text-anchor="middle" x="164" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_errorbar</text>
+</a>
+</g>
+</g>
+<!-- proc~add_errorbar&#45;&gt;proc~vec_to_string -->
+<g id="proc~~vec_to_string~~CalledByGraph_edge9" class="edge">
+<title>proc~add_errorbar&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M193.44,-24.03C200.36,-27.82 207.38,-32.49 213,-38 246.5,-70.86 269.78,-121.62 281.11,-150.31"/>
+<polygon fill="#000000" stroke="#000000" points="277.9,-151.72 284.74,-159.81 284.44,-149.22 277.9,-151.72"/>
 </g>
 </g>
 </svg>
@@ -408,14 +486,33 @@
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/vec_to_string.html#src">vec_to_string</a>
-  </div>
-</div>
+        <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/vec_to_string.html#src">vec_to_string</a>
+      </div>
+    </div>
+
 
     </section>
     <br class="visible-xs visible-sm hidden-md">

@@ -78,136 +78,277 @@
   <div class="row">
     <h1>add_contour
       <small>Subroutine</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title=" 7.2% of total for procedures.">62 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/pyplot_module.F90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
-     <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-     <li class="active">add_contour</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title=" 7.2% of total for procedures.">62 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/pyplot_module.F90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
+              <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
+          <li class="active">add_contour</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
   </div>
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/add_contour.html#src">add_contour</a>
-  </div>
-</div>
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/add_contour.html#src">add_contour</a>
+      </div>
+    </div>
 
-</div>
+
+  </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)</h2>
+    <h2>private  subroutine add_contour(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)  
+</h2>
     
 
     <p>Add a contour plot.</p>
 <p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>This requires <code>use_numpy</code> to be True.</p></div>
 
     <h3>Arguments</h3>
-      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-me~6"></span>class(<a href='../type/pyplot.html'>pyplot</a>),</td>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~6"></span>
+              class(<a href='../type/pyplot.html'>pyplot</a>),
+            </td>
 <td>intent(inout)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>me</strong></td><td><p>pyplot handler</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-x~3"></span>real(kind=wp),</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>pyplot handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~3"></span>
+              real(kind=wp),
+            </td>
 <td>intent(in),</td>
-  <td></td>  <td>dimension(:)</td><td>::</td>
-  <td><strong>x</strong></td><td><p>x values</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-y~2"></span>real(kind=wp),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                <p>x values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~2"></span>
+              real(kind=wp),
+            </td>
 <td>intent(in),</td>
-  <td></td>  <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p>y values</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-z"></span>real(kind=wp),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+                <p>y values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-z"></span>
+              real(kind=wp),
+            </td>
 <td>intent(in),</td>
-  <td></td>  <td>dimension(:,:)</td><td>::</td>
-  <td><strong>z</strong></td><td><p>z values (a matrix)</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-linestyle~2"></span>character(len=*),</td>
+              <td></td>            <td>
+              dimension(:,:)
+            </td>
+            <td>::</td>
+            <td><strong>z</strong></td>
+            <td>
+                <p>z values (a matrix)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-linestyle~2"></span>
+              character(len=*),
+            </td>
 <td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>linestyle</strong></td><td><p>style of the plot line</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-linewidth~2"></span>integer,</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linestyle</strong></td>
+            <td>
+                <p>style of the plot line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-linewidth~2"></span>
+              integer,
+            </td>
 <td>intent(in),</td>
-  <td>optional</td>  <td></td><td>::</td>
-  <td><strong>linewidth</strong></td><td><p>width of the plot line [only used when <code>filled=False</code>]</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-levels"></span>real(kind=wp),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linewidth</strong></td>
+            <td>
+                <p>width of the plot line [only used when <code>filled=False</code>]</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-levels"></span>
+              real(kind=wp),
+            </td>
 <td>intent(in),</td>
-  <td>optional</td>  <td>dimension(:)</td><td>::</td>
-  <td><strong>levels</strong></td><td><p>contour levels to plot</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-color~2"></span>character(len=*),</td>
+              <td>optional,</td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>levels</strong></td>
+            <td>
+                <p>contour levels to plot</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-color~2"></span>
+              character(len=*),
+            </td>
 <td>intent(in),</td>
-  <td>optional</td>  <td></td><td>::</td>
-  <td><strong>color</strong></td><td><p>color of the contour line</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-filled"></span>logical,</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>color</strong></td>
+            <td>
+                <p>color of the contour line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-filled"></span>
+              logical,
+            </td>
 <td>intent(in),</td>
-  <td>optional</td>  <td></td><td>::</td>
-  <td><strong>filled</strong></td><td><p>use filled control (default=False)</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-cmap"></span>character(len=*),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>filled</strong></td>
+            <td>
+                <p>use filled control (default=False)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cmap"></span>
+              character(len=*),
+            </td>
 <td>intent(in),</td>
-  <td>optional</td>  <td></td><td>::</td>
-  <td><strong>cmap</strong></td><td><p>colormap if filled=True (examples: 'jet', 'bone')</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-colorbar"></span>logical,</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cmap</strong></td>
+            <td>
+                <p>colormap if filled=True (examples: 'jet', 'bone')</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-colorbar"></span>
+              logical,
+            </td>
 <td>intent(in),</td>
-  <td>optional</td>  <td></td><td>::</td>
-  <td><strong>colorbar</strong></td><td><p>add a colorbar (default=False)</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-istat~3"></span>integer,</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>colorbar</strong></td>
+            <td>
+                <p>add a colorbar (default=False)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-istat~3"></span>
+              integer,
+            </td>
 <td>intent(out),</td>
-  <td>optional</td>  <td></td><td>::</td>
-  <td><strong>istat</strong></td><td><p>status output (0 means no problems)</p></td>
-</tr>
-</tbody>
-</table>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>istat</strong></td>
+            <td>
+                <p>status output (0 means no problems)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
 
     <br>
     <div class="panel panel-default">
@@ -247,41 +388,35 @@
 <path fill="none" stroke="#000000" d="M75.7,-66.06C87.98,-69.7 101.95,-73.2 115,-75 169.9,-82.59 233.57,-80.9 276.69,-78.23"/>
 <polygon fill="#000000" stroke="#000000" points="277.17,-81.71 286.92,-77.55 276.71,-74.72 277.17,-81.71"/>
 </g>
-<!-- proc~matrix_to_string -->
-<g id="proc~~add_contour~~CallsGraph_node3" class="node">
-<title>proc~matrix_to_string</title>
-<g id="a_proc~~add_contour~~CallsGraph_node3"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
-<polygon fill="#d9534f" stroke="#d9534f" points="227,-66 129,-66 129,-42 227,-42 227,-66"/>
-<text text-anchor="middle" x="178" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
-</a>
-</g>
-</g>
-<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge2" class="edge">
-<title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
-<path fill="none" stroke="#000000" d="M79.25,-54C91.56,-54 105.46,-54 118.83,-54"/>
-<polygon fill="#000000" stroke="#000000" points="118.91,-57.5 128.91,-54 118.91,-50.5 118.91,-57.5"/>
-</g>
 <!-- proc~optional_int_to_string -->
-<g id="proc~~add_contour~~CallsGraph_node4" class="node">
+<g id="proc~~add_contour~~CallsGraph_node3" class="node">
 <title>proc~optional_int_to_string</title>
-<g id="a_proc~~add_contour~~CallsGraph_node4"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<g id="a_proc~~add_contour~~CallsGraph_node3"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="241,-24 115,-24 115,0 241,0 241,-24"/>
 <text text-anchor="middle" x="178" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
 </a>
 </g>
 </g>
 <!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge3" class="edge">
+<g id="proc~~add_contour~~CallsGraph_edge2" class="edge">
 <title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
 <path fill="none" stroke="#000000" d="M79.25,-42.08C94.39,-37.42 111.94,-32.02 127.94,-27.09"/>
 <polygon fill="#000000" stroke="#000000" points="129.15,-30.38 137.68,-24.1 127.09,-23.69 129.15,-30.38"/>
 </g>
-<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge4" class="edge">
-<title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
-<path fill="none" stroke="#000000" d="M227.05,-60.49C242.84,-62.63 260.43,-65 276.4,-67.16"/>
-<polygon fill="#000000" stroke="#000000" points="276.24,-70.67 286.62,-68.54 277.18,-63.74 276.24,-70.67"/>
+<!-- proc~matrix_to_string -->
+<g id="proc~~add_contour~~CallsGraph_node4" class="node">
+<title>proc~matrix_to_string</title>
+<g id="a_proc~~add_contour~~CallsGraph_node4"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="227,-66 129,-66 129,-42 227,-42 227,-66"/>
+<text text-anchor="middle" x="178" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
+<g id="proc~~add_contour~~CallsGraph_edge3" class="edge">
+<title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M79.25,-54C91.56,-54 105.46,-54 118.83,-54"/>
+<polygon fill="#000000" stroke="#000000" points="118.91,-57.5 128.91,-54 118.91,-50.5 118.91,-57.5"/>
 </g>
 <!-- proc~integer_to_string -->
 <g id="proc~~add_contour~~CallsGraph_node5" class="node">
@@ -293,10 +428,16 @@
 </g>
 </g>
 <!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
-<g id="proc~~add_contour~~CallsGraph_edge5" class="edge">
+<g id="proc~~add_contour~~CallsGraph_edge4" class="edge">
 <title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
 <path fill="none" stroke="#000000" d="M241.34,-12C249.76,-12 258.39,-12 266.78,-12"/>
 <polygon fill="#000000" stroke="#000000" points="266.86,-15.5 276.86,-12 266.86,-8.5 266.86,-15.5"/>
+</g>
+<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
+<g id="proc~~add_contour~~CallsGraph_edge5" class="edge">
+<title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M227.05,-60.49C242.84,-62.63 260.43,-65 276.4,-67.16"/>
+<polygon fill="#000000" stroke="#000000" points="276.24,-70.67 286.62,-68.54 277.18,-63.74 276.24,-70.67"/>
 </g>
 </g>
 </svg>
@@ -364,14 +505,33 @@
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/add_contour.html#src">add_contour</a>
-  </div>
-</div>
+        <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/add_contour.html#src">add_contour</a>
+      </div>
+    </div>
+
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
