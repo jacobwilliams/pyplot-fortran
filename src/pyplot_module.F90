@@ -261,7 +261,7 @@
     if (me%use_numpy) call me%add_str('import numpy as np')
     call me%add_str('')
 
-    call me%add_str('matplotlib.rcParams["font.family"] = "Serif"')
+    call me%add_str('matplotlib.rcParams["font.family"] = "Sans"')
     call me%add_str('matplotlib.rcParams["font.size"] = '//trim(font_size_str))
     call me%add_str('matplotlib.rcParams["axes.labelsize"] = '//trim(axes_labelsize_str))
     call me%add_str('matplotlib.rcParams["xtick.labelsize"] = '//trim(xtick_labelsize_str))
@@ -1381,11 +1381,11 @@
             write(error_unit,'(A)') 'Error closing file: '//trim(file)
         else
 
-            if (present(python)) then 
+            if (present(python)) then
                 python_ = trim(python)
-            else 
+            else
                 python_ = python_exe
-            end if 
+            end if
 
             !run the file using python:
             if (index(file,' ')>0) then
