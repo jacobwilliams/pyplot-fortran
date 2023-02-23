@@ -33,5 +33,9 @@ __pycache__
 *.out
 *.app
 
+# Generated Test Files
+test/*.png
+test/*.py
+
 # misc
 .DS_Store
