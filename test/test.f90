@@ -15,7 +15,7 @@
 
     real(wp), dimension(:),allocatable   :: x     !! x values
     real(wp), dimension(:),allocatable   :: y     !! y values
-    real(wp), dimension(:),allocatable   :: xerr  !! error values  
+    real(wp), dimension(:),allocatable   :: xerr  !! error values
     real(wp), dimension(:),allocatable   :: yerr  !! error values for bar chart
     real(wp), dimension(:),allocatable   :: sx    !! sin(x) values
     real(wp), dimension(:),allocatable   :: cx    !! cos(x) values
@@ -32,16 +32,18 @@
     real(wp),parameter :: pi = acos(-1.0_wp)
     real(wp),parameter :: deg2rad = pi/180.0_wp
 
+    character(len=*), parameter :: testdir = "test/"
+
     ! size arrays:
-    allocate(x(n))   
-    allocate(y(n))   
+    allocate(x(n))
+    allocate(y(n))
     allocate(yerr(n))
-    allocate(sx(n))  
-    allocate(cx(n))  
-    allocate(zx(n))  
-    allocate(tx(n))  
-    allocate(z(n,n))   
-    allocate(mat(n,n)) 
+    allocate(sx(n))
+    allocate(cx(n))
+    allocate(zx(n))
+    allocate(tx(n))
+    allocate(z(n,n))
+    allocate(mat(n,n))
 
     !generate some data:
     x    = [(real(i,wp), i=0,size(x)-1)]/5.0_wp
@@ -64,7 +66,8 @@
     call plt%add_plot(x,sx,label='$\sin (x)$',linestyle='b-o',markersize=5,linewidth=2,istat=istat)
     call plt%add_plot(x,cx,label='$\cos (x)$',linestyle='r-o',markersize=5,linewidth=2,istat=istat)
     call plt%add_plot(x,tx,label='$\sin (x) \cos (x)$',linestyle='g-o',markersize=2,linewidth=1,istat=istat)
-    call plt%savefig('plottest.png', pyfile='plottest.py',istat=istat)
+    call plt%savefig(testdir//'plottest.png', pyfile=testdir//'plottest.py',&
+                     istat=istat)
 
     !bar chart:
     tx = 0.1_wp !for bar width
@@ -77,7 +80,8 @@
                         legend_fontsize = 20, raw_strings=.true. )
     call plt%add_bar(x=x,height=sx,width=tx,label='$\sin (x)$',&
                         color='r',yerr=yerr,xlim=[0.0_wp, 20.0_wp],align='center',istat=istat)
-    call plt%savefig('bartest.png', pyfile='bartest.py',istat=istat)
+    call plt%savefig(testdir//'bartest.png', pyfile=testdir//'bartest.py',&
+                     istat=istat)
 
     !contour plot:
     x = [(real(i,wp), i=0,n-1)]/100.0_wp
@@ -95,14 +99,15 @@
     call plt%add_contour(x, y, z, linestyle='-', &
                          filled=.true., cmap='bone', colorbar=.true.,&
                          istat=istat)
-    call plt%savefig('contour.png',pyfile='contour.py',istat=istat)
+    call plt%savefig(testdir//'contour.png',pyfile=testdir//'contour.py',istat=istat)
 
     !image plot:
     call plt%initialize(grid=.true.,xlabel='x',ylabel='y',figsize=[20,20],&
                         title='imshow test',&
                         real_fmt='(F9.3)')
     call plt%add_imshow(mat,xlim=[0.0_wp, 100.0_wp],ylim=[0.0_wp, 100.0_wp],istat=istat)
-    call plt%savefig('imshow.png', pyfile='imshow.py',istat=istat)
+    call plt%savefig(testdir//'imshow.png', pyfile=testdir//'imshow.py',&
+                     istat=istat)
 
     !wireframe plot:
     call plt%initialize(grid=.true.,xlabel='x angle (rad)',&
@@ -112,7 +117,8 @@
     call plt%plot_wireframe(x, y, z, label='', linestyle='-', &
                          cmap='bone', colorbar=.true.,&
                          istat=istat)
-    call plt%savefig('wireframe.png', pyfile='wireframe.py',istat=istat)
+    call plt%savefig(testdir//'wireframe.png', pyfile=testdir//'wireframe.py',&
+                     istat=istat)
 
     !histogram chart:
     x = [0.194,0.501,-1.241,1.425,-2.217,-0.342,-0.979,0.909,0.994,0.101,       &
@@ -136,7 +142,8 @@
                         legend_fontsize = 20 )
 
     call plt%add_hist(x=x, label='x',istat=istat)
-    call plt%savefig('histtest1.png', pyfile='histtest1.py',istat=istat)
+    call plt%savefig(testdir//'histtest1.png', pyfile=testdir//'histtest1.py',&
+                     istat=istat)
 
     call plt%initialize(grid=.true.,xlabel='x',&
                         title='cumulative hist test',&
@@ -148,8 +155,8 @@
                         legend_fontsize = 20 )
 
     call plt%add_hist(x=x, label='x', bins=8, cumulative=.true.,istat=istat)
-    call plt%savefig('histtest2.png', &
-                        pyfile='histtest2.py', &
+    call plt%savefig(testdir//'histtest2.png', &
+                        pyfile=testdir//'histtest2.py', &
                         dpi='200', &
                         transparent=.true.,istat=istat)
 
@@ -171,8 +178,8 @@
     call plt%add_sphere(6378.0_wp,0.0_wp,0.0_wp,0.0_wp,&
                         color='Blue',n_facets=500,&
                         antialiased=.true.,istat=istat)
-    call plt%savefig('orbit.png', &
-                      pyfile='orbit.py', &
+    call plt%savefig(testdir//'orbit.png', &
+                      pyfile=testdir//'orbit.py', &
                       dpi='200', &
                       transparent=.true.,istat=istat)
 
@@ -189,8 +196,8 @@
 
     call plt%add_errorbar(x, y, label='y', linestyle='.', &
                             xerr=xerr, yerr=yerr, istat=istat)
-    call plt%savefig('errorbar.png', &
-                     pyfile='errorbar.py', &
+    call plt%savefig(testdir//'errorbar.png', &
+                     pyfile=testdir//'errorbar.py', &
                      dpi='200', &
                      transparent=.true.,istat=istat, python='python')
 
