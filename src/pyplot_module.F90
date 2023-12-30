@@ -129,7 +129,27 @@
     class(pyplot),    intent(inout) :: me  !! pyplot handler
     character(len=*), intent(in)    :: str !! str to be added to pyplot handler buffer
 
-    me%str = me%str//str//new_line(' ')
+    integer :: n_old !! current `me%str` length
+    integer :: n_str !! length of input `str`
+    character(len=:),allocatable :: tmp !! tmp string for building the result
+
+    ! original
+    !me%str = me%str//str//new_line(' ')
+
+    if (len(str)==0) return
+
+    ! the above can sometimes cause a stack overflow in the
+    ! intel Fortran compiler, so we replace with this:
+    if (allocated(me%str)) then
+        n_old = len(me%str)
+        n_str = len(str)
+        allocate(character(len=n_old+n_str+1) :: tmp)
+        tmp(1:n_old) = me%str
+        tmp(n_old+1:) = str//new_line(' ')
+        call move_alloc(tmp, me%str)
+    else
+        allocate(me%str, source = str//new_line(' '))
+    end if
 
     end subroutine add_str
 !*****************************************************************************************

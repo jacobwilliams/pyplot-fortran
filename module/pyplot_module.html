@@ -4,129 +4,115 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+      <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>pyplot_module &ndash; pyplot-fortran</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">pyplot-fortran </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-       
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
             </ul>
-        
-            </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-          </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
         </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
-    <h1>pyplot_module 
-    <small>Module</small>
-    
+    <h1>pyplot_module
+      <small>Module</small>
+      
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
-            <li id="meta-date"><i class="fa fa-calendar-o"></i> 6/16/2017</li>
-            <li id="meta-license"><i class="fa fa-legal"></i> BSD</li>
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
+            <li class="list-inline-item" id="meta-date"><i class="fa fa-calendar-o"></i> 6/16/2017</li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> BSD</li>
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title="100.0% of total for modules and submodules.">975 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title="100.0% of total for modules and submodules.">1021 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/pyplot_module.F90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
-          <li class="active">pyplot_module</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">pyplot_module</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
   </div>
-  
+
   <div class="row">
-    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-      <div id="sidebar">
+    <div class="col-md-3">
+        <div id="sidebar">
       <h3>Contents</h3>
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#vars-0">Variables</a>
-        </h3>
-      </div>
-      <div id="vars-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/pyplot_module.html#variable-pyplot_wp">pyplot_wp</a>
             <a class="list-group-item" href="../module/pyplot_module.html#variable-wp">wp</a>
             <a class="list-group-item" href="../module/pyplot_module.html#variable-tmp_file">tmp_file</a>
@@ -147,28 +133,26 @@
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#types-0">Derived Types</a>
-        </h3>
-      </div>
-      <div id="types-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/pyplot_module.html#type-pyplot">pyplot</a>
         </div>
       </div>
     </div>
 
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#subs-0">Subroutines</a>
-        </h3>
-      </div>
-      <div id="subs-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/pyplot_module.html#proc-destroy">destroy</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-add_str">add_str</a>
             <a class="list-group-item" href="../module/pyplot_module.html#proc-initialize">initialize</a>
@@ -202,35 +186,38 @@
   
   
   
+  
 
 
   </div>
 
     </div>
-    
+
     <div class="col-md-9" id='text'>
-    <p>For making simple x-y plots from Fortran.
+      <p>For making simple x-y plots from Fortran.
   It works by generating a Python script and executing it.</p>
 <h1>See also</h1>
 <ul>
-<li>Inspired by: <a href="https://pypi.python.org/pypi/EasyPlot">EasyPlot</a></li>
+<li>Inspired by: [EasyPlot](https:</li>
 </ul>
-<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>The default real kind (<code>wp</code>) can be
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>The default real kind (<code>wp</code>) can be
       changed using optional preprocessor flags.
       This library was built with real kind:
-      <code>real(kind=real64)</code> [8 bytes]</p></div>
-<br>        <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Uses</h3>
-      </div>
-      <ul class="list-group">
-          <li class="list-group-item">
-            <ul class="list-inline">
-                <li><a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a></li>
-            </ul>
-          </li>
-          <li class="list-group-item">
-            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+      <code>real(kind=real64)</code> [8 bytes]</p>
+</div>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -250,11 +237,8 @@
 <!-- iso_fortran_env -->
 <g id="module~~pyplot_module~~UsesGraph_node2" class="node">
 <title>iso_fortran_env</title>
-<g id="a_module~~pyplot_module~~UsesGraph_node2"><a xlink:href="http://fortranwiki.org/fortran/show/iso_fortran_env" xlink:title="iso_fortran_env">
 <polygon fill="#337ab7" stroke="#337ab7" points="94,-24 0,-24 0,0 94,0 94,-24"/>
 <text text-anchor="middle" x="47" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
-</a>
-</g>
 </g>
 <!-- module~pyplot_module&#45;&gt;iso_fortran_env -->
 <g id="module~~pyplot_module~~UsesGraph_edge1" class="edge">
@@ -264,9 +248,19 @@
 </g>
 </g>
 </svg>
-</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -316,121 +310,33 @@
 </g>
 </svg>
 
-    
-    <p>Solid arrows point from a submodule to the (sub)module which it is
-    descended from. Dashed arrows point from a module or program unit to 
-    modules which it uses.
-    </p>
-    </div></div></div></div>
-          </li>
-      </ul>
-    </div>
-
-    
-    <br>
-
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#vars-1">Variables</a>
-        </h3>
-      </div>
-      <div id="vars-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../module/pyplot_module.html#variable-pyplot_wp">pyplot_wp</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#variable-wp">wp</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#variable-tmp_file">tmp_file</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#variable-python_exe">python_exe</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#variable-int_fmt">int_fmt</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#variable-max_int_len">max_int_len</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#variable-real_fmt_default">real_fmt_default</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#variable-max_real_len">max_real_len</a>
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
         </div>
+            </li>
+        </ul>
       </div>
     </div>
 
-  
-  
-  
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#types-1">Derived Types</a>
-        </h3>
-      </div>
-      <div id="types-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../module/pyplot_module.html#type-pyplot">pyplot</a>
-        </div>
-      </div>
-    </div>
-
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#subs-1">Subroutines</a>
-        </h3>
-      </div>
-      <div id="subs-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-destroy">destroy</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_str">add_str</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-initialize">initialize</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_plot">add_plot</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_hist">add_hist</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_contour">add_contour</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-plot_surface">plot_surface</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-plot_wireframe">plot_wireframe</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_3d_plot">add_3d_plot</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_sphere">add_sphere</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_bar">add_bar</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_imshow">add_imshow</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-add_errorbar">add_errorbar</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_int_to_string">optional_int_to_string</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-optional_logical_to_string">optional_logical_to_string</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-integer_to_string">integer_to_string</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-real_to_string">real_to_string</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-vec_to_string">vec_to_string</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-matrix_to_string">matrix_to_string</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-execute">execute</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-finish_ops">finish_ops</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-savefig">savefig</a>
-            <a class="list-group-item" href="../module/pyplot_module.html#proc-showfig">showfig</a>
-        </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
+      
+      <br>
 
 
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
-
-    <section>
-    <h2>Variables</h2>
-      <table class="table table-striped varlist">
+        <section>
+          <h2>Variables</h2>
+            <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Visibility</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-<th></th><th>Initial</th>        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -479,7 +385,7 @@ parameter
             <td>::</td>
             <td><strong>tmp_file</strong></td>
 <td> =</td>
-                <td>'pyplot_module_temp_1234567890.py'</td>
+                <td>&#39;pyplot_module_temp_1234567890.py&#39;</td>
             <td>
                 <p>Default name of the temporary file
 (this can also be user-specified).</p>
@@ -497,7 +403,7 @@ parameter
             <td>::</td>
             <td><strong>python_exe</strong></td>
 <td> =</td>
-                <td>'python'</td>
+                <td>&#39;python&#39;</td>
             <td>
                 <p>The python executable name.</p>
             </td>
@@ -514,7 +420,7 @@ parameter
             <td>::</td>
             <td><strong>int_fmt</strong></td>
 <td> =</td>
-                <td>'(I10)'</td>
+                <td>&#39;(I10)&#39;</td>
             <td>
                 <p>integer format string</p>
             </td>
@@ -548,7 +454,7 @@ parameter
             <td>::</td>
             <td><strong>real_fmt_default</strong></td>
 <td> =</td>
-                <td>'(E30.16)'</td>
+                <td>&#39;(E30.16)&#39;</td>
             <td>
                 <p>default real number format string</p>
             </td>
@@ -573,16 +479,16 @@ parameter
     </tbody>
   </table>
 
-    </section>
-    <br>
-    
-    
+        </section>
+        <br>
 
-    
-    <section>
-     <h2>Derived Types</h2>
-       <div class="panel panel-default">
-    <div class="panel-heading codesum">
+
+
+
+        <section>
+          <h2>Derived Types</h2>
+              <div class="card">
+    <div class="card-header codesum">
       <span class="anchor" id="type-pyplot"></span>
       <h3>
         type, public&nbsp;::&nbsp;
@@ -590,23 +496,23 @@ parameter
         
       </h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
       <p>The main pyplot class.</p>
 
         <h4>Components</h4>
           <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Visibility</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-<th></th><th>Initial</th>        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-str~5"></span>
+              <span class="anchor" id="variable-str"></span>
               character(len=:),
             </td>
               <td>private,</td>
@@ -633,7 +539,7 @@ parameter
             <td>::</td>
             <td><strong>raw_str_token</strong></td>
 <td> =</td>
-                <td>' '</td>
+                <td>&#39; &#39;</td>
             <td>
 <p>will be 'r' if using raw strings</p>
             </td>
@@ -657,7 +563,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-use_numpy~4"></span>
+              <span class="anchor" id="variable-use_numpy"></span>
               logical,
             </td>
               <td>private</td>
@@ -674,7 +580,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-use_oo_api~2"></span>
+              <span class="anchor" id="variable-use_oo_api"></span>
               logical,
             </td>
               <td>private</td>
@@ -691,7 +597,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-mplot3d~2"></span>
+              <span class="anchor" id="variable-mplot3d"></span>
               logical,
             </td>
               <td>private</td>
@@ -708,7 +614,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-polar~2"></span>
+              <span class="anchor" id="variable-polar"></span>
               logical,
             </td>
               <td>private</td>
@@ -725,7 +631,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-axis_equal~2"></span>
+              <span class="anchor" id="variable-axis_equal"></span>
               logical,
             </td>
               <td>private</td>
@@ -742,7 +648,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-axisbelow~2"></span>
+              <span class="anchor" id="variable-axisbelow"></span>
               logical,
             </td>
               <td>private</td>
@@ -759,7 +665,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-tight_layout~2"></span>
+              <span class="anchor" id="variable-tight_layout"></span>
               logical,
             </td>
               <td>private</td>
@@ -776,7 +682,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-usetex~2"></span>
+              <span class="anchor" id="variable-usetex"></span>
               logical,
             </td>
               <td>private</td>
@@ -793,7 +699,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-real_fmt~2"></span>
+              <span class="anchor" id="variable-real_fmt"></span>
               character(len=:),
             </td>
               <td>private,</td>
@@ -818,139 +724,88 @@ parameter
         <table class="table table-striped varlist">
           <tbody>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-initialize'>initialize</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-initialize'>initialize</a></strong></td>
                 <td><p>initialize pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_plot'>add_plot</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_plot'>add_plot</a></strong></td>
                 <td><p>add a 2d plot to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_errorbar'>add_errorbar</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_errorbar'>add_errorbar</a></strong></td>
                 <td><p>add a 2d error bar plot to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_3d_plot'>add_3d_plot</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_3d_plot'>add_3d_plot</a></strong></td>
                 <td><p>add a 3d plot to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_sphere'>add_sphere</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_sphere'>add_sphere</a></strong></td>
                 <td><p>add a 3d sphere to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_contour'>add_contour</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_contour'>add_contour</a></strong></td>
                 <td><p>add a contour plot to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-plot_wireframe'>plot_wireframe</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-plot_wireframe'>plot_wireframe</a></strong></td>
                 <td><p>add a wireframe plot to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-plot_surface'>plot_surface</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-plot_surface'>plot_surface</a></strong></td>
                 <td><p>add a surface plot to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_bar'>add_bar</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_bar'>add_bar</a></strong></td>
                 <td><p>add a barplot to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_imshow'>add_imshow</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_imshow'>add_imshow</a></strong></td>
                 <td><p>add an image plot (using <code>imshow</code>)</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_hist'>add_hist</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_hist'>add_hist</a></strong></td>
                 <td><p>add a histogram plot to pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-savefig'>savefig</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-savefig'>savefig</a></strong></td>
                 <td><p>save plots of pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-showfig'>showfig</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-showfig'>showfig</a></strong></td>
                 <td><p>show plots of pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-destroy'>destroy</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-destroy'>destroy</a></strong></td>
                 <td><p>destroy pyplot instance</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-execute'>execute</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-execute'>execute</a></strong></td>
                 <td><p>execute pyplot commands</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-add_str'>add_str</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-add_str'>add_str</a></strong></td>
                 <td><p>add string to pytplot instance buffer</p></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-                  :: <strong><a href='../type/pyplot.html#boundprocedure-finish_ops'>finish_ops</a></strong>
-<small>Subroutine</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/pyplot.html#boundprocedure-finish_ops'>finish_ops</a></strong></td>
                 <td><p>some final ops before saving</p></td>
               </tr>
           </tbody>
@@ -958,16 +813,16 @@ parameter
     </div>
   </div>
 
-    </section>
-  <br>
-    
+        </section>
+        <br>
 
-    <section>
-    <h2>Subroutines</h2>
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-destroy"></span><h3>private  subroutine <a href='../proc/destroy.html'>destroy</a>(me)  
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-destroy"></span><h3>private  subroutine <a href='../proc/destroy.html'>destroy</a>(me)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -978,16 +833,16 @@ parameter
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -1007,10 +862,10 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_str"></span><h3>private  subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_str"></span><h3>private  subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -1021,16 +876,16 @@ parameter
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~2"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -1045,7 +900,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-str~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1065,10 +920,10 @@ parameter
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-initialize"></span><h3>private  subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-initialize"></span><h3>private  subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -1079,16 +934,16 @@ parameter
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~3"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -1103,7 +958,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-grid"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1118,7 +973,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xlabel"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1133,7 +988,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-ylabel"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1148,7 +1003,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-zlabel"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1163,7 +1018,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-title"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1178,7 +1033,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-legend"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1193,7 +1048,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-use_numpy~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1208,7 +1063,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-figsize"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1223,7 +1078,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-font_size"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1238,7 +1093,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-axes_labelsize"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1253,7 +1108,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xtick_labelsize"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1268,7 +1123,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-ytick_labelsize"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1283,7 +1138,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-ztick_labelsize"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1298,7 +1153,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-legend_fontsize"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1313,7 +1168,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-mplot3d~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1328,7 +1183,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-axis_equal~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1343,7 +1198,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-polar~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1358,7 +1213,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-real_fmt~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1373,7 +1228,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-use_oo_api~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1388,7 +1243,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-axisbelow~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1403,7 +1258,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-tight_layout~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1418,7 +1273,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-raw_strings"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1434,7 +1289,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-usetex~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1454,10 +1309,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_plot"></span><h3>private  subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_plot"></span><h3>private  subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -1468,16 +1323,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~4"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -1492,7 +1347,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1507,7 +1362,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-y"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1522,7 +1377,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-label"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1537,7 +1392,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linestyle"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1552,7 +1407,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-markersize"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1567,7 +1422,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linewidth"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1582,7 +1437,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xlim"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1597,7 +1452,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-ylim"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1612,7 +1467,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xscale"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1627,7 +1482,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-yscale"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1642,7 +1497,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-color"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1657,7 +1512,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -1677,10 +1532,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_hist"></span><h3>private  subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_hist"></span><h3>private  subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jimmy Leta</dd>
     </dl>
@@ -1691,16 +1546,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~5"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -1715,7 +1570,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1730,7 +1585,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-label~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1745,7 +1600,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xlim~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1760,7 +1615,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-ylim~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1775,7 +1630,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xscale~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1790,7 +1645,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-yscale~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1805,7 +1660,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-bins"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1820,7 +1675,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-normed"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1835,7 +1690,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-cumulative"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1850,7 +1705,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~2"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -1870,10 +1725,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_contour"></span><h3>private  subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_contour"></span><h3>private  subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -1884,16 +1739,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~6"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -1908,7 +1763,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1923,7 +1778,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-y~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1938,7 +1793,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-z"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1953,7 +1808,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linestyle~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1968,7 +1823,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linewidth~2"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1983,7 +1838,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-levels"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -1998,7 +1853,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-color~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2013,7 +1868,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-filled"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -2028,7 +1883,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-cmap"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2043,7 +1898,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-colorbar"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -2058,7 +1913,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~3"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -2078,10 +1933,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-plot_surface"></span><h3>private  subroutine <a href='../proc/plot_surface.html'>plot_surface</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-plot_surface"></span><h3>private  subroutine <a href='../proc/plot_surface.html'>plot_surface</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -2092,16 +1947,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~7"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -2116,7 +1971,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x~4"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2131,7 +1986,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-y~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2146,7 +2001,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-z~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2161,7 +2016,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-label~3"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -2176,7 +2031,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linestyle~3"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -2191,7 +2046,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linewidth~3"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2206,7 +2061,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-levels~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2221,7 +2076,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-color~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2236,7 +2091,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-cmap~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2251,7 +2106,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-colorbar~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -2266,7 +2121,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-antialiased"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -2281,7 +2136,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~4"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -2301,10 +2156,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-plot_wireframe"></span><h3>private  subroutine <a href='../proc/plot_wireframe.html'>plot_wireframe</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-plot_wireframe"></span><h3>private  subroutine <a href='../proc/plot_wireframe.html'>plot_wireframe</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -2315,16 +2170,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~8"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -2339,7 +2194,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x~5"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2354,7 +2209,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-y~4"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2369,7 +2224,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-z~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2384,7 +2239,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-label~4"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -2399,7 +2254,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linestyle~4"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -2414,7 +2269,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linewidth~4"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2429,7 +2284,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-levels~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2444,7 +2299,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-color~4"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2459,7 +2314,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-cmap~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2474,7 +2329,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-colorbar~3"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -2489,7 +2344,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-antialiased~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -2504,7 +2359,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~5"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -2524,10 +2379,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_3d_plot"></span><h3>private  subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_3d_plot"></span><h3>private  subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -2538,16 +2393,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~9"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -2562,7 +2417,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x~6"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2577,7 +2432,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-y~5"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2592,7 +2447,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-z~4"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2607,7 +2462,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-label~5"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -2622,7 +2477,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linestyle~5"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -2637,7 +2492,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-markersize~2"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2652,7 +2507,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linewidth~5"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2667,7 +2522,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~6"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -2687,10 +2542,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_sphere"></span><h3>private  subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_sphere"></span><h3>private  subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -2701,16 +2556,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~10"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -2725,7 +2580,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-r"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -2740,7 +2595,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xc"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -2755,7 +2610,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-yc"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -2770,7 +2625,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-zc"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -2785,7 +2640,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-n_facets"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2800,7 +2655,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linewidth~6"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2815,7 +2670,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-antialiased~3"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -2830,7 +2685,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-color~5"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2845,7 +2700,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~7"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -2865,10 +2720,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_bar"></span><h3>private  subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_bar"></span><h3>private  subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -2879,16 +2734,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~11"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -2903,7 +2758,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x~7"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2918,7 +2773,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-height"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2933,7 +2788,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-label~6"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -2948,7 +2803,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-width"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2963,7 +2818,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-bottom"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -2978,7 +2833,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-color~6"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2993,7 +2848,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-yerr"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3008,7 +2863,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-align"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -3023,7 +2878,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xlim~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3038,7 +2893,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-ylim~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3053,7 +2908,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xscale~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -3068,7 +2923,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-yscale~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -3083,7 +2938,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~8"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -3103,10 +2958,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_imshow"></span><h3>private  subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_imshow"></span><h3>private  subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
           
   <p>Add an image plot using <code>imshow</code>.</p><a href="../proc/add_imshow.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
@@ -3114,16 +2969,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~12"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -3138,7 +2993,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x~8"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3153,7 +3008,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xlim~4"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3168,7 +3023,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-ylim~4"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3183,7 +3038,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~9"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -3203,10 +3058,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-add_errorbar"></span><h3>private  subroutine <a href='../proc/add_errorbar.html'>add_errorbar</a>(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-add_errorbar"></span><h3>private  subroutine <a href='../proc/add_errorbar.html'>add_errorbar</a>(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Alexander Sandrock</dd>
     </dl>
@@ -3217,16 +3072,16 @@ raw strings (e.g., r'str'). Default is False.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~13"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -3241,7 +3096,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-x~9"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3256,7 +3111,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-y~6"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3271,7 +3126,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-label~7"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3286,7 +3141,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linestyle~6"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3301,7 +3156,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xerr"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3316,7 +3171,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-yerr~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3331,7 +3186,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-markersize~3"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -3346,7 +3201,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-linewidth~7"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -3361,7 +3216,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xlim~5"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3376,7 +3231,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-ylim~5"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3391,7 +3246,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-xscale~4"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -3406,7 +3261,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-yscale~4"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -3421,7 +3276,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-color~7"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3436,7 +3291,7 @@ raw strings (e.g., r'str'). Default is False.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~10"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -3456,10 +3311,10 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-optional_int_to_string"></span><h3>private  subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to_string</a>(int_value, string_value, default_value)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-optional_int_to_string"></span><h3>private  subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to_string</a>(int_value, string_value, default_value)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -3471,16 +3326,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-int_value"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -3495,7 +3350,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-string_value"></span>
               character(len=*),
             </td>
 <td>intent(out)</td>
@@ -3510,7 +3365,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-default_value"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3530,10 +3385,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-optional_logical_to_string"></span><h3>private  subroutine <a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a>(logical_value, string_value, default_value)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-optional_logical_to_string"></span><h3>private  subroutine <a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a>(logical_value, string_value, default_value)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -3545,16 +3400,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-logical_value"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -3569,7 +3424,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-string_value~2"></span>
               character(len=:),
             </td>
 <td>intent(out),</td>
@@ -3584,7 +3439,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-default_value~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3604,10 +3459,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-integer_to_string"></span><h3>private  subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a>(i, s)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-integer_to_string"></span><h3>private  subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a>(i, s)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -3618,16 +3473,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-i"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -3642,7 +3497,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-s"></span>
               character(len=*),
             </td>
 <td>intent(out)</td>
@@ -3662,10 +3517,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-real_to_string"></span><h3>private  subroutine <a href='../proc/real_to_string.html'>real_to_string</a>(v, fmt, str)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-real_to_string"></span><h3>private  subroutine <a href='../proc/real_to_string.html'>real_to_string</a>(v, fmt, str)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -3676,16 +3531,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-v"></span>
               real(kind=wp),
             </td>
 <td>intent(in)</td>
@@ -3700,7 +3555,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-fmt"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3715,7 +3570,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-str~3"></span>
               character(len=:),
             </td>
 <td>intent(out),</td>
@@ -3735,10 +3590,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-vec_to_string"></span><h3>private  subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy, is_tuple)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-vec_to_string"></span><h3>private  subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy, is_tuple)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -3749,16 +3604,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-v~2"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3773,7 +3628,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-fmt~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3788,7 +3643,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-str~4"></span>
               character(len=:),
             </td>
 <td>intent(out),</td>
@@ -3803,7 +3658,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-use_numpy~3"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -3818,7 +3673,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-is_tuple"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -3838,10 +3693,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-matrix_to_string"></span><h3>private  subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(v, fmt, str, use_numpy)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-matrix_to_string"></span><h3>private  subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(v, fmt, str, use_numpy)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -3852,16 +3707,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-v~3"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -3876,7 +3731,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-fmt~3"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3891,7 +3746,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-str~5"></span>
               character(len=:),
             </td>
 <td>intent(out),</td>
@@ -3906,7 +3761,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-use_numpy~4"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -3926,10 +3781,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-execute"></span><h3>private  subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat, python)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-execute"></span><h3>private  subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat, python)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
         <dt>Date</dt><dd>8/16/2015</dd>
@@ -3941,16 +3796,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~14"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -3965,7 +3820,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-pyfile"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -3980,7 +3835,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~14"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -3995,7 +3850,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-python"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4015,10 +3870,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-finish_ops"></span><h3>private  subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-finish_ops"></span><h3>private  subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -4029,16 +3884,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~15"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -4058,10 +3913,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-savefig"></span><h3>private  subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-savefig"></span><h3>private  subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
@@ -4072,16 +3927,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~16"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -4096,7 +3951,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-figfile"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -4111,7 +3966,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-pyfile~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4126,7 +3981,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-dpi"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4142,7 +3997,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-transparent"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -4157,7 +4012,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-facecolor"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4172,7 +4027,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-edgecolor"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4187,7 +4042,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-orientation"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4202,7 +4057,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~15"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -4217,7 +4072,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-python~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4237,10 +4092,10 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-showfig"></span><h3>private  subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat, python)  
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-showfig"></span><h3>private  subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat, python)  
 </h3></div>
-    <div class="panel-body">
+    <div class="card-body">
               <dl class="dl-horizontal">
         <dt>Author</dt><dd>Johannes Rieke</dd>
         <dt>Date</dt><dd>6/16/2017</dd>
@@ -4252,16 +4107,16 @@ the optional argument is not present.</p>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-me~17"></span>
               class(<a href='../type/pyplot.html'>pyplot</a>),
             </td>
 <td>intent(inout)</td>
@@ -4276,7 +4131,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-pyfile~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4291,7 +4146,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-istat~16"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -4306,7 +4161,7 @@ the optional argument is not present.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" ></span>
+              <span class="anchor" id="variable-python~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -4326,58 +4181,53 @@ the optional argument is not present.</p>
     </div>
   </div>
 
-    </section>
-    <br>
+        </section>
+        <br>
 
 
 
     </div>
   </div>
 
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2023 
 </p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-          </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
     <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>

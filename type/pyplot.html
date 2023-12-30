@@ -4,75 +4,58 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+      <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>pyplot &ndash; pyplot-fortran </title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">pyplot-fortran </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-       
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
             </ul>
-        
-            </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/pyplot_module.f90.html">Source File</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-          </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
         </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -80,33 +63,37 @@
       <small>Derived Type</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title="<p>100.0% of total for derived types.</p>Including implementation: 850 statements, 100.0% of total for derived types.">33 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title="<p>100.0% of total for derived types.</p>Including implementation: 896 statements, 100.0% of total for derived types.">33 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/pyplot_module.F90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
-              <li><a href='../module/pyplot_module.html'>pyplot_module</a></li>
-          <li class="active">pyplot</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
+                <li class="breadcrumb-item"><a href='../module/pyplot_module.html'>pyplot_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">pyplot</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -117,26 +104,25 @@
       <div id="sidebar">
       <h3>Contents</h3>
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#vars-0">Variables</a>
-        </h3>
-      </div>
-      <div id="vars-0" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../type/pyplot.html#variable-str~5">str</a>
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../type/pyplot.html#variable-str">str</a>
             <a class="list-group-item" href="../type/pyplot.html#variable-raw_str_token">raw_str_token</a>
             <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy~4">use_numpy</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-use_oo_api~2">use_oo_api</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d~2">mplot3d</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-polar~2">polar</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal~2">axis_equal</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-axisbelow~2">axisbelow</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-tight_layout~2">tight_layout</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-usetex~2">usetex</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt~2">real_fmt</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy">use_numpy</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-use_oo_api">use_oo_api</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d">mplot3d</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-polar">polar</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal">axis_equal</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-axisbelow">axisbelow</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-tight_layout">tight_layout</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-usetex">usetex</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
         </div>
       </div>
     </div>
@@ -156,14 +142,13 @@
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a>
-        </h3>
-      </div>
-      <div id="boundprocs-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#boundprocs-0"
+         aria-expanded="false" aria-controls="boundprocs-0">
+         <h4 class="card-header bg-primary text-white">Type-Bound Procedures</h4>
+      </a>
+      <div id="boundprocs-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-initialize">initialize</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
             <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_errorbar">add_errorbar</a>
@@ -186,8 +171,9 @@
     </div>
 
   
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
       <div class="list-group">
         <a class="list-group-item" href="../type/pyplot.html#src">pyplot</a>
       </div>
@@ -203,104 +189,21 @@
     <p>The main pyplot class.</p>
     <br>
 
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#vars-1">Variables</a>
-        </h3>
-      </div>
-      <div id="vars-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../type/pyplot.html#variable-str~5">str</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-raw_str_token">raw_str_token</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-show_legend">show_legend</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-use_numpy~4">use_numpy</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-use_oo_api~2">use_oo_api</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-mplot3d~2">mplot3d</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-polar~2">polar</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-axis_equal~2">axis_equal</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-axisbelow~2">axisbelow</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-tight_layout~2">tight_layout</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-usetex~2">usetex</a>
-            <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt~2">real_fmt</a>
-        </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a>
-        </h3>
-      </div>
-      <div id="boundprocs-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-initialize">initialize</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_plot">add_plot</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_errorbar">add_errorbar</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_3d_plot">add_3d_plot</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_sphere">add_sphere</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_contour">add_contour</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-plot_wireframe">plot_wireframe</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-plot_surface">plot_surface</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_bar">add_bar</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_imshow">add_imshow</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_hist">add_hist</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-savefig">savefig</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-showfig">showfig</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-destroy">destroy</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-execute">execute</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-add_str">add_str</a>
-            <a class="list-group-item" href="../type/pyplot.html#boundprocedure-finish_ops">finish_ops</a>
-        </div>
-      </div>
-    </div>
-
-  
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-      <div class="list-group">
-        <a class="list-group-item" href="../type/pyplot.html#src">pyplot</a>
-      </div>
-    </div>
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
     <section>
     <h2>Components</h2>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Visibility</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-<th></th><th>Initial</th>        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-str~5"></span>
+              <span class="anchor" id="variable-str"></span>
               character(len=:),
             </td>
               <td>private,</td>
@@ -327,7 +230,7 @@
             <td>::</td>
             <td><strong>raw_str_token</strong></td>
 <td> =</td>
-                <td>' '</td>
+                <td>&#39; &#39;</td>
             <td>
                 <p>will be 'r' if using raw strings</p>
             </td>
@@ -351,7 +254,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-use_numpy~4"></span>
+              <span class="anchor" id="variable-use_numpy"></span>
               logical,
             </td>
               <td>private</td>
@@ -368,7 +271,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-use_oo_api~2"></span>
+              <span class="anchor" id="variable-use_oo_api"></span>
               logical,
             </td>
               <td>private</td>
@@ -385,7 +288,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-mplot3d~2"></span>
+              <span class="anchor" id="variable-mplot3d"></span>
               logical,
             </td>
               <td>private</td>
@@ -402,7 +305,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-polar~2"></span>
+              <span class="anchor" id="variable-polar"></span>
               logical,
             </td>
               <td>private</td>
@@ -419,7 +322,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-axis_equal~2"></span>
+              <span class="anchor" id="variable-axis_equal"></span>
               logical,
             </td>
               <td>private</td>
@@ -436,7 +339,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-axisbelow~2"></span>
+              <span class="anchor" id="variable-axisbelow"></span>
               logical,
             </td>
               <td>private</td>
@@ -453,7 +356,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-tight_layout~2"></span>
+              <span class="anchor" id="variable-tight_layout"></span>
               logical,
             </td>
               <td>private</td>
@@ -470,7 +373,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-usetex~2"></span>
+              <span class="anchor" id="variable-usetex"></span>
               logical,
             </td>
               <td>private</td>
@@ -487,7 +390,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-real_fmt~2"></span>
+              <span class="anchor" id="variable-real_fmt"></span>
               character(len=:),
             </td>
               <td>private,</td>
@@ -512,10 +415,17 @@
 
       <section>
         <h2>Type-Bound Procedures</h2>
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initialize"></span><h3>procedure, public :: <strong>initialize</strong>          
-    </h3></div>
-      <div class="panel-body">
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-initialize"></span>
+      <h3>
+          procedure, public ::
+  <strong>initialize</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>initialize pyplot instance</p>
       </div>
@@ -528,17 +438,18 @@
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
+
   <p>Initialize a plot</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -910,10 +821,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_plot"></span><h3>procedure, public :: <strong>add_plot</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_plot"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_plot</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a 2d plot to pyplot instance</p>
       </div>
@@ -926,17 +845,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
+
   <p>Add an x,y plot.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -1142,10 +1062,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_errorbar"></span><h3>procedure, public :: <strong>add_errorbar</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_errorbar"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_errorbar</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a 2d error bar plot to pyplot instance</p>
       </div>
@@ -1158,17 +1086,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Alexander Sandrock</dd>
     </dl>
 
+
   <p>Add an x,y plot with errorbars.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -1404,10 +1333,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_3d_plot"></span><h3>procedure, public :: <strong>add_3d_plot</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_3d_plot"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_3d_plot</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a 3d plot to pyplot instance</p>
       </div>
@@ -1420,18 +1357,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
-  <p>Add a 3D x,y,z plot.</p>
-<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>Must initialize the class with <code>mplot3d=.true.</code></p></div>
+
+  <p>Add a 3D x,y,z plot.</p><a href="../proc/add_3d_plot.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -1577,10 +1514,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_sphere"></span><h3>procedure, public :: <strong>add_sphere</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_sphere"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_sphere</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a 3d sphere to pyplot instance</p>
       </div>
@@ -1593,18 +1538,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
-  <p>Add a sphere to a 3D x,y,z plot.</p>
-<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>Must initialize the class with <code>mplot3d=.true.</code> and <code>use_numpy=.true.</code>.</p></div>
+
+  <p>Add a sphere to a 3D x,y,z plot.</p><a href="../proc/add_sphere.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -1765,10 +1710,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_contour"></span><h3>procedure, public :: <strong>add_contour</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_contour"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_contour</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a contour plot to pyplot instance</p>
       </div>
@@ -1781,18 +1734,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
-  <p>Add a contour plot.</p>
-<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>This requires <code>use_numpy</code> to be True.</p></div>
+
+  <p>Add a contour plot.</p><a href="../proc/add_contour.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -1983,10 +1936,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-plot_wireframe"></span><h3>procedure, public :: <strong>plot_wireframe</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-plot_wireframe"></span>
+      <h3>
+          procedure, public ::
+  <strong>plot_wireframe</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a wireframe plot to pyplot instance</p>
       </div>
@@ -1999,18 +1960,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
-  <p>Add a wireframe plot.</p>
-<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>This requires <code>use_numpy</code> to be True.</p></div>
+
+  <p>Add a wireframe plot.</p><a href="../proc/plot_wireframe.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -2216,10 +2177,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-plot_surface"></span><h3>procedure, public :: <strong>plot_surface</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-plot_surface"></span>
+      <h3>
+          procedure, public ::
+  <strong>plot_surface</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a surface plot to pyplot instance</p>
       </div>
@@ -2232,18 +2201,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
-  <p>Add a surface plot.</p>
-<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>This requires <code>use_numpy</code> to be True.</p></div>
+
+  <p>Add a surface plot.</p><a href="../proc/plot_surface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -2449,10 +2418,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_bar"></span><h3>procedure, public :: <strong>add_bar</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_bar"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_bar</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a barplot to pyplot instance</p>
       </div>
@@ -2465,17 +2442,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
+
   <p>Add a bar plot.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -2696,10 +2674,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_imshow"></span><h3>procedure, public :: <strong>add_imshow</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_imshow"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_imshow</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add an image plot (using <code>imshow</code>)</p>
       </div>
@@ -2709,21 +2695,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     private  subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim, istat)  
 </h3>
     
-  <p>Add an image plot using <code>imshow</code>.</p>
-<h3>Note</h3>
-<ul>
-<li>Based on code by Ricardo Torres, 4/2/2017.</li>
-</ul>
+
+  <p>Add an image plot using <code>imshow</code>.</p><a href="../proc/add_imshow.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -2809,10 +2792,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_hist"></span><h3>procedure, public :: <strong>add_hist</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_hist"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_hist</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add a histogram plot to pyplot instance</p>
       </div>
@@ -2825,17 +2816,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jimmy Leta</dd>
     </dl>
 
+
   <p>Add a histogram plot.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -3011,10 +3003,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-savefig"></span><h3>procedure, public :: <strong>savefig</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-savefig"></span>
+      <h3>
+          procedure, public ::
+  <strong>savefig</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>save plots of pyplot instance</p>
       </div>
@@ -3027,22 +3027,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
-  <p>Save the figure.</p>
-<h3>History</h3>
-<ul>
-<li>modified: Johannes Rieke 6/16/2017</li>
-<li>modified: Jacob Williams 6/16/2017</li>
-</ul>
+
+  <p>Save the figure.</p><a href="../proc/savefig.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -3204,10 +3200,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-showfig"></span><h3>procedure, public :: <strong>showfig</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-showfig"></span>
+      <h3>
+          procedure, public ::
+  <strong>showfig</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>show plots of pyplot instance</p>
       </div>
@@ -3221,17 +3225,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Date</dt><dd>6/16/2017</dd>
     </dl>
 
+
   <p>Shows the figure.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -3302,10 +3307,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy"></span><h3>procedure, public :: <strong>destroy</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-destroy"></span>
+      <h3>
+          procedure, public ::
+  <strong>destroy</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>destroy pyplot instance</p>
       </div>
@@ -3318,17 +3331,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
+
   <p>Destructor.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -3354,10 +3368,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-execute"></span><h3>procedure, public :: <strong>execute</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-execute"></span>
+      <h3>
+          procedure, public ::
+  <strong>execute</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>execute pyplot commands</p>
       </div>
@@ -3371,19 +3393,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Date</dt><dd>8/16/2015</dd>
     </dl>
 
-  <p>Write the buffer to a file, and then execute it with Python.</p>
-<p>If user specifies a Python file name, then the file is kept, otherwise
- a temporary filename is used, and the file is deleted after it is used.</p>
+
+  <p>Write the buffer to a file, and then execute it with Python.</p><a href="../proc/execute.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -3454,10 +3475,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_str"></span><h3>procedure, public :: <strong>add_str</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-add_str"></span>
+      <h3>
+          procedure, public ::
+  <strong>add_str</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>add string to pytplot instance buffer</p>
       </div>
@@ -3470,17 +3499,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
+
   <p>Add a string to the buffer.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -3521,10 +3551,18 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-finish_ops"></span><h3>procedure, public :: <strong>finish_ops</strong>          
-    </h3></div>
-      <div class="panel-body">
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-finish_ops"></span>
+      <h3>
+          procedure, public ::
+  <strong>finish_ops</strong>
+        
+      </h3>
+    </div>
+      <div class="card-body">
         
         <p>some final ops before saving</p>
       </div>
@@ -3537,17 +3575,18 @@ raw strings (e.g., r'str'). Default is False.</p>
         <dt>Author</dt><dd>Jacob Williams</dd>
     </dl>
 
+
   <p>Some final things to add before saving or showing the figure.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -3573,11 +3612,12 @@ raw strings (e.g., r'str'). Default is False.</p>
     </ul>
   </div>
 
+          </div>
       </section>
 
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
-    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pyplot</span><span class="w"></span>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pyplot</span>
 
 <span class="w">        </span><span class="c">!!  The main pyplot class.</span>
 
@@ -3599,7 +3639,7 @@ raw strings (e.g., r'str'). Default is False.</p>
 
 <span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">real_fmt</span><span class="w">  </span><span class="c">!! real number formatting</span>
 
-<span class="w">    </span><span class="k">contains</span><span class="w"></span>
+<span class="w">    </span><span class="k">contains</span>
 
 <span class="w">        </span><span class="c">! public methods</span>
 <span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">initialize</span><span class="w">    </span><span class="c">!! initialize pyplot instance</span>
@@ -3623,7 +3663,7 @@ raw strings (e.g., r'str'). Default is False.</p>
 <span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">add_str</span><span class="w">    </span><span class="c">!! add string to pytplot instance buffer</span>
 <span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">finish_ops</span><span class="w"> </span><span class="c">!! some final ops before saving</span>
 
-<span class="w">    </span><span class="k">end type </span><span class="n">pyplot</span><span class="w"></span>
+<span class="w">    </span><span class="k">end type </span><span class="n">pyplot</span>
 </pre></div>
 
     </section>
@@ -3631,50 +3671,45 @@ raw strings (e.g., r'str'). Default is False.</p>
     </div>
   </div>
 
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2023 
+        <div class="row justify-content-between">
+          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2023 
 </p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-          </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
     <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>
