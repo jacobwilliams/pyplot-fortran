@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -35,7 +38,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                    <a class="nav-link" href="sourcefile/pyplot_module.f90.html">Source File</a>
                   </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../lists/modules.html">Modules</a>
@@ -230,7 +233,7 @@ the optional argument is not present.</p>
 <!-- proc~add_hist -->
 <g id="proc~~optional_logical_to_string~~CalledByGraph_node2" class="node">
 <title>proc~add_hist</title>
-<g id="a_proc~~optional_logical_to_string~~CalledByGraph_node2"><a xlink:href=".././proc/add_hist.html" xlink:title="pyplot_module::pyplot%add_hist">
+<g id="a_proc~~optional_logical_to_string~~CalledByGraph_node2"><a xlink:href="../proc/add_hist.html" xlink:title="pyplot_module::pyplot%add_hist">
 <polygon fill="#d9534f" stroke="#d9534f" points="203.5,-150 17.5,-150 17.5,-126 203.5,-126 203.5,-150"/>
 <text text-anchor="middle" x="110.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_hist</text>
 </a>
@@ -245,7 +248,7 @@ the optional argument is not present.</p>
 <!-- proc~add_sphere -->
 <g id="proc~~optional_logical_to_string~~CalledByGraph_node3" class="node">
 <title>proc~add_sphere</title>
-<g id="a_proc~~optional_logical_to_string~~CalledByGraph_node3"><a xlink:href=".././proc/add_sphere.html" xlink:title="pyplot_module::pyplot%add_sphere">
+<g id="a_proc~~optional_logical_to_string~~CalledByGraph_node3"><a xlink:href="../proc/add_sphere.html" xlink:title="pyplot_module::pyplot%add_sphere">
 <polygon fill="#d9534f" stroke="#d9534f" points="212,-108 9,-108 9,-84 212,-84 212,-108"/>
 <text text-anchor="middle" x="110.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_sphere</text>
 </a>
@@ -260,7 +263,7 @@ the optional argument is not present.</p>
 <!-- proc~plot_surface -->
 <g id="proc~~optional_logical_to_string~~CalledByGraph_node4" class="node">
 <title>proc~plot_surface</title>
-<g id="a_proc~~optional_logical_to_string~~CalledByGraph_node4"><a xlink:href=".././proc/plot_surface.html" xlink:title="pyplot_module::pyplot%plot_surface">
+<g id="a_proc~~optional_logical_to_string~~CalledByGraph_node4"><a xlink:href="../proc/plot_surface.html" xlink:title="pyplot_module::pyplot%plot_surface">
 <polygon fill="#d9534f" stroke="#d9534f" points="214,-66 7,-66 7,-42 214,-42 214,-66"/>
 <text text-anchor="middle" x="110.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%plot_surface</text>
 </a>
@@ -275,7 +278,7 @@ the optional argument is not present.</p>
 <!-- proc~plot_wireframe -->
 <g id="proc~~optional_logical_to_string~~CalledByGraph_node5" class="node">
 <title>proc~plot_wireframe</title>
-<g id="a_proc~~optional_logical_to_string~~CalledByGraph_node5"><a xlink:href=".././proc/plot_wireframe.html" xlink:title="pyplot_module::pyplot%plot_wireframe">
+<g id="a_proc~~optional_logical_to_string~~CalledByGraph_node5"><a xlink:href="../proc/plot_wireframe.html" xlink:title="pyplot_module::pyplot%plot_wireframe">
 <polygon fill="#d9534f" stroke="#d9534f" points="221,-24 0,-24 0,0 221,0 221,-24"/>
 <text text-anchor="middle" x="110.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%plot_wireframe</text>
 </a>
@@ -289,17 +292,17 @@ the optional argument is not present.</p>
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -412,7 +415,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2023 
+          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

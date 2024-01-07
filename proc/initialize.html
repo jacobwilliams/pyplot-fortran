@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -35,7 +38,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                    <a class="nav-link" href="sourcefile/pyplot_module.f90.html">Source File</a>
                   </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../lists/modules.html">Modules</a>
@@ -547,7 +550,7 @@ raw strings (e.g., r'str'). Default is False.</p>
 <!-- proc~add_str -->
 <g id="proc~~initialize~~CallsGraph_node2" class="node">
 <title>proc~add_str</title>
-<g id="a_proc~~initialize~~CallsGraph_node2"><a xlink:href=".././proc/add_str.html" xlink:title="pyplot_module::pyplot%add_str">
+<g id="a_proc~~initialize~~CallsGraph_node2"><a xlink:href="../proc/add_str.html" xlink:title="pyplot_module::pyplot%add_str">
 <polygon fill="#d9534f" stroke="#d9534f" points="418.5,-146 237.5,-146 237.5,-122 418.5,-122 418.5,-146"/>
 <text text-anchor="middle" x="328" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_str</text>
 </a>
@@ -562,7 +565,7 @@ raw strings (e.g., r'str'). Default is False.</p>
 <!-- proc~destroy -->
 <g id="proc~~initialize~~CallsGraph_node3" class="node">
 <title>proc~destroy</title>
-<g id="a_proc~~initialize~~CallsGraph_node3"><a xlink:href=".././proc/destroy.html" xlink:title="pyplot_module::pyplot%destroy">
+<g id="a_proc~~initialize~~CallsGraph_node3"><a xlink:href="../proc/destroy.html" xlink:title="pyplot_module::pyplot%destroy">
 <polygon fill="#d9534f" stroke="#d9534f" points="418.5,-104 237.5,-104 237.5,-80 418.5,-80 418.5,-104"/>
 <text text-anchor="middle" x="328" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%destroy</text>
 </a>
@@ -577,7 +580,7 @@ raw strings (e.g., r'str'). Default is False.</p>
 <!-- proc~integer_to_string -->
 <g id="proc~~initialize~~CallsGraph_node4" class="node">
 <title>proc~integer_to_string</title>
-<g id="a_proc~~initialize~~CallsGraph_node4"><a xlink:href=".././proc/integer_to_string.html" xlink:title="pyplot_module::integer_to_string">
+<g id="a_proc~~initialize~~CallsGraph_node4"><a xlink:href="../proc/integer_to_string.html" xlink:title="pyplot_module::integer_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="658,-44 470,-44 470,-20 658,-20 658,-44"/>
 <text text-anchor="middle" x="564" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::integer_to_string</text>
 </a>
@@ -592,7 +595,7 @@ raw strings (e.g., r'str'). Default is False.</p>
 <!-- proc~optional_int_to_string -->
 <g id="proc~~initialize~~CallsGraph_node5" class="node">
 <title>proc~optional_int_to_string</title>
-<g id="a_proc~~initialize~~CallsGraph_node5"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="pyplot_module::optional_int_to_string">
+<g id="a_proc~~initialize~~CallsGraph_node5"><a xlink:href="../proc/optional_int_to_string.html" xlink:title="pyplot_module::optional_int_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="434,-24 222,-24 222,0 434,0 434,-24"/>
 <text text-anchor="middle" x="328" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::optional_int_to_string</text>
 </a>
@@ -616,17 +619,17 @@ raw strings (e.g., r'str'). Default is False.</p>
                   var panprocinitializeCallsGraph = svgPanZoom('#procinitializeCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -892,7 +895,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2023 
+          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

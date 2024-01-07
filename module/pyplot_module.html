@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -35,7 +38,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                    <a class="nav-link" href="sourcefile/pyplot_module.f90.html">Source File</a>
                   </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../lists/modules.html">Modules</a>
@@ -248,17 +251,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -726,87 +729,87 @@ parameter
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-initialize'>initialize</a></strong></td>
-                <td><p>initialize pyplot instance</p></td>
+                <td>../../<p>initialize pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_plot'>add_plot</a></strong></td>
-                <td><p>add a 2d plot to pyplot instance</p></td>
+                <td>../../<p>add a 2d plot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_errorbar'>add_errorbar</a></strong></td>
-                <td><p>add a 2d error bar plot to pyplot instance</p></td>
+                <td>../../<p>add a 2d error bar plot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_3d_plot'>add_3d_plot</a></strong></td>
-                <td><p>add a 3d plot to pyplot instance</p></td>
+                <td>../../<p>add a 3d plot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_sphere'>add_sphere</a></strong></td>
-                <td><p>add a 3d sphere to pyplot instance</p></td>
+                <td>../../<p>add a 3d sphere to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_contour'>add_contour</a></strong></td>
-                <td><p>add a contour plot to pyplot instance</p></td>
+                <td>../../<p>add a contour plot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-plot_wireframe'>plot_wireframe</a></strong></td>
-                <td><p>add a wireframe plot to pyplot instance</p></td>
+                <td>../../<p>add a wireframe plot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-plot_surface'>plot_surface</a></strong></td>
-                <td><p>add a surface plot to pyplot instance</p></td>
+                <td>../../<p>add a surface plot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_bar'>add_bar</a></strong></td>
-                <td><p>add a barplot to pyplot instance</p></td>
+                <td>../../<p>add a barplot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_imshow'>add_imshow</a></strong></td>
-                <td><p>add an image plot (using <code>imshow</code>)</p></td>
+                <td>../../<p>add an image plot (using <code>imshow</code>)</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_hist'>add_hist</a></strong></td>
-                <td><p>add a histogram plot to pyplot instance</p></td>
+                <td>../../<p>add a histogram plot to pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-savefig'>savefig</a></strong></td>
-                <td><p>save plots of pyplot instance</p></td>
+                <td>../../<p>save plots of pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-showfig'>showfig</a></strong></td>
-                <td><p>show plots of pyplot instance</p></td>
+                <td>../../<p>show plots of pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-destroy'>destroy</a></strong></td>
-                <td><p>destroy pyplot instance</p></td>
+                <td>../../<p>destroy pyplot instance</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-execute'>execute</a></strong></td>
-                <td><p>execute pyplot commands</p></td>
+                <td>../../<p>execute pyplot commands</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-add_str'>add_str</a></strong></td>
-                <td><p>add string to pytplot instance buffer</p></td>
+                <td>../../<p>add string to pytplot instance buffer</p></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
   <strong><a href='../type/pyplot.html#boundprocedure-finish_ops'>finish_ops</a></strong></td>
-                <td><p>some final ops before saving</p></td>
+                <td>../../<p>some final ops before saving</p></td>
               </tr>
           </tbody>
         </table>
@@ -820,7 +823,7 @@ parameter
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-destroy"></span><h3>private  subroutine <a href='../proc/destroy.html'>destroy</a>(me)  
+    <div class="card-header codesum"><span class="anchor" id="proc-destroy"></span> <h3>private  subroutine <a href='../proc/destroy.html'>destroy</a>(me)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -863,7 +866,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_str"></span><h3>private  subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_str"></span> <h3>private  subroutine <a href='../proc/add_str.html'>add_str</a>(me, str)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -921,7 +924,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initialize"></span><h3>private  subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initialize"></span> <h3>private  subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1310,7 +1313,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_plot"></span><h3>private  subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_plot"></span> <h3>private  subroutine <a href='../proc/add_plot.html'>add_plot</a>(me, x, y, label, linestyle, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1533,7 +1536,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_hist"></span><h3>private  subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_hist"></span> <h3>private  subroutine <a href='../proc/add_hist.html'>add_hist</a>(me, x, label, xlim, ylim, xscale, yscale, bins, normed, cumulative, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1726,7 +1729,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_contour"></span><h3>private  subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_contour"></span> <h3>private  subroutine <a href='../proc/add_contour.html'>add_contour</a>(me, x, y, z, linestyle, linewidth, levels, color, filled, cmap, colorbar, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1934,7 +1937,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-plot_surface"></span><h3>private  subroutine <a href='../proc/plot_surface.html'>plot_surface</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-plot_surface"></span> <h3>private  subroutine <a href='../proc/plot_surface.html'>plot_surface</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -2157,7 +2160,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-plot_wireframe"></span><h3>private  subroutine <a href='../proc/plot_wireframe.html'>plot_wireframe</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-plot_wireframe"></span> <h3>private  subroutine <a href='../proc/plot_wireframe.html'>plot_wireframe</a>(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -2380,7 +2383,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_3d_plot"></span><h3>private  subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_3d_plot"></span> <h3>private  subroutine <a href='../proc/add_3d_plot.html'>add_3d_plot</a>(me, x, y, z, label, linestyle, markersize, linewidth, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -2543,7 +2546,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_sphere"></span><h3>private  subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_sphere"></span> <h3>private  subroutine <a href='../proc/add_sphere.html'>add_sphere</a>(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -2721,7 +2724,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_bar"></span><h3>private  subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_bar"></span> <h3>private  subroutine <a href='../proc/add_bar.html'>add_bar</a>(me, x, height, label, width, bottom, color, yerr, align, xlim, ylim, xscale, yscale, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -2959,7 +2962,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_imshow"></span><h3>private  subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_imshow"></span> <h3>private  subroutine <a href='../proc/add_imshow.html'>add_imshow</a>(me, x, xlim, ylim, istat)  
 </h3></div>
     <div class="card-body">
           
@@ -3059,7 +3062,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-add_errorbar"></span><h3>private  subroutine <a href='../proc/add_errorbar.html'>add_errorbar</a>(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)  
+    <div class="card-header codesum"><span class="anchor" id="proc-add_errorbar"></span> <h3>private  subroutine <a href='../proc/add_errorbar.html'>add_errorbar</a>(me, x, y, label, linestyle, xerr, yerr, markersize, linewidth, xlim, ylim, xscale, yscale, color, istat)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3312,7 +3315,7 @@ raw strings (e.g., r'str'). Default is False.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-optional_int_to_string"></span><h3>private  subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to_string</a>(int_value, string_value, default_value)  
+    <div class="card-header codesum"><span class="anchor" id="proc-optional_int_to_string"></span> <h3>private  subroutine <a href='../proc/optional_int_to_string.html'>optional_int_to_string</a>(int_value, string_value, default_value)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3386,7 +3389,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-optional_logical_to_string"></span><h3>private  subroutine <a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a>(logical_value, string_value, default_value)  
+    <div class="card-header codesum"><span class="anchor" id="proc-optional_logical_to_string"></span> <h3>private  subroutine <a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a>(logical_value, string_value, default_value)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3460,7 +3463,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-integer_to_string"></span><h3>private  subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a>(i, s)  
+    <div class="card-header codesum"><span class="anchor" id="proc-integer_to_string"></span> <h3>private  subroutine <a href='../proc/integer_to_string.html'>integer_to_string</a>(i, s)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3518,7 +3521,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-real_to_string"></span><h3>private  subroutine <a href='../proc/real_to_string.html'>real_to_string</a>(v, fmt, str)  
+    <div class="card-header codesum"><span class="anchor" id="proc-real_to_string"></span> <h3>private  subroutine <a href='../proc/real_to_string.html'>real_to_string</a>(v, fmt, str)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3591,7 +3594,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-vec_to_string"></span><h3>private  subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy, is_tuple)  
+    <div class="card-header codesum"><span class="anchor" id="proc-vec_to_string"></span> <h3>private  subroutine <a href='../proc/vec_to_string.html'>vec_to_string</a>(v, fmt, str, use_numpy, is_tuple)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3694,7 +3697,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-matrix_to_string"></span><h3>private  subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(v, fmt, str, use_numpy)  
+    <div class="card-header codesum"><span class="anchor" id="proc-matrix_to_string"></span> <h3>private  subroutine <a href='../proc/matrix_to_string.html'>matrix_to_string</a>(v, fmt, str, use_numpy)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3782,7 +3785,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-execute"></span><h3>private  subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat, python)  
+    <div class="card-header codesum"><span class="anchor" id="proc-execute"></span> <h3>private  subroutine <a href='../proc/execute.html'>execute</a>(me, pyfile, istat, python)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3871,7 +3874,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-finish_ops"></span><h3>private  subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)  
+    <div class="card-header codesum"><span class="anchor" id="proc-finish_ops"></span> <h3>private  subroutine <a href='../proc/finish_ops.html'>finish_ops</a>(me)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -3914,7 +3917,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-savefig"></span><h3>private  subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)  
+    <div class="card-header codesum"><span class="anchor" id="proc-savefig"></span> <h3>private  subroutine <a href='../proc/savefig.html'>savefig</a>(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -4093,7 +4096,7 @@ the optional argument is not present.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-showfig"></span><h3>private  subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat, python)  
+    <div class="card-header codesum"><span class="anchor" id="proc-showfig"></span> <h3>private  subroutine <a href='../proc/showfig.html'>showfig</a>(me, pyfile, istat, python)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -4194,7 +4197,7 @@ the optional argument is not present.</p>
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2023 
+          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2024 
 </p>
           </div>
           <div class="col">

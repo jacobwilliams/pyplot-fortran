@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -36,7 +39,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                    <a class="nav-link" href="sourcefile/pyplot_module.f90.html">Source File</a>
                   </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../lists/modules.html">Modules</a>
@@ -65,31 +68,146 @@
 			 <table class="table table-striped">
 			 <thead><tr><th>Procedure</th><th>Location</th><th>Procedure Type</th><th>Description</th></tr></thead>
 			 <tbody>
-			   <tr><td><a href='../proc/add_3d_plot.html'>add_3d_plot</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add a 3D x,y,z plot.</p><a href="../proc/add_3d_plot.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/add_bar.html'>add_bar</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add a bar plot.</p></td></tr>
-			   <tr><td><a href='../proc/add_contour.html'>add_contour</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add a contour plot.</p><a href="../proc/add_contour.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/add_errorbar.html'>add_errorbar</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add an x,y plot with errorbars.</p></td></tr>
-			   <tr><td><a href='../proc/add_hist.html'>add_hist</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add a histogram plot.</p></td></tr>
-			   <tr><td><a href='../proc/add_imshow.html'>add_imshow</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add an image plot using <code>imshow</code>.</p><a href="../proc/add_imshow.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/add_plot.html'>add_plot</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add an x,y plot.</p></td></tr>
-			   <tr><td><a href='../proc/add_sphere.html'>add_sphere</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add a sphere to a 3D x,y,z plot.</p><a href="../proc/add_sphere.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/add_str.html'>add_str</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add a string to the buffer.</p></td></tr>
-			   <tr><td><a href='../proc/destroy.html'>destroy</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Destructor.</p></td></tr>
-			   <tr><td><a href='../proc/execute.html'>execute</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Write the buffer to a file, and then execute it with Python.</p><a href="../proc/execute.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/finish_ops.html'>finish_ops</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Some final things to add before saving or showing the figure.</p></td></tr>
-			   <tr><td><a href='../proc/initialize.html'>initialize</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Initialize a plot</p></td></tr>
-			   <tr><td><a href='../proc/integer_to_string.html'>integer_to_string</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Integer to string conversion.</p></td></tr>
-			   <tr><td><a href='../proc/matrix_to_string.html'>matrix_to_string</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Real matrix (rank 2) to string.</p></td></tr>
-			   <tr><td><a href='../proc/optional_int_to_string.html'>optional_int_to_string</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Integer to string, specifying the default value if
-the optional argument is not present.</p></td></tr>
-			   <tr><td><a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Logical to string, specifying the default value if
-the optional argument is not present.</p></td></tr>
-			   <tr><td><a href='../proc/plot_surface.html'>plot_surface</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add a surface plot.</p><a href="../proc/plot_surface.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/plot_wireframe.html'>plot_wireframe</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Add a wireframe plot.</p><a href="../proc/plot_wireframe.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/real_to_string.html'>real_to_string</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Real scalar to string.</p></td></tr>
-			   <tr><td><a href='../proc/savefig.html'>savefig</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Save the figure.</p><a href="../proc/savefig.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
-			   <tr><td><a href='../proc/showfig.html'>showfig</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Shows the figure.</p></td></tr>
-			   <tr><td><a href='../proc/vec_to_string.html'>vec_to_string</a></td><td><a href='../module/pyplot_module.html'>pyplot_module</a></td><td>Subroutine</td><td><p>Real vector to string.</p></td></tr>
+			   <tr>
+                 <td><a href='../proc/add_3d_plot.html'>add_3d_plot</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a 3D x,y,z plot.</p><a href="../proc/add_3d_plot.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_bar.html'>add_bar</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a bar plot.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_contour.html'>add_contour</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a contour plot.</p><a href="../proc/add_contour.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_errorbar.html'>add_errorbar</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add an x,y plot with errorbars.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_hist.html'>add_hist</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a histogram plot.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_imshow.html'>add_imshow</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add an image plot using <code>imshow</code>.</p><a href="../proc/add_imshow.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_plot.html'>add_plot</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add an x,y plot.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_sphere.html'>add_sphere</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a sphere to a 3D x,y,z plot.</p><a href="../proc/add_sphere.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_str.html'>add_str</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a string to the buffer.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/destroy.html'>destroy</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Destructor.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/execute.html'>execute</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Write the buffer to a file, and then execute it with Python.</p><a href="../proc/execute.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/finish_ops.html'>finish_ops</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Some final things to add before saving or showing the figure.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/initialize.html'>initialize</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Initialize a plot</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/integer_to_string.html'>integer_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Integer to string conversion.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/matrix_to_string.html'>matrix_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Real matrix (rank 2) to string.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/optional_int_to_string.html'>optional_int_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Integer to string, specifying the default value if
+the optional argument is not present.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Logical to string, specifying the default value if
+the optional argument is not present.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/plot_surface.html'>plot_surface</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a surface plot.</p><a href="../proc/plot_surface.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/plot_wireframe.html'>plot_wireframe</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a wireframe plot.</p><a href="../proc/plot_wireframe.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/real_to_string.html'>real_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Real scalar to string.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/savefig.html'>savefig</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Save the figure.</p><a href="../proc/savefig.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/showfig.html'>showfig</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Shows the figure.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/vec_to_string.html'>vec_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Real vector to string.</p></td>
+               </tr>
 			 </tbody></table>
              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -105,7 +223,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_3d_plot -->
 <g id="call~~graph~~CallGraph_node1" class="node">
 <title>proc~add_3d_plot</title>
-<g id="a_call~~graph~~CallGraph_node1"><a xlink:href=".././proc/add_3d_plot.html" xlink:title="pyplot_module::pyplot%add_3d_plot">
+<g id="a_call~~graph~~CallGraph_node1"><a xlink:href="../proc/add_3d_plot.html" xlink:title="pyplot_module::pyplot%add_3d_plot">
 <polygon fill="#d9534f" stroke="#d9534f" points="431.5,-130 225.5,-130 225.5,-106 431.5,-106 431.5,-130"/>
 <text text-anchor="middle" x="328.5" y="-115.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_3d_plot</text>
 </a>
@@ -114,7 +232,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_str -->
 <g id="call~~graph~~CallGraph_node9" class="node">
 <title>proc~add_str</title>
-<g id="a_call~~graph~~CallGraph_node9"><a xlink:href=".././proc/add_str.html" xlink:title="pyplot_module::pyplot%add_str">
+<g id="a_call~~graph~~CallGraph_node9"><a xlink:href="../proc/add_str.html" xlink:title="pyplot_module::pyplot%add_str">
 <polygon fill="#d9534f" stroke="#d9534f" points="682.5,-420 501.5,-420 501.5,-396 682.5,-396 682.5,-420"/>
 <text text-anchor="middle" x="592" y="-405.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_str</text>
 </a>
@@ -129,7 +247,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~optional_int_to_string -->
 <g id="call~~graph~~CallGraph_node16" class="node">
 <title>proc~optional_int_to_string</title>
-<g id="a_call~~graph~~CallGraph_node16"><a xlink:href=".././proc/optional_int_to_string.html" xlink:title="pyplot_module::optional_int_to_string">
+<g id="a_call~~graph~~CallGraph_node16"><a xlink:href="../proc/optional_int_to_string.html" xlink:title="pyplot_module::optional_int_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="698,-222 486,-222 486,-198 698,-198 698,-222"/>
 <text text-anchor="middle" x="592" y="-207.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::optional_int_to_string</text>
 </a>
@@ -144,7 +262,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~vec_to_string -->
 <g id="call~~graph~~CallGraph_node23" class="node">
 <title>proc~vec_to_string</title>
-<g id="a_call~~graph~~CallGraph_node23"><a xlink:href=".././proc/vec_to_string.html" xlink:title="pyplot_module::vec_to_string">
+<g id="a_call~~graph~~CallGraph_node23"><a xlink:href="../proc/vec_to_string.html" xlink:title="pyplot_module::vec_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="923.5,-421 754.5,-421 754.5,-397 923.5,-397 923.5,-421"/>
 <text text-anchor="middle" x="839" y="-406.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::vec_to_string</text>
 </a>
@@ -159,7 +277,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_bar -->
 <g id="call~~graph~~CallGraph_node2" class="node">
 <title>proc~add_bar</title>
-<g id="a_call~~graph~~CallGraph_node2"><a xlink:href=".././proc/add_bar.html" xlink:title="pyplot_module::pyplot%add_bar">
+<g id="a_call~~graph~~CallGraph_node2"><a xlink:href="../proc/add_bar.html" xlink:title="pyplot_module::pyplot%add_bar">
 <polygon fill="#d9534f" stroke="#d9534f" points="421,-626 236,-626 236,-602 421,-602 421,-626"/>
 <text text-anchor="middle" x="328.5" y="-611.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_bar</text>
 </a>
@@ -180,7 +298,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_contour -->
 <g id="call~~graph~~CallGraph_node3" class="node">
 <title>proc~add_contour</title>
-<g id="a_call~~graph~~CallGraph_node3"><a xlink:href=".././proc/add_contour.html" xlink:title="pyplot_module::pyplot%add_contour">
+<g id="a_call~~graph~~CallGraph_node3"><a xlink:href="../proc/add_contour.html" xlink:title="pyplot_module::pyplot%add_contour">
 <polygon fill="#d9534f" stroke="#d9534f" points="432.5,-584 224.5,-584 224.5,-560 432.5,-560 432.5,-584"/>
 <text text-anchor="middle" x="328.5" y="-569.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_contour</text>
 </a>
@@ -195,7 +313,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~matrix_to_string -->
 <g id="call~~graph~~CallGraph_node15" class="node">
 <title>proc~matrix_to_string</title>
-<g id="a_call~~graph~~CallGraph_node15"><a xlink:href=".././proc/matrix_to_string.html" xlink:title="pyplot_module::matrix_to_string">
+<g id="a_call~~graph~~CallGraph_node15"><a xlink:href="../proc/matrix_to_string.html" xlink:title="pyplot_module::matrix_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="684,-462 500,-462 500,-438 684,-438 684,-462"/>
 <text text-anchor="middle" x="592" y="-447.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::matrix_to_string</text>
 </a>
@@ -222,7 +340,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_errorbar -->
 <g id="call~~graph~~CallGraph_node4" class="node">
 <title>proc~add_errorbar</title>
-<g id="a_call~~graph~~CallGraph_node4"><a xlink:href=".././proc/add_errorbar.html" xlink:title="pyplot_module::pyplot%add_errorbar">
+<g id="a_call~~graph~~CallGraph_node4"><a xlink:href="../proc/add_errorbar.html" xlink:title="pyplot_module::pyplot%add_errorbar">
 <polygon fill="#d9534f" stroke="#d9534f" points="434,-420 223,-420 223,-396 434,-396 434,-420"/>
 <text text-anchor="middle" x="328.5" y="-405.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_errorbar</text>
 </a>
@@ -249,7 +367,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_hist -->
 <g id="call~~graph~~CallGraph_node5" class="node">
 <title>proc~add_hist</title>
-<g id="a_call~~graph~~CallGraph_node5"><a xlink:href=".././proc/add_hist.html" xlink:title="pyplot_module::pyplot%add_hist">
+<g id="a_call~~graph~~CallGraph_node5"><a xlink:href="../proc/add_hist.html" xlink:title="pyplot_module::pyplot%add_hist">
 <polygon fill="#d9534f" stroke="#d9534f" points="421.5,-256 235.5,-256 235.5,-232 421.5,-232 421.5,-256"/>
 <text text-anchor="middle" x="328.5" y="-241.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_hist</text>
 </a>
@@ -270,7 +388,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~optional_logical_to_string -->
 <g id="call~~graph~~CallGraph_node17" class="node">
 <title>proc~optional_logical_to_string</title>
-<g id="a_call~~graph~~CallGraph_node17"><a xlink:href=".././proc/optional_logical_to_string.html" xlink:title="pyplot_module::optional_logical_to_string">
+<g id="a_call~~graph~~CallGraph_node17"><a xlink:href="../proc/optional_logical_to_string.html" xlink:title="pyplot_module::optional_logical_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="709,-302 475,-302 475,-278 709,-278 709,-302"/>
 <text text-anchor="middle" x="592" y="-287.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::optional_logical_to_string</text>
 </a>
@@ -291,7 +409,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_imshow -->
 <g id="call~~graph~~CallGraph_node6" class="node">
 <title>proc~add_imshow</title>
-<g id="a_call~~graph~~CallGraph_node6"><a xlink:href=".././proc/add_imshow.html" xlink:title="pyplot_module::pyplot%add_imshow">
+<g id="a_call~~graph~~CallGraph_node6"><a xlink:href="../proc/add_imshow.html" xlink:title="pyplot_module::pyplot%add_imshow">
 <polygon fill="#d9534f" stroke="#d9534f" points="432.5,-668 224.5,-668 224.5,-644 432.5,-644 432.5,-668"/>
 <text text-anchor="middle" x="328.5" y="-653.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_imshow</text>
 </a>
@@ -318,7 +436,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_plot -->
 <g id="call~~graph~~CallGraph_node7" class="node">
 <title>proc~add_plot</title>
-<g id="a_call~~graph~~CallGraph_node7"><a xlink:href=".././proc/add_plot.html" xlink:title="pyplot_module::pyplot%add_plot">
+<g id="a_call~~graph~~CallGraph_node7"><a xlink:href="../proc/add_plot.html" xlink:title="pyplot_module::pyplot%add_plot">
 <polygon fill="#d9534f" stroke="#d9534f" points="422,-172 235,-172 235,-148 422,-148 422,-172"/>
 <text text-anchor="middle" x="328.5" y="-157.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_plot</text>
 </a>
@@ -345,7 +463,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~add_sphere -->
 <g id="call~~graph~~CallGraph_node8" class="node">
 <title>proc~add_sphere</title>
-<g id="a_call~~graph~~CallGraph_node8"><a xlink:href=".././proc/add_sphere.html" xlink:title="pyplot_module::pyplot%add_sphere">
+<g id="a_call~~graph~~CallGraph_node8"><a xlink:href="../proc/add_sphere.html" xlink:title="pyplot_module::pyplot%add_sphere">
 <polygon fill="#d9534f" stroke="#d9534f" points="430,-214 227,-214 227,-190 430,-190 430,-214"/>
 <text text-anchor="middle" x="328.5" y="-199.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%add_sphere</text>
 </a>
@@ -372,7 +490,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~real_to_string -->
 <g id="call~~graph~~CallGraph_node20" class="node">
 <title>proc~real_to_string</title>
-<g id="a_call~~graph~~CallGraph_node20"><a xlink:href=".././proc/real_to_string.html" xlink:title="pyplot_module::real_to_string">
+<g id="a_call~~graph~~CallGraph_node20"><a xlink:href="../proc/real_to_string.html" xlink:title="pyplot_module::real_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="677,-180 507,-180 507,-156 677,-156 677,-180"/>
 <text text-anchor="middle" x="592" y="-165.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::real_to_string</text>
 </a>
@@ -387,7 +505,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~destroy -->
 <g id="call~~graph~~CallGraph_node10" class="node">
 <title>proc~destroy</title>
-<g id="a_call~~graph~~CallGraph_node10"><a xlink:href=".././proc/destroy.html" xlink:title="pyplot_module::pyplot%destroy">
+<g id="a_call~~graph~~CallGraph_node10"><a xlink:href="../proc/destroy.html" xlink:title="pyplot_module::pyplot%destroy">
 <polygon fill="#d9534f" stroke="#d9534f" points="682.5,-24 501.5,-24 501.5,0 682.5,0 682.5,-24"/>
 <text text-anchor="middle" x="592" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%destroy</text>
 </a>
@@ -396,7 +514,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~execute -->
 <g id="call~~graph~~CallGraph_node11" class="node">
 <title>proc~execute</title>
-<g id="a_call~~graph~~CallGraph_node11"><a xlink:href=".././proc/execute.html" xlink:title="pyplot_module::pyplot%execute">
+<g id="a_call~~graph~~CallGraph_node11"><a xlink:href="../proc/execute.html" xlink:title="pyplot_module::pyplot%execute">
 <polygon fill="#d9534f" stroke="#d9534f" points="420.5,-462 236.5,-462 236.5,-438 420.5,-438 420.5,-462"/>
 <text text-anchor="middle" x="328.5" y="-447.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%execute</text>
 </a>
@@ -405,7 +523,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~finish_ops -->
 <g id="call~~graph~~CallGraph_node12" class="node">
 <title>proc~finish_ops</title>
-<g id="a_call~~graph~~CallGraph_node12"><a xlink:href=".././proc/finish_ops.html" xlink:title="pyplot_module::pyplot%finish_ops">
+<g id="a_call~~graph~~CallGraph_node12"><a xlink:href="../proc/finish_ops.html" xlink:title="pyplot_module::pyplot%finish_ops">
 <polygon fill="#d9534f" stroke="#d9534f" points="425.5,-504 231.5,-504 231.5,-480 425.5,-480 425.5,-504"/>
 <text text-anchor="middle" x="328.5" y="-489.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%finish_ops</text>
 </a>
@@ -420,7 +538,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~initialize -->
 <g id="call~~graph~~CallGraph_node13" class="node">
 <title>proc~initialize</title>
-<g id="a_call~~graph~~CallGraph_node13"><a xlink:href=".././proc/initialize.html" xlink:title="pyplot_module::pyplot%initialize">
+<g id="a_call~~graph~~CallGraph_node13"><a xlink:href="../proc/initialize.html" xlink:title="pyplot_module::pyplot%initialize">
 <polygon fill="#d9534f" stroke="#d9534f" points="421.5,-76 235.5,-76 235.5,-52 421.5,-52 421.5,-76"/>
 <text text-anchor="middle" x="328.5" y="-61.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%initialize</text>
 </a>
@@ -441,7 +559,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~integer_to_string -->
 <g id="call~~graph~~CallGraph_node14" class="node">
 <title>proc~integer_to_string</title>
-<g id="a_call~~graph~~CallGraph_node14"><a xlink:href=".././proc/integer_to_string.html" xlink:title="pyplot_module::integer_to_string">
+<g id="a_call~~graph~~CallGraph_node14"><a xlink:href="../proc/integer_to_string.html" xlink:title="pyplot_module::integer_to_string">
 <polygon fill="#d9534f" stroke="#d9534f" points="933,-143 745,-143 745,-119 933,-119 933,-143"/>
 <text text-anchor="middle" x="839" y="-128.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::integer_to_string</text>
 </a>
@@ -474,7 +592,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~plot_surface -->
 <g id="call~~graph~~CallGraph_node18" class="node">
 <title>proc~plot_surface</title>
-<g id="a_call~~graph~~CallGraph_node18"><a xlink:href=".././proc/plot_surface.html" xlink:title="pyplot_module::pyplot%plot_surface">
+<g id="a_call~~graph~~CallGraph_node18"><a xlink:href="../proc/plot_surface.html" xlink:title="pyplot_module::pyplot%plot_surface">
 <polygon fill="#d9534f" stroke="#d9534f" points="432,-340 225,-340 225,-316 432,-316 432,-340"/>
 <text text-anchor="middle" x="328.5" y="-325.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%plot_surface</text>
 </a>
@@ -513,7 +631,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~plot_wireframe -->
 <g id="call~~graph~~CallGraph_node19" class="node">
 <title>proc~plot_wireframe</title>
-<g id="a_call~~graph~~CallGraph_node19"><a xlink:href=".././proc/plot_wireframe.html" xlink:title="pyplot_module::pyplot%plot_wireframe">
+<g id="a_call~~graph~~CallGraph_node19"><a xlink:href="../proc/plot_wireframe.html" xlink:title="pyplot_module::pyplot%plot_wireframe">
 <polygon fill="#d9534f" stroke="#d9534f" points="439,-298 218,-298 218,-274 439,-274 439,-298"/>
 <text text-anchor="middle" x="328.5" y="-283.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%plot_wireframe</text>
 </a>
@@ -552,7 +670,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~savefig -->
 <g id="call~~graph~~CallGraph_node21" class="node">
 <title>proc~savefig</title>
-<g id="a_call~~graph~~CallGraph_node21"><a xlink:href=".././proc/savefig.html" xlink:title="pyplot_module::pyplot%savefig">
+<g id="a_call~~graph~~CallGraph_node21"><a xlink:href="../proc/savefig.html" xlink:title="pyplot_module::pyplot%savefig">
 <polygon fill="#d9534f" stroke="#d9534f" points="181,-462 1,-462 1,-438 181,-438 181,-462"/>
 <text text-anchor="middle" x="91" y="-447.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%savefig</text>
 </a>
@@ -579,7 +697,7 @@ the optional argument is not present.</p></td></tr>
 <!-- proc~showfig -->
 <g id="call~~graph~~CallGraph_node22" class="node">
 <title>proc~showfig</title>
-<g id="a_call~~graph~~CallGraph_node22"><a xlink:href=".././proc/showfig.html" xlink:title="pyplot_module::pyplot%showfig">
+<g id="a_call~~graph~~CallGraph_node22"><a xlink:href="../proc/showfig.html" xlink:title="pyplot_module::pyplot%showfig">
 <polygon fill="#d9534f" stroke="#d9534f" points="182,-504 0,-504 0,-480 182,-480 182,-504"/>
 <text text-anchor="middle" x="91" y="-489.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module::pyplot%showfig</text>
 </a>
@@ -609,17 +727,17 @@ the optional argument is not present.</p></td></tr>
                   var pancallgraphCallGraph = svgPanZoom('#callgraphCallGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -693,7 +811,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2023 
+          <div class="col"><p>pyplot-fortran was developed by Jacob Williams<br>&copy; 2024 
 </p>
           </div>
           <div class="col">
