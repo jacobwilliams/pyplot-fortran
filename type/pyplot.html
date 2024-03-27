@@ -74,7 +74,7 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="<p>100.0% of total for derived types.</p>Including implementation: 896 statements, 100.0% of total for derived types.">33 statements</a>
+                 title="<p>100.0% of total for derived types.</p>Including implementation: 883 statements, 100.0% of total for derived types.">35 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -125,6 +125,8 @@
             <a class="list-group-item" href="../type/pyplot.html#variable-axisbelow">axisbelow</a>
             <a class="list-group-item" href="../type/pyplot.html#variable-tight_layout">tight_layout</a>
             <a class="list-group-item" href="../type/pyplot.html#variable-usetex">usetex</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-xaxis_date_fmt">xaxis_date_fmt</a>
+            <a class="list-group-item" href="../type/pyplot.html#variable-yaxis_date_fmt">yaxis_date_fmt</a>
             <a class="list-group-item" href="../type/pyplot.html#variable-real_fmt">real_fmt</a>
         </div>
       </div>
@@ -394,6 +396,40 @@
         </tr>
         <tr>
             <td>
+              <span class="anchor" id="variable-xaxis_date_fmt"></span>
+              character(len=:),
+            </td>
+              <td>private,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>xaxis_date_fmt</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>date format for the x-axis. Example: <code>"%m/%d/%y %H:%M:%S"</code></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yaxis_date_fmt"></span>
+              character(len=:),
+            </td>
+              <td>private,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>yaxis_date_fmt</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>date format for the y-axis. Example: <code>"%m/%d/%y %H:%M:%S"</code></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
               <span class="anchor" id="variable-real_fmt"></span>
               character(len=:),
             </td>
@@ -436,7 +472,7 @@
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex)  
+    private  subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Jacob Williams</dd>
@@ -815,6 +851,36 @@ raw strings (e.g., r'str'). Default is False.</p>
             <td><strong>usetex</strong></td>
             <td>
 <p>if True, enable LaTeX. (default if false)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xaxis_date_fmt</strong></td>
+            <td>
+<p>if present, used to set the date format for the x-axis</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yaxis_date_fmt</strong></td>
+            <td>
+<p>if present, used to set the date format for the y-axis</p>
             </td>
         </tr>
     </tbody>
@@ -3640,6 +3706,9 @@ raw strings (e.g., r'str'). Default is False.</p>
 <span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">axisbelow</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w">      </span><span class="c">!! axis below other chart elements</span>
 <span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tight_layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">    </span><span class="c">!! tight layout option</span>
 <span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">usetex</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w">     </span><span class="c">!! enable LaTeX</span>
+
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xaxis_date_fmt</span><span class="w">  </span><span class="c">!! date format for the x-axis. Example: `&quot;%m/%d/%y %H:%M:%S&quot;`</span>
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">yaxis_date_fmt</span><span class="w">  </span><span class="c">!! date format for the y-axis. Example: `&quot;%m/%d/%y %H:%M:%S&quot;`</span>
 
 <span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">real_fmt</span><span class="w">  </span><span class="c">!! real number formatting</span>
 

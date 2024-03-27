@@ -75,7 +75,7 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="15.1% of total for procedures.">147 statements</a>
+                 title="16.6% of total for procedures.">159 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -140,7 +140,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private  subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex)  
+    <h2>private  subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt)  
 </h2>
     
 
@@ -521,6 +521,36 @@ raw strings (e.g., r'str'). Default is False.</p>
                 <p>if True, enable LaTeX. (default if false)</p>
             </td>
         </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xaxis_date_fmt~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xaxis_date_fmt</strong></td>
+            <td>
+                <p>if present, used to set the date format for the x-axis</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yaxis_date_fmt~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yaxis_date_fmt</strong></td>
+            <td>
+                <p>if present, used to set the date format for the y-axis</p>
+            </td>
+        </tr>
     </tbody>
   </table>
 
@@ -715,7 +745,7 @@ implementation in a submodule of an interface in a parent module.
     <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">initialize</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">xlabel</span><span class="p">,</span><span class="w"> </span><span class="n">ylabel</span><span class="p">,</span><span class="w"> </span><span class="n">zlabel</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="p">,</span><span class="w"> </span><span class="n">use_numpy</span><span class="p">,</span><span class="w"> </span><span class="n">figsize</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="w">                          </span><span class="n">font_size</span><span class="p">,</span><span class="w"> </span><span class="n">axes_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">xtick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">ytick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">ztick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="w">                          </span><span class="n">legend_fontsize</span><span class="p">,</span><span class="w"> </span><span class="n">mplot3d</span><span class="p">,</span><span class="w"> </span><span class="n">axis_equal</span><span class="p">,</span><span class="w"> </span><span class="n">polar</span><span class="p">,</span><span class="w"> </span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">use_oo_api</span><span class="p">,</span><span class="w"> </span><span class="n">axisbelow</span><span class="p">,&amp;</span>
-<span class="w">                          </span><span class="n">tight_layout</span><span class="p">,</span><span class="w"> </span><span class="n">raw_strings</span><span class="p">,</span><span class="w"> </span><span class="n">usetex</span><span class="p">)</span>
+<span class="w">                          </span><span class="n">tight_layout</span><span class="p">,</span><span class="w"> </span><span class="n">raw_strings</span><span class="p">,</span><span class="w"> </span><span class="n">usetex</span><span class="p">,</span><span class="w"> </span><span class="n">xaxis_date_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">yaxis_date_fmt</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="w">         </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">        </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">              </span><span class="c">!! pyplot handler</span>
 <span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">grid</span><span class="w">            </span><span class="c">!! activate grid drawing</span>
@@ -742,6 +772,8 @@ implementation in a submodule of an interface in a parent module.
 <span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">raw_strings</span><span class="w">     </span><span class="c">!! if True, all strings sent to Python are treated as</span>
 <span class="w">                                                                   </span><span class="c">!! raw strings (e.g., r&#39;str&#39;). Default is False.</span>
 <span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">usetex</span><span class="w">          </span><span class="c">!! if True, enable LaTeX. (default if false)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xaxis_date_fmt</span><span class="w">  </span><span class="c">!! if present, used to set the date format for the x-axis</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">yaxis_date_fmt</span><span class="w">  </span><span class="c">!! if present, used to set the date format for the y-axis</span>
 
 <span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">width_str</span><span class="w">             </span><span class="c">!! figure width dummy string</span>
 <span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">height_str</span><span class="w">            </span><span class="c">!! figure height dummy string</span>
@@ -809,6 +841,16 @@ implementation in a submodule of an interface in a parent module.
 <span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">usetex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usetex</span>
 <span class="w">    </span><span class="k">else</span>
 <span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">usetex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xaxis_date_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">xaxis_date_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xaxis_date_fmt</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">xaxis_date_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">xaxis_date_fmt</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yaxis_date_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">yaxis_date_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yaxis_date_fmt</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">yaxis_date_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">yaxis_date_fmt</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end if</span>
 
 <span class="k">    call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">font_size</span><span class="p">,</span><span class="w"> </span><span class="n">font_size_str</span><span class="p">,</span><span class="w"> </span><span class="n">default_font_size_str</span><span class="p">)</span>

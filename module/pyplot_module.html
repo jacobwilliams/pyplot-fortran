@@ -77,7 +77,7 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="100.0% of total for modules and submodules.">1021 statements</a>
+                 title="100.0% of total for modules and submodules.">1008 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -201,7 +201,7 @@
   It works by generating a Python script and executing it.</p>
 <h1>See also</h1>
 <ul>
-<li>Inspired by: [EasyPlot](https:</li>
+<li>Inspired by: <a href="https://pypi.python.org/pypi/EasyPlot">EasyPlot</a></li>
 </ul>
 <div class="alert alert-info">
 <p class="alert-title h4">Note</p>
@@ -702,6 +702,40 @@ parameter
         </tr>
         <tr>
             <td>
+              <span class="anchor" id="variable-xaxis_date_fmt"></span>
+              character(len=:),
+            </td>
+              <td>private,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>xaxis_date_fmt</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>date format for the x-axis. Example: <code>"%m/%d/%y %H:%M:%S"</code></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yaxis_date_fmt"></span>
+              character(len=:),
+            </td>
+              <td>private,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>yaxis_date_fmt</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>date format for the y-axis. Example: <code>"%m/%d/%y %H:%M:%S"</code></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
               <span class="anchor" id="variable-real_fmt"></span>
               character(len=:),
             </td>
@@ -924,7 +958,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-initialize"></span> <h3>private  subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex)  
+    <div class="card-header codesum"><span class="anchor" id="proc-initialize"></span> <h3>private  subroutine <a href='../proc/initialize.html'>initialize</a>(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1303,6 +1337,36 @@ raw strings (e.g., r'str'). Default is False.</p>
             <td><strong>usetex</strong></td>
             <td>
 <p>if True, enable LaTeX. (default if false)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xaxis_date_fmt~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xaxis_date_fmt</strong></td>
+            <td>
+<p>if present, used to set the date format for the x-axis</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yaxis_date_fmt~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yaxis_date_fmt</strong></td>
+            <td>
+<p>if present, used to set the date format for the y-axis</p>
             </td>
         </tr>
     </tbody>
