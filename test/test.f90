@@ -191,8 +191,8 @@
 
     x = [(real(i,wp), i=0, 360, 10)]
     y = 10.0_wp * cos(x * deg2rad)
-    xerr =  sin(x * deg2rad) * 5.0_wp
-    yerr =  sin(y * deg2rad) * 10.0_wp
+    xerr =  abs(sin(x * deg2rad) * 5.0_wp)
+    yerr =  abs(sin(y * deg2rad) * 10.0_wp)
 
     call plt%add_errorbar(x, y, label='y', linestyle='.', &
                             xerr=xerr, yerr=yerr, istat=istat)

@@ -39,3 +39,4 @@ test/*.py
 
 # misc
 .DS_Store
+/env
