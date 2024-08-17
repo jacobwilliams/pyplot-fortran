@@ -1397,6 +1397,12 @@
             file = trim(pyfile)    !use the user-specified name
         end if
 
+        if (file == '') then
+            if (present(istat)) istat = -1
+            write(error_unit,'(A)') 'Error: filename is blank.'
+            return
+        end if
+
         !open the file:
         open(newunit=iunit, file=file, status='REPLACE', iostat=iostat)
         if (iostat/=0) then
@@ -1423,8 +1429,8 @@
             end if
 
             !run the file using python:
-            if (index(file,' ')>0) then
-                ! space in path, probably should enclose in quotes
+            if (file(1:1)/='"') then
+                ! if not already in quotes, should enclose in quotes
                 call execute_command_line(python_//' "'//file//'"')
             else
                 call execute_command_line(python_//' '//file)
