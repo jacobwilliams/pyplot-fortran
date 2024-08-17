@@ -201,5 +201,11 @@
                      dpi='200', &
                      transparent=.true.,istat=istat, python='python')
 
+    ! also test one with spaces and () in the filename
+    call plt%savefig(testdir//'error bar (1).png', &
+                     pyfile=testdir//'error bar (1).py', &
+                     dpi='200', &
+                     transparent=.true.,istat=istat, python='python')
+
     end program test
 !*****************************************************************************************
