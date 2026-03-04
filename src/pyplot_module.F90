@@ -165,7 +165,8 @@
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
                           legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow,&
-                          tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt, dark_background)
+                          tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt, dark_background,&
+                          xaxis_useMathText, yaxis_useMathText, xaxis_useOffset, yaxis_useOffset)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -195,6 +196,10 @@
     character(len=*),      intent(in), optional :: xaxis_date_fmt  !! if present, used to set the date format for the x-axis
     character(len=*),      intent(in), optional :: yaxis_date_fmt  !! if present, used to set the date format for the y-axis
     logical,               intent(in), optional :: dark_background !! activate dark background style
+    logical,               intent(in), optional :: xaxis_useMathText !! use MathText for x-axis tick labels.
+    logical,               intent(in), optional :: yaxis_useMathText !! use MathText for y-axis tick labels.
+    logical,               intent(in), optional :: xaxis_useOffset   !! use offset notation for x-axis tick labels.
+    logical,               intent(in), optional :: yaxis_useOffset   !! use offset notation for y-axis tick labels.
 
     character(len=max_int_len)  :: width_str             !! figure width dummy string
     character(len=max_int_len)  :: height_str            !! figure height dummy string
@@ -205,6 +210,7 @@
     character(len=max_int_len)  :: ztick_labelsize_str   !! size of z axis tick labels dummy string
     character(len=max_int_len)  :: legend_fontsize_str   !! size of legend font dummy string
     character(len=:),allocatable :: python_fig_func      !! Python's function for creating a new Figure instance
+    character(len=:),allocatable :: tmp      !! temp string
 
     character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
 
@@ -347,6 +353,23 @@
     if (present(ylabel)) call me%add_str('ax.set_ylabel('//trim(me%raw_str_token)//'"'//trim(ylabel)//'")')
     if (present(zlabel)) call me%add_str('ax.set_zlabel('//trim(me%raw_str_token)//'"'//trim(zlabel)//'")')
     if (present(title))  call me%add_str('ax.set_title('//trim(me%raw_str_token)//'"' //trim(title) //'")')
+
+    if (present(xaxis_useMathText)) then
+        call optional_logical_to_string(xaxis_useMathText, tmp, '')
+        call me%add_str('ax.ticklabel_format(axis="x",useMathText='//trim(tmp)//')')
+    end if
+    if (present(yaxis_useMathText)) then
+        call optional_logical_to_string(yaxis_useMathText, tmp, '')
+        call me%add_str('ax.ticklabel_format(axis="y",useMathText='//trim(tmp)//')')
+    end if
+    if (present(xaxis_useOffset)) then
+        call optional_logical_to_string(xaxis_useOffset, tmp, '')
+        call me%add_str('ax.ticklabel_format(axis="x",useOffset='//trim(tmp)//')')
+    end if
+    if (present(yaxis_useOffset)) then
+        call optional_logical_to_string(yaxis_useOffset, tmp, '')
+        call me%add_str('ax.ticklabel_format(axis="y",useOffset='//trim(tmp)//')')
+    end if
 
     call me%add_str('')
 
