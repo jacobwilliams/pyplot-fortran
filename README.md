@@ -94,8 +94,8 @@ The following example generates a plot of the sine function:
 
  !plot it:
  call plt%initialize(grid=.true.,xlabel='angle (rad)',&
-                     title='Plot of $\sin(x)$',legend=.true.)
- call plt%add_plot(x,sx,label='$\sin(x)$',linestyle='b-o',markersize=5,linewidth=2)
+                     title='Plot of $\\sin(x)$',legend=.true.)
+ call plt%add_plot(x,sx,label='$\\sin(x)$',linestyle='b-o',markersize=5,linewidth=2)
  call plt%savefig('sinx.png', pyfile='sinx.py')
 
  end program test

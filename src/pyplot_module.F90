@@ -1371,24 +1371,33 @@
 !  If user specifies a Python file name, then the file is kept, otherwise
 !  a temporary filename is used, and the file is deleted after it is used.
 
-    subroutine execute(me, pyfile, istat, python)
+    subroutine execute(me, pyfile, istat, python, wait)
 
     class(pyplot),    intent(inout)         :: me     !! pytplot handler
     character(len=*), intent(in),  optional :: pyfile !! name of the python script to generate
     integer,          intent (out),optional :: istat  !! status output (0 means no problems)
     character(len=*), intent(in),optional   :: python !! python executable to use. (by default, this is 'python')
+    logical,          intent(in),optional   :: wait   !! if true, will wait for the python process to
+                                                      !! finish before continuing. (default is true).
 
     integer                       :: iunit   !! IO unit
     character(len=:), allocatable :: file    !! file name
     logical                       :: scratch !! if a scratch file is to be used
     integer                       :: iostat  !! open/close status code
     character(len=:), allocatable :: python_ !! python executable to use
+    logical                       :: wait_   !! whether to wait for the python process to finish
 
     if (allocated(me%str)) then
 
         if (present(istat)) istat = 0
 
         scratch = (.not. present(pyfile))
+
+        if (present(wait)) then
+            wait_ = wait
+        else
+            wait_ = .true.
+        end if
 
         !file name to use:
         if (scratch) then
@@ -1431,9 +1440,9 @@
             !run the file using python:
             if (file(1:1)/='"') then
                 ! if not already in quotes, should enclose in quotes
-                call execute_command_line(python_//' "'//file//'"')
+                call execute_command_line(python_//' "'//file//'"', wait=wait_)
             else
-                call execute_command_line(python_//' '//file)
+                call execute_command_line(python_//' '//file,       wait=wait_)
             end if
 
             if (scratch) then

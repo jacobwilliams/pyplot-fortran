@@ -40,9 +40,9 @@
                         title='date test',legend=.true.,axis_equal=.true.,&
                         tight_layout=.true., &
                         xaxis_date_fmt=xaxis_date_fmt, yaxis_date_fmt=yaxis_date_fmt)
-    call plt%add_plot(x,sx,label='$\sin (x)$',linestyle='b-o',markersize=5,linewidth=2,istat=istat)
-    call plt%add_plot(x,cx,label='$\cos (x)$',linestyle='r-o',markersize=5,linewidth=2,istat=istat)
-    call plt%add_plot(x,tx,label='$\sin (x) \cos (x)$',linestyle='g-o',markersize=2,linewidth=1,istat=istat)
+    call plt%add_plot(x,sx,label='$\\sin (x)$',linestyle='b-o',markersize=5,linewidth=2,istat=istat)
+    call plt%add_plot(x,cx,label='$\\cos (x)$',linestyle='r-o',markersize=5,linewidth=2,istat=istat)
+    call plt%add_plot(x,tx,label='$\\sin (x) \\cos (x)$',linestyle='g-o',markersize=2,linewidth=1,istat=istat)
     call plt%savefig(testdir//'datetest.png', pyfile=testdir//'datetest.py',&
                      istat=istat)
 
