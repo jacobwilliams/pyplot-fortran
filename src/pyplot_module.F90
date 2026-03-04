@@ -165,7 +165,7 @@
     subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, &
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
                           legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow,&
-                          tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt)
+                          tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt, dark_background)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -194,6 +194,7 @@
     logical,               intent(in), optional :: usetex          !! if True, enable LaTeX. (default if false)
     character(len=*),      intent(in), optional :: xaxis_date_fmt  !! if present, used to set the date format for the x-axis
     character(len=*),      intent(in), optional :: yaxis_date_fmt  !! if present, used to set the date format for the y-axis
+    logical,               intent(in), optional :: dark_background !! activate dark background style
 
     character(len=max_int_len)  :: width_str             !! figure width dummy string
     character(len=max_int_len)  :: height_str            !! figure height dummy string
@@ -315,6 +316,12 @@
         call me%add_str('fig = '//python_fig_func//'(figsize=('//trim(width_str)//','//trim(height_str)//'),facecolor="white")')
     else
         call me%add_str('fig = '//python_fig_func//'(facecolor="white")')
+    end if
+
+    if (present(dark_background)) then
+        if (dark_background) then
+            call me%add_str('plt.style.use("dark_background")')
+        end if
     end if
 
     if (me%mplot3d) then
