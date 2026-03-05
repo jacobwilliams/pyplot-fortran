@@ -92,6 +92,7 @@
         procedure, public :: add_bar       !! add a barplot to pyplot instance
         procedure, public :: add_imshow    !! add an image plot (using `imshow`)
         procedure, public :: add_hist      !! add a histogram plot to pyplot instance
+        procedure, public :: add_text      !! add text annotation to pyplot instance
         procedure, public :: savefig       !! save plots of pyplot instance
         procedure, public :: showfig       !! show plots of pyplot instance
         procedure, public :: destroy       !! destroy pyplot instance
@@ -1113,6 +1114,107 @@
     end if
 
     end subroutine add_imshow
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Add a text annotation to the plot.
+!
+!### Example
+!```fortran
+!  call plt%add_text(5.0_wp, 10.0_wp, 'Peak', fontsize=12, color='red', &
+!                    horizontalalignment='center', verticalalignment='bottom')
+!```
+
+    subroutine add_text(me, x, y, txt, fontsize, color, horizontalalignment, &
+                        verticalalignment, rotation, alpha, fontweight, &
+                        fontstyle, istat)
+
+    class(pyplot),    intent(inout)        :: me                    !! pyplot handler
+    real(wp),         intent(in)           :: x                     !! x position in data coordinates
+    real(wp),         intent(in)           :: y                     !! y position in data coordinates
+    character(len=*), intent(in)           :: txt                   !! text string to display
+    integer,          intent(in), optional :: fontsize              !! font size
+    character(len=*), intent(in), optional :: color                 !! text color
+    character(len=*), intent(in), optional :: horizontalalignment   !! horizontal alignment: 'left', 'center', 'right'
+    character(len=*), intent(in), optional :: verticalalignment     !! vertical alignment: 'top', 'center', 'bottom', 'baseline'
+    real(wp),         intent(in), optional :: rotation              !! rotation angle in degrees
+    real(wp),         intent(in), optional :: alpha                 !! transparency (0.0 to 1.0)
+    character(len=*), intent(in), optional :: fontweight            !! 'normal', 'bold', 'heavy', 'light', 'ultrabold', 'ultralight'
+    character(len=*), intent(in), optional :: fontstyle             !! 'normal', 'italic', 'oblique'
+    integer,          intent(out),optional :: istat                 !! status output (0 means no problems)
+
+    character(len=:), allocatable :: xstr              !! x value stringified
+    character(len=:), allocatable :: ystr              !! y value stringified
+    character(len=:), allocatable :: txt_str           !! plot command string
+    character(len=:), allocatable :: rotation_str      !! rotation value stringified
+    character(len=:), allocatable :: alpha_str         !! alpha value stringified
+    character(len=max_int_len)    :: fontsize_str      !! fontsize value stringified
+
+    if (allocated(me%str)) then
+
+        if (present(istat)) istat = 0
+
+        ! convert coordinates to strings
+        call real_to_string(x, me%real_fmt, xstr)
+        call real_to_string(y, me%real_fmt, ystr)
+
+        ! build the text command
+        txt_str = 'ax.text('//xstr//', '//ystr//', '//&
+                  trim(me%raw_str_token)//'"'//trim(txt)//'"'
+
+        ! add optional parameters
+        if (present(fontsize)) then
+            call optional_int_to_string(fontsize, fontsize_str, '10')
+            txt_str = txt_str//', fontsize='//trim(fontsize_str)
+        end if
+
+        if (present(color)) then
+            txt_str = txt_str//', color='//trim(me%raw_str_token)//'"'//trim(color)//'"'
+        end if
+
+        if (present(horizontalalignment)) then
+            txt_str = txt_str//', horizontalalignment='//trim(me%raw_str_token)//'"'//&
+                      trim(horizontalalignment)//'"'
+        end if
+
+        if (present(verticalalignment)) then
+            txt_str = txt_str//', verticalalignment='//trim(me%raw_str_token)//'"'//&
+                      trim(verticalalignment)//'"'
+        end if
+
+        if (present(rotation)) then
+            call real_to_string(rotation, me%real_fmt, rotation_str)
+            txt_str = txt_str//', rotation='//rotation_str
+        end if
+
+        if (present(alpha)) then
+            call real_to_string(alpha, me%real_fmt, alpha_str)
+            txt_str = txt_str//', alpha='//alpha_str
+        end if
+
+        if (present(fontweight)) then
+            txt_str = txt_str//', fontweight='//trim(me%raw_str_token)//'"'//&
+                      trim(fontweight)//'"'
+        end if
+
+        if (present(fontstyle)) then
+            txt_str = txt_str//', style='//trim(me%raw_str_token)//'"'//&
+                      trim(fontstyle)//'"'
+        end if
+
+        txt_str = txt_str//')'
+
+        ! add the text command
+        call me%add_str(txt_str)
+
+    else
+        if (present(istat)) istat = -1
+        write(error_unit,'(A)') 'Error in add_text: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_text
 !*****************************************************************************************
 
 !*****************************************************************************************

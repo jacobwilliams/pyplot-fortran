@@ -9,7 +9,7 @@
     implicit none
 
     type(pyplot) :: plt   !! pytplot handler
-    integer :: istat
+    integer :: istat, i
     real(wp), parameter :: F(3) = [0.4510d0, 0.3098d0, 0.5882d0] ! Fortran-lang color
     real(wp), parameter :: Y(3) = [0.9608d0, 0.8157d0, 0.0118d0] ! Yellow
 
@@ -24,6 +24,12 @@
 
     call plt%add_plot(Ax,Ay,label='',linestyle='o',markersize=50,color=F)
     call plt%add_plot(Bx,By,label='',linestyle='o',markersize=50,color=Y)
+
+    do i = 1, 3
+        call plt%add_text(Ax(i), Ay(i), "F", fontsize=40, color="white", &
+                            horizontalalignment="center", verticalalignment="center", &
+                            istat=istat)
+    end do
 
     call plt%savefig(testdir//'color_test.png',&
                      pyfile=testdir//'color_test.py',istat=istat)
