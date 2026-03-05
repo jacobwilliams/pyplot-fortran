@@ -22,8 +22,8 @@
 
     call plt%initialize(figsize=[20,10],title='color test')
 
-    call plt%add_plot(Ax,Ay,label='',linestyle='o',markersize=5,color=F)
-    call plt%add_plot(Bx,By,label='',linestyle='o',markersize=5,color=Y)
+    call plt%add_plot(Ax,Ay,label='',linestyle='o',markersize=50,color=F)
+    call plt%add_plot(Bx,By,label='',linestyle='o',markersize=50,color=Y)
 
     call plt%savefig(testdir//'color_test.png',&
                      pyfile=testdir//'color_test.py',istat=istat)

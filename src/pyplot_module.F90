@@ -58,6 +58,7 @@
         private
 
         character(len=:), allocatable :: str !! string buffer
+        integer :: str_len = 0 !! current length of `str`
 
         character(len=1) :: raw_str_token = ' ' !! will be 'r' if using raw strings
 
@@ -114,6 +115,7 @@
 
     class(pyplot),intent(inout) :: me !! pyplot handler
 
+    me%str_len = 0
     if (allocated(me%str))      deallocate(me%str)
     if (allocated(me%real_fmt)) deallocate(me%real_fmt)
 
@@ -136,22 +138,36 @@
     integer :: n_str !! length of input `str`
     character(len=:),allocatable :: tmp !! tmp string for building the result
 
-    ! original
-    !me%str = me%str//str//new_line(' ')
-
     if (len(str)==0) return
 
+    ! original
+    !me%str = me%str//str//new_line(' ')
     ! the above can sometimes cause a stack overflow in the
     ! intel Fortran compiler, so we replace with this:
     if (allocated(me%str)) then
-        n_old = len(me%str)
-        n_str = len(str)
-        allocate(character(len=n_old+n_str+1) :: tmp)
-        tmp(1:n_old) = me%str
-        tmp(n_old+1:) = str//new_line(' ')
-        call move_alloc(tmp, me%str)
+
+        ! if there is room in the current string, then
+        ! insert str into it. otherwise, allocate a new string
+        ! with enough room and move the old string into it before adding str.
+
+        if (me%str_len + len(str) + 1 <= len(me%str)) then
+            me%str(me%str_len+1:me%str_len+len(str)) = str
+            me%str_len = me%str_len + len(str)
+            me%str(me%str_len+1:me%str_len+1) = new_line(' ')
+            me%str_len = me%str_len + 1
+        else
+            n_old = me%str_len
+            n_str = len(str)
+            ! double size to avoid too many allocations
+            allocate(character(len=2*(n_old+n_str)) :: tmp)
+            tmp(1:n_old) = me%str
+            tmp(n_old+1:) = str//new_line(' ')
+            call move_alloc(tmp, me%str)
+            me%str_len = n_old + n_str + 1
+        end if
     else
         allocate(me%str, source = str//new_line(' '))
+        me%str_len = len(me%str)
     end if
 
     end subroutine add_str
@@ -1451,7 +1467,7 @@
         end if
 
         !write to the file:
-        write(iunit, '(A)') me%str
+        write(iunit, '(A)') me%str(1:me%str_len)
 
         !to ensure that the file is there for the next
         !command line call, we have to close it here.
