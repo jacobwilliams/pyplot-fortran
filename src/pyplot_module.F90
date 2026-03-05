@@ -1562,7 +1562,9 @@
 !  * modified: Johannes Rieke 6/16/2017
 !  * modified: Jacob Williams 6/16/2017
 
-    subroutine savefig(me, figfile, pyfile, dpi, transparent, facecolor, edgecolor, orientation, istat, python)
+    subroutine savefig(me, figfile, pyfile, dpi, transparent, &
+                       facecolor, edgecolor, orientation, istat, &
+                       python, wait)
 
     class(pyplot),    intent(inout)          :: me          !! pyplot handler
     character(len=*), intent(in)             :: figfile     !! file name for the figure
@@ -1575,6 +1577,8 @@
     character(len=*), intent(in), optional   :: orientation !! 'landscape' or 'portrait'
     integer,          intent (out), optional :: istat       !! status output (0 means no problems)
     character(len=*), intent(in),optional    :: python      !! python executable to use. (by default, this is 'python')
+    logical,          intent(in),optional    :: wait        !! if true, will wait for the python process to
+                                                            !! finish before continuing. (default is true).
 
     character(len=:),allocatable :: tmp  !! for building the `savefig` arguments.
 
@@ -1607,7 +1611,7 @@
         deallocate(tmp)
 
         !run it:
-        call me%execute(pyfile, istat=istat, python=python)
+        call me%execute(pyfile, istat=istat, python=python, wait=wait)
 
     else
         if (present(istat)) istat = -1
@@ -1623,12 +1627,14 @@
 !
 ! Shows the figure.
 
-    subroutine showfig(me, pyfile, istat, python)
+    subroutine showfig(me, pyfile, istat, python, wait)
 
     class(pyplot),    intent(inout)          :: me      !! pyplot handler
     character(len=*), intent(in), optional   :: pyfile  !! name of the Python script to generate
     integer,          intent (out), optional :: istat   !! status output (0 means no problems)
     character(len=*), intent(in),optional    :: python  !! python executable to use. (by default, this is 'python')
+    logical,          intent(in),optional    :: wait    !! if true, will wait for the python process to
+                                                        !! finish before continuing. (default is true).
 
     if (.not. allocated(me%str)) then
 
@@ -1651,7 +1657,7 @@
         call me%add_str('plt.show()')
 
         !run it:
-        call me%execute(pyfile, istat=istat, python=python)
+        call me%execute(pyfile, istat=istat, python=python, wait=wait)
 
     end if
 
