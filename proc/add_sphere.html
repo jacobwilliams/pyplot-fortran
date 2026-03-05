@@ -1,0 +1,627 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>add_sphere &ndash; pyplot-fortran</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">pyplot-fortran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>add_sphere
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 5.1% of total for procedures.">54 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/pyplot_module.F90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
+                <li class="breadcrumb-item"><a href='../module/pyplot_module.html'>pyplot_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">add_sphere</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/add_sphere.html#src">add_sphere</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine add_sphere(me, r, xc, yc, zc, n_facets, linewidth, antialiased, color, istat)  
+</h2>
+    
+
+    <p>Add a sphere to a 3D x,y,z plot.</p>
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>Must initialize the class with <code>mplot3d=.true.</code> and <code>use_numpy=.true.</code>.</p>
+</div>
+
+    <h3>Type Bound</h3>
+    <p><a href='../type/pyplot.html'>pyplot</a></p>
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~10"></span>
+              class(<a href='../type/pyplot.html'>pyplot</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>pyplot handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-r"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>r</strong></td>
+            <td>
+                <p>radius of the sphere</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xc"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xc</strong></td>
+            <td>
+                <p>x value of sphere center</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yc"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yc</strong></td>
+            <td>
+                <p>y value of sphere center</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-zc"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>zc</strong></td>
+            <td>
+                <p>z value of sphere center</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n_facets"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n_facets</strong></td>
+            <td>
+                <p>[default is 100]</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-linewidth~6"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linewidth</strong></td>
+            <td>
+                <p>line width</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-antialiased~3"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>antialiased</strong></td>
+            <td>
+                <p>enabled anti-aliasing</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-color~5"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>color</strong></td>
+            <td>
+                <p>color of the contour line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-istat~7"></span>
+              integer,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>istat</strong></td>
+            <td>
+                <p>status output (0 means no problems)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~add_sphere~~CallsGraph Pages: 1 -->
+<svg id="procadd_sphereCallsGraph" width="447pt" height="158pt"
+ viewBox="0.00 0.00 447.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~add_sphere~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~add_sphere~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 443,-154 443,4 -4,4"/>
+<!-- proc~add_sphere -->
+<g id="proc~~add_sphere~~CallsGraph_node1" class="node">
+<title>proc~add_sphere</title>
+<polygon fill="none" stroke="black" points="117,-87 0,-87 0,-63 117,-63 117,-87"/>
+<text text-anchor="middle" x="58.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">pyplot%add_sphere</text>
+</g>
+<!-- proc~add_str -->
+<g id="proc~~add_sphere~~CallsGraph_node2" class="node">
+<title>proc~add_str</title>
+<g id="a_proc~~add_sphere~~CallsGraph_node2"><a xlink:href="../proc/add_str.html" xlink:title="pyplot%add_str">
+<polygon fill="#d9534f" stroke="#d9534f" points="274,-150 180,-150 180,-126 274,-126 274,-150"/>
+<text text-anchor="middle" x="227" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_str</text>
+</a>
+</g>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~add_str -->
+<g id="proc~~add_sphere~~CallsGraph_edge1" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M83.71,-87.02C102.36,-96 128.94,-108.19 153,-117 158.63,-119.06 164.57,-121.06 170.52,-122.94"/>
+<polygon fill="#000000" stroke="#000000" points="169.92,-126.41 180.5,-126 171.97,-119.72 169.92,-126.41"/>
+</g>
+<!-- proc~optional_int_to_string -->
+<g id="proc~~add_sphere~~CallsGraph_node3" class="node">
+<title>proc~optional_int_to_string</title>
+<g id="a_proc~~add_sphere~~CallsGraph_node3"><a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="290,-108 164,-108 164,-84 290,-84 290,-108"/>
+<text text-anchor="middle" x="227" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~add_sphere~~CallsGraph_edge2" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M117.27,-82.29C129.01,-83.77 141.5,-85.34 153.67,-86.88"/>
+<polygon fill="#000000" stroke="#000000" points="153.43,-90.38 163.79,-88.15 154.31,-83.43 153.43,-90.38"/>
+</g>
+<!-- proc~optional_logical_to_string -->
+<g id="proc~~add_sphere~~CallsGraph_node4" class="node">
+<title>proc~optional_logical_to_string</title>
+<g id="a_proc~~add_sphere~~CallsGraph_node4"><a xlink:href="../proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="301,-66 153,-66 153,-42 301,-42 301,-66"/>
+<text text-anchor="middle" x="227" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_logical_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~optional_logical_to_string -->
+<g id="proc~~add_sphere~~CallsGraph_edge3" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M117.27,-67.71C125.5,-66.68 134.11,-65.59 142.71,-64.5"/>
+<polygon fill="#000000" stroke="#000000" points="143.31,-67.96 152.79,-63.23 142.43,-61.01 143.31,-67.96"/>
+</g>
+<!-- proc~real_to_string -->
+<g id="proc~~add_sphere~~CallsGraph_node5" class="node">
+<title>proc~real_to_string</title>
+<g id="a_proc~~add_sphere~~CallsGraph_node5"><a xlink:href="../proc/real_to_string.html" xlink:title="real_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="269,-24 185,-24 185,0 269,0 269,-24"/>
+<text text-anchor="middle" x="227" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~real_to_string -->
+<g id="proc~~add_sphere~~CallsGraph_edge4" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~real_to_string</title>
+<path fill="none" stroke="#000000" d="M83.71,-62.98C102.36,-54 128.94,-41.81 153,-33 160.06,-30.41 167.6,-27.94 175.05,-25.65"/>
+<polygon fill="#000000" stroke="#000000" points="176.16,-28.97 184.74,-22.76 174.16,-22.26 176.16,-28.97"/>
+</g>
+<!-- proc~integer_to_string -->
+<g id="proc~~add_sphere~~CallsGraph_node6" class="node">
+<title>proc~integer_to_string</title>
+<g id="a_proc~~add_sphere~~CallsGraph_node6"><a xlink:href="../proc/integer_to_string.html" xlink:title="integer_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="439,-108 337,-108 337,-84 439,-84 439,-108"/>
+<text text-anchor="middle" x="388" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
+<g id="proc~~add_sphere~~CallsGraph_edge5" class="edge">
+<title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
+<path fill="none" stroke="#000000" d="M290.38,-96C302.23,-96 314.6,-96 326.39,-96"/>
+<polygon fill="#000000" stroke="#000000" points="326.57,-99.5 336.57,-96 326.57,-92.5 326.57,-99.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">add_sphere</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">xc</span><span class="p">,</span><span class="w"> </span><span class="n">yc</span><span class="p">,</span><span class="w"> </span><span class="n">zc</span><span class="p">,</span><span class="w"> </span><span class="n">n_facets</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="p">,</span><span class="w"> </span><span class="n">antialiased</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="w">    </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">            </span><span class="c">!! pyplot handler</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="w">         </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="w">             </span><span class="c">!! radius of the sphere</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="w">         </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">xc</span><span class="w">            </span><span class="c">!! x value of sphere center</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="w">         </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">yc</span><span class="w">            </span><span class="c">!! y value of sphere center</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="w">         </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">zc</span><span class="w">            </span><span class="c">!! z value of sphere center</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n_facets</span><span class="w">      </span><span class="c">!! [default is 100]</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">linewidth</span><span class="w">     </span><span class="c">!! line width</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">antialiased</span><span class="w">   </span><span class="c">!! enabled anti-aliasing</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">color</span><span class="w">         </span><span class="c">!! color of the contour line</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w">         </span><span class="c">!! status output (0 means no problems)</span>
+
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rstr</span><span class="w">         </span><span class="c">!! `r` value stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xcstr</span><span class="w">        </span><span class="c">!! `xc` value stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ycstr</span><span class="w">        </span><span class="c">!! `yc` value stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">zcstr</span><span class="w">        </span><span class="c">!! `zc` value stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">xname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="w">  </span><span class="c">!! `x` variable name for script</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">yname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;y&#39;</span><span class="w">  </span><span class="c">!! `y` variable name for script</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">zname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;z&#39;</span><span class="w">  </span><span class="c">!! `z` variable name for script</span>
+
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">linewidth_str</span><span class="w">       </span><span class="c">!! `linewidth` input stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">antialiased_str</span><span class="w">     </span><span class="c">!! `antialised` input stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">n_facets_str</span><span class="w">        </span><span class="c">!! `n_facets` input stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">extras</span><span class="w">              </span><span class="c">!! optional stuff string</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">        </span><span class="c">!get optional inputs (if not present, set default value):</span>
+<span class="w">        </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">n_facets</span><span class="p">,</span><span class="w"> </span><span class="n">n_facets_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">linewidth</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">linewidth</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;linewidth=&#39;</span><span class="o">//</span><span class="n">linewidth_str</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">antialiased</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            call </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">antialiased</span><span class="p">,</span><span class="w"> </span><span class="n">antialiased_str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;False&#39;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;antialiased=&#39;</span><span class="o">//</span><span class="n">antialiased_str</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">color</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;color=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+<span class="w">        </span><span class="k">end if</span>
+
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">        </span><span class="c">!convert the arrays to strings:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">real_to_string</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">rstr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">real_to_string</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">xcstr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">real_to_string</span><span class="p">(</span><span class="n">yc</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">ycstr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">real_to_string</span><span class="p">(</span><span class="n">zc</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">zcstr</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">! sphere code:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;u = np.linspace(0, 2 * np.pi, &#39;</span><span class="o">//</span><span class="n">n_facets_str</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;v = np.linspace(0, np.pi, &#39;</span><span class="o">//</span><span class="n">n_facets_str</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">xname</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">xcstr</span><span class="o">//</span><span class="s1">&#39; + &#39;</span><span class="o">//</span><span class="n">rstr</span><span class="o">//</span><span class="s1">&#39; * np.outer(np.cos(u), np.sin(v))&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">yname</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">ycstr</span><span class="o">//</span><span class="s1">&#39; + &#39;</span><span class="o">//</span><span class="n">rstr</span><span class="o">//</span><span class="s1">&#39; * np.outer(np.sin(u), np.sin(v))&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">zname</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">zcstr</span><span class="o">//</span><span class="s1">&#39; + &#39;</span><span class="o">//</span><span class="n">rstr</span><span class="o">//</span><span class="s1">&#39; * np.outer(np.ones(np.size(u)), np.cos(v))&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.plot_surface(&#39;</span><span class="o">//</span><span class="n">xname</span><span class="o">//</span><span class="s1">&#39;, &#39;</span><span class="o">//</span><span class="n">yname</span><span class="o">//</span><span class="s1">&#39;, &#39;</span><span class="o">//</span><span class="n">zname</span><span class="o">//</span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Error in add_sphere: pyplot class not properly initialized.&#39;</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">add_sphere</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              pyplot-fortran
+ was developed by Jacob Williams<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,881 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>All Procedures &ndash; pyplot-fortran
+</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">pyplot-fortran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" id='text'>
+			 <h1>Procedures</h1>
+			 <table class="table table-striped">
+			 <thead><tr><th>Procedure</th><th>Location</th><th>Procedure Type</th><th>Description</th></tr></thead>
+			 <tbody>
+			   <tr>
+                 <td><a href='../proc/add_3d_plot.html'>add_3d_plot</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a 3D x,y,z plot.</p><a href="../proc/add_3d_plot.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_bar.html'>add_bar</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a bar plot.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_contour.html'>add_contour</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a contour plot.</p><a href="../proc/add_contour.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_errorbar.html'>add_errorbar</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add an x,y plot with errorbars.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_hist.html'>add_hist</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a histogram plot.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_imshow.html'>add_imshow</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add an image plot using <code>imshow</code>.</p><a href="../proc/add_imshow.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_plot.html'>add_plot</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add an x,y plot.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_sphere.html'>add_sphere</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a sphere to a 3D x,y,z plot.</p><a href="../proc/add_sphere.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_str.html'>add_str</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a string to the buffer.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/add_text.html'>add_text</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a text annotation to the plot.</p><a href="../proc/add_text.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/destroy.html'>destroy</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Destructor.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/execute.html'>execute</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Write the buffer to a file, and then execute it with Python.</p><a href="../proc/execute.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/finish_ops.html'>finish_ops</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Some final things to add before saving or showing the figure.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/initialize.html'>initialize</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Initialize a plot</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/integer_to_string.html'>integer_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Integer to string conversion.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/matrix_to_string.html'>matrix_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Real matrix (rank 2) to string.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/optional_int_to_string.html'>optional_int_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Integer to string, specifying the default value if
+the optional argument is not present.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/optional_logical_to_string.html'>optional_logical_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Logical to string, specifying the default value if
+the optional argument is not present.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/plot_surface.html'>plot_surface</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a surface plot.</p><a href="../proc/plot_surface.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/plot_wireframe.html'>plot_wireframe</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Add a wireframe plot.</p><a href="../proc/plot_wireframe.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/real_to_string.html'>real_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Real scalar to string.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/savefig.html'>savefig</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Save the figure.</p><a href="../proc/savefig.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/showfig.html'>showfig</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Shows the figure.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/vec_to_string.html'>vec_to_string</a></td>
+                 <td><a href='../module/pyplot_module.html'>pyplot_module</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Real vector to string.</p></td>
+               </tr>
+			 </tbody></table>
+             <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: call~~graph~~CallGraph Pages: 1 -->
+<svg id="callgraphCallGraph" width="597pt" height="690pt"
+ viewBox="0.00 0.00 597.00 690.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="call~~graph~~CallGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 686)">
+<title>call~~graph~~CallGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-686 593,-686 593,4 -4,4"/>
+<!-- proc~add_3d_plot -->
+<g id="call~~graph~~CallGraph_node1" class="node">
+<title>proc~add_3d_plot</title>
+<g id="a_call~~graph~~CallGraph_node1"><a xlink:href="../proc/add_3d_plot.html" xlink:title="pyplot%add_3d_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="259.5,-312 139.5,-312 139.5,-288 259.5,-288 259.5,-312"/>
+<text text-anchor="middle" x="199.5" y="-297.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_3d_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_str -->
+<g id="call~~graph~~CallGraph_node9" class="node">
+<title>proc~add_str</title>
+<g id="a_call~~graph~~CallGraph_node9"><a xlink:href="../proc/add_str.html" xlink:title="pyplot%add_str">
+<polygon fill="#d9534f" stroke="#d9534f" points="424,-382 330,-382 330,-358 424,-358 424,-382"/>
+<text text-anchor="middle" x="377" y="-367.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_str</text>
+</a>
+</g>
+</g>
+<!-- proc~add_3d_plot&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge1" class="edge">
+<title>proc~add_3d_plot&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M244.41,-312.06C252.07,-314.67 259.87,-317.67 267,-321 284.2,-329.04 285.95,-335.65 303,-344 310.73,-347.78 319.15,-351.3 327.44,-354.45"/>
+<polygon fill="#000000" stroke="#000000" points="326.47,-357.82 337.06,-357.96 328.87,-351.24 326.47,-357.82"/>
+</g>
+<!-- proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_node17" class="node">
+<title>proc~optional_int_to_string</title>
+<g id="a_call~~graph~~CallGraph_node17"><a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="440,-264 314,-264 314,-240 440,-240 440,-264"/>
+<text text-anchor="middle" x="377" y="-249.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_3d_plot&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge2" class="edge">
+<title>proc~add_3d_plot&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M244.79,-287.89C268.26,-281.47 297.28,-273.53 322.06,-266.75"/>
+<polygon fill="#000000" stroke="#000000" points="323.31,-270.04 332.03,-264.03 321.46,-263.29 323.31,-270.04"/>
+</g>
+<!-- proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_node24" class="node">
+<title>proc~vec_to_string</title>
+<g id="a_call~~graph~~CallGraph_node24"><a xlink:href="../proc/vec_to_string.html" xlink:title="vec_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="579,-441 497,-441 497,-417 579,-417 579,-441"/>
+<text text-anchor="middle" x="538" y="-426.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_3d_plot&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge3" class="edge">
+<title>proc~add_3d_plot&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M259.67,-302.42C312.4,-306.65 390.39,-318.12 451,-349 479.52,-363.53 505.4,-390.32 521.15,-408.87"/>
+<polygon fill="#000000" stroke="#000000" points="518.58,-411.26 527.65,-416.74 523.98,-406.8 518.58,-411.26"/>
+</g>
+<!-- proc~add_bar -->
+<g id="call~~graph~~CallGraph_node2" class="node">
+<title>proc~add_bar</title>
+<g id="a_call~~graph~~CallGraph_node2"><a xlink:href="../proc/add_bar.html" xlink:title="pyplot%add_bar">
+<polygon fill="#d9534f" stroke="#d9534f" points="249,-640 150,-640 150,-616 249,-616 249,-640"/>
+<text text-anchor="middle" x="199.5" y="-625.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_bar</text>
+</a>
+</g>
+</g>
+<!-- proc~add_bar&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge4" class="edge">
+<title>proc~add_bar&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M249.3,-619.05C255.91,-616.1 262.09,-612.19 267,-607 311.18,-560.36 275.15,-524.89 303,-467 317.17,-437.55 340.95,-408.19 357.51,-389.62"/>
+<polygon fill="#000000" stroke="#000000" points="360.19,-391.87 364.33,-382.11 355.01,-387.16 360.19,-391.87"/>
+</g>
+<!-- proc~add_bar&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge5" class="edge">
+<title>proc~add_bar&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M249.4,-622.24C303.16,-613.89 389.97,-594.25 451,-550 487.24,-523.73 513.89,-477.41 527.28,-450.34"/>
+<polygon fill="#000000" stroke="#000000" points="530.44,-451.84 531.61,-441.31 524.13,-448.82 530.44,-451.84"/>
+</g>
+<!-- proc~add_contour -->
+<g id="call~~graph~~CallGraph_node3" class="node">
+<title>proc~add_contour</title>
+<g id="a_call~~graph~~CallGraph_node3"><a xlink:href="../proc/add_contour.html" xlink:title="pyplot%add_contour">
+<polygon fill="#d9534f" stroke="#d9534f" points="260.5,-598 138.5,-598 138.5,-574 260.5,-574 260.5,-598"/>
+<text text-anchor="middle" x="199.5" y="-583.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_contour</text>
+</a>
+</g>
+</g>
+<!-- proc~add_contour&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge6" class="edge">
+<title>proc~add_contour&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M246.47,-573.87C254.01,-570.33 261.22,-565.79 267,-560 298.29,-528.61 281.47,-505.74 303,-467 318.96,-438.27 342.56,-408.56 358.57,-389.71"/>
+<polygon fill="#000000" stroke="#000000" points="361.26,-391.96 365.13,-382.1 355.95,-387.39 361.26,-391.96"/>
+</g>
+<!-- proc~matrix_to_string -->
+<g id="call~~graph~~CallGraph_node16" class="node">
+<title>proc~matrix_to_string</title>
+<g id="a_call~~graph~~CallGraph_node16"><a xlink:href="../proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="426,-500 328,-500 328,-476 426,-476 426,-500"/>
+<text text-anchor="middle" x="377" y="-485.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_contour&#45;&gt;proc~matrix_to_string -->
+<g id="call~~graph~~CallGraph_edge7" class="edge">
+<title>proc~add_contour&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M235.28,-573.99C245.69,-569.98 256.99,-565.19 267,-560 297.62,-544.13 330.32,-521.71 351.82,-506.12"/>
+<polygon fill="#000000" stroke="#000000" points="354.04,-508.84 360.04,-500.1 349.91,-503.19 354.04,-508.84"/>
+</g>
+<!-- proc~add_contour&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge8" class="edge">
+<title>proc~add_contour&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M219.94,-573.93C235.16,-563.42 255.6,-546.8 267,-527 307.27,-457.05 269.92,-422.62 303,-349 316.32,-319.36 340.08,-290.24 356.86,-271.76"/>
+<polygon fill="#000000" stroke="#000000" points="359.56,-274 363.8,-264.29 354.43,-269.23 359.56,-274"/>
+</g>
+<!-- proc~add_contour&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge9" class="edge">
+<title>proc~add_contour&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M260.51,-575.49C313.27,-564.45 390.82,-543.76 451,-509 478.56,-493.08 504.49,-466.83 520.52,-448.77"/>
+<polygon fill="#000000" stroke="#000000" points="523.26,-450.96 527.17,-441.11 517.97,-446.37 523.26,-450.96"/>
+</g>
+<!-- proc~add_errorbar -->
+<g id="call~~graph~~CallGraph_node4" class="node">
+<title>proc~add_errorbar</title>
+<g id="a_call~~graph~~CallGraph_node4"><a xlink:href="../proc/add_errorbar.html" xlink:title="pyplot%add_errorbar">
+<polygon fill="#d9534f" stroke="#d9534f" points="262,-270 137,-270 137,-246 262,-246 262,-270"/>
+<text text-anchor="middle" x="199.5" y="-255.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_errorbar</text>
+</a>
+</g>
+</g>
+<!-- proc~add_errorbar&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge10" class="edge">
+<title>proc~add_errorbar&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M246.9,-270.08C253.82,-272.61 260.73,-275.57 267,-279 276.64,-284.27 325.69,-326.32 354.61,-351.37"/>
+<polygon fill="#000000" stroke="#000000" points="352.33,-354.03 362.18,-357.94 356.92,-348.75 352.33,-354.03"/>
+</g>
+<!-- proc~add_errorbar&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge11" class="edge">
+<title>proc~add_errorbar&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M262.37,-255.88C275.67,-255.43 289.83,-254.95 303.48,-254.48"/>
+<polygon fill="#000000" stroke="#000000" points="303.92,-257.97 313.8,-254.13 303.68,-250.97 303.92,-257.97"/>
+</g>
+<!-- proc~add_errorbar&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge12" class="edge">
+<title>proc~add_errorbar&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M262.19,-267.34C331.16,-278.17 435.3,-295.83 451,-306 489.37,-330.86 515.54,-379.42 528.21,-407.52"/>
+<polygon fill="#000000" stroke="#000000" points="525.07,-409.08 532.27,-416.86 531.5,-406.29 525.07,-409.08"/>
+</g>
+<!-- proc~add_hist -->
+<g id="call~~graph~~CallGraph_node5" class="node">
+<title>proc~add_hist</title>
+<g id="a_call~~graph~~CallGraph_node5"><a xlink:href="../proc/add_hist.html" xlink:title="pyplot%add_hist">
+<polygon fill="#d9534f" stroke="#d9534f" points="249.5,-102 149.5,-102 149.5,-78 249.5,-78 249.5,-102"/>
+<text text-anchor="middle" x="199.5" y="-87.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_hist</text>
+</a>
+</g>
+</g>
+<!-- proc~add_hist&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge13" class="edge">
+<title>proc~add_hist&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M249.79,-98.96C256.25,-101.91 262.26,-105.82 267,-111 316.83,-165.38 272.13,-206.02 303,-273 316.68,-302.68 340.57,-331.99 357.28,-350.49"/>
+<polygon fill="#000000" stroke="#000000" points="354.82,-352.99 364.17,-357.96 359.96,-348.24 354.82,-352.99"/>
+</g>
+<!-- proc~add_hist&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge14" class="edge">
+<title>proc~add_hist&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M249.61,-100.13C255.93,-102.92 261.95,-106.47 267,-111 296.62,-137.59 278.84,-161.37 303,-193 315.32,-209.13 332.93,-223.53 347.77,-234.07"/>
+<polygon fill="#000000" stroke="#000000" points="345.9,-237.03 356.13,-239.81 349.87,-231.26 345.9,-237.03"/>
+</g>
+<!-- proc~optional_logical_to_string -->
+<g id="call~~graph~~CallGraph_node18" class="node">
+<title>proc~optional_logical_to_string</title>
+<g id="a_call~~graph~~CallGraph_node18"><a xlink:href="../proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="451,-142 303,-142 303,-118 451,-118 451,-142"/>
+<text text-anchor="middle" x="377" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_logical_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_hist&#45;&gt;proc~optional_logical_to_string -->
+<g id="call~~graph~~CallGraph_edge15" class="edge">
+<title>proc~add_hist&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M249.85,-101.25C269.63,-105.76 292.66,-111 313.58,-115.77"/>
+<polygon fill="#000000" stroke="#000000" points="312.81,-119.19 323.34,-118 314.37,-112.36 312.81,-119.19"/>
+</g>
+<!-- proc~add_hist&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge16" class="edge">
+<title>proc~add_hist&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M249.67,-87.24C313.82,-84.71 421.41,-84.48 451,-109 497.79,-147.78 525.93,-340.51 534.33,-406.66"/>
+<polygon fill="#000000" stroke="#000000" points="530.88,-407.33 535.59,-416.82 537.83,-406.47 530.88,-407.33"/>
+</g>
+<!-- proc~add_imshow -->
+<g id="call~~graph~~CallGraph_node6" class="node">
+<title>proc~add_imshow</title>
+<g id="a_call~~graph~~CallGraph_node6"><a xlink:href="../proc/add_imshow.html" xlink:title="pyplot%add_imshow">
+<polygon fill="#d9534f" stroke="#d9534f" points="260,-682 139,-682 139,-658 260,-658 260,-682"/>
+<text text-anchor="middle" x="199.5" y="-667.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_imshow</text>
+</a>
+</g>
+</g>
+<!-- proc~add_imshow&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge17" class="edge">
+<title>proc~add_imshow&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M256.05,-657.9C260.12,-655.45 263.85,-652.52 267,-649 321.99,-587.56 269.36,-542.28 303,-467 316.26,-437.33 340.03,-408.21 356.83,-389.75"/>
+<polygon fill="#000000" stroke="#000000" points="359.53,-391.99 363.78,-382.28 354.41,-387.22 359.53,-391.99"/>
+</g>
+<!-- proc~add_imshow&#45;&gt;proc~matrix_to_string -->
+<g id="call~~graph~~CallGraph_edge18" class="edge">
+<title>proc~add_imshow&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M251.3,-657.97C256.87,-655.5 262.24,-652.55 267,-649 317.03,-611.69 351.64,-544.3 367.02,-509.74"/>
+<polygon fill="#000000" stroke="#000000" points="370.41,-510.7 371.17,-500.13 363.99,-507.93 370.41,-510.7"/>
+</g>
+<!-- proc~add_imshow&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge19" class="edge">
+<title>proc~add_imshow&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M260.06,-665.02C315.09,-657.64 396.34,-639.33 451,-594 497.19,-555.69 521.63,-486.08 531.56,-450.78"/>
+<polygon fill="#000000" stroke="#000000" points="534.98,-451.57 534.19,-441 528.22,-449.75 534.98,-451.57"/>
+</g>
+<!-- proc~add_plot -->
+<g id="call~~graph~~CallGraph_node7" class="node">
+<title>proc~add_plot</title>
+<g id="a_call~~graph~~CallGraph_node7"><a xlink:href="../proc/add_plot.html" xlink:title="pyplot%add_plot">
+<polygon fill="#d9534f" stroke="#d9534f" points="250,-228 149,-228 149,-204 250,-204 250,-228"/>
+<text text-anchor="middle" x="199.5" y="-213.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_plot</text>
+</a>
+</g>
+</g>
+<!-- proc~add_plot&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge20" class="edge">
+<title>proc~add_plot&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M249.95,-228.03C255.95,-230.51 261.79,-233.47 267,-237 290.05,-252.6 337.35,-316.04 361.35,-349.35"/>
+<polygon fill="#000000" stroke="#000000" points="358.79,-351.79 367.46,-357.88 364.48,-347.71 358.79,-351.79"/>
+</g>
+<!-- proc~add_plot&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge21" class="edge">
+<title>proc~add_plot&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M250.32,-226.22C268.1,-229.87 288.45,-234.04 307.52,-237.95"/>
+<polygon fill="#000000" stroke="#000000" points="306.86,-241.39 317.36,-239.97 308.26,-234.53 306.86,-241.39"/>
+</g>
+<!-- proc~add_plot&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge22" class="edge">
+<title>proc~add_plot&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M250.13,-204.8C304.53,-195.51 391.92,-189.67 451,-231 510.48,-272.61 529.19,-364.6 534.77,-406.92"/>
+<polygon fill="#000000" stroke="#000000" points="531.31,-407.48 535.97,-417 538.26,-406.65 531.31,-407.48"/>
+</g>
+<!-- proc~add_sphere -->
+<g id="call~~graph~~CallGraph_node8" class="node">
+<title>proc~add_sphere</title>
+<g id="a_call~~graph~~CallGraph_node8"><a xlink:href="../proc/add_sphere.html" xlink:title="pyplot%add_sphere">
+<polygon fill="#d9534f" stroke="#d9534f" points="258,-144 141,-144 141,-120 258,-120 258,-144"/>
+<text text-anchor="middle" x="199.5" y="-129.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_sphere</text>
+</a>
+</g>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge23" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M255.06,-144.08C259.44,-146.52 263.52,-149.46 267,-153 306.09,-192.66 277.87,-223.31 303,-273 317.75,-302.16 341.41,-331.58 357.78,-350.25"/>
+<polygon fill="#000000" stroke="#000000" points="355.25,-352.67 364.52,-357.8 360.47,-348 355.25,-352.67"/>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge24" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M249.45,-144.12C255.59,-146.59 261.6,-149.53 267,-153 287.11,-165.95 285.64,-176.54 303,-193 318.32,-207.53 336.83,-222.46 351.38,-233.67"/>
+<polygon fill="#000000" stroke="#000000" points="349.36,-236.53 359.44,-239.81 353.6,-230.97 349.36,-236.53"/>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~optional_logical_to_string -->
+<g id="call~~graph~~CallGraph_edge25" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M258.45,-131.34C269.42,-131.21 281.09,-131.08 292.65,-130.95"/>
+<polygon fill="#000000" stroke="#000000" points="292.81,-134.45 302.77,-130.83 292.73,-127.45 292.81,-134.45"/>
+</g>
+<!-- proc~real_to_string -->
+<g id="call~~graph~~CallGraph_node21" class="node">
+<title>proc~real_to_string</title>
+<g id="a_call~~graph~~CallGraph_node21"><a xlink:href="../proc/real_to_string.html" xlink:title="real_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="419,-184 335,-184 335,-160 419,-160 419,-184"/>
+<text text-anchor="middle" x="377" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~add_sphere&#45;&gt;proc~real_to_string -->
+<g id="call~~graph~~CallGraph_edge26" class="edge">
+<title>proc~add_sphere&#45;&gt;proc~real_to_string</title>
+<path fill="none" stroke="#000000" d="M253.16,-144C275.83,-149.17 302.25,-155.19 324.77,-160.32"/>
+<polygon fill="#000000" stroke="#000000" points="324.29,-163.8 334.81,-162.61 325.84,-156.98 324.29,-163.8"/>
+</g>
+<!-- proc~add_text -->
+<g id="call~~graph~~CallGraph_node10" class="node">
+<title>proc~add_text</title>
+<g id="a_call~~graph~~CallGraph_node10"><a xlink:href="../proc/add_text.html" xlink:title="pyplot%add_text">
+<polygon fill="#d9534f" stroke="#d9534f" points="249.5,-186 149.5,-186 149.5,-162 249.5,-162 249.5,-186"/>
+<text text-anchor="middle" x="199.5" y="-171.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_text</text>
+</a>
+</g>
+</g>
+<!-- proc~add_text&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge27" class="edge">
+<title>proc~add_text&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M249.53,-184.22C255.87,-186.99 261.91,-190.52 267,-195 295.65,-220.24 283.41,-240.23 303,-273 319.86,-301.21 343.27,-331.04 358.99,-350.05"/>
+<polygon fill="#000000" stroke="#000000" points="356.31,-352.31 365.41,-357.74 361.69,-347.82 356.31,-352.31"/>
+</g>
+<!-- proc~add_text&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge28" class="edge">
+<title>proc~add_text&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M242.76,-186.11C250.9,-188.79 259.29,-191.79 267,-195 294.83,-206.56 325.1,-222.7 346.66,-234.85"/>
+<polygon fill="#000000" stroke="#000000" points="345.2,-238.05 355.63,-239.96 348.67,-231.97 345.2,-238.05"/>
+</g>
+<!-- proc~add_text&#45;&gt;proc~real_to_string -->
+<g id="call~~graph~~CallGraph_edge29" class="edge">
+<title>proc~add_text&#45;&gt;proc~real_to_string</title>
+<path fill="none" stroke="#000000" d="M249.85,-173.44C273.17,-173.17 300.99,-172.85 324.56,-172.59"/>
+<polygon fill="#000000" stroke="#000000" points="324.76,-176.08 334.72,-172.47 324.68,-169.08 324.76,-176.08"/>
+</g>
+<!-- proc~destroy -->
+<g id="call~~graph~~CallGraph_node11" class="node">
+<title>proc~destroy</title>
+<g id="a_call~~graph~~CallGraph_node11"><a xlink:href="../proc/destroy.html" xlink:title="pyplot%destroy">
+<polygon fill="#d9534f" stroke="#d9534f" points="424,-24 330,-24 330,0 424,0 424,-24"/>
+<text text-anchor="middle" x="377" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%destroy</text>
+</a>
+</g>
+</g>
+<!-- proc~execute -->
+<g id="call~~graph~~CallGraph_node12" class="node">
+<title>proc~execute</title>
+<g id="a_call~~graph~~CallGraph_node12"><a xlink:href="../proc/execute.html" xlink:title="pyplot%execute">
+<polygon fill="#d9534f" stroke="#d9534f" points="248,-476 151,-476 151,-452 248,-452 248,-476"/>
+<text text-anchor="middle" x="199.5" y="-461.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%execute</text>
+</a>
+</g>
+</g>
+<!-- proc~finish_ops -->
+<g id="call~~graph~~CallGraph_node13" class="node">
+<title>proc~finish_ops</title>
+<g id="a_call~~graph~~CallGraph_node13"><a xlink:href="../proc/finish_ops.html" xlink:title="pyplot%finish_ops">
+<polygon fill="#d9534f" stroke="#d9534f" points="253.5,-518 145.5,-518 145.5,-494 253.5,-494 253.5,-518"/>
+<text text-anchor="middle" x="199.5" y="-503.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%finish_ops</text>
+</a>
+</g>
+</g>
+<!-- proc~finish_ops&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge30" class="edge">
+<title>proc~finish_ops&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M249.02,-493.89C255.29,-491.41 261.46,-488.47 267,-485 307.26,-459.81 342.79,-416.29 361.66,-390.63"/>
+<polygon fill="#000000" stroke="#000000" points="364.62,-392.51 367.62,-382.35 358.94,-388.42 364.62,-392.51"/>
+</g>
+<!-- proc~initialize -->
+<g id="call~~graph~~CallGraph_node14" class="node">
+<title>proc~initialize</title>
+<g id="a_call~~graph~~CallGraph_node14"><a xlink:href="../proc/initialize.html" xlink:title="pyplot%initialize">
+<polygon fill="#d9534f" stroke="#d9534f" points="249.5,-60 149.5,-60 149.5,-36 249.5,-36 249.5,-60"/>
+<text text-anchor="middle" x="199.5" y="-45.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%initialize</text>
+</a>
+</g>
+</g>
+<!-- proc~initialize&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge31" class="edge">
+<title>proc~initialize&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M249.67,-56.63C256.22,-59.62 262.29,-63.63 267,-69 327.69,-138.23 266.31,-188.56 303,-273 315.95,-302.8 339.78,-331.89 356.69,-350.32"/>
+<polygon fill="#000000" stroke="#000000" points="354.29,-352.87 363.68,-357.76 359.39,-348.08 354.29,-352.87"/>
+</g>
+<!-- proc~initialize&#45;&gt;proc~destroy -->
+<g id="call~~graph~~CallGraph_edge32" class="edge">
+<title>proc~initialize&#45;&gt;proc~destroy</title>
+<path fill="none" stroke="#000000" d="M249.85,-37.88C271.57,-33.42 297.19,-28.17 319.65,-23.56"/>
+<polygon fill="#000000" stroke="#000000" points="320.63,-26.93 329.73,-21.49 319.23,-20.07 320.63,-26.93"/>
+</g>
+<!-- proc~integer_to_string -->
+<g id="call~~graph~~CallGraph_node15" class="node">
+<title>proc~integer_to_string</title>
+<g id="a_call~~graph~~CallGraph_node15"><a xlink:href="../proc/integer_to_string.html" xlink:title="integer_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="589,-164 487,-164 487,-140 589,-140 589,-164"/>
+<text text-anchor="middle" x="538" y="-149.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~initialize&#45;&gt;proc~integer_to_string -->
+<g id="call~~graph~~CallGraph_edge33" class="edge">
+<title>proc~initialize&#45;&gt;proc~integer_to_string</title>
+<path fill="none" stroke="#000000" d="M249.84,-44.95C302.07,-43.63 385.8,-47.08 451,-76 479.43,-88.61 505.16,-114.1 520.92,-132.07"/>
+<polygon fill="#000000" stroke="#000000" points="518.29,-134.38 527.43,-139.73 523.62,-129.84 518.29,-134.38"/>
+</g>
+<!-- proc~initialize&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge34" class="edge">
+<title>proc~initialize&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M249.84,-57.39C256.21,-60.28 262.18,-64.06 267,-69 307.1,-110.05 271.22,-145.21 303,-193 314.09,-209.67 331.35,-223.94 346.31,-234.26"/>
+<polygon fill="#000000" stroke="#000000" points="344.51,-237.27 354.78,-239.87 348.38,-231.43 344.51,-237.27"/>
+</g>
+<!-- proc~initialize&#45;&gt;proc~optional_logical_to_string -->
+<g id="call~~graph~~CallGraph_edge35" class="edge">
+<title>proc~initialize&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M243.19,-60.06C251.21,-62.72 259.44,-65.73 267,-69 295.91,-81.5 327.11,-99.45 348.68,-112.65"/>
+<polygon fill="#000000" stroke="#000000" points="346.96,-115.7 357.31,-117.98 350.64,-109.74 346.96,-115.7"/>
+</g>
+<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge36" class="edge">
+<title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M412.6,-475.87C424.76,-471.56 438.51,-466.62 451,-462 465.87,-456.5 482.12,-450.31 496.45,-444.79"/>
+<polygon fill="#000000" stroke="#000000" points="497.95,-447.96 506.02,-441.1 495.43,-441.43 497.95,-447.96"/>
+</g>
+<!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
+<g id="call~~graph~~CallGraph_edge37" class="edge">
+<title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
+<path fill="none" stroke="#000000" d="M397.18,-239.94C425.11,-222.37 477.15,-189.64 509.26,-169.45"/>
+<polygon fill="#000000" stroke="#000000" points="511.15,-172.39 517.75,-164.11 507.42,-166.47 511.15,-172.39"/>
+</g>
+<!-- proc~plot_surface -->
+<g id="call~~graph~~CallGraph_node19" class="node">
+<title>proc~plot_surface</title>
+<g id="a_call~~graph~~CallGraph_node19"><a xlink:href="../proc/plot_surface.html" xlink:title="pyplot%plot_surface">
+<polygon fill="#d9534f" stroke="#d9534f" points="260,-434 139,-434 139,-410 260,-410 260,-434"/>
+<text text-anchor="middle" x="199.5" y="-419.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%plot_surface</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge38" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M241.2,-409.94C266.26,-402.52 298.57,-392.94 325.28,-385.03"/>
+<polygon fill="#000000" stroke="#000000" points="326.62,-388.28 335.21,-382.09 324.63,-381.57 326.62,-388.28"/>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~matrix_to_string -->
+<g id="call~~graph~~CallGraph_edge39" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M242.77,-434.09C250.91,-436.77 259.29,-439.78 267,-443 283.69,-449.97 286.44,-454.72 303,-462 311.41,-465.7 320.53,-469.27 329.38,-472.52"/>
+<polygon fill="#000000" stroke="#000000" points="328.24,-475.83 338.83,-475.92 330.61,-469.25 328.24,-475.83"/>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge40" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M214.76,-409.84C228.41,-398.1 249.44,-379.7 267,-363 299.74,-331.87 336.24,-294.03 357.6,-271.54"/>
+<polygon fill="#000000" stroke="#000000" points="360.16,-273.93 364.49,-264.26 355.07,-269.11 360.16,-273.93"/>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~optional_logical_to_string -->
+<g id="call~~graph~~CallGraph_edge41" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M220.41,-409.81C235.7,-399.35 255.99,-382.84 267,-363 313.38,-279.43 239.31,-222.25 303,-151 303.89,-150 304.82,-149.05 305.8,-148.15"/>
+<polygon fill="#000000" stroke="#000000" points="308.05,-150.84 313.93,-142.03 303.84,-145.24 308.05,-150.84"/>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge42" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M260.27,-423.24C324.72,-424.58 426.19,-426.69 486.7,-427.95"/>
+<polygon fill="#000000" stroke="#000000" points="486.71,-431.45 496.78,-428.16 486.85,-424.46 486.71,-431.45"/>
+</g>
+<!-- proc~plot_wireframe -->
+<g id="call~~graph~~CallGraph_node20" class="node">
+<title>proc~plot_wireframe</title>
+<g id="a_call~~graph~~CallGraph_node20"><a xlink:href="../proc/plot_wireframe.html" xlink:title="pyplot%plot_wireframe">
+<polygon fill="#d9534f" stroke="#d9534f" points="267,-354 132,-354 132,-330 267,-330 267,-354"/>
+<text text-anchor="middle" x="199.5" y="-339.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%plot_wireframe</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_wireframe&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge43" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M267.1,-352.63C284.44,-355.39 302.96,-358.35 319.72,-361.02"/>
+<polygon fill="#000000" stroke="#000000" points="319.47,-364.52 329.89,-362.64 320.57,-357.61 319.47,-364.52"/>
+</g>
+<!-- proc~plot_wireframe&#45;&gt;proc~matrix_to_string -->
+<g id="call~~graph~~CallGraph_edge44" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M215.16,-354.2C245.82,-379.7 316.89,-438.83 353.42,-469.22"/>
+<polygon fill="#000000" stroke="#000000" points="351.58,-472.24 361.5,-475.94 356.05,-466.85 351.58,-472.24"/>
+</g>
+<!-- proc~plot_wireframe&#45;&gt;proc~optional_int_to_string -->
+<g id="call~~graph~~CallGraph_edge45" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M244.4,-329.91C252.06,-327.3 259.86,-324.32 267,-321 297.7,-306.73 330.15,-285.25 351.58,-270.06"/>
+<polygon fill="#000000" stroke="#000000" points="353.7,-272.84 359.78,-264.17 349.61,-267.16 353.7,-272.84"/>
+</g>
+<!-- proc~plot_wireframe&#45;&gt;proc~optional_logical_to_string -->
+<g id="call~~graph~~CallGraph_edge46" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M256,-329.85C260.08,-327.42 263.83,-324.5 267,-321 318.89,-263.8 250.37,-207.53 303,-151 303.91,-150.02 304.86,-149.09 305.85,-148.2"/>
+<polygon fill="#000000" stroke="#000000" points="308.09,-150.9 314.09,-142.17 303.95,-145.25 308.09,-150.9"/>
+</g>
+<!-- proc~plot_wireframe&#45;&gt;proc~vec_to_string -->
+<g id="call~~graph~~CallGraph_edge47" class="edge">
+<title>proc~plot_wireframe&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M221.37,-354.16C241.59,-365.41 273.45,-381.75 303,-391 364.66,-410.31 438.69,-420.22 486.73,-425.01"/>
+<polygon fill="#000000" stroke="#000000" points="486.58,-428.51 496.87,-425.98 487.25,-421.54 486.58,-428.51"/>
+</g>
+<!-- proc~savefig -->
+<g id="call~~graph~~CallGraph_node22" class="node">
+<title>proc~savefig</title>
+<g id="a_call~~graph~~CallGraph_node22"><a xlink:href="../proc/savefig.html" xlink:title="pyplot%savefig">
+<polygon fill="#d9534f" stroke="#d9534f" points="95,-476 1,-476 1,-452 95,-452 95,-476"/>
+<text text-anchor="middle" x="48" y="-461.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%savefig</text>
+</a>
+</g>
+</g>
+<!-- proc~savefig&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge48" class="edge">
+<title>proc~savefig&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M60.64,-451.9C75.63,-437.16 103.19,-412.77 132,-401 192.84,-376.15 268.71,-369.97 319.55,-369"/>
+<polygon fill="#000000" stroke="#000000" points="319.74,-372.5 329.69,-368.87 319.65,-365.5 319.74,-372.5"/>
+</g>
+<!-- proc~savefig&#45;&gt;proc~execute -->
+<g id="call~~graph~~CallGraph_edge49" class="edge">
+<title>proc~savefig&#45;&gt;proc~execute</title>
+<path fill="none" stroke="#000000" d="M95.07,-464C109.43,-464 125.46,-464 140.52,-464"/>
+<polygon fill="#000000" stroke="#000000" points="140.77,-467.5 150.77,-464 140.77,-460.5 140.77,-467.5"/>
+</g>
+<!-- proc~savefig&#45;&gt;proc~finish_ops -->
+<g id="call~~graph~~CallGraph_edge50" class="edge">
+<title>proc~savefig&#45;&gt;proc~finish_ops</title>
+<path fill="none" stroke="#000000" d="M91.84,-476.04C108.73,-480.78 128.3,-486.28 146.02,-491.26"/>
+<polygon fill="#000000" stroke="#000000" points="145.08,-494.63 155.65,-493.96 146.97,-487.89 145.08,-494.63"/>
+</g>
+<!-- proc~showfig -->
+<g id="call~~graph~~CallGraph_node23" class="node">
+<title>proc~showfig</title>
+<g id="a_call~~graph~~CallGraph_node23"><a xlink:href="../proc/showfig.html" xlink:title="pyplot%showfig">
+<polygon fill="#d9534f" stroke="#d9534f" points="96,-518 0,-518 0,-494 96,-494 96,-518"/>
+<text text-anchor="middle" x="48" y="-503.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%showfig</text>
+</a>
+</g>
+</g>
+<!-- proc~showfig&#45;&gt;proc~add_str -->
+<g id="call~~graph~~CallGraph_edge51" class="edge">
+<title>proc~showfig&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M76.23,-518.09C119.67,-535.4 205.95,-561.56 267,-527 294.06,-511.68 285.63,-492.79 303,-467 321.38,-439.71 344.49,-409.64 359.72,-390.32"/>
+<polygon fill="#000000" stroke="#000000" points="362.65,-392.26 366.12,-382.25 357.17,-387.91 362.65,-392.26"/>
+</g>
+<!-- proc~showfig&#45;&gt;proc~execute -->
+<g id="call~~graph~~CallGraph_edge52" class="edge">
+<title>proc~showfig&#45;&gt;proc~execute</title>
+<path fill="none" stroke="#000000" d="M91.84,-493.96C108.73,-489.22 128.3,-483.72 146.02,-478.74"/>
+<polygon fill="#000000" stroke="#000000" points="146.97,-482.11 155.65,-476.04 145.08,-475.37 146.97,-482.11"/>
+</g>
+<!-- proc~showfig&#45;&gt;proc~finish_ops -->
+<g id="call~~graph~~CallGraph_edge53" class="edge">
+<title>proc~showfig&#45;&gt;proc~finish_ops</title>
+<path fill="none" stroke="#000000" d="M96.3,-506C108.59,-506 122.02,-506 134.99,-506"/>
+<polygon fill="#000000" stroke="#000000" points="135.27,-509.5 145.27,-506 135.27,-502.5 135.27,-509.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              pyplot-fortran
+ was developed by Jacob Williams<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

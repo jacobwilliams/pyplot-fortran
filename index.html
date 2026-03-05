@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="./favicon.png">
+
+    <title> pyplot-fortran </title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="./css/fontawesome.min.css" rel="stylesheet">
+    <link href="./css/brands.min.css" rel="stylesheet">
+    <link href="./css/regular.min.css" rel="stylesheet">
+    <link href="./css/solid.min.css" rel="stylesheet">
+    <link href="./css/v4-font-face.min.css" rel="stylesheet">
+    <link href="./css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="./css/local.css" rel="stylesheet">
+    <link href="./css/pygments.css" rel="stylesheet">
+    <script src="./js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">pyplot-fortran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./sourcefile/pyplot_module.f90.html">Source File</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="./search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+    <div class="p-5 mb-4 bg-light border rounded-3" id="jumbotron">
+      <p>For generating plots from Fortran using Python's matplotlib.pyplot</p>
+        <p> Find us on&hellip;</p>
+      <p>
+        <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams/pyplot-fortran" role="button">GitHub</a>
+        
+        
+        
+        
+      </p>
+    </div>
+
+      <div class="row" id='text'>
+        <div class=col-md-8>
+          <h1>pyplot-fortran</h1>
+          <h1><img alt="Pyplot-Fortran" src="media/logo.png"></h1>
+<p>A simple module for generating plots from Fortran using Python's matplotlib.pyplot.</p>
+<h3>Status</h3>
+<p><a href="https://github.com/jacobwilliams/pyplot-fortran/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/release/jacobwilliams/pyplot-fortran.svg?style=plastic"></a>
+<img alt="Build Status" src="https://github.com/jacobwilliams/pyplot-fortran/actions/workflows/CI.yml/badge.svg">
+<a href="https://codecov.io/gh/jacobwilliams/pyplot-fortran"><img alt="codecov" src="https://codecov.io/gh/jacobwilliams/pyplot-fortran/branch/master/graph/badge.svg?token=BHtd51oUTE"></a></p>
+<h3>Overview</h3>
+<p>Currently, this module can be used to generate simple plots from Fortran.  Eventually, it may be expanded to provide additional features and other types of plots.</p>
+<p>The way it works is simply to generate a Python script with the plotting code, which
+is then executed from the command line using the Fortran <code>execute_command_line</code> function.</p>
+<h3>Compiling</h3>
+<p>The module requires a modern Fortran compiler (it uses various Fortran 2003/2008 features such as deferred-length strings). It should work fine with the latest gfortran or ifort compilers.</p>
+<p>A <code>fpm.toml</code> file is provided for compiling pyplot-fortran with the <a href="https://github.com/fortran-lang/fpm">Fortran Package Manager</a>. For example, to build:</p>
+<div class="codehilite"><pre><span></span><code>fpm build --profile release
+</code></pre></div>
+
+<p>By default, the library is built with double precision (<code>real64</code>) real values. Explicitly specifying the real kind can be done using the following processor flags:</p>
+<table>
+<thead>
+<tr>
+<th>Preprocessor flag</th>
+<th>Kind</th>
+<th>Number of bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REAL32</code></td>
+<td><code>real(kind=real32)</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>REAL64</code></td>
+<td><code>real(kind=real64)</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>REAL128</code></td>
+<td><code>real(kind=real128)</code></td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p>For example, to build a single precision version of the library, use:</p>
+<div class="codehilite"><pre><span></span><code>fpm build --profile release --flag &quot;-DREAL32&quot;
+</code></pre></div>
+
+<p>To run the unit tests:</p>
+<div class="codehilite"><pre><span></span><code>fpm test
+</code></pre></div>
+
+<p>To use <code>pyplot-fortran</code> within your fpm project, add the following to your <code>fpm.toml</code> file:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span>
+<span class="n">pyplot-fortran</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="p">=</span><span class="s2">&quot;https://github.com/jacobwilliams/pyplot-fortran.git&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>or, to use a specific version:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span>
+<span class="n">pyplot-fortran</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="p">=</span><span class="s2">&quot;https://github.com/jacobwilliams/pyplot-fortran.git&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;3.3.0&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>To generate the documentation using <a href="https://github.com/Fortran-FOSS-Programmers/ford">ford</a>, run: <code>ford ford.md</code></p>
+<h3>Supported plot types</h3>
+<ul>
+<li><code>matplotlib.pyplot.plot</code> -- 2D/3D plot of lines and/or markers</li>
+<li><code>matplotlib.pyplot.bar</code> -- bar plot</li>
+<li><code>matplotlib.pyplot.contour</code> -- contour plot</li>
+<li><code>matplotlib.pyplot.contourf</code> -- filled contour plot</li>
+<li><code>matplotlib.pyplot.imshow</code> -- image plot</li>
+<li><code>matplotlib.pyplot.hist</code> -- histogram plot</li>
+<li><code>matplotlib.pyplot.errorbar</code> -- errorbar plot</li>
+<li><code>mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface</code> -- surface plot</li>
+<li><code>mpl_toolkits.mplot3d.axes3d.Axes3D.plot_wireframe</code> -- 3D wireframe</li>
+</ul>
+<h3>Example</h3>
+<p>The following example generates a plot of the sine function:</p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="k">program </span><span class="n">test</span>
+
+<span class="w"> </span><span class="k">use</span><span class="p">,</span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">wp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">real64</span>
+<span class="w"> </span><span class="k">use </span><span class="n">pyplot_module</span>
+
+<span class="w"> </span><span class="k">implicit none</span>
+
+<span class="k"> </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">sx</span>
+<span class="w"> </span><span class="k">type</span><span class="p">(</span><span class="n">pyplot</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">plt</span>
+<span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+
+<span class="w"> </span><span class="c">!generate some data:</span>
+<span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">wp</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">/</span><span class="mf">5.0_wp</span>
+<span class="w"> </span><span class="n">sx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="w"> </span><span class="c">!plot it:</span>
+<span class="w"> </span><span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;angle (rad)&#39;</span><span class="p">,&amp;</span>
+<span class="w">                     </span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot of $\\sin(x)$&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
+<span class="w"> </span><span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">sx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\\sin(x)$&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;b-o&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="w"> </span><span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;sinx.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pyfile</span><span class="o">=</span><span class="s1">&#39;sinx.py&#39;</span><span class="p">)</span>
+
+<span class="w"> </span><span class="k">end program </span><span class="n">test</span>
+</code></pre></div>
+
+<h3>Documentation</h3>
+<ul>
+<li>The API documentation for the current <code>master</code> branch can be found <a href="https://jacobwilliams.github.io/pyplot-fortran/">here</a>.  This is generated by processing the source files with <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>.</li>
+</ul>
+<h3>See also</h3>
+<ul>
+<li><a href="https://matplotlib.org">Matplotlib</a></li>
+</ul>
+        </div>
+          <div class="col-md-4">
+            <div class="card card-body bg-light">
+              <h2 class="card-title">Developer Info</h2>
+              <h4 class="card-text">Jacob Williams</h4>
+              <p class="card-text"></p>
+                <div class="text-center"><div class="btn-group" role="group">
+                    
+                    <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams"><i class="fa fa-github fa-lg"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                </div></div>
+            </div>
+          </div>
+      </div>
+        <div class="row">
+          <hr>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Source Files</h3>
+              <ul><li><a href='sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/files.html"><em>All source files&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Modules</h3>
+              <ul><li><a href='module/pyplot_module.html'>pyplot_module</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/modules.html"><em>All modules&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Procedures</h3>
+              <ul><li><a href='proc/add_3d_plot.html'>add_3d_plot</a></li><li><a href='proc/add_bar.html'>add_bar</a></li><li><a href='proc/add_contour.html'>add_contour</a></li><li><a href='proc/add_errorbar.html'>add_errorbar</a></li><li><a href='proc/add_hist.html'>add_hist</a></li><li><a href='proc/add_imshow.html'>add_imshow</a></li><li><a href='proc/add_plot.html'>add_plot</a></li><li><a href='proc/add_sphere.html'>add_sphere</a></li><li><a href='proc/add_str.html'>add_str</a></li><li><a href='proc/add_text.html'>add_text</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Derived Types</h3>
+              <ul><li><a href='type/pyplot.html'>pyplot</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/types.html"><em>All derived types&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              pyplot-fortran
+ was developed by Jacob Williams<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,706 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>plot_surface &ndash; pyplot-fortran</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">pyplot-fortran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>plot_surface
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 5.2% of total for procedures.">56 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/pyplot_module.F90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
+                <li class="breadcrumb-item"><a href='../module/pyplot_module.html'>pyplot_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">plot_surface</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/plot_surface.html#src">plot_surface</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine plot_surface(me, x, y, z, label, linestyle, linewidth, levels, color, cmap, colorbar, antialiased, istat)  
+</h2>
+    
+
+    <p>Add a surface plot.</p>
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>This requires <code>use_numpy</code> to be True.</p>
+</div>
+
+    <h3>Type Bound</h3>
+    <p><a href='../type/pyplot.html'>pyplot</a></p>
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~7"></span>
+              class(<a href='../type/pyplot.html'>pyplot</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>pyplot handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~4"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                <p>x values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~3"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+                <p>y values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-z~2"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td></td>            <td>
+              dimension(:,:)
+            </td>
+            <td>::</td>
+            <td><strong>z</strong></td>
+            <td>
+                <p>z values (a matrix)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-label~3"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>label</strong></td>
+            <td>
+                <p>plot label</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-linestyle~3"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linestyle</strong></td>
+            <td>
+                <p>style of the plot line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-linewidth~3"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>linewidth</strong></td>
+            <td>
+                <p>width of the plot line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-levels~2"></span>
+              real(kind=wp),
+            </td>
+<td>intent(in),</td>
+              <td>optional,</td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>levels</strong></td>
+            <td>
+                <p>contour levels to plot</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-color~3"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>color</strong></td>
+            <td>
+                <p>Color of the surface patches</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cmap~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cmap</strong></td>
+            <td>
+                <p>colormap if filled=True (examples: 'jet', 'bone')</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-colorbar~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>colorbar</strong></td>
+            <td>
+                <p>add a colorbar (default=False)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-antialiased"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>antialiased</strong></td>
+            <td>
+                <p>The surface is made opaque by using antialiased=False</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-istat~4"></span>
+              integer,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>istat</strong></td>
+            <td>
+                <p>status output (0 means no problems)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~plot_surface~~CallsGraph Pages: 1 -->
+<svg id="procplot_surfaceCallsGraph" width="451pt" height="177pt"
+ viewBox="0.00 0.00 451.00 176.78" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~plot_surface~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 172.78)">
+<title>proc~~plot_surface~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-172.78 447,-172.78 447,4 -4,4"/>
+<!-- proc~plot_surface -->
+<g id="proc~~plot_surface~~CallsGraph_node1" class="node">
+<title>proc~plot_surface</title>
+<polygon fill="none" stroke="black" points="121,-84.78 0,-84.78 0,-60.78 121,-60.78 121,-84.78"/>
+<text text-anchor="middle" x="60.5" y="-70.38" font-family="Helvetica,sans-Serif" font-size="10.50">pyplot%plot_surface</text>
+</g>
+<!-- proc~add_str -->
+<g id="proc~~plot_surface~~CallsGraph_node2" class="node">
+<title>proc~add_str</title>
+<g id="a_proc~~plot_surface~~CallsGraph_node2"><a xlink:href="../proc/add_str.html" xlink:title="pyplot%add_str">
+<polygon fill="#d9534f" stroke="#d9534f" points="278,-168.78 184,-168.78 184,-144.78 278,-144.78 278,-168.78"/>
+<text text-anchor="middle" x="231" y="-154.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_str</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~add_str -->
+<g id="proc~~plot_surface~~CallsGraph_edge1" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M76.53,-84.8C94.66,-98.78 126.51,-121.74 157,-135.78 162.37,-138.25 168.1,-140.51 173.9,-142.54"/>
+<polygon fill="#000000" stroke="#000000" points="173.08,-145.95 183.67,-145.75 175.26,-139.3 173.08,-145.95"/>
+</g>
+<!-- proc~matrix_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_node3" class="node">
+<title>proc~matrix_to_string</title>
+<g id="a_proc~~plot_surface~~CallsGraph_node3"><a xlink:href="../proc/matrix_to_string.html" xlink:title="matrix_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-84.78 182,-84.78 182,-60.78 280,-60.78 280,-84.78"/>
+<text text-anchor="middle" x="231" y="-70.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">matrix_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~matrix_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge2" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~matrix_to_string</title>
+<path fill="none" stroke="#000000" d="M121.38,-72.78C137.68,-72.78 155.3,-72.78 171.52,-72.78"/>
+<polygon fill="#000000" stroke="#000000" points="171.94,-76.28 181.94,-72.78 171.94,-69.28 171.94,-76.28"/>
+</g>
+<!-- proc~optional_int_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_node4" class="node">
+<title>proc~optional_int_to_string</title>
+<g id="a_proc~~plot_surface~~CallsGraph_node4"><a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-126.78 168,-126.78 168,-102.78 294,-102.78 294,-126.78"/>
+<text text-anchor="middle" x="231" y="-112.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge3" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M109.79,-84.82C129.17,-89.65 151.69,-95.26 171.96,-100.31"/>
+<polygon fill="#000000" stroke="#000000" points="171.16,-103.72 181.71,-102.74 172.85,-96.93 171.16,-103.72"/>
+</g>
+<!-- proc~optional_logical_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_node5" class="node">
+<title>proc~optional_logical_to_string</title>
+<g id="a_proc~~plot_surface~~CallsGraph_node5"><a xlink:href="../proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="305,-42.78 157,-42.78 157,-18.78 305,-18.78 305,-42.78"/>
+<text text-anchor="middle" x="231" y="-28.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_logical_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~optional_logical_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge4" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M109.79,-60.74C129.17,-55.91 151.69,-50.3 171.96,-45.25"/>
+<polygon fill="#000000" stroke="#000000" points="172.85,-48.63 181.71,-42.82 171.16,-41.84 172.85,-48.63"/>
+</g>
+<!-- proc~vec_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_node6" class="node">
+<title>proc~vec_to_string</title>
+<g id="a_proc~~plot_surface~~CallsGraph_node6"><a xlink:href="../proc/vec_to_string.html" xlink:title="vec_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="433,-43.78 351,-43.78 351,-19.78 433,-19.78 433,-43.78"/>
+<text text-anchor="middle" x="392" y="-29.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vec_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~plot_surface&#45;&gt;proc~vec_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge5" class="edge">
+<title>proc~plot_surface&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M74.43,-60.59C91.68,-45.25 123.9,-19.72 157,-9.78 219.76,9.06 295.85,-4.39 343.86,-17.04"/>
+<polygon fill="#000000" stroke="#000000" points="343.1,-20.46 353.66,-19.71 344.94,-13.7 343.1,-20.46"/>
+</g>
+<!-- proc~matrix_to_string&#45;&gt;proc~vec_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge6" class="edge">
+<title>proc~matrix_to_string&#45;&gt;proc~vec_to_string</title>
+<path fill="none" stroke="#000000" d="M278.85,-60.7C298.44,-55.65 321.23,-49.77 341.13,-44.64"/>
+<polygon fill="#000000" stroke="#000000" points="342.13,-48 350.94,-42.11 340.38,-41.22 342.13,-48"/>
+</g>
+<!-- proc~integer_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_node7" class="node">
+<title>proc~integer_to_string</title>
+<g id="a_proc~~plot_surface~~CallsGraph_node7"><a xlink:href="../proc/integer_to_string.html" xlink:title="integer_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="443,-126.78 341,-126.78 341,-102.78 443,-102.78 443,-126.78"/>
+<text text-anchor="middle" x="392" y="-112.38" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
+<g id="proc~~plot_surface~~CallsGraph_edge7" class="edge">
+<title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
+<path fill="none" stroke="#000000" d="M294.38,-114.78C306.23,-114.78 318.6,-114.78 330.39,-114.78"/>
+<polygon fill="#000000" stroke="#000000" points="330.57,-118.28 340.57,-114.78 330.57,-111.28 330.57,-118.28"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">plot_surface</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">linestyle</span><span class="p">,</span><span class="w"> </span><span class="n">linewidth</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                            </span><span class="n">cmap</span><span class="p">,</span><span class="w"> </span><span class="n">colorbar</span><span class="p">,</span><span class="w"> </span><span class="n">antialiased</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="w">           </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">           </span><span class="c">!! pyplot handler</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="w">   </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w">            </span><span class="c">!! x values</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="w">   </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="w">            </span><span class="c">!! y values</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="w"> </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">z</span><span class="w">            </span><span class="c">!! z values (a matrix)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">        </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">label</span><span class="w">        </span><span class="c">!! plot label</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">        </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">linestyle</span><span class="w">    </span><span class="c">!! style of the plot line</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">                 </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">linewidth</span><span class="w">    </span><span class="c">!! width of the plot line</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="w">   </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levels</span><span class="w">       </span><span class="c">!! contour levels to plot</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">        </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">color</span><span class="w">        </span><span class="c">!! Color of the surface patches</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">        </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cmap</span><span class="w">         </span><span class="c">!! colormap if filled=True (examples: &#39;jet&#39;, &#39;bone&#39;)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">                 </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">colorbar</span><span class="w">     </span><span class="c">!! add a colorbar (default=False)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">                 </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">antialiased</span><span class="w">  </span><span class="c">!! The surface is made opaque by using antialiased=False</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">                 </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w">        </span><span class="c">!! status output (0 means no problems)</span>
+
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xstr</span><span class="w">           </span><span class="c">!! x values stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ystr</span><span class="w">           </span><span class="c">!! y values stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">zstr</span><span class="w">           </span><span class="c">!! z values stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levelstr</span><span class="w">       </span><span class="c">!! levels vector stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">antialiasedstr</span><span class="w"> </span><span class="c">!! antialiased stringified</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">iline</span><span class="w">          </span><span class="c">!! actual line width</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">xname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="w">    </span><span class="c">!! x variable name for script</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">yname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;y&#39;</span><span class="w">    </span><span class="c">!! y variable name for script</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">zname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;z&#39;</span><span class="w">    </span><span class="c">!! z variable name for script</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">xname_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;X&#39;</span><span class="w">   </span><span class="c">!! X variable name for contour</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">yname_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Y&#39;</span><span class="w">   </span><span class="c">!! Y variable name for contour</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">zname_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Z&#39;</span><span class="w">   </span><span class="c">!! Z variable name for contour</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">extras</span><span class="w">         </span><span class="c">!! optional stuff</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">        </span><span class="c">!convert the arrays to strings:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">xstr</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">ystr</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">matrix_to_string</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">zstr</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">levels</span><span class="p">))</span><span class="w"> </span><span class="k">call </span><span class="n">vec_to_string</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">levelstr</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">!get optional inputs (if not present, set default value):</span>
+<span class="w">        </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">linewidth</span><span class="p">,</span><span class="w"> </span><span class="n">iline</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">antialiased</span><span class="p">,</span><span class="w"> </span><span class="n">antialiasedstr</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;False&#39;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">!write the arrays:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">xstr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">ystr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">zname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; = &#39;</span><span class="o">//</span><span class="n">zstr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">!convert inputs for contour plotting:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;, &#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39; = np.meshgrid(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;, &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">yname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39; = np.transpose(&#39;</span><span class="o">//</span><span class="n">zname</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">!optional arguments:</span>
+<span class="w">        </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">levels</span><span class="p">))</span><span class="w">     </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;levels=&#39;</span><span class="o">//</span><span class="n">levelstr</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">color</span><span class="p">))</span><span class="w">      </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;colors=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="n">color</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">linewidth</span><span class="p">))</span><span class="w">  </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;linewidths=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">iline</span><span class="p">))</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">cmap</span><span class="p">))</span><span class="w">       </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="s1">&#39;cmap=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="n">cmap</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span>
+
+<span class="w">        </span><span class="c">!write the plot statement:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;CS = ax.plot_surface&#39;</span><span class="o">//</span><span class="s1">&#39;(&#39;</span><span class="o">//</span><span class="n">xname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">yname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="n">zname_</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="s1">&#39;label=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="s1">&#39;antialiased=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">antialiasedstr</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="s1">&#39;linestyles=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">linestyle</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="n">extras</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">colorbar</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            if</span><span class="w"> </span><span class="p">(</span><span class="n">colorbar</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig.colorbar(CS)&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Error in add_plot: pyplot class not properly initialized.&#39;</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">plot_surface</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              pyplot-fortran
+ was developed by Jacob Williams<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

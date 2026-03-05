@@ -1,0 +1,1089 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="For generating plots from Fortran using Python's matplotlib.pyplot">
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>initialize &ndash; pyplot-fortran</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">pyplot-fortran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../sourcefile/pyplot_module.f90.html">Source File</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>initialize
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title="17.4% of total for procedures.">186 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/pyplot_module.F90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/pyplot_module.f90.html'>pyplot_module.F90</a></li>
+                <li class="breadcrumb-item"><a href='../module/pyplot_module.html'>pyplot_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">initialize</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/initialize.html#src">initialize</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine initialize(me, grid, xlabel, ylabel, zlabel, title, legend, use_numpy, figsize, font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow, tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt, dark_background, xaxis_useMathText, yaxis_useMathText, xaxis_useOffset, yaxis_useOffset)  
+</h2>
+    
+
+    <p>Initialize a plot</p>
+
+    <h3>Type Bound</h3>
+    <p><a href='../type/pyplot.html'>pyplot</a></p>
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~3"></span>
+              class(<a href='../type/pyplot.html'>pyplot</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>pyplot handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-grid"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>grid</strong></td>
+            <td>
+                <p>activate grid drawing</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xlabel"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xlabel</strong></td>
+            <td>
+                <p>label of x axis</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ylabel"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ylabel</strong></td>
+            <td>
+                <p>label of y axis</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-zlabel"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>zlabel</strong></td>
+            <td>
+                <p>label of z axis</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-title"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>title</strong></td>
+            <td>
+                <p>plot title</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-legend"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>legend</strong></td>
+            <td>
+                <p>plot legend</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-use_numpy~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>use_numpy</strong></td>
+            <td>
+                <p>activate usage of numpy python module</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-figsize"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional,</td>            <td>
+              dimension(2)
+            </td>
+            <td>::</td>
+            <td><strong>figsize</strong></td>
+            <td>
+                <p>dimension of the figure</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-font_size"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>font_size</strong></td>
+            <td>
+                <p>font size</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-axes_labelsize"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>axes_labelsize</strong></td>
+            <td>
+                <p>size of axis labels</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xtick_labelsize"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xtick_labelsize</strong></td>
+            <td>
+                <p>size of x axis tick lables</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ytick_labelsize"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ytick_labelsize</strong></td>
+            <td>
+                <p>size of y axis tick lables</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ztick_labelsize"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ztick_labelsize</strong></td>
+            <td>
+                <p>size of z axis tick lables</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-legend_fontsize"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>legend_fontsize</strong></td>
+            <td>
+                <p>size of legend font</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mplot3d~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mplot3d</strong></td>
+            <td>
+                <p>set true for 3d plots (cannot use with polar)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-axis_equal~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>axis_equal</strong></td>
+            <td>
+                <p>set true for axis = 'equal'</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-polar~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>polar</strong></td>
+            <td>
+                <p>set true for polar plots (cannot use with mplot3d)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-real_fmt~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>real_fmt</strong></td>
+            <td>
+                <p>format string for real numbers (examples: '(E30.16)' [default], '*')</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-use_oo_api~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>use_oo_api</strong></td>
+            <td>
+                <p>avoid matplotlib's GUI by using the OO interface (cannot use with showfig)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-axisbelow~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>axisbelow</strong></td>
+            <td>
+                <p>to put the grid lines below the other chart elements [default is true]</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tight_layout~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tight_layout</strong></td>
+            <td>
+                <p>enable tight layout [default is false]</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-raw_strings"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>raw_strings</strong></td>
+            <td>
+                <p>if True, all strings sent to Python are treated as
+raw strings (e.g., r'str'). Default is False.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-usetex~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>usetex</strong></td>
+            <td>
+                <p>if True, enable LaTeX. (default if false)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xaxis_date_fmt~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xaxis_date_fmt</strong></td>
+            <td>
+                <p>if present, used to set the date format for the x-axis</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yaxis_date_fmt~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yaxis_date_fmt</strong></td>
+            <td>
+                <p>if present, used to set the date format for the y-axis</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dark_background"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dark_background</strong></td>
+            <td>
+                <p>activate dark background style</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xaxis_usemathtext"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xaxis_useMathText</strong></td>
+            <td>
+                <p>use MathText for x-axis tick labels.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yaxis_usemathtext"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yaxis_useMathText</strong></td>
+            <td>
+                <p>use MathText for y-axis tick labels.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xaxis_useoffset"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xaxis_useOffset</strong></td>
+            <td>
+                <p>use offset notation for x-axis tick labels.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yaxis_useoffset"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yaxis_useOffset</strong></td>
+            <td>
+                <p>use offset notation for y-axis tick labels.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~initialize~~CallsGraph Pages: 1 -->
+<svg id="procinitializeCallsGraph" width="430pt" height="196pt"
+ viewBox="0.00 0.00 430.00 196.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~initialize~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 192)">
+<title>proc~~initialize~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-192 426,-192 426,4 -4,4"/>
+<!-- proc~initialize -->
+<g id="proc~~initialize~~CallsGraph_node1" class="node">
+<title>proc~initialize</title>
+<polygon fill="none" stroke="black" points="100,-106 0,-106 0,-82 100,-82 100,-106"/>
+<text text-anchor="middle" x="50" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50">pyplot%initialize</text>
+</g>
+<!-- proc~add_str -->
+<g id="proc~~initialize~~CallsGraph_node2" class="node">
+<title>proc~add_str</title>
+<g id="a_proc~~initialize~~CallsGraph_node2"><a xlink:href="../proc/add_str.html" xlink:title="pyplot%add_str">
+<polygon fill="#d9534f" stroke="#d9534f" points="257,-188 163,-188 163,-164 257,-164 257,-188"/>
+<text text-anchor="middle" x="210" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%add_str</text>
+</a>
+</g>
+</g>
+<!-- proc~initialize&#45;&gt;proc~add_str -->
+<g id="proc~~initialize~~CallsGraph_edge1" class="edge">
+<title>proc~initialize&#45;&gt;proc~add_str</title>
+<path fill="none" stroke="#000000" d="M64.78,-106.2C80.85,-119.84 108.7,-141.77 136,-155 141.4,-157.62 147.18,-159.97 153.04,-162.06"/>
+<polygon fill="#000000" stroke="#000000" points="152.34,-165.51 162.93,-165.35 154.55,-158.87 152.34,-165.51"/>
+</g>
+<!-- proc~destroy -->
+<g id="proc~~initialize~~CallsGraph_node3" class="node">
+<title>proc~destroy</title>
+<g id="a_proc~~initialize~~CallsGraph_node3"><a xlink:href="../proc/destroy.html" xlink:title="pyplot%destroy">
+<polygon fill="#d9534f" stroke="#d9534f" points="257,-146 163,-146 163,-122 257,-122 257,-146"/>
+<text text-anchor="middle" x="210" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot%destroy</text>
+</a>
+</g>
+</g>
+<!-- proc~initialize&#45;&gt;proc~destroy -->
+<g id="proc~~initialize~~CallsGraph_edge2" class="edge">
+<title>proc~initialize&#45;&gt;proc~destroy</title>
+<path fill="none" stroke="#000000" d="M98.41,-106C115.66,-110.37 135.33,-115.35 153.24,-119.88"/>
+<polygon fill="#000000" stroke="#000000" points="152.43,-123.29 162.99,-122.35 154.15,-116.5 152.43,-123.29"/>
+</g>
+<!-- proc~integer_to_string -->
+<g id="proc~~initialize~~CallsGraph_node4" class="node">
+<title>proc~integer_to_string</title>
+<g id="a_proc~~initialize~~CallsGraph_node4"><a xlink:href="../proc/integer_to_string.html" xlink:title="integer_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="422,-86 320,-86 320,-62 422,-62 422,-86"/>
+<text text-anchor="middle" x="371" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">integer_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~initialize&#45;&gt;proc~integer_to_string -->
+<g id="proc~~initialize~~CallsGraph_edge3" class="edge">
+<title>proc~initialize&#45;&gt;proc~integer_to_string</title>
+<path fill="none" stroke="#000000" d="M100.14,-90.92C156.48,-87.39 248.85,-81.6 309.54,-77.79"/>
+<polygon fill="#000000" stroke="#000000" points="309.98,-81.27 319.75,-77.15 309.55,-74.28 309.98,-81.27"/>
+</g>
+<!-- proc~optional_int_to_string -->
+<g id="proc~~initialize~~CallsGraph_node5" class="node">
+<title>proc~optional_int_to_string</title>
+<g id="a_proc~~initialize~~CallsGraph_node5"><a xlink:href="../proc/optional_int_to_string.html" xlink:title="optional_int_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="273,-66 147,-66 147,-42 273,-42 273,-66"/>
+<text text-anchor="middle" x="210" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_int_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~initialize&#45;&gt;proc~optional_int_to_string -->
+<g id="proc~~initialize~~CallsGraph_edge4" class="edge">
+<title>proc~initialize&#45;&gt;proc~optional_int_to_string</title>
+<path fill="none" stroke="#000000" d="M98.41,-82C115.05,-77.79 133.93,-73.01 151.32,-68.6"/>
+<polygon fill="#000000" stroke="#000000" points="152.52,-71.91 161.36,-66.06 150.8,-65.12 152.52,-71.91"/>
+</g>
+<!-- proc~optional_logical_to_string -->
+<g id="proc~~initialize~~CallsGraph_node6" class="node">
+<title>proc~optional_logical_to_string</title>
+<g id="a_proc~~initialize~~CallsGraph_node6"><a xlink:href="../proc/optional_logical_to_string.html" xlink:title="optional_logical_to_string">
+<polygon fill="#d9534f" stroke="#d9534f" points="284,-24 136,-24 136,0 284,0 284,-24"/>
+<text text-anchor="middle" x="210" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optional_logical_to_string</text>
+</a>
+</g>
+</g>
+<!-- proc~initialize&#45;&gt;proc~optional_logical_to_string -->
+<g id="proc~~initialize~~CallsGraph_edge5" class="edge">
+<title>proc~initialize&#45;&gt;proc~optional_logical_to_string</title>
+<path fill="none" stroke="#000000" d="M64.78,-81.8C80.85,-68.16 108.7,-46.23 136,-33 140.12,-31 144.46,-29.17 148.89,-27.47"/>
+<polygon fill="#000000" stroke="#000000" points="150.41,-30.65 158.67,-24.01 148.08,-24.05 150.41,-30.65"/>
+</g>
+<!-- proc~optional_int_to_string&#45;&gt;proc~integer_to_string -->
+<g id="proc~~initialize~~CallsGraph_edge6" class="edge">
+<title>proc~optional_int_to_string&#45;&gt;proc~integer_to_string</title>
+<path fill="none" stroke="#000000" d="M273.38,-61.85C285.23,-63.34 297.6,-64.89 309.39,-66.38"/>
+<polygon fill="#000000" stroke="#000000" points="309.21,-69.88 319.57,-67.66 310.08,-62.94 309.21,-69.88"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">initialize</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">xlabel</span><span class="p">,</span><span class="w"> </span><span class="n">ylabel</span><span class="p">,</span><span class="w"> </span><span class="n">zlabel</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="p">,</span><span class="w"> </span><span class="n">use_numpy</span><span class="p">,</span><span class="w"> </span><span class="n">figsize</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                          </span><span class="n">font_size</span><span class="p">,</span><span class="w"> </span><span class="n">axes_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">xtick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">ytick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">ztick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                          </span><span class="n">legend_fontsize</span><span class="p">,</span><span class="w"> </span><span class="n">mplot3d</span><span class="p">,</span><span class="w"> </span><span class="n">axis_equal</span><span class="p">,</span><span class="w"> </span><span class="n">polar</span><span class="p">,</span><span class="w"> </span><span class="n">real_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">use_oo_api</span><span class="p">,</span><span class="w"> </span><span class="n">axisbelow</span><span class="p">,&amp;</span>
+<span class="w">                          </span><span class="n">tight_layout</span><span class="p">,</span><span class="w"> </span><span class="n">raw_strings</span><span class="p">,</span><span class="w"> </span><span class="n">usetex</span><span class="p">,</span><span class="w"> </span><span class="n">xaxis_date_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">yaxis_date_fmt</span><span class="p">,</span><span class="w"> </span><span class="n">dark_background</span><span class="p">,&amp;</span>
+<span class="w">                          </span><span class="n">xaxis_useMathText</span><span class="p">,</span><span class="w"> </span><span class="n">yaxis_useMathText</span><span class="p">,</span><span class="w"> </span><span class="n">xaxis_useOffset</span><span class="p">,</span><span class="w"> </span><span class="n">yaxis_useOffset</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">pyplot</span><span class="p">),</span><span class="w">         </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">        </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w">              </span><span class="c">!! pyplot handler</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">grid</span><span class="w">            </span><span class="c">!! activate grid drawing</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xlabel</span><span class="w">          </span><span class="c">!! label of x axis</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ylabel</span><span class="w">          </span><span class="c">!! label of y axis</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">zlabel</span><span class="w">          </span><span class="c">!! label of z axis</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">title</span><span class="w">           </span><span class="c">!! plot title</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">legend</span><span class="w">          </span><span class="c">!! plot legend</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">use_numpy</span><span class="w">       </span><span class="c">!! activate usage of numpy python module</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">figsize</span><span class="w">         </span><span class="c">!! dimension of the figure</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">font_size</span><span class="w">       </span><span class="c">!! font size</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">axes_labelsize</span><span class="w">  </span><span class="c">!! size of axis labels</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xtick_labelsize</span><span class="w"> </span><span class="c">!! size of x axis tick lables</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ytick_labelsize</span><span class="w"> </span><span class="c">!! size of y axis tick lables</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ztick_labelsize</span><span class="w"> </span><span class="c">!! size of z axis tick lables</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">legend_fontsize</span><span class="w"> </span><span class="c">!! size of legend font</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mplot3d</span><span class="w">         </span><span class="c">!! set true for 3d plots (cannot use with polar)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">axis_equal</span><span class="w">      </span><span class="c">!! set true for axis = &#39;equal&#39;</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">polar</span><span class="w">           </span><span class="c">!! set true for polar plots (cannot use with mplot3d)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">real_fmt</span><span class="w">        </span><span class="c">!! format string for real numbers (examples: &#39;(E30.16)&#39; [default], &#39;*&#39;)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">use_oo_api</span><span class="w">      </span><span class="c">!! avoid matplotlib&#39;s GUI by using the OO interface (cannot use with showfig)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">axisbelow</span><span class="w">       </span><span class="c">!! to put the grid lines below the other chart elements [default is true]</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tight_layout</span><span class="w">    </span><span class="c">!! enable tight layout [default is false]</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">raw_strings</span><span class="w">     </span><span class="c">!! if True, all strings sent to Python are treated as</span>
+<span class="w">                                                                   </span><span class="c">!! raw strings (e.g., r&#39;str&#39;). Default is False.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">usetex</span><span class="w">          </span><span class="c">!! if True, enable LaTeX. (default if false)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xaxis_date_fmt</span><span class="w">  </span><span class="c">!! if present, used to set the date format for the x-axis</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">      </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">yaxis_date_fmt</span><span class="w">  </span><span class="c">!! if present, used to set the date format for the y-axis</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dark_background</span><span class="w"> </span><span class="c">!! activate dark background style</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xaxis_useMathText</span><span class="w"> </span><span class="c">!! use MathText for x-axis tick labels.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">yaxis_useMathText</span><span class="w"> </span><span class="c">!! use MathText for y-axis tick labels.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xaxis_useOffset</span><span class="w">   </span><span class="c">!! use offset notation for x-axis tick labels.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">               </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">yaxis_useOffset</span><span class="w">   </span><span class="c">!! use offset notation for y-axis tick labels.</span>
+
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">width_str</span><span class="w">             </span><span class="c">!! figure width dummy string</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">height_str</span><span class="w">            </span><span class="c">!! figure height dummy string</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">font_size_str</span><span class="w">         </span><span class="c">!! font size dummy string</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">axes_labelsize_str</span><span class="w">    </span><span class="c">!! size of axis labels dummy string</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">xtick_labelsize_str</span><span class="w">   </span><span class="c">!! size of x axis tick labels dummy string</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">ytick_labelsize_str</span><span class="w">   </span><span class="c">!! size of x axis tick labels dummy string</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">ztick_labelsize_str</span><span class="w">   </span><span class="c">!! size of z axis tick labels dummy string</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">max_int_len</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">legend_fontsize_str</span><span class="w">   </span><span class="c">!! size of legend font dummy string</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">python_fig_func</span><span class="w">      </span><span class="c">!! Python&#39;s function for creating a new Figure instance</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp</span><span class="w">      </span><span class="c">!! temp string</span>
+
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">default_font_size_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;10&#39;</span><span class="w"> </span><span class="c">!! the default font size for plots</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">raw_strings</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">raw_strings</span><span class="p">)</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;r&#39;</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">legend</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">show_legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">legend</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">show_legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">use_numpy</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use_numpy</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">use_oo_api</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">use_oo_api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use_oo_api</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">use_oo_api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">figsize</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">integer_to_string</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">width_str</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">integer_to_string</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">height_str</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">mplot3d</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mplot3d</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">polar</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">polar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polar</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">polar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">axis_equal</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">axis_equal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">axis_equal</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">axis_equal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">real_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">real_fmt</span><span class="p">))</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">real_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">real_fmt_default</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">tight_layout</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">tight_layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tight_layout</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">tight_layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">usetex</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">usetex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usetex</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">usetex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xaxis_date_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">xaxis_date_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xaxis_date_fmt</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">xaxis_date_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">xaxis_date_fmt</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yaxis_date_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">yaxis_date_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yaxis_date_fmt</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">yaxis_date_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">yaxis_date_fmt</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">font_size</span><span class="p">,</span><span class="w"> </span><span class="n">font_size_str</span><span class="p">,</span><span class="w"> </span><span class="n">default_font_size_str</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">axes_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">axes_labelsize_str</span><span class="p">,</span><span class="w"> </span><span class="n">default_font_size_str</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">xtick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">xtick_labelsize_str</span><span class="p">,</span><span class="w"> </span><span class="n">default_font_size_str</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">ytick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">ytick_labelsize_str</span><span class="p">,</span><span class="w"> </span><span class="n">default_font_size_str</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">ztick_labelsize</span><span class="p">,</span><span class="w"> </span><span class="n">ztick_labelsize_str</span><span class="p">,</span><span class="w"> </span><span class="n">default_font_size_str</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">optional_int_to_string</span><span class="p">(</span><span class="n">legend_fontsize</span><span class="p">,</span><span class="w"> </span><span class="n">legend_fontsize_str</span><span class="p">,</span><span class="w"> </span><span class="n">default_font_size_str</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;#!/usr/bin/env python&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;import matplotlib&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">use_oo_api</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;from matplotlib.figure import Figure&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;import matplotlib.pyplot as plt&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">endif</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;from mpl_toolkits.mplot3d import Axes3D&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">use_numpy</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;import numpy as np&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;font.family&quot;] = &quot;Serif&quot;&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;font.size&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">font_size_str</span><span class="p">))</span>
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;axes.labelsize&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">axes_labelsize_str</span><span class="p">))</span>
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;xtick.labelsize&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xtick_labelsize_str</span><span class="p">))</span>
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;ytick.labelsize&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">ytick_labelsize_str</span><span class="p">))</span>
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;legend.fontsize&quot;] = &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">legend_fontsize_str</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">usetex</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;matplotlib.rcParams[&quot;text.usetex&quot;] = True&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">use_oo_api</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">python_fig_func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Figure&#39;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">python_fig_func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;plt.figure&#39;</span>
+<span class="w">    </span><span class="k">endif</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">figsize</span><span class="p">))</span><span class="w"> </span><span class="k">then</span><span class="w">  </span><span class="c">!if specifying the figure size</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = &#39;</span><span class="o">//</span><span class="n">python_fig_func</span><span class="o">//</span><span class="s1">&#39;(figsize=(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">width_str</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;,&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">height_str</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;),facecolor=&quot;white&quot;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;fig = &#39;</span><span class="o">//</span><span class="n">python_fig_func</span><span class="o">//</span><span class="s1">&#39;(facecolor=&quot;white&quot;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">dark_background</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">dark_background</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;plt.style.use(&quot;dark_background&quot;)&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">    end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">mplot3d</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.add_subplot(1, 1, 1, projection=&#39;&#39;3d&#39;&#39;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">polar</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.add_subplot(1, 1, 1, projection=&#39;&#39;polar&#39;&#39;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax = fig.add_subplot(1, 1, 1)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">grid</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.grid()&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">axisbelow</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">axisbelow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">axisbelow</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">axisbelow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w"> </span><span class="c">! default</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">axisbelow</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_axisbelow(True)&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xlabel</span><span class="p">))</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_xlabel(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">ylabel</span><span class="p">))</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_ylabel(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">zlabel</span><span class="p">))</span><span class="w"> </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_zlabel(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">zlabel</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">title</span><span class="p">))</span><span class="w">  </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.set_title(&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">raw_str_token</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;&quot;&#39;</span><span class="w"> </span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">title</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="s1">&#39;&quot;)&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xaxis_useMathText</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">xaxis_useMathText</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.ticklabel_format(axis=&quot;x&quot;,useMathText=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yaxis_useMathText</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">yaxis_useMathText</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.ticklabel_format(axis=&quot;y&quot;,useMathText=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">xaxis_useOffset</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">xaxis_useOffset</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.ticklabel_format(axis=&quot;x&quot;,useOffset=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">yaxis_useOffset</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">optional_logical_to_string</span><span class="p">(</span><span class="n">yaxis_useOffset</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;ax.ticklabel_format(axis=&quot;y&quot;,useOffset=&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    call </span><span class="n">me</span><span class="p">%</span><span class="n">add_str</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">initialize</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              pyplot-fortran
+ was developed by Jacob Williams<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
