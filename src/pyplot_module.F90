@@ -93,6 +93,7 @@
         procedure, public :: add_imshow    !! add an image plot (using `imshow`)
         procedure, public :: add_hist      !! add a histogram plot to pyplot instance
         procedure, public :: add_text      !! add text annotation to pyplot instance
+        procedure, public :: add_scatter   !! add a scatter plot to pyplot instance
         procedure, public :: savefig       !! save plots of pyplot instance
         procedure, public :: showfig       !! show plots of pyplot instance
         procedure, public :: destroy       !! destroy pyplot instance
@@ -183,7 +184,8 @@
                           font_size, axes_labelsize, xtick_labelsize, ytick_labelsize, ztick_labelsize, &
                           legend_fontsize, mplot3d, axis_equal, polar, real_fmt, use_oo_api, axisbelow,&
                           tight_layout, raw_strings, usetex, xaxis_date_fmt, yaxis_date_fmt, dark_background,&
-                          xaxis_useMathText, yaxis_useMathText, xaxis_useOffset, yaxis_useOffset)
+                          xaxis_useMathText, yaxis_useMathText, xaxis_useOffset, yaxis_useOffset, &
+                          grid_color, grid_linestyle, grid_linewidth)
 
     class(pyplot),         intent(inout)        :: me              !! pyplot handler
     logical,               intent(in), optional :: grid            !! activate grid drawing
@@ -217,6 +219,9 @@
     logical,               intent(in), optional :: yaxis_useMathText !! use MathText for y-axis tick labels.
     logical,               intent(in), optional :: xaxis_useOffset   !! use offset notation for x-axis tick labels.
     logical,               intent(in), optional :: yaxis_useOffset   !! use offset notation for y-axis tick labels.
+    character(len=*),      intent(in), optional :: grid_color       !! color of the grid lines
+    character(len=*),      intent(in), optional :: grid_linestyle   !! linestyle of the grid lines
+    integer,               intent(in), optional :: grid_linewidth   !! linewidth of the grid lines
 
     character(len=max_int_len)  :: width_str             !! figure width dummy string
     character(len=max_int_len)  :: height_str            !! figure height dummy string
@@ -226,8 +231,10 @@
     character(len=max_int_len)  :: ytick_labelsize_str   !! size of x axis tick labels dummy string
     character(len=max_int_len)  :: ztick_labelsize_str   !! size of z axis tick labels dummy string
     character(len=max_int_len)  :: legend_fontsize_str   !! size of legend font dummy string
+    character(len=max_int_len)  :: grid_linewidth_str    !! grid line width dummy string
     character(len=:),allocatable :: python_fig_func      !! Python's function for creating a new Figure instance
-    character(len=:),allocatable :: tmp      !! temp string
+    character(len=:),allocatable :: tmp                  !! temp string
+    character(len=:),allocatable :: facecolor            !! figure facecolor
 
     character(len=*), parameter :: default_font_size_str = '10' !! the default font size for plots
 
@@ -328,6 +335,22 @@
     call me%add_str('matplotlib.rcParams["legend.fontsize"] = '//trim(legend_fontsize_str))
     if (me%usetex) call me%add_str('matplotlib.rcParams["text.usetex"] = True')
 
+    if (present(grid)) then
+        ! grid parameters if needed
+        if (grid) then
+            if (present(grid_color)) then
+                call me%add_str('matplotlib.rcParams["grid.color"] = "'//trim(grid_color)//'"')
+            end if
+            if (present(grid_linestyle)) then
+                call me%add_str('matplotlib.rcParams["grid.linestyle"] = "'//trim(grid_linestyle)//'"')
+            end if
+            if (present(grid_linewidth)) then
+                call optional_int_to_string(grid_linewidth, grid_linewidth_str, '')
+                call me%add_str('matplotlib.rcParams["grid.linewidth"] = '//trim(grid_linewidth_str))
+            end if
+        end if
+    end if
+
     call me%add_str('')
 
     if (me%use_oo_api) then
@@ -335,16 +358,19 @@
     else
         python_fig_func = 'plt.figure'
     endif
-    if (present(figsize)) then  !if specifying the figure size
-        call me%add_str('fig = '//python_fig_func//'(figsize=('//trim(width_str)//','//trim(height_str)//'),facecolor="white")')
-    else
-        call me%add_str('fig = '//python_fig_func//'(facecolor="white")')
-    end if
 
+    facecolor = 'white'
     if (present(dark_background)) then
         if (dark_background) then
             call me%add_str('plt.style.use("dark_background")')
+            facecolor = 'black'
         end if
+    end if
+
+    if (present(figsize)) then  !if specifying the figure size
+        call me%add_str('fig = '//python_fig_func//'(figsize=('//trim(width_str)//','//trim(height_str)//'),facecolor="'//trim(facecolor)//'")')
+    else
+        call me%add_str('fig = '//python_fig_func//'(facecolor="'//trim(facecolor)//'")')
     end if
 
     if (me%mplot3d) then
@@ -1215,6 +1241,121 @@
     end if
 
     end subroutine add_text
+!*****************************************************************************************
+
+!*****************************************************************************************
+!> author: Jacob Williams
+!
+! Add a scatter plot.
+!
+!### Example
+!```fortran
+!  call plt%add_scatter(x, y, label='data', s=50, color='blue', &
+!                       marker='o', alpha=0.6_wp)
+!```
+
+    subroutine add_scatter(me, x, y, label, s, marker, color, alpha, &
+                           xlim, ylim, xscale, yscale, edgecolors, linewidths, istat)
+
+    class(pyplot),          intent(inout)         :: me           !! pyplot handler
+    real(wp), dimension(:), intent(in)            :: x            !! x values
+    real(wp), dimension(:), intent(in)            :: y            !! y values
+    character(len=*),       intent(in)            :: label        !! plot label
+    integer,                intent(in), optional  :: s            !! marker size (area in points^2)
+    character(len=*),       intent(in), optional  :: marker       !! marker style (default: 'o')
+    real(wp), dimension(:), intent(in), optional  :: color        !! RGB color tuple [0-1,0-1,0-1]
+    real(wp),               intent(in), optional  :: alpha        !! transparency (0.0 to 1.0)
+    real(wp), dimension(2), intent(in), optional  :: xlim         !! x-axis range
+    real(wp), dimension(2), intent(in), optional  :: ylim         !! y-axis range
+    character(len=*),       intent(in), optional  :: xscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent(in), optional  :: yscale       !! example: 'linear' (default), 'log'
+    character(len=*),       intent(in), optional  :: edgecolors   !! edge color of markers
+    integer,                intent(in), optional  :: linewidths   !! line width of marker edges
+    integer,                intent(out), optional :: istat        !! status output (0 means no problems)
+
+    character(len=:), allocatable :: arg_str      !! the arguments to pass to `scatter`
+    character(len=:), allocatable :: xstr         !! x values stringified
+    character(len=:), allocatable :: ystr         !! y values stringified
+    character(len=:), allocatable :: xlimstr      !! xlim values stringified
+    character(len=:), allocatable :: ylimstr      !! ylim values stringified
+    character(len=:), allocatable :: color_str    !! color values stringified
+    character(len=:), allocatable :: alpha_str    !! alpha value stringified
+    character(len=max_int_len)    :: size_str     !! marker size
+    character(len=max_int_len)    :: linewidth_str !! line width
+    character(len=*), parameter   :: xname = 'x'  !! x variable name for script
+    character(len=*), parameter   :: yname = 'y'  !! y variable name for script
+
+    if (allocated(me%str)) then
+
+        if (present(istat)) istat = 0
+
+        !axis limits (optional):
+        if (present(xlim)) call vec_to_string(xlim, me%real_fmt, xlimstr, me%use_numpy)
+        if (present(ylim)) call vec_to_string(ylim, me%real_fmt, ylimstr, me%use_numpy)
+
+        !convert the arrays to strings:
+        call vec_to_string(x, me%real_fmt, xstr, me%use_numpy)
+        call vec_to_string(y, me%real_fmt, ystr, me%use_numpy)
+
+        !get optional inputs (if not present, set default value):
+        call optional_int_to_string(s, size_str, '20')
+        call optional_int_to_string(linewidths, linewidth_str, '1')
+
+        !write the arrays:
+        call me%add_str(trim(xname)//' = '//xstr)
+        call me%add_str(trim(yname)//' = '//ystr)
+        call me%add_str('')
+
+        !main arguments for scatter:
+        arg_str = trim(xname)//','//&
+                  trim(yname)//','//&
+                  's='//trim(adjustl(size_str))//','//&
+                  'label='//trim(me%raw_str_token)//'"'//trim(label)//'"'
+
+        ! optional arguments:
+        if (present(marker)) then
+            arg_str = arg_str//',marker='//trim(me%raw_str_token)//'"'//trim(marker)//'"'
+        end if
+
+        if (present(color)) then
+            if (size(color)<=3) then
+                call vec_to_string(color(1:3), '*', color_str, use_numpy=.false., is_tuple=.true.)
+                arg_str = arg_str//',color='//trim(color_str)
+            end if
+        end if
+
+        if (present(alpha)) then
+            call real_to_string(alpha, me%real_fmt, alpha_str)
+            arg_str = arg_str//',alpha='//alpha_str
+        end if
+
+        if (present(edgecolors)) then
+            arg_str = arg_str//',edgecolors='//trim(me%raw_str_token)//'"'//trim(edgecolors)//'"'
+        end if
+
+        if (present(linewidths)) then
+            arg_str = arg_str//',linewidths='//trim(adjustl(linewidth_str))
+        end if
+
+        !write the scatter statement:
+        call me%add_str('ax.scatter('//arg_str//')')
+
+        !axis limits:
+        if (allocated(xlimstr)) call me%add_str('ax.set_xlim('//xlimstr//')')
+        if (allocated(ylimstr)) call me%add_str('ax.set_ylim('//ylimstr//')')
+
+        !axis scales:
+        if (present(xscale)) call me%add_str('ax.set_xscale('//trim(me%raw_str_token)//'"'//xscale//'")')
+        if (present(yscale)) call me%add_str('ax.set_yscale('//trim(me%raw_str_token)//'"'//yscale//'")')
+
+        call me%add_str('')
+
+    else
+        if (present(istat)) istat = -1
+        write(error_unit,'(A)') 'Error in add_scatter: pyplot class not properly initialized.'
+    end if
+
+    end subroutine add_scatter
 !*****************************************************************************************
 
 !*****************************************************************************************
