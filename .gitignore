@@ -40,3 +40,8 @@ test/*.py
 # misc
 .DS_Store
 /env
+/coverage
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml

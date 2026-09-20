@@ -1,0 +1,17 @@
+[workspace]
+authors = ["Jacob Williams <jacobwilliams@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "pyplot-fortran"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = ">=3.14.7,<3.15"
+numpy = ">=2.5.3,<3"
+matplotlib = ">=3.11.2,<4"
+fpm = ">=0.13.0,<0.14"
+gfortran = "15.*"
+lcov = ">=2.5,<3"
+ford = ">=7.0.13,<8"
